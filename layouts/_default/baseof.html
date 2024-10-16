@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" class="bg-indigo-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#16213e',
+                        'primary-light': '#e2e8f0',
+                        'accent': '#0f3460',
+                    }
+                }
+            }
+        }
+    </script>
+    {{ if in .RelPermalink "/photogallery/" }}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+    {{end}}
+</head>
+<body class="min-h-screen flex flex-col">
+    <div class="container mx-auto px-4 sm:px-0 max-w-3xl flex-grow relative">
+        {{ partial "header.html" . }}
+        {{ partial "menu.html" . }}
+
+        
+        <main class="pt-8 sm:pt-0 pb-10 max-w-3xl">
+            {{ with .Parent }}
+                →
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            {{ end }}
+
+            {{ block "main" . }}{{ end }}
+        </main>
+    </div>
+    {{ partial "footer.html" . }}
+    <script src="/js/main.js"></script>
+</body>
+</html>

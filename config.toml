@@ -1,0 +1,70 @@
+baseURL = "https://olografix.org/"
+languageCode = "it-it"
+title = "Metro Olografix"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "L'associazione"
+    url = "/associazione/"
+    weight = 2
+  [[menu.main]]
+    name = "Attività"
+    url = "/attivita/"
+    weight = 3
+  [[menu.main]]
+    name = "Progetti"
+    url = "/progetti/"
+    weight = 4
+  [[menu.main]]
+    name = "Photogallery"
+    url = "/photogallery/"
+    weight = 5
+  [[menu.main]]
+    name = "Associati"
+    url = "https://associati.olografix.org"
+    weight = 6
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params]
+  description = "La prima associazione culturale telematica in Italia"
+
+  [[params.direttivo]]
+    name = "Michelangelo Morrillo"
+    nickname = "pinguino"
+    role = "presidente"
+
+  [[params.direttivo]]
+    name = "Elena Santomieri"
+    nickname = "00ele"
+    role = "vice presidente"
+  
+  [[params.direttivo]]
+    name = "Simona Forti"
+    nickname = "nhaima"
+    role = "tesoriere"
+  
+  [[params.direttivo]]
+    name = "Lucia Zappacosta"
+    nickname = "kundera"
+    role = "consigliere"
+  
+  [[params.direttivo]]
+    name = "Irene Ragni"
+    nickname = "darklady"
+    role = "consigliere"
+
+  [[params.direttivo]]
+    name = "Stefano Chiccarelli"
+    nickname = "neuro"
+    role = "consigliere"
+
+  [[params.direttivo]]
+    name = "Igor Falcomatà"
+    nickname = "koba"
+    role = "consigliere"

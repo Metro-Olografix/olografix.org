@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article>
+    <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
+    <h2 class="text-xl mb-8 text-primary-dark">{{ .Params.subtitle }}</h2>
+    <div class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)]">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}
