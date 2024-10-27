@@ -1,18 +1,31 @@
-<div
+<nav
   id="mobileMenu"
-  class="fixed inset-0 bg-primary-dark text-primary-light z-40 hidden flex flex-col items-center justify-center"
+  class="fixed inset-0 bg-primary-dark text-primary-light z-40 hidden"
+  aria-label="Mobile navigation"
+  role="navigation"
 >
-  <div class="flex justify-between items-center mb-4">
-    <button
-      id="closeMenu"
-      class="text-primary-light text-4xl"
-      aria-label="Close menu"
-    >
-      ✕
-    </button>
-  </div>
+  <div class="h-full flex flex-col items-center justify-center">
+    <div class="absolute top-4 right-4">
+      <button
+        id="closeMenu"
+        class="text-primary-light text-4xl p-2 hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary-light"
+        aria-label="Close menu"
+        type="button"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
 
-  {{ range .Site.Menus.main }}
-  <a href="{{ .URL }}" class="py-2 text-2xl hover:underline"> {{ .Name }} </a>
-  {{ end }}
-</div>
+    <div class="space-y-6">
+      {{ range .Site.Menus.main }}
+      <a
+        href="{{ .URL }}"
+        class="block py-2 text-2xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors duration-200"
+        {{ if eq $.RelPermalink .URL }}aria-current="page"{{ end }}
+      >
+        {{ .Name }}
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</nav>

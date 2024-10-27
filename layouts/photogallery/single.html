@@ -1,19 +1,32 @@
 {{ define "main" }}
-<article>
-    <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
-    <h2 class="text-xl mb-8 text-primary-dark">{{ .Params.description }}</h2>
+<article class="max-w-7xl mx-auto">
+    <header class="mb-12">
+        <h1 class="text-4xl font-bold text-primary-dark tracking-tight">{{ .Title }}</h1>
+        {{ with .Params.description }}
+            <h2 class="text-xl text-primary-dark mt-4">{{ . }}</h2>
+        {{ end }}
+    </header>
 
-    <div class="container mx-auto p-4">
+    <section class="gallery-container">
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {{ $images := .Resources.ByType "image" }}
-            {{ range $images }}
-            <div class="overflow-hidden">
-                <a href="{{ .RelPermalink }}" data-lightbox="gallery">
-                    <img src="{{ .RelPermalink }}" alt="{{ .Title }}" class="w-full h-auto transition-transform transform group-hover:scale-105">
-                </a>
-            </div>
+            {{ with .Resources.ByType "image" }}
+                {{ range . }}
+                    <div class="gallery-item group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <a href="{{ .RelPermalink }}" 
+                           data-lightbox="gallery" 
+                           aria-label="{{ .Title }}"
+                           class="block aspect-square">
+                            <img src="{{ .RelPermalink }}" 
+                                 alt="{{ .Title }}" 
+                                 loading="lazy"
+                                 class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-105"
+                                 width="300"
+                                 height="300">
+                        </a>
+                    </div>
+                {{ end }}
             {{ end }}
         </div>
-    </div>
+    </section>
 </article>
 {{ end }}
