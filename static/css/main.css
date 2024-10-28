@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
+html {
+    scrollbar-gutter: stable;
+    overflow-y: scroll; /* Fallback for older browsers */
+}
+
 body {
     font-family: 'Space Mono', monospace;
 }
@@ -15,6 +20,15 @@ body {
 
 .logo-menu:hover {
     transform: scale(1.05); /* Slightly enlarges on hover */
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+.blink {
+animation: blink 2s step-end infinite;
 }
 
 .hugo-text {
