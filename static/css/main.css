@@ -30,3 +30,21 @@ body {
 .blink {
 animation: blink 2s step-end infinite;
 }
+
+.hugo-text {
+    display: inline-block;
+    position: relative;
+}
+.letter {
+    display: inline-block;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.letter.rotate {
+    animation: flipLetter 0.6s ease-out;
+}
+@keyframes flipLetter {
+    0% { transform: rotateX(0deg); opacity: 1; }
+    50% { transform: rotateX(90deg); opacity: 0; }
+    51% { transform: rotateX(270deg); opacity: 0; }
+    100% { transform: rotateX(360deg); opacity: 1; }
+}
