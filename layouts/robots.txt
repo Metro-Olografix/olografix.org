@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /photogallery/
+Sitemap: https://olografix.org/sitemap.xml
