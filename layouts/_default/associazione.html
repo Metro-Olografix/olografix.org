@@ -7,17 +7,23 @@
 </article>
 
 <div class="mt-8 flex max-w-full flex-row">
-    <div class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
-        <a href="" class="block text-center text-xl font-bold">
+    {{ with .GetPage "/associazione/statuto" }}
+    <div
+        class="flex-col w-full bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
+        <a href="{{ .RelPermalink }}" class="block text-center text-xl font-bold">
             Statuto
         </a>
     </div>
-    
-    <div class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
-        <a href="" class="block text-center text-xl font-bold">
+    {{ end }}
+
+    <!-- {{ with .GetPage "/associazione/atto-costitutivo" }}
+    <div
+        class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
+        <a href="{{ .RelPermalink }}" class="block text-center text-xl font-bold">
             Atto costitutivo
         </a>
     </div>
+    {{ end }} -->
 </div>
 
 <article>
@@ -25,7 +31,8 @@
 
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center lg:justify-center">
         {{ range .Site.Params.direttivo }}
-        <div class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] mb-8 max-w-xs hover:shadow-lg transition-shadow duration-300">
+        <div
+            class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] mb-8 max-w-xs hover:shadow-lg transition-shadow duration-300">
             <h3 class="text-2xl font-bold text-center text-primary-dark mb-2">{{ .name }} "{{ .nickname }}"</h3>
             <p class="text-center text-accent text-sm mb-4">{{ .role }}</p>
             <div class="mt-4 text-center">
@@ -33,7 +40,7 @@
             </div>
         </div>
         {{ end }}
-    </section> 
+    </section>
 </article>
 
 {{ end }}

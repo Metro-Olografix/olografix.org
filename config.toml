@@ -31,8 +31,14 @@ title = "Metro Olografix"
 [markup.goldmark.renderer]
   unsafe = true
 
+[[build.cachebusters]]
+source = "JSON"
+target = ".*"
+
 [params]
   description = "La prima associazione culturale telematica in Italia"
+
+  galleryServer = "https://gallery.olografix.org"
 
   [[params.direttivo]]
     name = "Michelangelo Morrillo"
