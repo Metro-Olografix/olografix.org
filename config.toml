@@ -38,7 +38,7 @@ target = ".*"
 [params]
   description = "La prima associazione culturale telematica in Italia"
 
-  galleryServer = "http://localhost:8080"
+  galleryServer = "https://gallery.olografix.org"
 
   [[params.direttivo]]
     name = "Michelangelo Morrillo"
