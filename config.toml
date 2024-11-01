@@ -2,6 +2,8 @@ baseURL = "https://olografix.org/"
 languageCode = "it-it"
 title = "Metro Olografix"
 
+enableRobotsTXT = true
+
 [menu]
   [[menu.main]]
     name = "Home"

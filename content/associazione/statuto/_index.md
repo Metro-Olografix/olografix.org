@@ -1,9 +1,10 @@
 ---
 title: "Statuto"
 layout: single
+hasTOC: true
 ---
 
-**ART. 1 – COSTITUZIONE, DENOMINAZIONE, SEDE E DURATA**
+## **ART. 1 – COSTITUZIONE, DENOMINAZIONE, SEDE E DURATA**
 
 E’ costituito l’Ente di Terzo Settore denominato **“Associazione Culturale Telematica Metro Olografix – APS ETS”** ai sensi del D. Lgs. del 3 luglio 2017 n. 117 e successive modifiche, e per quanto non previsto, dalle norme del Codice civile e relative disposizioni di attuazione, in quanto compatibili. L’utilizzo delle indicazioni “Associazione di Promozione Sociale” e “Ente del Terzo Settore” e/o degli acronimi APS e ETS nella denominazione dell’associazione, nella corrispondenza e nelle comunicazioni con il pubblico è obbligatorio e subordinato al perfezionamento dell’iscrizione dell’associazione nel Registro Unico Nazionale del Terzo Settore.
 
@@ -16,7 +17,7 @@ L’Organo di Amministrazione ha facoltà di spostare la sede sociale all’inte
 Il trasferimento della sede legale deve essere comunicato entro 30 giorni dal verificarsi dell’evento agli enti gestori di pubblici registri presso i quali l’organizzazione è iscritta.
 
 
-**ART. 2 – SCOPO E OGGETTO SOCIALE**
+## **ART. 2 – SCOPO E OGGETTO SOCIALE**
 
 L’Associazione persegue, senza scopo di lucro, in via esclusiva o principale, finalità civiche, solidaristiche e di utilità sociale. In quanto Associazione di Promozione sociale le sue attività sono svolte prevalentemente a favore dei propri associati e dei loro familiari, e anche di terzi. L’Associazione opera nel rispetto della libertà ed uguaglianza dei soci e dei valori di partecipazione, democrazia, legalità, solidarietà e pluralismo.
 
@@ -45,7 +46,7 @@ L’Associazione può assumere lavoratori dipendenti o avvalersi di prestazioni 
 L’associato che presti la propria opera per l’associazione come lavoratore subordinato o autonomo non potrà assumere la qualifica di volontario in quanto incompatibile con qualsiasi forma di rapporto di lavoro retribuito con l’ente di cui si è soci.
 
 
-**ART. 3 – I SOCI**
+## **ART. 3 – I SOCI**
 
 Possono essere Soci dell’Associazione:
 
@@ -65,7 +66,7 @@ I soci si distinguono in:
 Non è possibile prevedere alcuna differenza di trattamento fra i Soci riguardo ai diritti e ai doveri nei confronti dell’Associazione.
 
 
-**ART. 4 – CRITERI DI AMMISSIONE ED ESCLUSIONE DEI SOCI**
+## **ART. 4 – CRITERI DI AMMISSIONE ED ESCLUSIONE DEI SOCI**
 
 L’ammissione all’Associazione è deliberata dall’Organo di Amministrazione, su richiesta dell’aspirante socio, che nella domanda deve indicare le generalità ed il domicilio e dichiarare di condividere le finalità che l’Associazione propone e di accettare e rispettare lo Statuto.
 
@@ -89,7 +90,7 @@ La perdita per qualsiasi caso, della qualità di Socio non dà diritto alla rest
 Il decesso del Socio non conferisce agli eredi alcun diritto nell’ambito associativo.
 
 
-**ART.5 – DIRITTI E DOVERI DEI SOCI**
+## **ART. 5 – DIRITTI E DOVERI DEI SOCI**
 
 I soci hanno il diritto di:
 
@@ -109,13 +110,12 @@ I soci hanno l’obbligo di:
 *   rispettare il presente Statuto e gli eventuali Regolamenti interni e deliberazioni legalmente adottate dagli organi associativi;
 *   versare la quota associativa secondo l’importo, le modalità di versamento e i termini annualmente stabiliti dall’Assemblea;
 
-
-**ART. 6 – ORGANI DELL’ASSOCIAZIONE**
+## **ART. 6 – ORGANI DELL’ASSOCIAZIONE**
 
 Gli organi dell’Associazione sono: l’Assemblea, l’Organo di Amministrazione, l’organo di controllo (eventuale) e l’organo di revisione (eventuale).
 
 
-**ART. 7 – ASSEMBLEA**
+## **ART. 7 – ASSEMBLEA**
 
 L’Assemblea dei soci è l’organo sovrano dell’Associazione; è composta da tutti i soci per i quali sussiste tale qualifica al momento della convocazione e può essere Ordinaria e Straordinaria.
 
@@ -164,7 +164,7 @@ Tutte le delibere assembleari e i rendiconti sono debitamente trascritti nel lib
 *   sia consentito agli intervenuti di partecipare alla discussione e alla votazione simultanea sugli argomenti all’ordine del giorno.
 
 
-**ART. 8 – ORGANO DI AMMINISTRAZIONE E RAPPRESENTANZA LEGALE**
+## **ART. 8 – ORGANO DI AMMINISTRAZIONE E RAPPRESENTANZA LEGALE**
 
 L’Organo di Amministrazione è l’organo esecutivo e gestionale dell’Associazione ed è eletto dall’Assemblea ogni 3 anni. Esso è composto da un minimo di 3 ad un massimo di 9 membri.
 
@@ -206,7 +206,7 @@ I verbali di ogni adunanza dell’Organo di Amministrazione, redatti a cura di u
 *   sia consentito agli intervenuti di partecipare alla discussione e alla votazione simultanea sugli argomenti all’ordine del giorno.
 
 
-**ART. 9 – ORGANO DI CONTROLLO**
+## **ART. 9 – ORGANO DI CONTROLLO**
 
 (qualora previsto nei casi indicati dall’art. 30 del D.Lgs, 117/2017))
 
@@ -219,7 +219,7 @@ L’organo di controllo vigila sull’osservanza della legge e dello statuto e s
 I componenti dell’organo di controllo possono in qualsiasi momento procedere, anche individualmente, ad atti di ispezione e di controllo, e a tal fine, chiedere agli amministratori notizie sull’andamento delle operazioni sociali o su determinati affari.
 
 
-**ART. 10 – REVISIONE LEGALE DEI CONTI**
+## **ART. 10 – REVISIONE LEGALE DEI CONTI**
 
 (qualora previsto nei casi indicati dall’art. 31 del D.Lgs, 117/2017)
 
@@ -232,7 +232,7 @@ L’organo di revisione vigila sull’osservanza della legge e dello statuto e s
 I componenti dell’organo di revisione possono in qualsiasi momento procedere, anche individualmente, ad atti di ispezione e di controllo, e a tal fine, chiedere agli amministratori notizie sull’andamento delle operazioni sociali o su determinati affari.
 
 
-**ART. 11 – PATRIMONIO ED ESERCIZIO FINANZIARIO**
+## **ART. 11 – PATRIMONIO ED ESERCIZIO FINANZIARIO**
 
 Il patrimonio dell’Associazione, comprensivo di ricavi, rendite, proventi, entrate comunque denominate è utilizzato per lo svolgimento dell’attività statutaria ai fini dell’esclusivo perseguimento di finalità civiche, solidaristiche e di utilità sociale.
 
@@ -256,14 +256,14 @@ L’Associazione può esercitare attività di raccolta pubblica di fondi, a norm
 Indipendentemente dalla redazione del bilancio di esercizio, l’Associazione per ogni attività occasionale di raccolta pubblica di fondi eseguita in concomitanza di celebrazioni, ricorrenze o campagne di sensibilizzazione, redige entro 4 mesi dalla chiusura dell’esercizio un apposito e separato rendiconto dal quale devono risultare in modo chiaro e trasparente le entrate e le spese relative a ciascuno di detta raccolta pubblica di fondi.
 
 
-**ART. 12 – INFORMATIVA SOCIALE e/o BILANCIO SOCIALE**
+## **ART. 12 – INFORMATIVA SOCIALE e/o BILANCIO SOCIALE**
 
 Se ricavi, rendite, proventi o entrate comunque denominate sono superiori a 100 mila euro annui l’Associazione deve pubblicare annualmente e tenere aggiornati nel proprio sito internet gli eventuali emolumenti, compensi o corrispettivi a qualsiasi titolo attribuiti ai componenti degli organi di amministrazione e controllo, ai dirigenti e agli associati.
 
 Se ricavi, rendite, proventi o entrate comunque denominate sono superiori a 1 milione di euro annui l’Associazione deve depositare presso il Registro unico nazionale del terzo settore e pubblicarlo nel proprio sito internet il bilancio sociale.
 
 
-**ART. 13 – LIBRI SOCIALI**
+## **ART. 13 – LIBRI SOCIALI**
 
 L’Associazione deve tenere i seguenti libri:
 
@@ -277,11 +277,11 @@ L’Associazione deve tenere i seguenti libri:
 Tutti gli associati, in regola con il versamento della quota associativa, hanno il diritto di esaminare i libri sociali tenuti presso la sede legale dell’ente, entro 15 giorni dalla data della richiesta formulata all’Organo di Amministrazione.
 
 
-**ART. 14 – ESTINZIONE O SCIOGLIMENTO**
+## **ART. 14 – ESTINZIONE O SCIOGLIMENTO**
 
 L’estinzione o lo scioglimento dell’Associazione è deliberato dall’Assemblea Straordinaria dei Soci, su proposta del Consiglio Direttivo, la quale nominerà anche i liquidatori. Il patrimonio residuo sarà devoluto, previo parere favorevole dell’Ufficio Regionale del Registro Unico del Terzo Settore, e salva diversa destinazione imposta dalla legge, ad altro Ente del terzo settore individuato dall’Assemblea (individuato dagli organi sociali al momento dello scioglimento con procedura individuazione dell’ente più simile come scopo, in mancanza, alla Fondazione Italia Sociale.
 
 
-**ART. 15 – RINVIO**
+## **ART. 15 – RINVIO**
 
 Per quanto non espressamente previsto dal presente Statuto e dagli eventuali regolamenti interni e deliberazioni degli organi associativi, si fa riferimento alle vigenti disposizioni legislative in materia.
