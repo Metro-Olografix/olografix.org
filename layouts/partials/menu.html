@@ -20,7 +20,7 @@
       {{ range .Site.Menus.main }}
       <a
         href="{{ .URL }}"
-        class="block py-2 text-2xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors duration-200"
+        class="block py-2 text-2xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors duration-200 {{ if eq .Name "Associati" }}rainbow-text{{ end }}"
         {{ if eq $.RelPermalink .URL }}aria-current="page"{{ end }}
       >
         {{ .Name }}
