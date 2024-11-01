@@ -4,13 +4,20 @@
       <!-- Left section with menu and logo -->
       <div class="flex items-center">
         <!-- Hamburger menu -->
-        <button class="h-[28px] md:h-[38px] items-center flex px-2" aria-label="Menu" id="mainMenuButton">
-          <img 
-            src="/images/menu.png" 
-            alt="Menu" 
-            class="h-full w-auto object-contain"
-          >
-        </button>
+        <div class="relative h-[28px] md:h-[38px] items-center flex px-2">
+          <!-- Regular menu button -->
+          <button class="h-full items-center flex" aria-label="Menu" id="mainMenuButton">
+            <img src="/images/menu.png" alt="Menu" class="h-full w-auto object-contain">
+          </button>
+          
+          <!-- Close button positioned in the same spot -->
+          <button id="closeMenu" 
+                  class="inset-0 text-primary-light z-50 hidden" 
+                  aria-label="Close menu" 
+                  type="button">
+            <span aria-hidden="true" class="text-5xl">&times;</span>
+          </button>
+        </div>
         <!-- Metro Olografix Logo -->
         <div class="h-[28px] md:h-[38px] items-center flex px-2">
           <img 
