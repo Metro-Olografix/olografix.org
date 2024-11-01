@@ -1,7 +1,9 @@
 {{ define "main" }}
 {{ $serverBase := .Site.Params.galleryServer }}
 {{ $albumName := .Params.album }}
-{{ $albumData := getJSON (printf "%s/%s/index.json" $serverBase $albumName) }}
+{{ $albumDataJson := resources.GetRemote (printf "%s/%s/index.json" $serverBase $albumName) }}
+{{ $albumData := dict }}
+{{ $albumData = $albumDataJson | transform.Unmarshal }}
 
 <article class="max-w-7xl mx-auto">
     <header class="mb-12">
