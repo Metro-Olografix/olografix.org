@@ -1,5 +1,5 @@
 ---
-title: "Moca 2008 Preparativi"
+title: "Preparativi"
 description: ""
 album: "moca-2008-preparativi"
 ---

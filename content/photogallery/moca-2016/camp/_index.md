@@ -1,5 +1,6 @@
 ---
-title: "Moca 2016"
+title: "Camp"
 description: ""
 album: "moca-2016"
+layout: "single"
 ---

@@ -1,5 +1,6 @@
 ---
-title: "What The Hack 2005 Nhaima"
+title: "Nhaima"
 description: ""
 album: "what-the-hack-2005-nhaima"
+layout: "single"
 ---

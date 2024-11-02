@@ -1,5 +1,6 @@
 ---
-title: "What The Hack 2005 Isazi"
+title: "Isazi"
 description: ""
 album: "what-the-hack-2005-isazi"
+layout: "single"
 ---

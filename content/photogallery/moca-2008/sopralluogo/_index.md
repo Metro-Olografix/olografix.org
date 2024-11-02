@@ -1,5 +1,5 @@
 ---
-title: "Moca 2008 Sopralluogo"
+title: "Sopralluogo"
 description: ""
 album: "moca-2008-sopralluogo"
 ---

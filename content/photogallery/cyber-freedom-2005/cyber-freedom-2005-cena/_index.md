@@ -1,5 +1,6 @@
 ---
-title: "Cyber Freedom 2005 Cena"
+title: "Cena"
 description: ""
 album: "cyber-freedom-2005-cena"
+layout: "single"
 ---
