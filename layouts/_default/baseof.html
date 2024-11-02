@@ -28,14 +28,14 @@
     <div class="container mx-auto px-4 sm:px-0 max-w-3xl flex-grow relative">
         {{ partial "header.html" . }}
         {{ partial "menu.html" . }}
-
         
         <main class="pb-10 max-w-3xl">
-            {{ with .Parent }}
+            {{ partial "breadcrumbs.html" . }}
+            <!--{{ with .Parent }}
                 →
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
-            {{ end }}
-
+            {{ end }}-->
+            
             {{ block "main" . }}{{ end }}
         </main>
     </div>
