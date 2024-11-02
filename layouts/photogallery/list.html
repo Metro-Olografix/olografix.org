@@ -1,51 +1,75 @@
 {{ define "main" }}
 <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
 
-<!-- Raggruppa le pagine per weight -->
 {{ $pages := .Pages }}
-{{ $grouped := $pages.GroupByParam "weight" }}
+{{ $pagesWithWeight := where $pages "Params.weight" "!=" nil }}
+{{ $pagesWithoutWeight := where $pages "Params.weight" "=" nil }}
 
-<div class="space-y-8">
-    {{ range $grouped.Reverse }}
-    <div class="weight-group">
-        <!-- Intestazione del gruppo con peso -->
-        <button 
-            onclick="toggleGroup('weight-{{ .Key }}')"
-            class="text-2xl font-bold mb-2">
-            <h2 class="text-2xl font-bold text-accent">
-                >> {{ .Key }}
-                <span class="text-sm text-gray-600">
-                    ({{ len .Pages }} 
-                    {{ if eq (len .Pages) 1 }}
-                        evento
-                    {{ else }}
-                        eventi
-                    {{ end }})
-                </span>
-            </h2>
-        </button>
-
-        <!-- Lista delle pagine per questo peso -->
-        <div id="weight-{{ .Key }}" class="hidden mt-4 ml-4 space-y-4">
-            {{ range sort .Pages "Title" "asc" }}
-            <article class="border-l-4 border-accent pl-4 text-2xl mb-2">
-                <h3 class="text-xl">
-                    <a href="{{ .RelPermalink }}" 
-                       class="text-primary-dark hover:text-accent hover:underline transition-colors">
-                        {{ .Title }}
-                    </a>
-                </h3>
-                {{ with .Description }}
-                <p class="text-gray-600 mt-1">{{ . }}</p>
+<!-- Pagine con weight -->
+{{ if $pagesWithWeight }}
+    {{ $grouped := $pagesWithWeight.GroupByParam "weight" }}
+    <div class="space-y-8">
+        {{ range $grouped.Reverse }}
+        <div class="weight-group">
+            <button 
+                onclick="toggleGroup('weight-{{ .Key }}')"
+                class="w-full text-left bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition-colors">
+                <h2 class="text-2xl font-bold text-accent">
+                    >> {{ .Key }}
+                    <span class="text-sm text-gray-600">
+                        ({{ len .Pages }} 
+                        {{ if eq (len .Pages) 1 }}
+                            evento
+                        {{ else }}
+                            eventi
+                        {{ end }})
+                    </span>
+                </h2>
+            </button>
+            <div id="weight-{{ .Key }}" class="hidden mt-4 ml-4 space-y-4">
+                {{ range sort .Pages "Title" "asc" }}
+                <article class="border-l-4 border-accent pl-4">
+                    <h3 class="text-xl">
+                        <a href="{{ .RelPermalink }}" 
+                           class="text-primary-dark hover:text-accent hover:underline transition-colors">
+                            {{ .Title }}
+                        </a>
+                    </h3>
+                    {{ with .Description }}
+                    <p class="text-gray-600 mt-1">{{ . }}</p>
+                    {{ end }}
+                </article>
                 {{ end }}
-            </article>
-            {{ end }}
+            </div>
         </div>
+        {{ end }}
     </div>
-    {{ end }}
-</div>
+{{ end }}
 
-<!-- Script per gestire l'apertura/chiusura dei gruppi -->
+<!-- Pagine senza weight (lista semplice ordinata alfabeticamente) -->
+{{ if $pagesWithoutWeight }}
+    <div class="space-y-4 mt-8">
+        {{ range sort $pagesWithoutWeight "Title" "asc" }}
+        <article class="border-l-4 border-accent pl-4">
+            <h3 class="text-xl">
+                <a href="{{ .RelPermalink }}" 
+                   class="text-primary-dark hover:text-accent hover:underline transition-colors">
+                    {{ .Title }}
+                </a>
+            </h3>
+            {{ with .Description }}
+            <p class="text-gray-600 mt-1">{{ . }}</p>
+            {{ end }}
+        </article>
+        {{ end }}
+    </div>
+{{ end }}
+
+<!-- Messaggio se non ci sono pagine -->
+{{ if not $pages }}
+    <p>Non ci sono ancora eventi in questa sezione.</p>
+{{ end }}
+
 <script>
 function toggleGroup(groupId) {
     const group = document.getElementById(groupId);
