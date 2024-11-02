@@ -1,12 +1,59 @@
 {{ define "main" }}
-
 <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
-{{ range sort .Pages "Params.weight" "desc" "Title" "asc" }}
-    <article class="mb-8">
-        <h2 class="text-2xl font-bold mb-2">
-            <a href="{{ .RelPermalink }}" class="text-accent hover:underline">>> {{ .Title }}</a>
-        </h2>
-    </article>
-{{ end }}
 
+<!-- Raggruppa le pagine per weight -->
+{{ $pages := .Pages }}
+{{ $grouped := $pages.GroupByParam "weight" }}
+
+<div class="space-y-8">
+    {{ range $grouped.Reverse }}
+    <div class="weight-group">
+        <!-- Intestazione del gruppo con peso -->
+        <button 
+            onclick="toggleGroup('weight-{{ .Key }}')"
+            class="text-2xl font-bold mb-2">
+            <h2 class="text-2xl font-bold text-accent">
+                >> {{ .Key }}
+                <span class="text-sm text-gray-600">
+                    ({{ len .Pages }} 
+                    {{ if eq (len .Pages) 1 }}
+                        evento
+                    {{ else }}
+                        eventi
+                    {{ end }})
+                </span>
+            </h2>
+        </button>
+
+        <!-- Lista delle pagine per questo peso -->
+        <div id="weight-{{ .Key }}" class="hidden mt-4 ml-4 space-y-4">
+            {{ range sort .Pages "Title" "asc" }}
+            <article class="border-l-4 border-accent pl-4 text-2xl mb-2">
+                <h3 class="text-xl">
+                    <a href="{{ .RelPermalink }}" 
+                       class="text-primary-dark hover:text-accent hover:underline transition-colors">
+                        {{ .Title }}
+                    </a>
+                </h3>
+                {{ with .Description }}
+                <p class="text-gray-600 mt-1">{{ . }}</p>
+                {{ end }}
+            </article>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+</div>
+
+<!-- Script per gestire l'apertura/chiusura dei gruppi -->
+<script>
+function toggleGroup(groupId) {
+    const group = document.getElementById(groupId);
+    if (group.classList.contains('hidden')) {
+        group.classList.remove('hidden');
+    } else {
+        group.classList.add('hidden');
+    }
+}
+</script>
 {{ end }}
