@@ -2,12 +2,12 @@
 <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
 
 {{ $pages := .Pages }}
-{{ $pagesWithWeight := where $pages "Params.weight" "!=" nil }}
-{{ $pagesWithoutWeight := where $pages "Params.weight" "=" nil }}
+{{ $pagesWithWeight := where $pages "Params.year" "!=" nil }}
+{{ $pagesWithoutWeight := where $pages "Params.year" "=" nil }}
 
 <!-- Pagine con weight -->
 {{ if $pagesWithWeight }}
-    {{ $grouped := $pagesWithWeight.GroupByParam "weight" }}
+    {{ $grouped := $pagesWithWeight.GroupByParam "year" }}
     <div class="space-y-8">
         {{ range $grouped.Reverse }}
         <div class="weight-group">

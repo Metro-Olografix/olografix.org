@@ -31,11 +31,6 @@
         
         <main class="pb-10 max-w-3xl">
             {{ partial "breadcrumbs.html" . }}
-            <!--{{ with .Parent }}
-                →
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-            {{ end }}-->
-            
             {{ block "main" . }}{{ end }}
         </main>
     </div>
