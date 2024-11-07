@@ -1,4 +1,4 @@
 ---
 title: "Home"
 ---
-Metro Olografix è la prima associazione culturale telematica in Italia, dedicata alla libera circolazione delle informazioni e alla cultura della telematica.
+Metro Olografix è un’associazione fondata nel 1994 a Pescara che abbraccia la cultura digitale libera, nata per condividere e diffondere la passione per la sicurezza informatica, i diritti digitali e la creatività hacker.

@@ -2,13 +2,10 @@
 title: "L'associazione"
 layout: associazione
 ---
-Metro Olografix è la prima associazione **culturale telematica** in Italia, di individui liberi che utilizzano lo strumento telematico per esaltare i loro interessi personali e le loro diversità.
-Lo scopo dell’associazione è quello di **divulgare** una “cultura della telematica” che non sia quella proposta dalle logiche di mercato, ma che sia il più fedele possibile a quella originaria dei pionieri delle BBS.
-
-Senza ovviamente rifiutare i mezzi ora disponibili, Metro Olografix vuole ricreare lo spirito, il fascino, lo stupore, l’interesse ed il senso di libertà dei primi esperimenti.
-
-Metro Olografix è una comunità virtuale fondata sulla libera circolazione delle informazioni, sul concetto di villaggio globale, su di una decisionalità democratica.
-Il **know how** di ogni socia e socio viene **liberamente condiviso** con gli altri membri dell’associazione onde favorirne la crescita tecnica ed umana, indipendentemente dalle competenze individuali.
-Tali conoscenze costituiscono il patrimonio che l’associazione intende divulgare all’esterno attraverso corsi, convegni ed iniziative, per mostrare ciò che si può fare con un qualsiasi strumento tecnologico sia esso un computer, un modem, uno smartphone ed un po’ di passione.
-
-L’associazione si propone quindi come un contenitore “aperto e senza fondo” nel quale chiunque può proporre e realizzare ciò che più gli sta a cuore, in piena libertà e con la sicurezza dell’appoggio e dell’aiuto degli altri soci.
+**Metro Olografix** è molto più di un’associazione: è una comunità viva, nata per condividere e diffondere la passione per la tecnologia e la libertà dell’informazione. Fondata nel 1994 a **Pescara**, promuove un’idea pura e alternativa di **cultura telematica**, ispirata ai pionieri delle BBS (Bulletin Board System), quando Internet era ancora un territorio inesplorato e affascinante.
+<br /><br />
+Questa associazione si basa su principi profondi di **libera circolazione delle informazioni**, **inclusione** e **democrazia partecipativa**. Ogni membro della comunità porta il proprio sapere, condividendolo con le altre e gli altri e contribuendo a creare un tesoro collettivo di esperienze, conoscenze e amicizie. È un luogo dove si mescolano interessi e talenti, tutti uniti da una visione comune: usare la tecnologia non solo come strumento, ma come mezzo per costruire una società digitale più libera e consapevole.
+<br /><br />
+Uno degli eventi simbolo di Metro Olografix è il **Metro Olografix Camp** (MOCA), un raduno quadriennale che riunisce hacker e appassionate da tutto il mondo. In questo camp, immersi nella natura, chi partecipa può esplorare temi di **privacy**, **sicurezza informatica** e **diritti digitali**, scoprendo che la tecnologia può ancora essere una forza positiva e trasformativa. L’atmosfera del MOCA è unica: un connubio tra **conoscenza**, **creatività** e quella dose di **ribellione costruttiva** che ha caratterizzato la storia dell'hacking.
+<br /><br />
+Metro Olografix continua a impegnarsi su più fronti, offrendo corsi gratuiti e accessibili, promuovendo il ricondizionamento tecnologico con progetti come *Refurbish Ninja* e lottando per un uso responsabile e sicuro della rete. Negli anni, questo gruppo è diventato una vera e propria **famiglia virtuale** che abbraccia chiunque condivida la visione di una **società digitale libera e aperta**. Un luogo dove, come amano dire i suoi membri, chiunque può sognare, creare, scoprire e crescere.
