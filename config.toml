@@ -29,6 +29,14 @@ enableRobotsTXT = true
     name = "Associati"
     url = "https://associati.olografix.org"
     weight = 6
+    [menu.main.params]
+      external = true
+  [[menu.main]]
+    name = "Vai al vecchio sito"
+    url = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
+    weight = 6
+    [menu.main.params]
+      external = true
 
 [markup.goldmark.renderer]
   unsafe = true
@@ -41,6 +49,8 @@ target = ".*"
   description = "La prima associazione culturale telematica in Italia"
 
   galleryServer = "https://gallery.olografix.org"
+
+  archiveOldSite = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
 
   [[params.direttivo]]
     name = "Michelangelo Morrillo"
