@@ -23,11 +23,11 @@
             </button>
             <div id="weight-{{ .Key }}" class="hidden mt-4 ml-4 space-y-4">
                 {{ range sort .Pages "Title" "asc" }}
-                <article class="border-l-4 border-accent pl-4">
+                <article class="ml-4">
                     <h3 class="text-xl">
                         <a href="{{ .RelPermalink }}" 
                            class="text-primary-dark hover:text-accent hover:underline transition-colors">
-                            {{ .Title }}
+                            >> {{ .Title }}
                         </a>
                     </h3>
                     {{ with .Description }}
