@@ -34,7 +34,7 @@
 
     {{ if gt (len $sortedActivitiesAndProjects) $maxItems }}
     <div class="text-center mt-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
             <a href="{{ "attivita" | relURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">Vedi tutte le attività</a>
             <a href="{{ "progetti" | relURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">Vedi tutti i progetti</a>
         </div>
