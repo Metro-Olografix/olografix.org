@@ -1,6 +1,7 @@
 ---
 title: "Refurbish Ninja"
 subtitle: "Costruiamo un futuro migliore attraverso il recupero di rifiuti elettronici e dando lunga vita alla tecnologia"
+date: 2016-08-20
 ---
 Da questa visione nasce Refurbish Ninja: sapere, saper fare e saper essere riciclando le tecnologie per un futuro sostenibile, un progetto di innovazione sociale e di economia circolare che propone azioni di riqualificazione urbana attraverso la cultura e lo sviluppo di capacità professionali
 
