@@ -1,27 +1,41 @@
-<header
-  class="w-full max-w-4xl mx-auto mb-6 md:mb-20 md:mt-20 mt-4"
->
-  <div class="flex flex-row items-center gap-4 md:relative">
-    <div
-      class="md:w-32 md:h-32 h-24 w-24 flex-shrink-0 md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2" id="mainMenuButton"
-    >
-      <button
-        class="w-full h-full bg-accent border-0 border-primary-dark flex flex-col items-center justify-center hover:cursor-pointer transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(22,33,62,1)]"
-      >
-        <img
-          src="/images/metro-light.png"
-          alt="Metro Olografix Logo"
-          class="w-16 h-16 object-contain"
-        />
-        <span class="text-2xl font-bold text-primary-light">Menu</span>
-      </button>
+<header class="w-full ">
+  <div class="container mx-auto py-6">
+    <div class="flex items-center justify-between">
+      <!-- Left section with menu and logo -->
+      <div class="flex items-center">
+        <!-- Hamburger menu -->
+        <div class="relative h-[28px] md:h-[38px] items-center flex px-2">
+          <!-- Regular menu button -->
+          <button class="h-full items-center flex flex-shrink-0" aria-label="Menu" id="mainMenuButton">
+            <img src="/images/menu.png" alt="Menu" class="h-full w-full">
+          </button>
+          
+          <!-- Close button positioned in the same spot -->
+          <button id="closeMenu" 
+                  class="inset-0 text-primary-light z-50 hidden" 
+                  aria-label="Close menu" 
+                  type="button">
+            <span aria-hidden="true" class="text-5xl">&times;</span>
+          </button>
+        </div>
+        <!-- Metro Olografix Logo -->
+        <div class="h-[28px] md:h-[38px] items-center flex px-2 flex-shrink-0">
+          <img 
+            src="/images/metro-dark.png" 
+            alt="Metro Olografix Logo" 
+            class="h-full w-full"
+          >
+        </div>
+      </div>
+      
+      <a href="{{ .Site.BaseURL | relLangURL }}">
+        <h1 class="text-2xl md:text-5xl font-bold m-0 justify-right">
+          Metro Olografix<span class="inline-block blink">_</span>
+        </h1>
+      </a>
     </div>
-    <a href="{{ .Site.BaseURL | relLangURL }}">
-      <h1
-        class="text-4xl md:text-5xl font-bold md:text-center md:pl-48 md:pr-16"
-      >
-        Metro Olografix<span class="inline-block blink">_</span>
-      </h1>
-    </a>
+
   </div>
 </header>
+
+
