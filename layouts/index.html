@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <div class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] mb-8 relative">
-    {{ .Content }}
+    {{ .Site.Params.description }}
     <a href="{{ "associazione" | relURL }}" class="absolute bottom-2 right-2 text-accent hover:underline">Scopri di più >></a>
 </div>
 
