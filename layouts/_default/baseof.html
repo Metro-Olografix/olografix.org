@@ -29,12 +29,8 @@
         {{ partial "header.html" . }}
         {{ partial "menu.html" . }}
 
-        
         <main class="max-w-3xl">
-            {{ with .Parent }}
-                →
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-            {{ end }}
+            {{ partial "breadcrumbs.html" . }}
 
             {{ block "main" . }}{{ end }}
         </main>
