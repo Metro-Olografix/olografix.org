@@ -1,5 +1,9 @@
 {{ define "main" }}
 
+{{ if .Params.externalUrl }}
+<meta http-equiv="refresh" content="0; url={{ .Params.externalUrl }}" />
+{{ end }}
+
 <article>
     <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
     <h2 class="text-xl mb-8 text-primary-dark">{{ .Params.subtitle }}</h2>

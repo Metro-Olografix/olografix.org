@@ -28,9 +28,10 @@
     <div class="container mx-auto px-4 sm:px-0 max-w-3xl flex-grow relative">
         {{ partial "header.html" . }}
         {{ partial "menu.html" . }}
-        
-        <main class="pb-10 max-w-3xl">
+
+        <main class="max-w-3xl">
             {{ partial "breadcrumbs.html" . }}
+
             {{ block "main" . }}{{ end }}
         </main>
     </div>

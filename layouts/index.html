@@ -6,9 +6,9 @@
 </div>
 
 <!-- Membership Banner -->
-<div class="bg-accent text-primary-light p-4 rounded-lg mb-8 transition-colors duration-300">
+<div class="bg-accent text-primary-light p-4 rounded-lg mb-8">
     <a href="https://associati.olografix.org" class="block text-center text-xl font-bold rainbow-text">
-        Entra in Metro Olografix | Tesseramento 2025
+        30 anni di Metro Olografix! | Tesseramento 2025
     </a>
 </div>
 
@@ -16,20 +16,28 @@
     <h2 class="text-3xl font-bold mb-4 text-primary-dark">Attività e progetti</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {{ $maxItems := 8 }}
         {{ $activitiesAndProjects := union (where .Site.RegularPages "Type" "attivita") (where .Site.RegularPages "Type" "progetti") }}
-        {{ range first 4 $activitiesAndProjects }}
+        {{ $sortedActivitiesAndProjects := sort $activitiesAndProjects ".Date" "desc" }}
+        {{ range first $maxItems $sortedActivitiesAndProjects }}
         <div class="bg-white p-4 border-2 border-primary-dark relative">
             <h3 class="text-xl font-bold mb-2 text-accent">{{ .Title }}</h3>
             <p class="text-accent mb-2">{{ .Params.subtitle | default .Summary }}</p>
-            <a href="{{ .RelPermalink }}" class="text-sm absolute bottom-2 right-2 text-accent hover:underline">Vai >></a>
+            {{ if .Params.externalUrl }}
+                <a href="{{ .Params.externalUrl}}" class="text-sm absolute bottom-2 right-2 text-accent hover:underline">Vai al sito >></a>
+            {{ else }}
+                <a href="{{ .RelPermalink }}" class="text-sm absolute bottom-2 right-2 text-accent hover:underline">Vai >></a>
+            {{ end }}
         </div>
         {{ end }}
     </div>
 
-    {{ if gt (len $activitiesAndProjects) 4 }}
-    <div class="text-center mt-6">
-        <a href="{{ "attivita" | relURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded hover:bg-primary-dark transition-colors duration-300">Vedi tutte le attività</a>
-        <a href="{{ "progetti" | relURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded hover:bg-primary-dark transition-colors duration-300 ml-4">Vedi tutti i progetti</a>
+    {{ if gt (len $sortedActivitiesAndProjects) $maxItems }}
+    <div class="text-center mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a href="{{ "attivita" | relURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">Vedi tutte le attività</a>
+            <a href="{{ "progetti" | relURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">Vedi tutti i progetti</a>
+        </div>
     </div>
     {{ end }}
 </section>
