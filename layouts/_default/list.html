@@ -7,7 +7,7 @@
         {{ if .Params.externalUrl }}
             {{ $url = .Params.externalUrl }}
         {{ end }}
-        <a href="{{ $url }}" class="text-accent hover:underline">>> {{ .Title }}{{ if .Params.externalUrl }}↗{{ end }}</a>
+        <a href="{{ $url }}" {{ if .Params.externalUrl }}rel="noopener noreferrer" target="_blank"{{ end }} class="text-accent hover:underline">>> {{ .Title }}{{ if .Params.externalUrl }}↗{{ end }}</a>
     </h2>
     <p class="mt-2">{{ .Params.subtitle | default .Summary }}</p>
 </article>
