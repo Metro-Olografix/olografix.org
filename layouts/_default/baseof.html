@@ -50,7 +50,9 @@
         {{ partial "menu.html" . }}
 
         <main class="max-w-3xl">
+            {{ if ne .Page.Path "/404" }}
             {{ partial "breadcrumbs.html" . }}
+            {{ end }}
 
             {{ block "main" . }}{{ end }}
         </main>
