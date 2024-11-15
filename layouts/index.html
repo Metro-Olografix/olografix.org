@@ -7,7 +7,7 @@
 
 <!-- Membership Banner -->
 <div class="bg-accent text-primary-light p-4 rounded-lg mb-8">
-    <a href="https://associati.olografix.org" class="block text-center text-xl font-bold rainbow-text">
+    <a href="https://associati.olografix.org" rel="noopener noreferrer" target="_blank" class="block text-center text-xl font-bold rainbow-text">
         30 anni di Metro Olografix! | Tesseramento 2025
     </a>
 </div>
@@ -22,12 +22,20 @@
         {{ range first $maxItems $sortedActivitiesAndProjects }}
         <div class="bg-white p-4 border-2 border-primary-dark relative">
             <h3 class="text-xl font-bold mb-2 text-accent">{{ .Title }}</h3>
-            <p class="text-accent mb-2">{{ .Params.subtitle | default .Summary }}</p>
-            {{ if .Params.externalUrl }}
-                <a href="{{ .Params.externalUrl}}" class="text-sm absolute bottom-2 right-2 text-accent hover:underline">Vai al sito >></a>
-            {{ else }}
-                <a href="{{ .RelPermalink }}" class="text-sm absolute bottom-2 right-2 text-accent hover:underline">Vai >></a>
-            {{ end }}
+            <p class="text-accent mb-8">{{ .Params.subtitle | default .Summary }}</p>
+
+            <div class="absolute bottom-0 left-0 right-0 bg-gray-100 px-4 py-2 flex items-center justify-between">
+              <span style="font-size: 12px; background-color: white; border: 1px solid #666666; border-radius: 4px; padding: 2px 8px; box-shadow: 1px 1px 0px rgba(0,0,0,0.2);">
+                {{ if eq .Type "attivita" }}Attività{{ else }}Progetto{{ end }}
+              </span>
+              <div>
+                {{ if .Params.externalUrl }}
+                  <a href="{{ .Params.externalUrl }}" rel="noopener noreferrer" target="_blank" class="text-sm text-accent hover:underline">Vai al sito ↗</a>
+                {{ else }}
+                  <a href="{{ .RelPermalink }}" class="text-sm text-accent hover:underline">Vai >></a>
+                {{ end }}
+              </div>
+            </div>
         </div>
         {{ end }}
     </div>

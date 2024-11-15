@@ -7,4 +7,4 @@ Da questa visione nasce Refurbish Ninja: sapere, saper fare e saper essere ricic
 
 Nonostante i meccanismi consumistici e la precoce obsolescenza, crediamo che i dispositivi elettronici possano essere usati ancora a lungo prima di essere gettati via.
 
-<a href="https://refurbishninja.net" class="bottom-2 right-2 text-accent hover:underline">Vai al sito >></a>
+<a href="https://refurbishninja.net" rel="noopener noreferrer" target="_blank" class="bottom-2 right-2 text-accent hover:underline">Vai al sito >></a>
