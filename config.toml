@@ -86,3 +86,8 @@ target = ".*"
     name = "Igor Falcomatà"
     nickname = "koba"
     role = "consigliere"
+
+[[redirects]]
+  from = '/**'
+  status = 404
+  to = '/404.html'
