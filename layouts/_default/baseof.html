@@ -15,15 +15,15 @@
     <meta property="og:title" content="{{ .Title | default .Site.Title }}">
     <meta property="og:description" content="{{ .Params.description | default .Site.Params.description }}">
     <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:image" content="{{ .Params.image | default .Site.Params.image }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ .Title | default .Site.Title }}">
     <meta name="twitter:description" content="{{ .Params.description | default .Site.Params.description }}">
-    <meta name="twitter:image" content="{{ .Params.image | default .Site.Params.image }}">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}">
     <meta name="twitter:site" content="@MetroOlografix">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/main.css">
     <script>
