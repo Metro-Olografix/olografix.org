@@ -15,15 +15,15 @@
     <meta property="og:title" content="{{ .Title | default .Site.Title }}">
     <meta property="og:description" content="{{ .Params.description | default .Site.Params.description }}">
     <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:image" content="{{ .Params.image | default .Site.Params.image }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ .Title | default .Site.Title }}">
     <meta name="twitter:description" content="{{ .Params.description | default .Site.Params.description }}">
-    <meta name="twitter:image" content="{{ .Params.image | default .Site.Params.image }}">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}">
     <meta name="twitter:site" content="@MetroOlografix">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/main.css">
     <script>
@@ -43,6 +43,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
     {{end}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body class="min-h-screen flex flex-col">
     <div class="container mx-auto px-4 sm:px-0 max-w-3xl flex-grow relative">

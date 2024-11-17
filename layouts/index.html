@@ -1,8 +1,8 @@
 {{ define "main" }}
 
 <div class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] mb-8 relative">
-    {{ .Site.Params.description }}
-    <a href="{{ "associazione" | relURL }}" class="absolute bottom-2 right-2 text-accent hover:underline">Scopri di più >></a>
+    <p class="text-accent mb-4 text-justify">{{ .Site.Params.description }}</p>
+    <a href="{{ "associazione" | relURL }}" class="font-bold absolute bottom-2 right-2 text-accent hover:underline">Scopri di più >></a>
 </div>
 
 <!-- Membership Banner -->
@@ -22,7 +22,7 @@
         {{ range first $maxItems $sortedActivitiesAndProjects }}
         <div class="bg-white p-4 border-2 border-primary-dark relative">
             <h3 class="text-xl font-bold mb-2 text-accent">{{ .Title }}</h3>
-            <p class="text-accent mb-5">{{ .Params.subtitle | default .Summary }}</p>
+            <p class="text-accent mb-4 text-justify">{{ .Params.subtitle | default .Summary }}</p>
             {{ if .Params.externalUrl }}
                 <a href="{{ .Params.externalUrl}}" class="text-sm font-bold absolute bottom-2 right-2 text-accent hover:underline">Vai al sito >></a>
             {{ else }}

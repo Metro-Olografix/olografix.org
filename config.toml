@@ -48,9 +48,16 @@ target = ".*"
 [params]
   description = "Metro Olografix è un’associazione fondata nel 1994 a Pescara che abbraccia la cultura digitale libera, nata per condividere e diffondere la passione per la sicurezza informatica, i diritti digitali e la creatività hacker."
 
+  image = "images/metro-dark-preview.png"
+
   galleryServer = "https://gallery.olografix.org"
 
   archiveOldSite = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
+
+  github = "https://github.com/Metro-Olografix"
+  instagram = "https://www.instagram.com/metroolografix"
+  linkedin = "https://it.linkedin.com/company/metro-olografix"
+  facebook = "https://www.facebook.com/MetroOlografix"
 
   [[params.direttivo]]
     name = "Michelangelo Morrillo"
