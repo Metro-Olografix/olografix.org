@@ -22,7 +22,11 @@
         {{ range first $maxItems $sortedActivitiesAndProjects }}
         <div class="bg-white p-4 border-2 border-primary-dark relative">
             <h3 class="text-xl font-bold mb-2 text-accent">{{ .Title }}</h3>
+<<<<<<< HEAD
             <p class="text-accent mb-4 text-justify">{{ .Params.subtitle | default .Summary }}</p>
+=======
+            <p class="text-accent mb-5">{{ .Params.subtitle | default .Summary }}</p>
+>>>>>>> main
             {{ if .Params.externalUrl }}
                 <a href="{{ .Params.externalUrl}}" class="text-sm font-bold absolute bottom-2 right-2 text-accent hover:underline">Vai al sito >></a>
             {{ else }}
