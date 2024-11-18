@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
       [elements.menuIconOpen, "hidden"],
       [elements.menuText, "hidden"],
       [elements.menuCloseText, "hidden"],
-      [elements.closeButton, "hidden"]
     ].forEach(([element, className]) => {
       if (element) {
         element.classList.toggle(className);
