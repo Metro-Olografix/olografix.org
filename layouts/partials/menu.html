@@ -34,7 +34,7 @@
           </a>
           
           <div class="w-0.5 h-6 bg-current self-center rounded-full"></div>
-          {{ range $.Site.Home.AllTranslations }}
+          {{ range .Translations }}
             <a href="{{ .RelPermalink }}">
               <span class="text-xl inline-block align-middle">{{ .Language.LanguageName }}</span>
             </a>
