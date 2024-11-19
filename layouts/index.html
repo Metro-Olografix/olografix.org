@@ -26,7 +26,7 @@
             {{ if .Params.externalUrl }}
                 <a href="{{ .Params.externalUrl}}" class="text-sm font-bold absolute bottom-2 right-2 text-accent hover:underline">{{ T "goExternalText" }} >></a>
             {{ else }}
-                <a href="{{ .RelPermalink }}" class="text-sm font-bold absolute bottom-2 right-2 text-accent hover:underline">{{ T "goText" }} >></a>
+                <a href="{{ .RelPermalink | relLangURL }}" class="text-sm font-bold absolute bottom-2 right-2 text-accent hover:underline">{{ T "goText" }} >></a>
             {{ end }}
         </div>
         {{ end }}
