@@ -1,17 +1,63 @@
+<nav id="mobileMenu" class="fixed top-0 left-0 bottom-0 w-full hidden bg-primary-dark z-40" aria-label="Mobile navigation" role="navigation">
+  <div class="w-full mx-auto px-4 sm:px-0 max-w-3xl bg-primary-dark text-primary-light z-40">
+    <div class="container mx-auto py-5 md:py-7">
+      <div class="flex items-center justify-between relative h-7 md:h-10">
+        <!-- Left section with menu and logo -->
+        <div class="flex items-center">
+          <!-- Close button positioned in the same spot -->
+          <button 
+            id="closeMenu" 
+            class="absolute inset-0  justify-center" 
+            aria-label="Close menu" 
+            type="button"
+          >
+          <img 
+            src="/images/close.png" 
+            alt="Close"
+            class="h-full w-auto object-contain aspect-square"
+          >
+          </button>
+        </div>
+        
+        <div class="flex space-x-4 justify-end pr-8">
+          <a href="{{ .Site.Params.github }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
+              <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="{{ .Site.Params.instagram }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
+              <i class="fab fa-instagram text-xl"></i>
+          </a>
+          <a href="{{ .Site.Params.linkedin }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
+              <i class="fab fa-linkedin text-xl"></i>
+          </a>
+          <a href="{{ .Site.Params.facebook }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
+              <i class="fab fa-facebook text-xl"></i>
+          </a>
+          <!--
+          <div class="w-0.5 h-6 bg-current self-center rounded-full"></div>
+          <a href="" target="_blank">
+              <span class="text-xl inline-block align-middle">IT</span>
+          </a>
+          <a href="" target="_blank">
+              <span class="text-xl inline-block align-middle">EN</span>
+          </a>
+           -->
+        </div>
+      </div>
 
-
-<nav id="mobileMenu" class="fixed inset-0 bg-primary-dark text-primary-light z-40 hidden" aria-label="Mobile navigation" role="navigation">
-  <div class="h-full flex flex-col items-center justify-center">
-    <div class="space-y-6">
-      {{ range .Site.Menus.main }}
-      <a
-        href="{{ .URL }}"
-        class="block py-2 text-2xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors duration-200 {{ if eq .Name "Associati" }}rainbow-text{{ end }}"
-        {{ if eq $.RelPermalink .URL }}aria-current="page"{{ end }}
-      >
-        {{ .Name }}{{if eq .Params.external true }}↗{{ end }}
-      </a>
-      {{ end }}
+      <!-- Menu Items -->
+      <div class="flex justify-center items-center min-h-[calc(100vh-120px)]">
+        <div class="space-y-6">
+          {{ range .Site.Menus.main }}
+          <a
+            href="{{ .URL }}"
+            class="block py-2 text-2xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-light transition-colors duration-200 {{ if eq .Name "Associati" }}rainbow-text{{ end }}"
+            {{ if eq $.RelPermalink .URL }}aria-current="page"{{ end }}
+          >
+            {{ .Name }}{{if eq .Params.external true }}↗{{ end }}
+          </a>
+          {{ end }}
+        </div>
+      </div>
     </div>
   </div>
 </nav>

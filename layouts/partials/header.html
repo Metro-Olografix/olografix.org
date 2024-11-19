@@ -4,45 +4,31 @@
       <!-- Left section with menu and logo -->
       <div class="flex items-center">
         <!-- Menu button container -->
-        <div class="relative h-8 md:h-10 w-8 md:w-10">
+        <div class="relative h-7 md:h-10 w-8 md:w-10">
           <!-- Regular menu button -->
           <button 
-            class="absolute inset-0 flex items-center justify-center" 
-            aria-label="Menu" 
-            id="mainMenuButton"
+          class="absolute inset-0 flex items-center justify-center" 
+          aria-label="Menu" 
+          id="mainMenuButton"
           >
-            <img 
-              src="/images/menu.png" 
-              alt="Menu" 
-              class="h-full w-auto object-contain"
-            >
-          </button>
-          
-          <!-- Close button positioned in the same spot -->
-          <button 
-            id="closeMenu" 
-            class="absolute inset-0 flex items-center justify-center hidden z-50" 
-            aria-label="Close menu" 
-            type="button"
+          <img 
+            src="/images/menu.png" 
+            alt="Menu" 
+            class="h-full w-auto object-contain aspect-square"
           >
-            <img 
-              src="/images/close.png" 
-              alt="Close"
-              class="h-full w-auto object-contain"
-            >
           </button>
         </div>
 
-        <!-- Metro Olografix Logo -->
-        <div class="h-8 md:h-10 items-center flex px-4 flex-shrink-0">
+          <!-- Metro Olografix Logo -->
+          <div class="h-7 md:h-10 items-center flex px-4 flex-shrink-0">
+
           <img 
             src="/images/metro-dark.png" 
             alt="Metro Olografix Logo" 
-            class="h-full w-auto md:w-full"
+            class="h-full w-auto object-contain max-w-none"
           >
-        </div>
+          </div>
       </div>
-      
       <a href="{{ .Site.BaseURL | relLangURL }}">
         <h1 class="text-2xl md:text-5xl font-bold m-0 transition-all duration-300">
           Metro Olografix<span class="inline-block blink">_</span>

@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  font-family: "Space Mono", monospace;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .logo-menu {
