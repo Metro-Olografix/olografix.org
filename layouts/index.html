@@ -2,7 +2,8 @@
 
 <div class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] mb-8 relative">
     <p class="text-accent mb-4 text-justify">{{ .Site.Params.description }}</p>
-    <a href="{{ "associazione" | relLangURL }}" class="font-bold absolute bottom-2 right-2 text-accent hover:underline">{{ T "learnMoreText" }} >></a>
+    {{ $association := site.GetPage "section" "associazione" }}
+    <a href="{{ $association.RelPermalink | relLangURL }}" class="font-bold absolute bottom-2 right-2 text-accent hover:underline">{{ T "learnMoreText" }} >></a>
 </div>
 
 <!-- Membership Banner -->
@@ -13,7 +14,7 @@
 </div>
 
 <section class="mb-8">
-    <h2 class="text-3xl font-bold mb-4 text-primary-dark">Attività e progetti</h2>
+    <h2 class="text-3xl font-bold mb-4 text-primary-dark">{{ T "activitiesAndProject" }}</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {{ $maxItems := 4 }}
@@ -35,8 +36,10 @@
     {{ if gt (len $sortedActivitiesAndProjects) $maxItems }}
     <div class="text-center mt-4">
         <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
-            <a href="{{ "attivita" | relURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">Vedi tutte le attività</a>
-            <a href="{{ "progetti" | relURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">Vedi tutti i progetti</a>
+            {{ $activities := site.GetPage "section" "attivita" }}
+            <a href="{{ $activities.RelPermalink | relLangURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">{{ T "allActivities" }}</a>
+            {{ $projects := site.GetPage "section" "progetti" }}
+            <a href="{{ $projects.RelPermalink | relLangURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">{{ T "allProjects" }}</a>
         </div>
     </div>
     {{ end }}
