@@ -1,6 +1,8 @@
 ---
 title: "The association"
 layout: associazione
+slug: "association"
+url: "/en/association/"
 ---
 **Metro Olografix** is a living community, created to share and spread a passion for technology and information freedom. Founded in 1994 in **Pescara**, it promotes a pure and alternative idea of **telematics culture**, inspired by the pioneers of the BBS (Bulletin Board System), when the Internet was still an unexplored and fascinating territory.
 <br /><br />
