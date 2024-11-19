@@ -1,0 +1,32 @@
+[[main]]
+    name = "Home"
+    pageRef = "/"
+    weight = 1
+[[main]]
+    name = "L'associazione"
+    pageRef = "/associazione/"
+    weight = 2
+[[main]]
+    name = "Attività"
+    pageRef = "/attivita/"
+    weight = 3
+[[main]]
+    name = "Progetti"
+    pageRef = "/progetti/"
+    weight = 4
+[[main]]
+    name = "Photogallery"
+    pageRef = "/photogallery/"
+    weight = 5
+[[main]]
+    name = "Associati"
+    pageRef = "https://associati.olografix.org"
+    weight = 6
+    [main.params]
+        external = true
+[[main]]
+    name = "Vai al vecchio sito"
+    pageRef = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
+    weight = 6
+    [main.params]
+        external = true
