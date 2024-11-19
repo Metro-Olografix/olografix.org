@@ -7,7 +7,7 @@
           <!-- Close button positioned in the same spot -->
           <button 
             id="closeMenuButton" 
-            class="absolute inset-0 justify-center" 
+            class="absolute md:h-10 w-8 md:w-10 flex items-center justify-center z-50" 
             aria-label="Close menu" 
             type="button"
           >
@@ -32,15 +32,14 @@
           <a href="{{ .Site.Params.facebook }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
               <i class="fab fa-facebook text-xl"></i>
           </a>
-          <!--
+          
           <div class="w-0.5 h-6 bg-current self-center rounded-full"></div>
-          <a href="" target="_blank">
-              <span class="text-xl inline-block align-middle">IT</span>
-          </a>
-          <a href="" target="_blank">
-              <span class="text-xl inline-block align-middle">EN</span>
-          </a>
-           -->
+          {{ range $.Site.Home.AllTranslations }}
+            <a href="{{ .RelPermalink }}">
+              <span class="text-xl inline-block align-middle">{{ .Language.LanguageName }}</span>
+            </a>
+          {{ end }}
+          
         </div>
       </div>
 
