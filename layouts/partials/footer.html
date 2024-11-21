@@ -1,39 +1,58 @@
 <footer class="bg-accent text-primary-light container mx-auto px-4 max-w-3xl">
-    <div class="container px-4 py-2">
-        <!-- Flex container with column direction on mobile, row on desktop -->
-        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <!-- Left side with existing content -->
-            <p class="text-center w-full md:w-auto">
-                fatto con <span class="hugo-text"><span class="letter">H</span>ugo</span> | 
-                <a href="{{ .Site.Params.archiveOldSite }}" target="_blank">vecchio sito</a>
-            </p>
-            
-            <!-- Right side with social icons -->
-            <div class="flex space-x-4 justify-center w-full md:w-auto">
-                <a href="{{ .Site.Params.github }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
-                    <i class="fab fa-github text-xl"></i>
-                </a>
-                <a href="{{ .Site.Params.instagram }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
-                    <i class="fab fa-instagram text-xl"></i>
-                </a>
-                <a href="{{ .Site.Params.linkedin }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
-                    <i class="fab fa-linkedin text-xl"></i>
-                </a>
-                <a href="{{ .Site.Params.facebook }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
-                    <i class="fab fa-facebook text-xl"></i>
-                </a>
+  <div class="container px-4 py-2">
+    <!-- Flex container with column direction on mobile, row on desktop -->
+    <div
+      class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+    >
+      <!-- Left side with existing content -->
+      <p class="text-center w-full md:w-auto">
+        {{ T "poweredByHugo" }}
+        <span class="hugo-text"><span class="letter">H</span>ugo</span> |
+        <a href="{{ .Site.Params.archiveOldSite }}" target="_blank"
+          >{{ T "oldWebsite" }}</a
+        >
+      </p>
 
-                <!---
-                <div class="w-0.5 h-6 bg-current self-center rounded-full"></div>
-                <a href="" target="_blank">
-                    <span class="text-xl inline-block align-middle">IT</span>
-                </a>
-                <a href="" target="_blank">
-                    <span class="text-xl inline-block align-middle">EN</span>
-                </a>
-                -->
+      <!-- Right side with social icons -->
+      <div class="flex space-x-4 justify-center w-full md:w-auto">
+        <a
+          href="{{ .Site.Params.github }}"
+          target="_blank"
+          class="hover:text-gray-400 transition-colors duration-300"
+        >
+          <i class="fab fa-github text-xl"></i>
+        </a>
+        <a
+          href="{{ .Site.Params.instagram }}"
+          target="_blank"
+          class="hover:text-gray-400 transition-colors duration-300"
+        >
+          <i class="fab fa-instagram text-xl"></i>
+        </a>
+        <a
+          href="{{ .Site.Params.linkedin }}"
+          target="_blank"
+          class="hover:text-gray-400 transition-colors duration-300"
+        >
+          <i class="fab fa-linkedin text-xl"></i>
+        </a>
+        <a
+          href="{{ .Site.Params.facebook }}"
+          target="_blank"
+          class="hover:text-gray-400 transition-colors duration-300"
+        >
+          <i class="fab fa-facebook text-xl"></i>
+        </a>
 
-            </div>
-        </div>
+        <div class="w-0.5 h-6 bg-current self-center rounded-full"></div>
+        {{ range .Translations }}
+        <a href="{{ .RelPermalink }}">
+          <span class="text-xl inline-block align-middle">
+            {{ .Language.LanguageName }}
+          </span>
+        </a>
+        {{ end }}
+      </div>
     </div>
+  </div>
 </footer>

@@ -10,7 +10,7 @@
     {{ with .GetPage "/associazione/statuto" }}
     <div
         class="flex-col w-full bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
-        <a href="{{ .RelPermalink }}" class="block text-center text-xl font-bold">
+        <a href="{{ .RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
             Statuto
         </a>
     </div>
@@ -19,7 +19,7 @@
     <!-- {{ with .GetPage "/associazione/atto-costitutivo" }}
     <div
         class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
-        <a href="{{ .RelPermalink }}" class="block text-center text-xl font-bold">
+        <a href="{{ .RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
             Atto costitutivo
         </a>
     </div>
@@ -27,7 +27,7 @@
 </div>
 
 <article>
-    <h1 class="text-4xl font-bold mb-8 text-primary-dark">Il direttivo</h1>
+    <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ T "boardText" }}</h1>
 
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center lg:justify-center">
         {{ range .Site.Params.direttivo }}
