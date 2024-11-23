@@ -1,9 +1,9 @@
 {{ define "main" }}
 <article>
     <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
-    <div class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)]">
-        {{ .Content }}
-    </div>
+    {{ partial "card.html" (dict
+        "content" .Content
+        "withShadow" true ) }}
 </article>
 
 <div class="mt-8 flex max-w-full flex-row">
@@ -31,14 +31,11 @@
 
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center lg:justify-center">
         {{ range .Site.Params.direttivo }}
-        <div
-            class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] mb-8 max-w-xs hover:shadow-lg transition-shadow duration-300">
-            <h3 class="text-2xl font-bold text-center text-primary-dark mb-2">{{ .name }} "{{ .nickname }}"</h3>
-            <p class="text-center text-accent text-sm mb-4">{{ .role }}</p>
-            <div class="mt-4 text-center">
-                <a href="mailto:{{.nickname}}@olografix.org" class="text-accent hover:underline">email</a>
-            </div>
-        </div>
+        {{ partial "card.html" (dict
+        "title" (printf "%s \"%s\"" .name .nickname)
+        "content" .role
+        "goToLink" (printf "mailto:%s@olografix.org" .nickname)
+        "goToText" "email") }}
         {{ end }}
     </section>
 </article>
