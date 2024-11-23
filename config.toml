@@ -36,6 +36,7 @@ source = "JSON"
 target = ".*"
 
 [params]
+  image = "images/metro-dark-preview.png"
   galleryServer = "https://gallery.olografix.org"
 
   archiveOldSite = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
