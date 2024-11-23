@@ -1,13 +1,17 @@
-<div class="bg-white p-6 pb-8 border-4 border-primary-dark w-full {{ if (default false .withShadow) }} shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] {{ end }} mb-4 relative">
-    {{ with .title }}
-    <h3 class="text-xl font-bold mb-2 text-accent">{{ . }}</h3>
-    {{ end }}
-    <!-- content -->
-    <p class="text-accent mb-4 text-justify">{{ .content }}</p>
+{{ $showFooter := or (.goToSection) (.goToLink) (.badge) }}
 
+<div class="bg-white p-4 border-4 border-primary-dark w-full {{ if (default false .withShadow) }} shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] {{ end }} mb-4 relative">
+    <!-- main content -->
+    <div {{ if $showFooter }}class="pb-8"{{ end }}>
+        {{ with .title }}
+        <h3 class="text-xl font-bold mb-2 text-accent">{{ . }}</h3>
+        {{ end }}
+        <!-- content -->
+        <div class="text-justify">{{ .content }}</div>
+    </div>
     <!-- footer -->
-    {{ if or (.goToSection) (.goToLink) (.badge) }}
-    <div class="absolute bottom-0 left-0 right-0 bg-gray-100 px-6 py-1 flex items-center justify-between">
+    {{ if $showFooter }}
+    <div class="absolute bottom-0 left-0 right-0 bg-gray-100 px-4 py-1 flex items-center justify-between">
         <!-- badge -->
         {{ with .badge }}
         <span class="badge">
@@ -16,7 +20,7 @@
         {{ else }}
         <span></span>
         {{ end }}
-        <!-- link href generation, `.goToSection` or `.goToLink` are acceptable but not together -->
+        <!-- link href generation -->
         {{ if or (.goToSection) (.goToLink) }}
             {{ $link := "" }}
             {{ if .goToSection }}
@@ -27,6 +31,6 @@
             {{ end }}
             <a href="{{ $link }}" class="text-sm text-accent hover:underline ml-auto">{{ .goToText }} >></a>
         {{ end }}
-      </div>
-      {{ end }}
+    </div>
+    {{ end }}
 </div>
