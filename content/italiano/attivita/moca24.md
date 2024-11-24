@@ -2,6 +2,7 @@
 title: "MOCA 2024"
 subtitle: "Lo storico hacker camp italiano è Back to the r00t"
 date: 2024-09-13
+footerUrl: "https://moca.camp"
 ---
 Benvenuti al MOCA2024, un evento che celebra tre decenni di impegno, innovazione e comunità nel panorama hacker italiano.
 
