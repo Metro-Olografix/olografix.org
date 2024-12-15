@@ -1,25 +1,37 @@
 <nav id="menu" class="fixed top-0 left-0 bottom-0 w-full hidden bg-primary-dark z-40" aria-label="Mobile navigation" role="navigation">
   <div class="w-full mx-auto px-4 sm:px-0 max-w-3xl bg-primary-dark text-primary-light z-40">
-    <div class="container mx-auto py-5 md:py-7">
-      <div class="flex items-center justify-between relative h-7 md:h-10">
+    <div class="container mx-auto py-4 md:py-7">
+      <div class="flex items-center justify-between relative h-8 md:h-10">
         <!-- Left section with menu and logo -->
         <div class="flex items-center">
-          <!-- Close button positioned in the same spot -->
-          <button 
-            id="closeMenuButton" 
-            class="absolute md:h-10 w-8 md:w-10 flex items-center justify-center z-50" 
-            aria-label="Close menu" 
-            type="button"
-          >
-          <img 
-            src="/images/close.png" 
-            alt="Close"
-            class="h-full w-auto object-contain aspect-square"
-          >
-          </button>
+          <!-- Close button container -->
+          <div class="relative h-8 md:h-10 w-8 md:w-10">
+            <button 
+              id="closeMenuButton" 
+              class="absolute inset-0 flex items-center justify-center" 
+              aria-label="Close menu" 
+              type="button"
+            >
+              <img 
+                src="/images/close.png" 
+                alt="Close"
+                class="h-full w-auto object-contain aspect-square"
+              >
+            </button>
+          </div>
+
+          <!-- Metro Olografix Logo with Link -->
+          <a href="/" class="h-8 md:h-10 items-center flex px-4 flex-shrink-0">
+            <img
+              src="/images/metro-light.png"
+              alt="Metro Olografix Logo"
+              class="h-full w-auto object-contain max-w-none"
+            />
+          </a>
         </div>
         
         <div class="flex space-x-4 justify-end pr-8">
+          <!-- Rest of the social links and language selector remain unchanged -->
           <a href="{{ .Site.Params.github }}" target="_blank" class="hover:text-gray-400 transition-colors duration-300">
               <i class="fab fa-github text-xl"></i>
           </a>
@@ -39,7 +51,6 @@
               <span class="text-xl inline-block align-middle">{{ .Language.LanguageName }}</span>
             </a>
           {{ end }}
-          
         </div>
       </div>
 
