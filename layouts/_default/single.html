@@ -1,12 +1,12 @@
 {{ define "main" }}
 
-{{ if .Params.externalUrl }}
+{{ if and (.Params.externalUrl) (.Params.forceRedirect | default true) }}
 <meta http-equiv="refresh" content="0; url={{ .Params.externalUrl }}" />
 {{ end }}
 
 <article>
-    <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
-    <h2 class="text-xl mb-8 text-primary-dark">{{ .Params.subtitle }}</h2>
+    <h1 class="text-4xl font-bold mb-2 text-primary-dark">{{ .Title }}</h1>
+    <h2 class="text-xl mb-4 text-primary-dark">{{ .Params.subtitle }}</h2>
 
     {{ if .Params.hasTOC | default false}}
     <div class="bg-white my-4 p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)]">
@@ -14,8 +14,10 @@
     </div>
     {{ end }}
 
-    <div class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)]">
-        {{ .Content }}
-    </div>
+    {{ partial "card.html" (dict
+        "content" .Content
+        "goToLink" .Params.footerUrl
+        "goToText" (T "goExternalText")
+        "withShadow" true ) }}
 </article>
 {{ end }}
