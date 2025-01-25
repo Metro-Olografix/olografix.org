@@ -54,6 +54,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Global event listeners
   document.addEventListener("keydown", handleEscapeKey);
+
+  // Fetch and update headquarter status
+  function updateHeadquarterStatus() {
+    const statusBadge = document.getElementById("headquarterStatusBadge");
+    if (statusBadge) {
+      statusBadge.textContent = "Loading...";
+    }
+    fetch("https://sede.olografix.org/status")
+      .then(response => response.text())
+      .then(data => {
+        if (statusBadge) {
+          const isOpen = data.trim() === "true";
+          statusBadge.textContent = isOpen ? "Open" : "Closed";
+          statusBadge.classList.toggle("bg-green-500", isOpen);
+          statusBadge.classList.toggle("bg-red-500", !isOpen);
+        }
+      })
+      .catch(error => console.error("Error fetching headquarter status:", error));
+  }
+
+  updateHeadquarterStatus();
+  setInterval(updateHeadquarterStatus, 60000); // Update every 60 seconds
 });
 
 eval(

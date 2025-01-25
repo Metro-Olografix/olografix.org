@@ -1,5 +1,11 @@
 {{ define "main" }}
 
+<!-- headquarter status -->
+<div class="mb-4 flex justify-end items-center space-x-2">
+  <span class="font-bold text-primary-dark">Headquarter Status:</span>
+  <span id="headquarterStatusBadge" class="bg-gray-500">Loading...</span>
+</div>
+
 <!-- use custom components "card" -->
 {{ partial "card.html" (dict 
     "content" (.Site.Params.description)
