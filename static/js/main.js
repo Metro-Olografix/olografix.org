@@ -57,18 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fetch and update headquarter status
   function updateHeadquarterStatus() {
-    const statusBadge = document.getElementById("headquarterStatusBadge");
-    if (statusBadge) {
-      statusBadge.textContent = "Loading...";
-    }
-    fetch("https://sede.olografix.org/status")
+    const titleElement = document.getElementById("headquarterTitle");
+    
+    fetch("http://localhost:8080/status")
       .then(response => response.text())
       .then(data => {
-        if (statusBadge) {
-          const isOpen = data.trim() === "true";
-          statusBadge.textContent = isOpen ? "Open" : "Closed";
-          statusBadge.classList.toggle("bg-green-500", isOpen);
-          statusBadge.classList.toggle("bg-red-500", !isOpen);
+        const isOpen = data.trim() === "true";
+        if (titleElement) {
+          titleElement.classList.toggle("text-green-500", isOpen);
+          titleElement.classList.toggle("text-red-500", !isOpen);
+          titleElement.classList.toggle("text-accent");
+          titleElement.innerHTML = isOpen ? "La sede ora è aperta" : "La sede ora è chiusa";
         }
       })
       .catch(error => console.error("Error fetching headquarter status:", error));
