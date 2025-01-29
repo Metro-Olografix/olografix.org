@@ -29,7 +29,14 @@
             {{ else if .goToLink }}
                 {{ $link = .goToLink }}
             {{ end }}
-            <a href="{{ $link }}" class="text-sm text-accent hover:underline ml-auto">{{ .goToText }} >></a>
+            <a href="{{ $link }}" 
+               class="text-sm text-accent hover:underline ml-auto"
+               {{ if .isExternal }}
+                   target="_blank"
+                   rel="noopener noreferrer"
+               {{ end }}>
+                {{ .goToText }} >>
+            </a>
         {{ end }}
     </div>
     {{ end }}

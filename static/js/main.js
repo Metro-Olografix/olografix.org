@@ -58,19 +58,42 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fetch and update headquarter status
   function updateHeadquarterStatus() {
     const titleElement = document.getElementById("headquarterTitle");
+    const dotElement = document.getElementById("statusDot");
+    const containerElement = document.getElementById("statusContainer");
     
-    fetch("http://localhost:8080/status")
+    fetch("https://sede.olografix.org/status")
       .then(response => response.text())
       .then(data => {
         const isOpen = data.trim() === "true";
-        if (titleElement) {
-          titleElement.classList.toggle("text-green-500", isOpen);
-          titleElement.classList.toggle("text-red-500", !isOpen);
-          titleElement.classList.toggle("text-accent");
-          titleElement.innerHTML = isOpen ? "La sede ora è aperta" : "La sede ora è chiusa";
+        if (titleElement && dotElement && containerElement) {
+          // Update container
+          containerElement.classList.remove("bg-green-100", "bg-red-100", "bg-gray-100");
+          containerElement.classList.add(isOpen ? "bg-green-100" : "bg-red-100");
+          
+          // Update dot
+          dotElement.classList.remove("bg-green-500", "bg-red-500", "bg-gray-300");
+          dotElement.classList.add(isOpen ? "bg-green-500" : "bg-red-500");
+          
+          // Update text
+          titleElement.classList.remove("text-green-600", "text-red-600", "text-gray-600");
+          titleElement.classList.add(isOpen ? "text-green-600" : "text-red-600");
+          titleElement.innerHTML = isOpen ? "Aperta" : "Chiusa";
         }
       })
-      .catch(error => console.error("Error fetching headquarter status:", error));
+      .catch(error => {
+        console.error("Error fetching headquarter status:", error);
+        if (titleElement && dotElement && containerElement) {
+          containerElement.classList.remove("bg-green-100", "bg-red-100", "bg-gray-100");
+          containerElement.classList.add("bg-red-100");
+          
+          dotElement.classList.remove("bg-green-500", "bg-red-500", "bg-gray-300");
+          dotElement.classList.add("bg-red-500");
+          
+          titleElement.classList.remove("text-green-600", "text-red-600", "text-gray-600");
+          titleElement.classList.add("text-red-600");
+          titleElement.innerHTML = "Error";
+        }
+      });
   }
 
   updateHeadquarterStatus();
