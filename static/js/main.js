@@ -57,41 +57,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fetch and update headquarter status
   function updateHeadquarterStatus() {
-    const titleElement = document.getElementById("headquarterTitle");
     const dotElement = document.getElementById("statusDot");
     const containerElement = document.getElementById("statusContainer");
+    const loadingStatus = document.getElementById("headquarterStatusLoading");
+    const openStatus = document.getElementById("headquarterStatusOpen");
+    const closeStatus = document.getElementById("headquarterStatusClose");
     
     fetch("https://sede.olografix.org/status")
       .then(response => response.text())
       .then(data => {
         const isOpen = data.trim() === "true";
-        if (titleElement && dotElement && containerElement) {
-          // Update container
-          containerElement.classList.remove("bg-green-100", "bg-red-100", "bg-gray-100");
+        if (dotElement && containerElement) {
+          containerElement.classList.remove("bg-gray-100", "bg-green-100", "bg-red-100");
           containerElement.classList.add(isOpen ? "bg-green-100" : "bg-red-100");
           
-          // Update dot
-          dotElement.classList.remove("bg-green-500", "bg-red-500", "bg-gray-300");
+          dotElement.classList.remove("bg-gray-300", "bg-green-500", "bg-red-500");
           dotElement.classList.add(isOpen ? "bg-green-500" : "bg-red-500");
+
+          loadingStatus.classList.remove("text-gray-600");
+          loadingStatus.classList.add("hidden");
+
+          openStatus.classList.remove("hidden");
+          openStatus.classList.toggle("hidden", !isOpen);
           
-          // Update text
-          titleElement.classList.remove("text-green-600", "text-red-600", "text-gray-600");
-          titleElement.classList.add(isOpen ? "text-green-600" : "text-red-600");
-          titleElement.innerHTML = isOpen ? "Aperta" : "Chiusa";
+          closeStatus.classList.remove("hidden");
+          closeStatus.classList.toggle("hidden", isOpen);
         }
       })
       .catch(error => {
         console.error("Error fetching headquarter status:", error);
-        if (titleElement && dotElement && containerElement) {
-          containerElement.classList.remove("bg-green-100", "bg-red-100", "bg-gray-100");
-          containerElement.classList.add("bg-red-100");
+        if (dotElement && containerElement) {
+          containerElement.classList.remove("bg-green-100", "bg-red-100");
+          containerElement.classList.add("bg-gray-100");
           
-          dotElement.classList.remove("bg-green-500", "bg-red-500", "bg-gray-300");
-          dotElement.classList.add("bg-red-500");
-          
-          titleElement.classList.remove("text-green-600", "text-red-600", "text-gray-600");
-          titleElement.classList.add("text-red-600");
-          titleElement.innerHTML = "Error";
+          dotElement.classList.remove("bg-green-500", "bg-red-500");
+          dotElement.classList.add("bg-gray-300");
+
+          loadingStatus.classList.remove("hidden");
+          openStatus.classList.add("hidden");
+          closeStatus.classList.add("hidden");
         }
       });
   }

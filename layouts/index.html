@@ -14,9 +14,9 @@
     <div class="md:col-span-2 h-full">
       {{ partial "card.html" (dict
         "title" (partial "headquarters-header.html" .)
-        "content" "<p>Vieni a trovarci in <strong>Viale Marconi 278/1</strong>, Pescara. Ci riuniamo ogni XXXX sera dalle <em>21:00</em> alle <em>23:00</em>.</p>"
+        "content" (T "hqDescription")
         "goToLink" "https://www.openstreetmap.org/node/12539021893"
-        "goToText" "Mappa"
+        "goToText" (T "hqGotoMap")
         "isExternal" true
         "targetBlank" true
         "withShadow" false
