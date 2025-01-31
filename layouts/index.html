@@ -1,11 +1,28 @@
 {{ define "main" }}
 
-<!-- use custom components "card" -->
-{{ partial "card.html" (dict 
-    "content" (.Site.Params.description)
-    "goToSection" "associazione"
-    "goToText" (T "learnMoreText")
-    "withShadow" true) }}
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 h-full">
+    <!-- associazione -->
+    <div class="md:col-span-3 h-full">
+      {{ partial "card.html" (dict 
+        "content" (.Site.Params.description)
+        "goToSection" "associazione"
+        "goToText" (T "learnMoreText")
+        "withShadow" true
+        "fullHeight" true) }}
+    </div>
+    <!-- sede -->
+    <div class="md:col-span-2 h-full">
+      {{ partial "card.html" (dict
+        "title" (partial "headquarters-header.html" .)
+        "content" (T "hqDescription")
+        "goToLink" "https://www.openstreetmap.org/node/12539021893"
+        "goToText" (T "hqGotoMap")
+        "isExternal" true
+        "targetBlank" true
+        "withShadow" false
+        "fullHeight" true) }}
+    </div>
+  </div>
 
 <!-- Membership Banner -->
 <div class="bg-accent text-primary-light p-4 rounded-lg mb-4 mt-4">

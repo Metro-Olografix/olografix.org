@@ -1,13 +1,13 @@
 {{ $showFooter := or (.goToSection) (.goToLink) (.badge) }}
 
-<div class="bg-white p-4 border-4 border-primary-dark w-full {{ if (default false .withShadow) }} shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] {{ end }} mb-4 relative">
+<div class="bg-white p-4 border-4 border-primary-dark w-full {{ if (default false .withShadow) }} shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] {{ end }} mb-4 relative {{ if (default false .fullHeight) }}h-full{{ end }}">
     <!-- main content -->
     <div {{ if $showFooter }}class="pb-8"{{ end }}>
         {{ with .title }}
-        <h3 class="text-xl font-bold mb-2 text-accent">{{ . }}</h3>
+        <h3 class="text-xl font-bold mb-2 text-accent">{{ . | safeHTML }}</h3>
         {{ end }}
         <!-- content -->
-        <div class="text-justify">{{ .content }}</div>
+        <div class="text-justify">{{ .content | safeHTML }}</div>
     </div>
     <!-- footer -->
     {{ if $showFooter }}
@@ -29,7 +29,14 @@
             {{ else if .goToLink }}
                 {{ $link = .goToLink }}
             {{ end }}
-            <a href="{{ $link }}" class="text-sm text-accent hover:underline ml-auto">{{ .goToText }} >></a>
+            <a href="{{ $link }}" 
+               class="text-sm text-accent hover:underline ml-auto"
+               {{ if .isExternal }}
+                   target="_blank"
+                   rel="noopener noreferrer"
+               {{ end }}>
+                {{ .goToText }} >>
+            </a>
         {{ end }}
     </div>
     {{ end }}
