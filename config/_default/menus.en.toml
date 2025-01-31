@@ -20,14 +20,14 @@
     weight = 5
 [[main]]
     name = "Join us"
-    pageRef = "https://associati.olografix.org"
+    url = "https://associati.olografix.org"
     weight = 6
     [main.params]
         external = true
         rainbowEffect = true
 [[main]]
     name = "Visit the old website"
-    pageRef = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
+    url = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
     weight = 7
     [main.params]
         external = true
