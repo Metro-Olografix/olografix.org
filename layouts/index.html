@@ -1,8 +1,7 @@
 {{ define "main" }}
 
-<!-- use custom components "card" -->
-<!-- use custom components "card" -->
 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 h-full">
+    <!-- associazione -->
     <div class="md:col-span-3 h-full">
       {{ partial "card.html" (dict 
         "content" (.Site.Params.description)
@@ -11,6 +10,7 @@
         "withShadow" true
         "fullHeight" true) }}
     </div>
+    <!-- sede -->
     <div class="md:col-span-2 h-full">
       {{ partial "card.html" (dict
         "title" (partial "headquarters-header.html" .)
