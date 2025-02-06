@@ -3,7 +3,7 @@
 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 h-full">
     <!-- associazione -->
     <div class="md:col-span-3 h-full">
-      {{ partial "card.html" (dict 
+        {{ partial "card.html" (dict
         "content" (.Site.Params.description)
         "goToSection" "associazione"
         "goToText" (T "learnMoreText")
@@ -12,17 +12,17 @@
     </div>
     <!-- sede -->
     <div class="md:col-span-2 h-full">
-      {{ partial "card.html" (dict
+        {{ partial "card.html" (dict
         "title" (partial "headquarters-header.html" .)
         "content" (T "hqDescription")
         "goToLink" "https://www.openstreetmap.org/node/12539021893"
         "goToText" (T "hqGotoMap")
         "isExternal" true
         "targetBlank" true
-        "withShadow" false
+        "withShadow" true
         "fullHeight" true) }}
     </div>
-  </div>
+</div>
 
 <!-- Membership Banner -->
 <div class="bg-accent text-primary-light p-4 rounded-lg mb-4 mt-4">
@@ -33,10 +33,11 @@
 
 <section class="mb-8">
     <h2 class="text-3xl font-bold mb-4 text-primary-dark">{{ T "activitiesAndProject" }}</h2>
-    
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {{ $maxItems := 4 }}
-        {{ $activitiesAndProjects := union (where .Site.RegularPages "Type" "attivita") (where .Site.RegularPages "Type" "progetti") }}
+        {{ $activitiesAndProjects := union (where .Site.RegularPages "Type" "attivita") (where .Site.RegularPages "Type"
+        "progetti") }}
         {{ $sortedActivitiesAndProjects := sort $activitiesAndProjects ".Date" "desc" }}
         {{ range first $maxItems $sortedActivitiesAndProjects }}
 
@@ -44,19 +45,19 @@
         {{ $link := "" }}
         {{ $text := "" }}
         {{ if .Params.externalUrl }}
-            {{ $link = .Params.externalUrl }}
-            {{ $text = T "goExternalText" }}
+        {{ $link = .Params.externalUrl }}
+        {{ $text = T "goExternalText" }}
         {{ else }}
-            {{ $link = .RelPermalink | relLangURL }}
-            {{ $text = T "goText" }}
+        {{ $link = .RelPermalink | relLangURL }}
+        {{ $text = T "goText" }}
         {{ end }}
         <!-- use custom components "card" -->
         {{ partial "card.html" (dict
-            "title" .Title
-            "content" (.Params.subtitle | default .Summary )
-            "goToLink" $link
-            "goToText" $text
-            "badge" (cond (eq .Type "attivita") "Attività" "Progetto" )) }}
+        "title" .Title
+        "content" (.Params.subtitle | default .Summary )
+        "goToLink" $link
+        "goToText" $text
+        "badge" (cond (eq .Type "attivita") "Attività" "Progetto" )) }}
         {{ end }}
     </div>
 
@@ -64,9 +65,11 @@
     <div class="text-center">
         <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
             {{ $activities := site.GetPage "section" "attivita" }}
-            <a href="{{ $activities.RelPermalink | relLangURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">{{ T "allActivities" }}</a>
+            <a href="{{ $activities.RelPermalink | relLangURL }}"
+                class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">{{ T "allActivities" }}</a>
             {{ $projects := site.GetPage "section" "progetti" }}
-            <a href="{{ $projects.RelPermalink | relLangURL }}" class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">{{ T "allProjects" }}</a>
+            <a href="{{ $projects.RelPermalink | relLangURL }}"
+                class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg">{{ T "allProjects" }}</a>
         </div>
     </div>
     {{ end }}

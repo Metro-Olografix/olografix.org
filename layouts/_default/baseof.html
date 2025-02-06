@@ -59,8 +59,8 @@
   {{ partial "header.html" . }}
   {{ partial "menu.html" . }}
 
-  <div class="container mx-auto px-4 sm:px-0 max-w-3xl flex-grow relative">
-    <main class="max-w-3xl">
+  <div class="container mx-auto px-4 sm:px-0 max-w-4xl flex-grow relative">
+    <main class="max-w-4xl">
       {{ if ne .Page.Path "/404" }} {{ partial "breadcrumbs.html" . }} {{ end
       }} {{ block "main" . }}{{ end }}
     </main>
