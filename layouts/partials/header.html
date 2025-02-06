@@ -1,40 +1,71 @@
 <header class="w-full">
-  <div class="container mx-auto py-4 md:py-6">
-    <div class="flex items-center justify-between">
-      <!-- Left section with menu and logo -->
-      <div class="flex items-center">
-        <!-- Menu button container -->
-        <div class="relative h-8 md:h-10 w-8 md:w-10">
-          <!-- Regular menu button -->
-          <button
-            class="absolute inset-0 flex items-center justify-center"
-            aria-label="Menu"
-            id="openMenuButton"
-          >
-            <img
-              src="/images/menu.png"
-              alt="Menu"
-              class="h-full w-auto object-contain aspect-square"
-            />
-          </button>
+  <div class="w-full bg-primary-dark hidden md:block">
+    <div class="container mx-auto px-4 sm:px-0 max-w-3xl">
+      <div class="flex justify-between items-center py-2 text-sm">
+        <div class="flex space-x-4">
+          {{ range .Site.Menus.main }}
+          {{ if .Params.fullwidthVisible | default true }}
+          <a href="{{ .URL | relLangURL }}"
+            class="text-white hover:underline transition duration-200 {{ if eq .Params.rainbowEffect true }}rainbow-text{{ end }} {{ if eq $.RelPermalink .URL }}font-bold{{ end }}">
+            {{ .Name }}{{ if eq .Params.external true }}↗{{ end }}
+          </a>
+          {{ end }}
+          {{ end }}
         </div>
+        <!-- Right block: social links and language selector -->
+        <div class="flex space-x-4 items-center text-white">
+          <a href="{{ .Site.Params.github }}" target="_blank"
+            class="hover:text-gray-400 transition-colors duration-300">
+            <i class="fab fa-github "></i>
+          </a>
+          <a href="{{ .Site.Params.instagram }}" target="_blank"
+            class="hover:text-gray-400 transition-colors duration-300">
+            <i class="fab fa-instagram "></i>
+          </a>
+          <a href="{{ .Site.Params.linkedin }}" target="_blank"
+            class="hover:text-gray-400 transition-colors duration-300">
+            <i class="fab fa-linkedin "></i>
+          </a>
+          <a href="{{ .Site.Params.facebook }}" target="_blank"
+            class="hover:text-gray-400 transition-colors duration-300">
+            <i class="fab fa-facebook "></i>
+          </a>
+          <div class="w-0.5 h-6 bg-current self-center rounded-full"></div>
+          {{ range .Translations }}
+          <a href="{{ .RelPermalink }}">
+            <span class="inline-block align-middle">{{ .Language.LanguageName }}</span>
+          </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <!-- Metro Olografix Logo -->
-        <a href="/" class="h-8 md:h-10 items-center flex px-4 flex-shrink-0">
-          <img
-            src="/images/metro-dark.png"
-            alt="Metro Olografix Logo"
-            class="h-full w-auto object-contain max-w-none"
-          />
+  <div class="container mx-auto px-4 sm:px-0 max-w-3xl flex-grow relative">
+    <div class="container mx-auto py-4 md:py-6">
+      <div class="flex items-center justify-between">
+        <!-- Left section with menu and logo -->
+        <div class="flex items-center">
+          <!-- Menu button container (hidden on desktop) -->
+          <div class="relative h-8 md:h-10 w-8 md:w-10 md:hidden">
+            <!-- Regular menu button -->
+            <button class="absolute inset-0 flex items-center justify-center" aria-label="Menu" id="openMenuButton">
+              <img src="/images/menu.png" alt="Menu" class="h-full w-auto object-contain aspect-square" />
+            </button>
+          </div>
+
+          <!-- Metro Olografix Logo -->
+          <a href="/" class="h-8 md:h-10 items-center flex px-4 sm:px-0 flex-shrink-0">
+            <img src="/images/metro-dark.png" alt="Metro Olografix Logo"
+              class="h-full w-auto object-contain max-w-none" />
+          </a>
+        </div>
+        <a href="{{ .Site.BaseURL | relLangURL }}">
+          <h1 class="text-2xl md:text-5xl font-bold m-0 transition-all duration-300">
+            Metro Olografix<span class="inline-block blink">_</span>
+          </h1>
         </a>
       </div>
-      <a href="{{ .Site.BaseURL | relLangURL }}">
-        <h1
-          class="text-2xl md:text-5xl font-bold m-0 transition-all duration-300"
-        >
-          Metro Olografix<span class="inline-block blink">_</span>
-        </h1>
-      </a>
     </div>
   </div>
 </header>

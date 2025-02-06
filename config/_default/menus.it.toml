@@ -30,4 +30,5 @@
     url = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
     weight = 7
     [main.params]
+        fullwidthVisible = false
         external = true

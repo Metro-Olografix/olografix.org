@@ -1,88 +1,72 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}" class="bg-indigo-50">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ .Title }} - {{ .Site.Title }}</title>
-    <meta
-      name="description"
-      content="{{ .Params.description | default .Site.Params.description }}"
-    />
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="{{ .Permalink }}" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ .Title }} - {{ .Site.Title }}</title>
+  <meta name="description" content="{{ .Params.description | default .Site.Params.description }}" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{ .Title | default .Site.Title }}" />
-    <meta
-      property="og:description"
-      content="{{ .Params.description | default .Site.Params.description }}"
-    />
-    <meta property="og:url" content="{{ .Permalink }}" />
-    <meta
-      property="og:image"
-      content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}"
-    />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ .Permalink }}" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ .Title | default .Site.Title }}" />
-    <meta
-      name="twitter:description"
-      content="{{ .Params.description | default .Site.Params.description }}"
-    />
-    <meta
-      name="twitter:image"
-      content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}"
-    />
-    <meta name="twitter:site" content="@MetroOlografix" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ .Title | default .Site.Title }}" />
+  <meta property="og:description" content="{{ .Params.description | default .Site.Params.description }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/css/main.css" />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "primary-dark": "#16213e",
-              "primary-light": "#e2e8f0",
-              accent: "#0f3460",
-            },
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ .Title | default .Site.Title }}" />
+  <meta name="twitter:description" content="{{ .Params.description | default .Site.Params.description }}" />
+  <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}" />
+  <meta name="twitter:site" content="@MetroOlografix" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/main.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "primary-dark": "#16213e",
+            "primary-light": "#e2e8f0",
+            accent: "#0f3460",
           },
         },
-      };
-    </script>
-    {{ if in .RelPermalink "/photogallery/" }}
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
-    {{end}}
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
+      },
+    };
+  </script>
+  {{ if in .RelPermalink "/photogallery/" }}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+  {{end}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-    <!-- Analytics (Umami) -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="8a990d14-c129-4220-9c0d-be2e2c59ee34"></script>
-  </head>
-  <body class="min-h-screen flex flex-col">
-    <div class="container mx-auto px-4 sm:px-0 max-w-3xl flex-grow relative">
-      {{ partial "header.html" . }} {{ partial "menu.html" . }}
+  <!-- Analytics (Umami) -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="8a990d14-c129-4220-9c0d-be2e2c59ee34"></script>
+</head>
 
-      <main class="max-w-3xl">
-        {{ if ne .Page.Path "/404" }} {{ partial "breadcrumbs.html" . }} {{ end
-        }} {{ block "main" . }}{{ end }}
-      </main>
-    </div>
-    {{ partial "footer.html" . }}
-    <script src="/js/main.js"></script>
-  </body>
+<body class="min-h-screen flex flex-col">
+  <!-- Moved header and menu outside the container -->
+  {{ partial "header.html" . }}
+  {{ partial "menu.html" . }}
+
+  <div class="container mx-auto px-4 sm:px-0 max-w-3xl flex-grow relative">
+    <main class="max-w-3xl">
+      {{ if ne .Page.Path "/404" }} {{ partial "breadcrumbs.html" . }} {{ end
+      }} {{ block "main" . }}{{ end }}
+    </main>
+  </div>
+  {{ partial "footer.html" . }}
+  <script src="/js/main.js"></script>
+</body>
+
 </html>
