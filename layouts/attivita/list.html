@@ -33,7 +33,7 @@
             <div class="text-sm text-gray-600 mb-3">
                 <div class="flex items-center mb-1">
                     <i class="far fa-calendar-alt mr-2"></i>
-                    <span>{{ .Date.Format "02 Jan 2006" }}</span>
+                    <span>{{ time.AsTime .Date | time.Format "02 Jan 2006" }}</span>
                     
                     <!-- Show time if it's not 00:00 -->
                     {{ if ne (.Date.Format "15:04") "00:00" }}

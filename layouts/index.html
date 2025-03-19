@@ -100,7 +100,7 @@
                         {{ $highlightedActivity.Date.Format "02" }}
                     </div>
                     <div class="text-xl text-green-600 uppercase">
-                        {{ $highlightedActivity.Date.Format "January" }}
+                        {{ time.AsTime $highlightedActivity.Date | time.Format "January" }}
                     </div>
                     <div class="text-lg text-green-600">
                         {{ $highlightedActivity.Date.Format "2006" }}

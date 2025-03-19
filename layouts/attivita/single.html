@@ -20,7 +20,7 @@
                 <div>
                     <h3 class="font-bold text-lg">{{ T "dateLabel" | default "Date" }}</h3>
                     <p>
-                        {{ .Date.Format "02 January 2006" }}
+                        {{ time.AsTime .Date | time.Format "02 January 2006" }}
                         <!-- Show time if it's not 00:00 -->
                         {{ if ne (.Date.Format "15:04") "00:00" }}
                         <span>{{ .Date.Format "15:04" }}</span>
