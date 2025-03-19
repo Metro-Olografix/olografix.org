@@ -40,7 +40,11 @@
             {{ with .location }}
             <div class="flex items-center mt-1">
                 <i class="fas fa-map-marker-alt mr-2"></i>
+                {{ if $.locationUrl }}
+                <a href="{{ $.locationUrl }}" target="_blank" rel="noopener" class="hover:underline text-accent">{{ . }}</a>
+                {{ else }}
                 <span>{{ . }}</span>
+                {{ end }}
             </div>
             {{ end }}
         </div>

@@ -61,7 +61,11 @@
                 {{ with $highlightedActivity.Params.location }}
                 <div class="flex items-center mb-3 text-gray-700">
                     <i class="fas fa-map-marker-alt mr-2 text-green-600"></i>
+                    {{ if $highlightedActivity.Params.locationUrl }}
+                    <a href="{{ $highlightedActivity.Params.locationUrl }}" target="_blank" rel="noopener" class="hover:underline text-accent">{{ . }}</a>
+                    {{ else }}
                     <span>{{ . }}</span>
+                    {{ end }}
                 </div>
                 {{ end }}
                 
@@ -138,14 +142,13 @@
             <div class="grid grid-rows-2 gap-4 flex-grow">
                 {{ range first 3 $displayActivities }}
                     <!-- create link and text -->
-                    {{ $link := "" }}
-                    {{ $text := "" }}
-                    {{ if .Params.externalUrl }}
-                        {{ $link = .Params.externalUrl }}
+                    {{ $link := .RelPermalink | relLangURL }}
+                    {{ $text := T "goText" }}
+                    {{ $external := false }}
+                    {{ with .Params.externalUrl }}
+                        {{ $link = . }}
                         {{ $text = T "goExternalText" }}
-                    {{ else }}
-                        {{ $link = .RelPermalink | relLangURL }}
-                        {{ $text = T "goText" }}
+                        {{ $external = true }}
                     {{ end }}
                     
                     {{ $upcoming := ge .Date.Unix $now.Unix }}
@@ -158,10 +161,11 @@
                         "endDate" .Params.endDate
                         "recurrence" .Params.recurrencePattern
                         "location" .Params.location
+                        "locationUrl" .Params.locationUrl
                         "goToLink" $link
                         "goToText" $text
                         "badge" (cond $upcoming "Prossimamente" "")
-                        "isExternal" (ne "" .Params.externalUrl)
+                        "isExternal" (eq true $external)
                         "fullHeight" true
                         "withShadow" false) }}
                 {{ end }}
