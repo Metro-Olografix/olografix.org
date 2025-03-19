@@ -13,7 +13,7 @@ Percorso teorico-pratico per comprendere come sia possibile veicolare l'informaz
 **Materiale necessario** (tutto di mia proprietà):
 
 - Ricetrasmettitori di vario tipo
-- Anal-izzatore di spettro
+- Analizzatore di spettro
 - Laptop per eventualità
 
 **Contenuto del workshop**
