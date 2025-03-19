@@ -4,6 +4,7 @@ subtitle: "Indossiamo gli occhiali speciali e vediamo i segnali invisibili. Con 
 date: "2025-03-25T21:00:00"
 endDate: "2025-03-25T23:00:00"
 recurring: false
+recurrencePattern: ""
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
