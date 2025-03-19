@@ -6,6 +6,46 @@
         {{ with .title }}
         <h3 class="text-xl font-bold mb-2 text-accent">{{ . | safeHTML }}</h3>
         {{ end }}
+        
+        <!-- date and recurrence info if provided -->
+        {{ if or .date .recurrence }}
+        <div class="text-sm text-gray-600 mb-3">
+            {{ with .date }}
+            <div class="flex items-center mb-1">
+                <i class="far fa-calendar-alt mr-2"></i>
+                <span>{{ dateFormat "02 Jan 2006" . }}</span>
+                <!-- Show time if it's not 00:00 -->
+                {{ if ne (dateFormat "15:04" .) "00:00" }}
+                <span class="mx-2">{{ dateFormat "15:04" . }}</span>
+                {{ end }}
+                
+                {{ with $.endDate }}
+                <span class="mx-2">-</span>
+                <span>{{ dateFormat "02 Jan 2006" . }}</span>
+                <!-- Show end time if it's not 00:00 -->
+                {{ if ne (dateFormat "15:04" .) "00:00" }}
+                <span class="mx-2">{{ dateFormat "15:04" . }}</span>
+                {{ end }}
+                {{ end }}
+            </div>
+            {{ end }}
+            
+            {{ with .recurrence }}
+            <div class="flex items-center">
+                <i class="fas fa-sync-alt mr-2"></i>
+                <span>{{ . }}</span>
+            </div>
+            {{ end }}
+            
+            {{ with .location }}
+            <div class="flex items-center mt-1">
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                <span>{{ . }}</span>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+        
         <!-- content -->
         <div class="text-justify">{{ .content | safeHTML }}</div>
     </div>
@@ -14,7 +54,7 @@
     <div class="mt-auto pt-2 bg-gray-100 px-4 py-1 -mx-4 -mb-4 flex items-center justify-between">
         <!-- badge -->
         {{ with .badge }}
-        <span class="badge">
+        <span class="badge {{ if eq . "Prossimamente" }}badge-upcoming{{ end }}">
             {{ . }}
         </span>
         {{ else }}

@@ -2,6 +2,8 @@ baseURL = "https://olografix.org/"
 enableRobotsTXT = true
 languageCode = 'it'
 
+buildFuture = true
+
 defaultContentLanguage = 'it'
 defaultContentLanguageInSubdir = false
 [languages]
