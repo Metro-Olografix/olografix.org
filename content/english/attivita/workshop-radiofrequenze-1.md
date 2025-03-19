@@ -5,7 +5,7 @@ date: "2025-03-25T21:00:00"
 endDate: "2025-03-25T23:00:00"
 recurring: false
 location: "Metro Olografix Headquarters - Viale Marconi 278/1, Pescara"
-locationUrl: "https://maps.app.goo.gl/mjkrGMN5iUjGy9j59"
+locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
 
 A theoretical-practical journey to understand how information can be transmitted through radio waves. The story begins with telegraphy and continues through digital modulations and beyond.

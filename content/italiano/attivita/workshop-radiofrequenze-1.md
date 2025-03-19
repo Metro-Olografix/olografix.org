@@ -5,7 +5,7 @@ date: "2025-03-25T21:00:00"
 endDate: "2025-03-25T23:00:00"
 recurring: false
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
-locationUrl: "https://maps.app.goo.gl/mjkrGMN5iUjGy9j59"
+locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
 
 Percorso teorico-pratico per comprendere come sia possibile veicolare l'informazione sulle onde radio. La storia parte dalla telegrafia e arriva fino alle modulazioni digitali o dove si vuole arrivare.
