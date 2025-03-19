@@ -1,8 +1,8 @@
 {{ $showFooter := or (.goToSection) (.goToLink) (.badge) }}
 
-<div class="bg-white p-4 border-4 border-primary-dark w-full {{ if (default false .withShadow) }} shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] {{ end }} mb-4 relative {{ if (default false .fullHeight) }}h-full{{ end }}">
+<div class="bg-white p-4 border-4 border-primary-dark w-full {{ if (default false .withShadow) }} shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] {{ end }} mb-4 relative flex flex-col {{ if (default false .fullHeight) }}h-full{{ end }}">
     <!-- main content -->
-    <div {{ if $showFooter }}class="pb-8"{{ end }}>
+    <div class="{{ if $showFooter }}flex-grow{{ end }}">
         {{ with .title }}
         <h3 class="text-xl font-bold mb-2 text-accent">{{ . | safeHTML }}</h3>
         {{ end }}
@@ -11,7 +11,7 @@
     </div>
     <!-- footer -->
     {{ if $showFooter }}
-    <div class="absolute bottom-0 left-0 right-0 bg-gray-100 px-4 py-1 flex items-center justify-between">
+    <div class="mt-auto pt-2 bg-gray-100 px-4 py-1 -mx-4 -mb-4 flex items-center justify-between">
         <!-- badge -->
         {{ with .badge }}
         <span class="badge">
