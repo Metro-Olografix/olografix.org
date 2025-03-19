@@ -4,4 +4,4 @@ TZ = "Europe/Rome"
 
 [build]
 publish = "public"
-command = "hugo --gc --minify"
+command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"

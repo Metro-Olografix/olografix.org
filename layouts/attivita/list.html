@@ -1,0 +1,169 @@
+{{ define "main" }}
+<h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
+
+{{ $now := now }}
+
+<!-- Get all activities including future events -->
+{{ $allActivities := .Pages | intersect .Site.AllPages }}
+
+<!-- Split into upcoming and past activities -->
+{{ $upcomingActivities := where $allActivities "Date" "ge" $now }}
+{{ $pastActivities := where $allActivities "Date" "lt" $now }}
+
+<!-- Sort upcoming activities by date (ascending - nearest first) -->
+{{ $upcomingActivities := sort $upcomingActivities ".Date" "asc" }}
+
+<!-- First show upcoming events section if any exist -->
+{{ if $upcomingActivities }}
+<div class="mb-6">
+    <h2 class="text-2xl font-bold mb-6 bg-green-600 text-white p-2 rounded">{{ T "upcomingEvents" | default "Upcoming Events" }}</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {{ range $upcomingActivities }}
+        <div class="bg-white p-4 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)]">
+            <h3 class="text-xl font-bold mb-2 text-accent">
+                {{ $url := .Permalink }}
+                {{ if .Params.externalUrl }}
+                    {{ $url = .Params.externalUrl }}
+                {{ end }}
+                <a href="{{ $url }}" class="hover:underline">{{ .Title }}{{ if .Params.externalUrl }}&nbsp;↗{{ end }}</a>
+            </h3>
+            
+            <!-- Date information -->
+            <div class="text-sm text-gray-600 mb-3">
+                <div class="flex items-center mb-1">
+                    <i class="far fa-calendar-alt mr-2"></i>
+                    <span>{{ time.AsTime .Date | time.Format "02 Jan 2006" }}</span>
+                    
+                    <!-- Show time if it's not 00:00 -->
+                    {{ if ne (.Date.Format "15:04") "00:00" }}
+                    <span class="mx-2">{{ .Date.Format "15:04" }}</span>
+                    {{ end }}
+                    
+                    {{ with .Params.endDate }}
+                    <span class="mx-2">-</span>
+                    <span>{{ time.AsTime . | time.Format "02 Jan 2006" }}</span>
+                    <!-- Show end time if it's not 00:00 -->
+                    {{ if ne ((time.AsTime .).Format "15:04") "00:00" }}
+                    <span class="mx-2">{{ (time.AsTime .).Format "15:04" }}</span>
+                    {{ end }}
+                    {{ end }}
+                </div>
+                
+                {{ with .Params.recurrencePattern }}
+                <div class="flex items-center">
+                    <i class="fas fa-sync-alt mr-2"></i>
+                    <span>{{ . }}</span>
+                </div>
+                {{ end }}
+                
+                {{ with .Params.location }}
+                <div class="flex items-center mt-1">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    {{ if $.Params.locationUrl }}
+                    <a href="{{ $.Params.locationUrl }}" target="_blank" rel="noopener" class="hover:underline text-accent">{{ . }}</a>
+                    {{ else }}
+                    <span>{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+            
+            <p class="mb-3">{{ .Params.subtitle | default .Summary }}</p>
+            
+            <a href="{{ $url }}" class="text-sm text-accent hover:underline inline-block mt-2">
+                {{ if .Params.externalUrl }}
+                    {{ T "goExternalText" }}
+                {{ else }}
+                    {{ T "learnMoreText" }}
+                {{ end }} >>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+<!-- Then show past events grouped by year -->
+{{ if $pastActivities }}
+<div>
+    <h2 class="text-2xl font-bold mb-6 bg-accent text-white p-2 rounded">{{ T "pastEvents" | default "Past Events" }}</h2>
+    
+    <!-- Group past activities by year -->
+    {{ $pastByYear := $pastActivities.GroupByDate "2006" }}
+    
+    <div class="space-y-12 mb-6">
+        {{ range $pastByYear }}
+        <div class="mb-8">
+            <h3 class="text-xl font-bold mb-4 bg-gray-200 p-2 rounded">{{ .Key }}</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {{ range .Pages }}
+                <div class="bg-white p-4 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)]">
+                    <h3 class="text-xl font-bold mb-2 text-accent">
+                        {{ $url := .Permalink }}
+                        {{ if .Params.externalUrl }}
+                            {{ $url = .Params.externalUrl }}
+                        {{ end }}
+                        <a href="{{ $url }}" class="hover:underline">{{ .Title }}{{ if .Params.externalUrl }}&nbsp;↗{{ end }}</a>
+                    </h3>
+                    
+                    <!-- Date information -->
+                    <div class="text-sm text-gray-600 mb-3">
+                        <div class="flex items-center mb-1">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>{{ .Date.Format "02 Jan 2006" }}</span>
+                            
+                            <!-- Show time if it's not 00:00 -->
+                            {{ if ne (.Date.Format "15:04") "00:00" }}
+                            <span class="mx-2">{{ .Date.Format "15:04" }}</span>
+                            {{ end }}
+                            
+                            {{ with .Params.endDate }}
+                            <span class="mx-2">-</span>
+                            <span>{{ time.AsTime . | time.Format "02 Jan 2006" }}</span>
+                            <!-- Show end time if it's not 00:00 -->
+                            {{ if ne ((time.AsTime .).Format "15:04") "00:00" }}
+                            <span class="mx-2">{{ (time.AsTime .).Format "15:04" }}</span>
+                            {{ end }}
+                            {{ end }}
+                        </div>
+                        
+                        {{ with .Params.recurrencePattern }}
+                        <div class="flex items-center">
+                            <i class="fas fa-sync-alt mr-2"></i>
+                            <span>{{ . }}</span>
+                        </div>
+                        {{ end }}
+                        
+                        {{ with .Params.location }}
+                        <div class="flex items-center mt-1">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            {{ if $.Params.locationUrl }}
+                            <a href="{{ $.Params.locationUrl }}" target="_blank" rel="noopener" class="hover:underline text-accent">{{ . }}</a>
+                            {{ else }}
+                            <span>{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                    
+                    <p class="mb-3">{{ .Params.subtitle | default .Summary }}</p>
+                    
+                    <a href="{{ $url }}" class="text-sm text-accent hover:underline inline-block mt-2">
+                        {{ if .Params.externalUrl }}
+                            {{ T "goExternalText" }}
+                        {{ else }}
+                            {{ T "learnMoreText" }}
+                        {{ end }} >>
+                    </a>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+{{ end }}

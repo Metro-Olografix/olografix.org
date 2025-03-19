@@ -1,0 +1,135 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Metro Olografix//Events Calendar//IT
+METHOD:PUBLISH
+NAME:Eventi Metro Olografix
+X-WR-CALNAME:Eventi Metro Olografix
+BEGIN:VEVENT
+SUMMARY:MOCA 2004
+DTSTART:20040820T000000
+DTEND:20040821T000000
+DTSTAMP:20250319T221805Z
+UID:moca-2004@olografix.org
+DESCRIPTION:$ Id: MOCA\, v 1.0 12/08/2004 14:56 nk Exp $\n\nSito dell'even
+ to: https://moca2004.olografix.org/
+ORGANIZER:MAILTO:info@olografix.org
+URL:https://moca2004.olografix.org/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:CYBER-FREEDOM
+DTSTART:20050703T000000
+DTEND:20050704T000000
+DTSTAMP:20250319T221805Z
+UID:cyber-freedom@olografix.org
+DESCRIPTION:resistenza culturale contro la censura\n\nSito dell'evento: ht
+ tps://cyberfreedom.olografix.org/
+ORGANIZER:MAILTO:info@olografix.org
+URL:https://cyberfreedom.olografix.org/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:MOCA 2008
+DTSTART:20080821T000000
+DTEND:20080822T000000
+DTSTAMP:20250319T221805Z
+UID:moca-2008@olografix.org
+DESCRIPTION:Un sogno che si realizza.\n\nSito dell'evento: https://moca200
+ 8.olografix.org/
+ORGANIZER:MAILTO:info@olografix.org
+URL:https://moca2008.olografix.org/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:MOCA 2012
+DTSTART:20120824T000000
+DTEND:20120825T000000
+DTSTAMP:20250319T221805Z
+UID:moca-2012@olografix.org
+DESCRIPTION:Until the End of the World!\n\nSito dell'evento: https://moca2
+ 012.olografix.org/
+ORGANIZER:MAILTO:info@olografix.org
+URL:https://moca2012.olografix.org/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:MO20
+DTSTART:20141206T000000
+DTEND:20141207T000000
+DTSTAMP:20250319T221805Z
+UID:mo20@olografix.org
+DESCRIPTION:20 Years of Hacking Culture\n\nSito dell'evento: https://mo20.
+ olografix.org/
+ORGANIZER:MAILTO:info@olografix.org
+URL:https://mo20.olografix.org/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:MOCA 2016
+DTSTART:20160819T000000
+DTEND:20160820T000000
+DTSTAMP:20250319T221805Z
+UID:moca-2016@olografix.org
+DESCRIPTION:Perfectly Imperfect\n\nSito dell'evento: https://moca2016.olog
+ rafix.org/it/moca/
+ORGANIZER:MAILTO:info@olografix.org
+URL:https://moca2016.olografix.org/it/moca/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:MOCA 2024
+DTSTART:20240913T000000
+DTEND:20240914T000000
+DTSTAMP:20250319T221805Z
+UID:moca-2024@olografix.org
+DESCRIPTION:Lo storico hacker camp italiano è Back to the r00t\n\nBenvenu
+ ti al MOCA2024\, un evento che celebra tre decenni di impegno\, innovazion
+ e e comunità nel panorama hacker italiano.\n\nQuest'anno\, dal 13 al 15 s
+ ettembre\, ci riuniremo per sottolineare il ruolo fondamentale delle commu
+ nity hacker italiane nella promozione di una cultura digitale etica\, aper
+ ta e collaborativa. MOCA2024 sarà un'occasione unica per connettersi\, co
+ ndividere conoscenze e scoprire le ultime innovazioni nel campo della sicu
+ rezza informatica\, della programmazione e del digital activism.\n\nMaggio
+ ri informazioni: https://moca.camp
+ORGANIZER:MAILTO:info@olografix.org
+URL:https://moca.camp
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Radiofrequenze a raggi X - Parte 1
+DTSTART:20250325T210000
+DTEND:20250325T230000
+DTSTAMP:20250319T221805Z
+UID:radiofrequenze-a-raggi-x---parte-1@olografix.org
+DESCRIPTION:Indossiamo gli occhiali speciali e vediamo i segnali invisibil
+ i. Con Sebastiano Militti e Normando Marcolongo\n\nPercorso teorico-pratic
+ o per comprendere come sia possibile veicolare l'informazione sulle onde r
+ adio. La storia parte dalla telegrafia e arriva fino alle modulazioni digi
+ tali o dove si vuole arrivare.\n\n**Materiale necessario** (tutto di mia p
+ roprietà):\n\n- Ricetrasmettitori di vario tipo\n- Anal-izzatore di spett
+ ro\n- Laptop per eventualità\n\n**Contenuto del workshop**\n\n- Teoria su
+ lla propagazione dei segnali\n- Breve storia sulle telecomunicazioni\n- Pe
+ rché occorre "modulare"\n- Telegrafia\n- Modulazione di ampiezza (AM) e r
+ elativi problemi di efficienza\n- Modulazioni di frequenza (FM)\n- Modulaz
+ ioni digitali (FSK\, PSK\, QAM)\n- Esercitazioni pratiche di radiofrequenz
+ a\n\n**Durata**: 2 ore
+LOCATION:Sede Metro Olografix - Viale Marconi 278/1\, Pescara
+ORGANIZER:MAILTO:info@olografix.org
+URL:https://www.openstreetmap.org/node/12539021893
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Radiofrequenze a raggi X - Parte 2
+DTSTART:20250327T210000
+DTEND:20250327T230000
+DTSTAMP:20250319T221805Z
+UID:radiofrequenze-a-raggi-x---parte-2@olografix.org
+DESCRIPTION:Indossiamo gli occhiali speciali e vediamo i segnali invisibil
+ i. Con Sebastiano Militti e Normando Marcolongo\n\nPercorso teorico-pratic
+ o per comprendere come sia possibile veicolare l'informazione sulle onde r
+ adio. La storia parte dalla telegrafia e arriva fino alle modulazioni digi
+ tali o dove si vuole arrivare.\n\n**Materiale necessario** (tutto di mia p
+ roprietà):\n\n- Ricetrasmettitori di vario tipo\n- Anal-izzatore di spett
+ ro\n- Laptop per eventualità\n\n**Contenuto del workshop**\n\n- Teoria su
+ lla propagazione dei segnali\n- Breve storia sulle telecomunicazioni\n- Pe
+ rché occorre "modulare"\n- Telegrafia\n- Modulazione di ampiezza (AM) e r
+ elativi problemi di efficienza\n- Modulazioni di frequenza (FM)\n- Modulaz
+ ioni digitali (FSK\, PSK\, QAM)\n- Esercitazioni pratiche di radiofrequenz
+ a\n\n**Durata**: 2 ore
+LOCATION:Sede Metro Olografix - Viale Marconi 278/1\, Pescara
+ORGANIZER:MAILTO:info@olografix.org
+URL:https://www.openstreetmap.org/node/12539021893
+END:VEVENT
+END:VCALENDAR

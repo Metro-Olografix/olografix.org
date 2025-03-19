@@ -1,0 +1,90 @@
+{{ define "main" }}
+
+{{ if and (.Params.externalUrl) (.Params.forceRedirect | default true) }}
+<meta http-equiv="refresh" content="0; url={{ .Params.externalUrl }}" />
+{{ end }}
+
+<article>
+    <h1 class="text-4xl font-bold mb-2 text-primary-dark">{{ .Title }}</h1>
+    
+    {{ with .Params.subtitle }}
+    <h2 class="text-xl mb-4 text-primary-dark">{{ . }}</h2>
+    {{ end }}
+    
+    <div class="bg-white p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] mb-6">
+        <!-- Event details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <!-- Date information -->
+            <div class="flex items-start">
+                <i class="far fa-calendar-alt text-xl text-accent mt-1 mr-3"></i>
+                <div>
+                    <h3 class="font-bold text-lg">{{ T "dateLabel" | default "Date" }}</h3>
+                    <p>
+                        {{ time.AsTime .Date | time.Format "02 January 2006" }}
+                        <!-- Show time if it's not 00:00 -->
+                        {{ if ne (.Date.Format "15:04") "00:00" }}
+                        <span>{{ .Date.Format "15:04" }}</span>
+                        {{ end }}
+                        
+                        {{ with .Params.endDate }}
+                        - {{ time.AsTime . | time.Format "02 January 2006" }}
+                        <!-- Show end time if it's not 00:00 -->
+                        {{ if ne ((time.AsTime .).Format "15:04") "00:00" }}
+                        <span>{{ (time.AsTime .).Format "15:04" }}</span>
+                        {{ end }}
+                        {{ end }}
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Recurrence -->
+            {{ with .Params.recurrencePattern }}
+            <div class="flex items-start">
+                <i class="fas fa-sync-alt text-xl text-accent mt-1 mr-3"></i>
+                <div>
+                    <h3 class="font-bold text-lg">{{ T "recurrenceLabel" | default "Recurrence" }}</h3>
+                    <p>{{ . }}</p>
+                </div>
+            </div>
+            {{ end }}
+            
+            <!-- Location -->
+            {{ with .Params.location }}
+            <div class="flex items-start">
+                <i class="fas fa-map-marker-alt text-xl text-accent mt-1 mr-3"></i>
+                <div>
+                    <h3 class="font-bold text-lg">{{ T "locationLabel" | default "Location" }}</h3>
+                    <p>
+                        {{ if $.Params.locationUrl }}
+                        <a href="{{ $.Params.locationUrl }}" target="_blank" rel="noopener" class="hover:underline text-accent">{{ . }}</a>
+                        {{ else }}
+                        {{ . }}
+                        {{ end }}
+                    </p>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+        
+        <!-- Content -->
+        <div class="text-justify mb-6">
+            {{ .Content }}
+        </div>
+        
+        <!-- External URLs -->
+        <div class="flex flex-wrap gap-4">
+            {{ with .Params.externalUrl }}
+            <a href="{{ . }}" class="bg-accent text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">
+                {{ T "visitEventSite" | default "Visit event website" }} →
+            </a>
+            {{ end }}
+            
+            {{ with .Params.footerUrl }}
+            <a href="{{ . }}" class="bg-accent text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">
+                {{ T "moreInfo" | default "More information" }} →
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</article>
+{{ end }}

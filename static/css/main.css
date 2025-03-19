@@ -86,7 +86,18 @@ body {
 }
 
 .badge {
-  font-size: 12px; background-color: white; border: 1px solid #666666; border-radius: 4px; padding: 2px 8px; box-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+  font-size: 12px; 
+  background-color: white; 
+  border: 1px solid #666666; 
+  border-radius: 4px; 
+  padding: 2px 8px; 
+  box-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+}
+
+.badge-upcoming {
+  background-color: #10B981; /* Green */
+  color: white;
+  border-color: #059669;
 }
 
 #headquarterStatusBadge {
