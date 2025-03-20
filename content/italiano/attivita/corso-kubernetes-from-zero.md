@@ -1,8 +1,8 @@
 ---
 title: "Corso Teorico: Kubernetes from Zero"
 subtitle: "Introduzione al mondo di Kubernetes, partendo dalla sua storia e dalle origini legate a Docker. Con Matteo Antonio Augelli"
-date: "2025-04-05T21:00:00"
-endDate: "2025-04-05T23:00:00"
+date: "2025-04-05T18:00:00"
+endDate: "2025-04-05T20:00:00"
 recurring: false
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
