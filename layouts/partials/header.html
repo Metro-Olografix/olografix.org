@@ -6,7 +6,7 @@
           {{ range .Site.Menus.main }}
           {{ if .Params.fullwidthVisible | default true }}
           <a href="{{ .URL | relLangURL }}"
-            class="text-white hover:underline transition duration-200 {{ if eq .Params.rainbowEffect true }}rainbow-text{{ end }} {{ if eq $.RelPermalink .URL }}font-bold{{ end }}">
+            class="text-white hover:underline transition duration-200 {{ if eq .Params.rainbowEffect true }}rainbow-text{{ end }} {{ if or (eq $.RelPermalink .URL) (and (hasPrefix $.RelPermalink .URL) (ne .URL "/")) }}font-bold{{ end }}">
             {{ .Name }}{{ if eq .Params.external true }}↗{{ end }}
           </a>
           {{ end }}
