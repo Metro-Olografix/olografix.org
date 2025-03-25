@@ -29,7 +29,18 @@ defaultContentLanguageInSubdir = false
       associazione = "association/:slug"
     [languages.en.params]
       description = "Metro Olografix is an association founded in 1994 in Pescara that embraces free digital culture, established to share and spread a passion for cybersecurity, digital rights and hacker creativity."
-
+  [languages.es]
+    languageCode = 'es-VE'
+    languageName = 'ES'
+    title = 'Metro Olografix'
+    contentDir = "content/spanish"
+    weight = 2
+    [languages.es.permalinks]
+      progetti = "projects/:slug"
+      attivita = "activities/:slug"
+      associazione = "association/:slug"
+    [languages.es.params]
+      description = "Metro Olografix es una asociacion fundada en el 1994 en Pescara que abraza la cultura digital libre, establecida para compartir y difundir una pasion por la cyberseguridad, derechos digitales y creatividad hacker."
 [markup.goldmark.renderer]
   unsafe = true
 

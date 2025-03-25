@@ -1,0 +1,34 @@
+[[main]]
+    name = "Home"
+    pageRef = "/"
+    weight = 1
+[[main]]
+    name = "La asociación"
+    pageRef = "/associazione/"
+    weight = 2
+[[main]]
+    name = "Actividades"
+    pageRef = "/attivita/"
+    weight = 3
+[[main]]
+    name = "Proyectos"
+    pageRef = "/progetti/"
+    weight = 4
+[[main]]
+    name = "Fotogaleria"
+    pageRef = "/photogallery/"
+    weight = 5
+[[main]]
+    name = "Asociate"
+    url = "https://associati.olografix.org"
+    weight = 6
+    [main.params]
+        external = true
+        rainbowEffect = true
+[[main]]
+    name = "Visita el viejo sitio"
+    url = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
+    weight = 7
+    [main.params]
+        fullwidthVisible = false
+        external = true
