@@ -1,5 +1,5 @@
 ---
-title: "Activities"
+title: "Actividades"
 slug: "activities"
-url: "/en/activities/"
+url: "/es/activities/"
 ---
