@@ -67,8 +67,8 @@
         </div>
         
         <!-- Content -->
-        <div class="text-justify mb-6">
-            {{ .Content }}
+        <div class="text-justify mb-6 prose">
+            {{ .Content | safeHTML }}
         </div>
         
         <!-- External URLs -->

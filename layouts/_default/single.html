@@ -9,7 +9,7 @@
     <h2 class="text-xl mb-4 text-primary-dark">{{ .Params.subtitle }}</h2>
 
     {{ if .Params.hasTOC | default false}}
-    <div class="bg-white my-4 p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)]">
+    <div class="bg-white my-4 p-6 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] prose">
         {{ .TableOfContents }}
     </div>
     {{ end }}
