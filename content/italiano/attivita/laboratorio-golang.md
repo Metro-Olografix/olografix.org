@@ -33,6 +33,7 @@ Il laboratorio su Golang si pone come un momento di apprendimento collettivo, do
 **Quando**: ogni due settimane il mercoledì dalle 18, a partire dal 16 aprile
 
 **Durata**: circa 2 ore
+
 **Attenzione**, il laboratorio è gratuito ma se vuoi e ne hai la possibilità puoi lasciare un'offerta libera che aiuterà l'associazione ad auto-finanziarsi e organizzare altre attività :)
 
 ### Per partecipare, compila il form per favore
