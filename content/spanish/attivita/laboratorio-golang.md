@@ -3,7 +3,10 @@ title: "Taller de Golang"
 subtitle: "Golang sin adornos: código, café y paciencia colectiva para entender qué son estas goroutines"
 date: "2025-04-16T18:00:00"
 recurring: true
-recurrencePattern: "bi-weekly"
+recurrenceType: "bi-weekly"
+recurrenceDay: "wednesday"
+recurrenceCount: 10
+recurrencePattern: "Miércoles alternos a las 18:00"
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
