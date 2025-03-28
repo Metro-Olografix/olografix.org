@@ -1,7 +1,7 @@
 ---
 title: "Laboratorio su Golang"
 subtitle: "Golang senza fronzoli: codice, caffè e pazienza collettiva per capire cosa sono 'ste goroutine"
-date: "2025-04-16T18:00:00"
+date: "2025-04-16T18:30:00"
 recurring: true
 recurrencePattern: "bi-weekly"
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"

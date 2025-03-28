@@ -1,7 +1,7 @@
 ---
 title: "Golang Workshop"
 subtitle: "Golang without frills: code, coffee, and collective patience to understand what these goroutines are"
-date: "2025-04-16T18:00:00"
+date: "2025-04-16T18:30:00"
 recurring: true
 recurrencePattern: "bi-weekly"
 location: "Metro Olografix Headquarters - Viale Marconi 278/1, Pescara"
