@@ -8,7 +8,7 @@
         {{ end }}
         
         <!-- date and recurrence info if provided -->
-        {{ if or .date .recurrence }}
+        {{ if or .date .recurring }}
         <div class="text-sm text-gray-600 mb-3">
             {{ with .date }}
             <div class="flex items-center mb-1">
@@ -30,10 +30,26 @@
             </div>
             {{ end }}
             
-            {{ with .recurrence }}
+            {{ if .recurring }}
             <div class="flex items-center">
                 <i class="fas fa-sync-alt mr-2"></i>
-                <span>{{ . }}</span>
+                <span class="font-semibold">{{ .recurrencePattern | default (printf "%s" (humanize (.recurrenceType | default "weekly"))) }}</span>
+            </div>
+
+            <div class="recurring-event" 
+                data-start-date="{{ .date }}"
+                data-recurrence-type="{{ .recurrenceType | default "weekly" }}"
+                data-recurrence-pattern="{{ .recurrencePattern }}"
+                data-text-today="{{ T "today" | default "Today" }}"
+                data-text-tomorrow="{{ T "tomorrow" | default "Tomorrow" }}"
+                data-text-next="{{ T "next" | default "Next:" }}">
+                <div class="flex items-center mt-1">
+                    <i class="far fa-calendar-check mr-2"></i>
+                    <span class="next-date">
+                        <!-- This will be filled by JavaScript -->
+                        <span class="loading">{{ T "calculating" | default "Calculating next date..." }}</span>
+                    </span>
+                </div>
             </div>
             {{ end }}
             
@@ -53,6 +69,7 @@
         <!-- content -->
         <div class="prose text-justify">{{ .content | safeHTML }}</div>
     </div>
+
     <!-- footer -->
     {{ if $showFooter }}
     <div class="mt-auto pt-2 bg-gray-100 px-4 py-1 -mx-4 -mb-4 flex items-center justify-between">

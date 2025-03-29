@@ -4,14 +4,27 @@
 {{ $now := now }}
 
 <!-- Get all activities including future events -->
-{{ $allActivities := .Pages | intersect .Site.AllPages }}
+{{ $allActivities := where .Site.RegularPages "Type" "attivita" }}
 
-<!-- Split into upcoming and past activities -->
-{{ $upcomingActivities := where $allActivities "Date" "ge" $now }}
-{{ $pastActivities := where $allActivities "Date" "lt" $now }}
+<!-- Modified classification for upcoming/past events -->
+{{ $upcomingActivities := slice }}
+{{ $pastActivities := slice }}
 
-<!-- Sort upcoming activities by date (ascending - nearest first) -->
+<!-- Classify each activity -->
+{{ range $allActivities }}
+    {{ if or (ge .Date.Unix $now.Unix) (.Params.recurring) }}
+        <!-- Event is upcoming if: start date is in future OR it's recurring -->
+        {{ $upcomingActivities = $upcomingActivities | append . }}
+    {{ else }}
+        <!-- Event is past if: start date is in past AND it's not recurring -->
+        {{ $pastActivities = $pastActivities | append . }}
+    {{ end }}
+{{ end }}
+
+<!-- Sort upcoming events by date (ascending) -->
 {{ $upcomingActivities := sort $upcomingActivities ".Date" "asc" }}
+<!-- Sort past events by date (descending - most recent first) -->
+{{ $pastActivities := sort $pastActivities ".Date" "desc" }}
 
 <!-- First show upcoming events section if any exist -->
 {{ if $upcomingActivities }}
@@ -19,6 +32,7 @@
     <h2 class="text-2xl font-bold mb-6 bg-green-600 text-white p-2 rounded">{{ T "upcomingEvents" | default "Upcoming Events" }}</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Show all upcoming events -->
         {{ range $upcomingActivities }}
         <div class="bg-white p-4 border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)]">
             <h3 class="text-xl font-bold mb-2 text-accent">
@@ -50,10 +64,26 @@
                     {{ end }}
                 </div>
                 
-                {{ with .Params.recurrencePattern }}
+                <!-- Recurring indicator -->
+                {{ if .Params.recurring }}
                 <div class="flex items-center">
                     <i class="fas fa-sync-alt mr-2"></i>
-                    <span>{{ . }}</span>
+                    <span class="font-semibold">{{ .Params.recurrencePattern | default (printf "%s" (humanize (.Params.recurrenceType | default "weekly"))) }}</span>
+                </div>
+
+                <div class="recurring-event" 
+                    data-start-date="{{ .Date }}"
+                    data-recurrence-type="{{ .Params.recurrenceType | default "weekly" }}"
+                    data-recurrence-pattern="{{ .Params.recurrencePattern }}"
+                    data-text-today="{{ T "today" | default "Today" }}"
+                    data-text-tomorrow="{{ T "tomorrow" | default "Tomorrow" }}"
+                    data-text-next="{{ T "next" | default "Next:" }}">
+                    <div class="flex items-center mt-1">
+                        <i class="far fa-calendar-check mr-2"></i>
+                        <span class="next-date">
+                            <span class="loading">{{ T "calculating" | default "Calculating next date..." }}</span>
+                        </span>
+                    </div>
                 </div>
                 {{ end }}
                 
@@ -128,13 +158,6 @@
                             {{ end }}
                             {{ end }}
                         </div>
-                        
-                        {{ with .Params.recurrencePattern }}
-                        <div class="flex items-center">
-                            <i class="fas fa-sync-alt mr-2"></i>
-                            <span>{{ . }}</span>
-                        </div>
-                        {{ end }}
                         
                         {{ with .Params.location }}
                         <div class="flex items-center mt-1">
