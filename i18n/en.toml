@@ -24,3 +24,8 @@ visitEventSite = "Visit event website"
 moreInfo = "More information"
 upcomingEvents = "Upcoming Events"
 pastEvents = "Past Events"
+
+today = "Today"
+tomorrow = "Tomorrow"
+next = "Next:"
+calculating = "Calculating next date..."
