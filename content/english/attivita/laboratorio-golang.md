@@ -1,12 +1,12 @@
 ---
 title: "Golang Workshop"
-subtitle: "Golang without frills: code, coffee, and collective patience to understand what these goroutines are"
+subtitle: "Golang without frills: code, coffee, and patience to understand what these goroutines are"
 date: "2025-04-16T18:30:00"
 recurring: true
 recurrenceType: "bi-weekly"
 recurrenceDay: "wednesday"
 recurrenceCount: 10
-recurrencePattern: "Every other Wednesday at 6 p.m."
+recurrencePattern: "Every other Wednesday at 6:30 p.m."
 location: "Metro Olografix Headquarters - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
@@ -33,7 +33,7 @@ The Golang workshop is designed as a collective learning experience, where we'll
 - Developers with experience in other languages who want to expand their skills
 - Professionals interested in the performance and simplicity of Golang
 
-**When**: every two weeks on Wednesday from 6 PM, starting April 16
+**When**: every two weeks on Wednesday from 6:30 PM, starting April 16
 
 **Duration**: approximately 2 hours
 

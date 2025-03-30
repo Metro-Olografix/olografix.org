@@ -1,12 +1,12 @@
 ---
 title: "Laboratorio su Golang"
-subtitle: "Golang senza fronzoli: codice, caffè e pazienza collettiva per capire cosa sono 'ste goroutine"
+subtitle: "Golang senza fronzoli: codice, caffè e pazienza per capire cosa sono 'ste goroutine"
 date: "2025-04-16T18:30:00"
 recurring: true
 recurrenceType: "bi-weekly"
 recurrenceDay: "wednesday"
 recurrenceCount: 10
-recurrencePattern: "Ogni due mercoledì alle 18:00"
+recurrencePattern: "Ogni due mercoledì alle 18:30"
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
@@ -33,7 +33,7 @@ Il laboratorio su Golang si pone come un momento di apprendimento collettivo, do
 - Sviluppatorə con esperienza in altri linguaggi che vogliono espandere le proprie competenze
 - Professionistə interessatə alle performance e alla semplicità di Golang
 
-**Quando**: ogni due settimane il mercoledì dalle 18, a partire dal 16 aprile
+**Quando**: ogni due settimane il mercoledì dalle 18:30, a partire dal 16 aprile
 
 **Durata**: circa 2 ore
 

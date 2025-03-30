@@ -1,12 +1,12 @@
 ---
 title: "Taller de Golang"
-subtitle: "Golang sin adornos: código, café y paciencia colectiva para entender qué son estas goroutines"
+subtitle: "Golang sin adornos: código, café y paciencia para entender qué son estas goroutines"
 date: "2025-04-16T18:30:00"
 recurring: true
 recurrenceType: "bi-weekly"
 recurrenceDay: "wednesday"
 recurrenceCount: 10
-recurrencePattern: "Miércoles alternos a las 18:00"
+recurrencePattern: "Miércoles alternos a las 18:30"
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
@@ -33,7 +33,7 @@ El taller de Golang se presenta como un momento de aprendizaje colectivo, donde 
 - Desarrolladorxs con experiencia en otros lenguajes que quieran ampliar sus competencias
 - Profesionales interesadxs en el rendimiento y la simplicidad de Golang
 
-**Cuándo**: cada dos semanas los miércoles a partir de las 18h, comenzando el 16 de abril
+**Cuándo**: cada dos semanas los miércoles a partir de las 18:30, comenzando el 16 de abril
 
 **Duración**: aproximadamente 2 horas
 
