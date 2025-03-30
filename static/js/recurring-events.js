@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
       // Extract data from element attributes
       const startDate = new Date(element.dataset.startDate);
       const recurrenceType = element.dataset.recurrenceType || 'weekly';
-      const recurrencePattern = element.dataset.recurrencePattern || '';
-      
       // Localization strings
       const todayText = element.dataset.textToday || 'Today';
       const tomorrowText = element.dataset.textTomorrow || 'Tomorrow';
