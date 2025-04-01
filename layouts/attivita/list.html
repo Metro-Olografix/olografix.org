@@ -12,19 +12,19 @@
             </div>
         </div>
         <div class="flex flex-col md:flex-row gap-3">
-            <a href="{{ .Site.BaseURL }}calendar.ics" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 text-center flex items-center justify-center gap-2">
-                <i class="fas fa-download"></i>
-                <span>{{ T "downloadCalendar" | default "Download" }}</span>
-            </a>
-            <a href="webcal:{{ strings.TrimPrefix "https://" (strings.TrimPrefix "http://" .Site.BaseURL) }}calendar.ics" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 text-center flex items-center justify-center gap-2">
+            <a href="webcal:{{ strings.TrimPrefix "https://" (strings.TrimPrefix "http://" .Site.BaseURL) }}calendar.ics" class="bg-transparent border border-blue-500 text-primary-dark hover:text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 text-center flex items-center justify-center gap-2">
                 <i class="fas fa-calendar-plus"></i>
                 <span>{{ T "subscribeDirectly" | default "Subscribe" }}</span>
             </a>
-            <button id="copyButton" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 flex items-center justify-center gap-2">
+            <button id="copyButton" class="bg-transparent border border-blue-500 text-primary-dark hover:text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 flex items-center justify-center gap-2">
                 <i class="far fa-copy"></i>
                 <span>{{ T "copyUrl" | default "Copy URL" }}</span>
                 <input id="calendarUrl" type="text" value="{{ .Site.BaseURL }}calendar.ics" class="sr-only" aria-hidden="true" tabindex="-1" readonly />
             </button>
+            <a href="{{ .Site.BaseURL }}calendar.ics" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 text-center flex items-center justify-center gap-2">
+                <i class="fas fa-download"></i>
+                <span>{{ T "downloadCalendar" | default "Download" }}</span>
+            </a>
         </div>
     </div>
 </div>
