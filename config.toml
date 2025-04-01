@@ -98,3 +98,13 @@ target = ".*"
   from = '/**'
   status = 404
   to = '/404.html'
+
+[outputs]
+  home = ["HTML", "ICS"]
+
+[outputFormats]
+  [outputFormats.ICS]
+    mediaType = "text/calendar"
+    baseName = "calendar"
+    isPlainText = true
+    notAlternative = true

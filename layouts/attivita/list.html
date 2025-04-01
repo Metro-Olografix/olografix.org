@@ -1,6 +1,34 @@
 {{ define "main" }}
 <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
 
+<!-- Calendar subscription -->
+<div class="bg-white p-4 border-4 border-primary-dark mb-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+        <div class="flex items-center mb-4 md:mb-0">
+            <i class="far fa-calendar-alt text-2xl text-accent mr-3"></i>
+            <div>
+                <h3 class="text-xl font-bold text-accent">{{ T "subscribeToCalendar" | default "Subscribe to Calendar" }}</h3>
+                <p class="text-sm text-gray-600">{{ T "calendarDescription" | default "Add our events to your calendar app" }}</p>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-3">
+            <a href="{{ .Site.BaseURL }}calendar.ics" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 text-center flex items-center justify-center gap-2">
+                <i class="fas fa-download"></i>
+                <span>{{ T "downloadCalendar" | default "Download" }}</span>
+            </a>
+            <a href="webcal:{{ strings.TrimPrefix "https://" (strings.TrimPrefix "http://" .Site.BaseURL) }}calendar.ics" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 text-center flex items-center justify-center gap-2">
+                <i class="fas fa-calendar-plus"></i>
+                <span>{{ T "subscribeDirectly" | default "Subscribe" }}</span>
+            </a>
+            <button id="copyButton" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 flex items-center justify-center gap-2">
+                <i class="far fa-copy"></i>
+                <span>{{ T "copyUrl" | default "Copy URL" }}</span>
+                <input id="calendarUrl" type="text" value="{{ .Site.BaseURL }}calendar.ics" class="sr-only" aria-hidden="true" tabindex="-1" readonly />
+            </button>
+        </div>
+    </div>
+</div>
+
 {{ $now := now }}
 
 <!-- Get all activities including future events -->
@@ -188,5 +216,31 @@
     </div>
 </div>
 {{ end }}
+
+<!-- JavaScript for the copy button -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const copyButton = document.getElementById('copyButton');
+        const calendarUrl = document.getElementById('calendarUrl');
+        
+        // Copy URL to clipboard
+        copyButton.addEventListener('click', function() {
+            calendarUrl.select();
+            document.execCommand('copy');
+            
+            // Show copy confirmation
+            const originalIcon = copyButton.querySelector('i').className;
+            const originalText = copyButton.querySelector('span').textContent;
+            
+            copyButton.querySelector('i').className = 'fas fa-check';
+            copyButton.querySelector('span').textContent = '{{ T "copiedText" | default "Copied!" }}';
+            
+            setTimeout(function() {
+                copyButton.querySelector('i').className = originalIcon;
+                copyButton.querySelector('span').textContent = originalText;
+            }, 2000);
+        });
+    });
+</script>
 
 {{ end }}

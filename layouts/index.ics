@@ -1,0 +1,55 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Metro Olografix//Attivita//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Europe/Rome
+X-LIC-LOCATION:Europe/Rome
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+{{- range where .Site.RegularPages "Section" "attivita" }}
+BEGIN:VEVENT
+UID:{{ .Params.uid | default (printf "%s@olografix.org" .File.BaseFileName) }}
+DTSTAMP:{{ .Date.Format "20060102T150405Z" }}
+DTSTART;TZID=Europe/Rome:{{ time (.Params.date) | time.Format "20060102T150405" }}
+{{- if .Params.endDate }}
+DTEND;TZID=Europe/Rome:{{ time (.Params.endDate) | time.Format "20060102T150405" }}
+{{- end }}
+SUMMARY:{{ .Title }}
+{{- if .Params.location }}
+LOCATION:{{ .Params.location }}
+{{- end }}
+{{- if .Params.externalUrl }}
+URL:{{ .Params.externalUrl }}
+{{- end }}
+{{- if .Params.recurring }}
+  {{- $freq := "" -}}
+  {{- if eq .Params.recurrenceType "weekly" }}
+    {{- $freq = "WEEKLY" -}}
+  {{- else if eq .Params.recurrenceType "bi-weekly" }}
+    {{- $freq = "WEEKLY" -}}
+  {{- else if eq .Params.recurrenceType "monthly" }}
+    {{- $freq = "MONTHLY" -}}
+  {{- else if eq .Params.recurrenceType "yearly" }}
+    {{- $freq = "YEARLY" -}}
+  {{- end }}
+RRULE:FREQ={{ $freq }}{{ if eq .Params.recurrenceType "bi-weekly" }};INTERVAL=2{{ end }}{{ if .Params.recurrenceCount }};COUNT={{ .Params.recurrenceCount }}{{ else if .Params.recurrenceUntil }};UNTIL:{{ time (.Params.recurrenceUntil) | time.Format "20060102T150405Z" }}{{ end }}{{ if .Params.recurrenceDay }};BYDAY={{ upper (substr .Params.recurrenceDay 0 2) }}{{ end }}
+{{- end }}
+DESCRIPTION:https://olografix.org{{ .RelPermalink }}
+END:VEVENT
+{{- end }}
+END:VCALENDAR
