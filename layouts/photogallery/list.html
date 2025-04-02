@@ -2,38 +2,41 @@
 <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
 
 {{ $pages := .Pages }}
-{{ $pagesWithWeight := where $pages "Params.year" "!=" nil }}
-{{ $pagesWithoutWeight := where $pages "Params.year" "=" nil }}
+{{ $pagesWithYear := where $pages "Params.year" "!=" nil }}
+{{ $pagesWithoutYear := where $pages "Params.year" "=" nil }}
 
-<!-- Pagine con weight -->
-{{ if $pagesWithWeight }}
-    {{ $grouped := $pagesWithWeight.GroupByParam "year" }}
+<!-- Pages with year - grouped display -->
+{{ if $pagesWithYear }}
+    {{ $grouped := $pagesWithYear.GroupByParam "year" }}
     <div class="space-y-8">
         {{ range $grouped.Reverse }}
-        <div class="weight-group">
-            <button 
-                onclick="toggleGroup('weight-{{ .Key }}')"
-                class="w-full text-left p-4">
-                <h2 class="text-2xl font-bold text-accent">
-                    >> {{ .Key }}
-                    <span class="text-sm text-gray-600">
-                        ({{ len .Pages }} album)
-                    </span>
-                </h2>
-            </button>
-            <div id="weight-{{ .Key }}" class="hidden mt-4 ml-4 space-y-4">
+        <div class="weight-group mb-6">
+            <h2 class="text-2xl font-bold mb-4 bg-gray-200 p-2 rounded">{{ .Key }}</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {{ range sort .Pages "Title" "asc" }}
-                <article class="ml-4">
-                    <h3 class="text-xl">
-                        <a href="{{ .RelPermalink | relLangURL }}" 
-                           class="text-primary-dark hover:text-accent hover:underline transition-colors">
-                            >> {{ .Title }}
-                        </a>
-                    </h3>
-                    {{ with .Description }}
-                    <p class="text-gray-600 mt-1">{{ . }}</p>
+                    <!-- Create custom content for nested albums -->
+                    {{ $cardContent := .Description }}
+                    {{ if eq .Params.layout "list" }}
+                        {{ $nestedContent := .Description }}
+                        {{ $nestedContent = printf "%s<div class='mt-3 border-t border-gray-200 pt-3'><p class='text-sm font-semibold mb-2'>Sub-albums:</p><ul class='space-y-1 pl-4'>" $nestedContent }}
+                        
+                        {{ range .Pages }}
+                            {{ $nestedContent = printf "%s<li><a href='%s' class='text-accent hover:underline'>>> %s</a></li>" $nestedContent (.RelPermalink | relLangURL) .Title }}
+                        {{ end }}
+                        
+                        {{ $nestedContent = printf "%s</ul></div>" $nestedContent }}
+                        {{ $cardContent = $nestedContent }}
                     {{ end }}
-                </article>
+                
+                    <!-- Use card partial -->
+                    {{ partial "card.html" (dict
+                        "title" .Title
+                        "content" $cardContent
+                        "goToLink" (.RelPermalink | relLangURL)
+                        "goToText" (T "learnMoreText")
+                        "withShadow" true
+                        "fullHeight" true) }}
                 {{ end }}
             </div>
         </div>
@@ -41,38 +44,44 @@
     </div>
 {{ end }}
 
-<!-- Pagine senza weight (lista semplice ordinata alfabeticamente) -->
-{{ if $pagesWithoutWeight }}
-    <div class="space-y-4 mt-8">
-        {{ range sort $pagesWithoutWeight "Title" "asc" }}
-        <article class="ml-4">
-            <h3 class="text-xl">
-                <a href="{{ .RelPermalink | relLangURL }}" 
-                   class="text-primary-dark hover:text-accent hover:underline transition-colors">
-                    >> {{ .Title }}
-                </a>
-            </h3>
-            {{ with .Description }}
-            <p class="text-gray-600 mt-1">{{ . }}</p>
+<!-- Pages without year (simple list) -->
+{{ if $pagesWithoutYear }}
+    <div class="space-y-6 mb-6">
+        <h2 class="text-xl font-bold mb-4">Other Albums</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {{ range sort $pagesWithoutYear "Title" "asc" }}
+                <!-- Create custom content for nested albums -->
+                {{ $cardContent := .Description }}
+                {{ if eq .Params.layout "list" }}
+                    {{ $nestedContent := .Description }}
+                    {{ $nestedContent = printf "%s<div class='mt-3 border-t border-gray-200 pt-3'><p class='text-sm font-semibold mb-2'>Sub-albums:</p><ul class='space-y-1 pl-4'>" $nestedContent }}
+                    
+                    {{ range .Pages }}
+                        {{ $nestedContent = printf "%s<li><a href='%s' class='text-accent hover:underline'>>> %s</a></li>" $nestedContent (.RelPermalink | relLangURL) .Title }}
+                    {{ end }}
+                    
+                    {{ $nestedContent = printf "%s</ul></div>" $nestedContent }}
+                    {{ $cardContent = $nestedContent }}
+                {{ end }}
+            
+                <!-- Use card partial -->
+                {{ partial "card.html" (dict
+                    "title" .Title
+                    "content" $cardContent
+                    "goToLink" (.RelPermalink | relLangURL)
+                    "goToText" (T "learnMoreText")
+                    "withShadow" true
+                    "fullHeight" true) }}
             {{ end }}
-        </article>
-        {{ end }}
+        </div>
     </div>
 {{ end }}
 
-<!-- Messaggio se non ci sono pagine -->
+<!-- Message if no pages -->
 {{ if not $pages }}
-    <p>Non ci sono ancora album in questa sezione.</p>
+    {{ partial "card.html" (dict
+        "content" "Non ci sono ancora album in questa sezione."
+        "withShadow" true) }}
 {{ end }}
-
-<script>
-function toggleGroup(groupId) {
-    const group = document.getElementById(groupId);
-    if (group.classList.contains('hidden')) {
-        group.classList.remove('hidden');
-    } else {
-        group.classList.add('hidden');
-    }
-}
-</script>
 {{ end }}
