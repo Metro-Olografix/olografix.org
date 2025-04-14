@@ -32,3 +32,7 @@
     [main.params]
         fullwidthVisible = false
         external = true
+[[main.projects]]
+    name = "Workshops"
+    pageRef = "/progetti/workshops/"
+    weight = 10

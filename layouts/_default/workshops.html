@@ -1,0 +1,308 @@
+{{ define "main" }}
+<article>
+    <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
+    {{ partial "card.html" (dict
+        "content" .Content
+        "withShadow" true ) }}
+</article>
+
+<article class="mt-8">
+    <!-- Container for the two workshop sections -->
+    <div id="workshops-container" class="space-y-16">
+        <!-- Planned workshops section -->
+        <div id="planned-workshops">
+            <h2 class="text-3xl font-bold mb-6 text-accent">{{ T "plannedWorkshops" | default "Planned Workshops" }}</h2>
+            <div id="planned-workshops-list" class="space-y-6">
+                <!-- Will be populated by JavaScript -->
+                <p id="no-planned-workshops" class="hidden italic text-gray-500">{{ T "noPlannedWorkshops" | default "No upcoming workshops scheduled at the moment." }}</p>
+            </div>
+        </div>
+
+        <!-- Past workshops section -->
+        <div id="past-workshops">
+            <h2 class="text-3xl font-bold mb-6 text-accent">{{ T "pastWorkshops" | default "Past Workshops" }}</h2>
+            <div id="past-workshops-list" class="space-y-6">
+                <!-- Will be populated by JavaScript -->
+                <p id="no-past-workshops" class="hidden italic text-gray-500">{{ T "noPastWorkshops" | default "No past workshops to display." }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Original workshops data -->
+    <div id="original-workshops" class="hidden">
+        {{ $workshopPages := where (where .Site.RegularPages "Section" "progetti") "Layout" "eq" "workshop" }}
+        {{ $now := now }}
+        
+        {{ range $workshopPages }}
+            {{ $title := .Title }}
+            {{ with .Params.nickname }}
+                {{ $title = printf "%s \"%s\"" $title . }}
+            {{ end }}
+            
+            {{ $content := "" }}
+            {{ with .Params.abstract }}
+                {{ $content = . }}
+            {{ end }}
+            
+            {{ $details := "" }}
+            
+            <!-- Use event_date if available, fallback to .Date if needed -->
+            {{ $eventDate := "" }}
+            {{ if isset .Params "event_date" }}
+                {{ $eventDate = .Params.event_date }}
+            {{ else }}
+                {{ $eventDate = .Date }}
+            {{ end }}
+            
+            <!-- Format the event date -->
+            {{ $formattedDate := dateFormat "January 2, 2006" $eventDate }}
+            {{ $isoDate := dateFormat "2006-01-02" $eventDate }}
+            
+            {{ $details = printf "<strong>%s:</strong> %s<br>" (T "date") $formattedDate }}
+            
+            {{ with .Params.duration }}
+                {{ $details = printf "%s<strong>%s:</strong> %s<br>" $details (T "duration") . }}
+            {{ end }}
+            
+            {{ with .Params.instructor }}
+                {{ $details = printf "%s<strong>%s:</strong> %s<br>" $details (T "workshopInstructor") . }}
+            {{ end }}
+            
+            {{ $tagsHtml := "" }}
+            {{ with .Params.tags }}
+                {{ $tagsHtml = "<div class='mt-3 flex flex-wrap'>" }}
+                {{ range . }}
+                    {{ $tagsHtml = printf "%s<span class='inline-block bg-gray-100 px-2 py-1 text-xs rounded-full mr-2 mb-1'>#%s</span>" $tagsHtml . }}
+                {{ end }}
+                {{ $tagsHtml = printf "%s</div>" $tagsHtml }}
+            {{ end }}
+            
+            {{ $finalContent := printf "%s<p class='mt-3 mb-4'>%s</p>%s" $details $content $tagsHtml }}
+
+            <div 
+                class="workshop-data" 
+                data-title="{{ $title }}"
+                data-content="{{ $finalContent }}"
+                data-gotolink="{{ .RelPermalink }}"
+                data-gototext="{{ T "learnMoreText" }}"
+                data-badge="{{ .Params.level }}"
+                data-date="{{ $isoDate }}"
+            ></div>
+        {{ end }}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all workshop data elements
+            const workshopDataElements = document.querySelectorAll('#original-workshops .workshop-data');
+            
+            // Get container elements
+            const plannedWorkshopsList = document.getElementById('planned-workshops-list');
+            const pastWorkshopsList = document.getElementById('past-workshops-list');
+            const noPlannedMsg = document.getElementById('no-planned-workshops');
+            const noPastMsg = document.getElementById('no-past-workshops');
+            
+            // Current date at midnight (to compare with workshop dates)
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // Keep track of counts
+            let plannedCount = 0;
+            let pastCount = 0;
+            
+            // Process each workshop
+            workshopDataElements.forEach(function(workshopData) {
+                // Get workshop date from dataset
+                const workshopDateStr = workshopData.dataset.date;
+                const workshopDate = new Date(workshopDateStr + 'T00:00:00');
+                
+                // Dynamic comparison - workshop is in future if its date is after today
+                const isFuture = workshopDate >= today;
+                
+                // Create workshop card
+                const card = createWorkshopCard(
+                    workshopData.dataset.title,
+                    workshopData.dataset.content,
+                    workshopData.dataset.gotolink,
+                    workshopData.dataset.gototext,
+                    workshopData.dataset.badge,
+                    workshopDateStr
+                );
+                
+                // Add to appropriate list based on dynamic comparison
+                if (isFuture) {
+                    plannedWorkshopsList.appendChild(card);
+                    plannedCount++;
+                } else {
+                    pastWorkshopsList.appendChild(card);
+                    pastCount++;
+                }
+            });
+            
+            // Show appropriate messages if needed
+            if (plannedCount === 0) {
+                noPlannedMsg.classList.remove('hidden');
+            }
+            
+            if (pastCount === 0) {
+                noPastMsg.classList.remove('hidden');
+            }
+            
+            // Add event listeners to calendar buttons
+            document.querySelectorAll('.add-to-calendar').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const workshopDateStr = this.getAttribute('data-workshop-date');
+                    const workshopDate = new Date(workshopDateStr + 'T14:00:00');
+                    
+                    // Format dates for ICS
+                    const startDate = formatDateForICS(workshopDate);
+                    
+                    // End time (add 3 hours to start time)
+                    const endDate = formatDateForICS(new Date(workshopDate.getTime() + 3 * 60 * 60 * 1000));
+                    
+                    // Get workshop title from closest card
+                    const card = this.closest('.workshop-card');
+                    const title = card.querySelector('h3')?.textContent || 'Workshop';
+                    const instructor = card.textContent.match(/Instructor: ([^\n<]+)/) ? card.textContent.match(/Instructor: ([^\n<]+)/)[1] : '';
+                    
+                    // Create ICS file
+                    const icsContent = [
+                        'BEGIN:VCALENDAR',
+                        'VERSION:2.0',
+                        'BEGIN:VEVENT',
+                        `DTSTART:${startDate}`,
+                        `DTEND:${endDate}`,
+                        `SUMMARY:${title}`,
+                        `DESCRIPTION:Workshop at Metro Olografix${instructor ? ' with ' + instructor : ''}`,
+                        'LOCATION:Metro Olografix, Viale Marconi 278/1, Pescara',
+                        'END:VEVENT',
+                        'END:VCALENDAR'
+                    ].join('\n');
+                    
+                    // Create download link
+                    const link = document.createElement('a');
+                    link.href = 'data:text/calendar;charset=utf8,' + encodeURIComponent(icsContent);
+                    link.download = 'workshop.ics';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+            });
+        });
+        
+        // Helper function to format date for ICS file
+        function formatDateForICS(date) {
+            return date.getUTCFullYear() +
+                   padZero(date.getUTCMonth() + 1) +
+                   padZero(date.getUTCDate()) + 'T' +
+                   padZero(date.getUTCHours()) +
+                   padZero(date.getUTCMinutes()) +
+                   padZero(date.getUTCSeconds()) + 'Z';
+        }
+        
+        // Helper function to pad numbers with leading zeros
+        function padZero(num) {
+            return num.toString().padStart(2, '0');
+        }
+        
+        // Helper function to create workshop card
+        function createWorkshopCard(title, content, goToLink, goToText, badge, workshopDate) {
+            // Create container div
+            const card = document.createElement('div');
+            card.className = "workshop-card bg-white p-6 border-4 border-primary-dark w-full shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] relative";
+            
+            // Create main content section
+            const mainContent = document.createElement('div');
+            
+            // Add title if provided
+            if (title) {
+                const heading = document.createElement('h3');
+                heading.className = "text-2xl font-bold mb-4 text-accent";
+                heading.innerHTML = title;
+                mainContent.appendChild(heading);
+            }
+            
+            // Create two-column layout for content and button
+            const contentLayout = document.createElement('div');
+            contentLayout.className = "flex flex-col md:flex-row gap-6";
+            
+            // Add content column
+            const contentDiv = document.createElement('div');
+            contentDiv.className = "flex-grow";
+            contentDiv.innerHTML = content;
+            contentLayout.appendChild(contentDiv);
+            
+            // Add calendar button in second column for future workshops
+            if (new Date(workshopDate + 'T00:00:00') >= new Date()) {
+                const calendarButtonCol = document.createElement('div');
+                calendarButtonCol.className = "flex items-start";
+                
+                const calendarButton = document.createElement('a');
+                calendarButton.href = '#';
+                calendarButton.className = 'add-to-calendar bg-accent hover:bg-primary-dark text-white px-3 py-2 rounded transition-colors duration-300 flex items-center whitespace-nowrap';
+                calendarButton.setAttribute('data-workshop-date', workshopDate);
+                
+                const calendarIcon = document.createElement('span');
+                calendarIcon.className = "mr-2 ";
+                calendarIcon.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                `;
+                calendarButton.appendChild(calendarIcon);
+                
+                const buttonText = document.createTextNode("{{ T "addToCalendar" }}");
+                calendarButton.appendChild(buttonText);
+                
+                calendarButtonCol.appendChild(calendarButton);
+                contentLayout.appendChild(calendarButtonCol);
+            }
+            
+            mainContent.appendChild(contentLayout);
+            card.appendChild(mainContent);
+            
+            // Create footer
+            const footer = document.createElement('div');
+            footer.className = "mt-6 pt-3 border-t border-gray-200 flex items-center justify-between";
+            
+            // Add badge if provided
+            if (badge) {
+                const badgeSpan = document.createElement('span');
+                badgeSpan.className = "badge px-2 py-1 bg-gray-100 text-gray-800 text-sm rounded";
+                badgeSpan.textContent = badge;
+                footer.appendChild(badgeSpan);
+            } else {
+                const emptySpan = document.createElement('span');
+                footer.appendChild(emptySpan);
+            }
+            
+            // Add link if provided
+            if (goToLink) {
+                const link = document.createElement('a');
+                link.href = goToLink;
+                link.className = "text-sm text-accent hover:underline font-medium flex items-center";
+                
+                const linkText = document.createTextNode(goToText);
+                link.appendChild(linkText);
+                
+                const arrow = document.createElement('span');
+                arrow.className = "ml-1";
+                arrow.textContent = "→";
+                link.appendChild(arrow);
+                
+                footer.appendChild(link);
+            }
+            
+            // Add footer to card
+            card.appendChild(footer);
+            
+            return card;
+        }
+    </script>
+</article>
+{{ end }}
