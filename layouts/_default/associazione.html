@@ -30,14 +30,29 @@
     <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ T "boardText" }}</h1>
 
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center lg:justify-center">
-        {{ range .Site.Params.direttivo }}
-        {{ partial "card.html" (dict
-        "title" (printf "%s \"%s\"" .name .nickname)
-        "content" .role
-        "goToLink" (printf "mailto:%s@olografix.org" .nickname)
-        "goToText" "email") }}
+        {{ $boardMembers := .Site.Params.direttivo }}
+        {{ $shuffled := shuffle $boardMembers }}
+        {{ range $shuffled }}
+            {{ $emailAddr := .nickname }}
+            {{ $lowercaseRole := lower .role }}
+
+            {{ if eq $lowercaseRole "presidente" }}
+                {{ $emailAddr = "presidente" }}
+            {{ else if eq $lowercaseRole "vice presidente" }}
+                {{ $emailAddr = "segretario" }}
+            {{ else if eq $lowercaseRole "tesoriere" }}
+                {{ $emailAddr = "tesoriere" }}
+            {{ end }}
+
+            {{ $roleKey := printf "role_%s" (replace $lowercaseRole " " "_") }}
+            {{ $translatedRole := T $roleKey }}
+
+            {{ partial "card.html" (dict
+            "title" (printf "%s \"%s\"" .name .nickname)
+            "content" $translatedRole
+            "goToLink" (printf "mailto:%s@olografix.org" $emailAddr)
+            "goToText" "email") }}
         {{ end }}
     </section>
 </article>
-
 {{ end }}

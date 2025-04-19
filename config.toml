@@ -78,11 +78,6 @@ target = ".*"
     name = "Lucia Zappacosta"
     nickname = "kundera"
     role = "consigliere"
-  
-  [[params.direttivo]]
-    name = "Irene Ragni"
-    nickname = "darklady"
-    role = "consigliere"
 
   [[params.direttivo]]
     name = "Stefano Chiccarelli"

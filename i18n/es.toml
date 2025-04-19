@@ -37,3 +37,8 @@ subscribeDirectly = "Suscribirse"
 copyUrl = "Copiar URL"
 copiedText = "¡Copiado!"
 androidSuggestion = "¿Usuario de Android? Es posible que necesites una aplicación externa, como Fossify Calendar, para suscribirte a calendarios."
+
+role_presidente = "Presidente"
+role_vice_presidente = "Vicepresidente"
+role_tesoriere = "Tesorero"
+role_consigliere = "Miembro del Consejo"
