@@ -3,7 +3,7 @@ title: "Associati"
 layout: single
 ---
 
-Se vuoi entrare entrare nel vivo dell'associazione Metro Olografix, o semplicemente sostenerla, puoi associarti online in 2 minuti:
+Se vuoi entrare nel vivo dell'associazione Metro Olografix, o semplicemente sostenerla, puoi associarti online in pochi minuti:
 
 - Riempi il modulo elettronico per l'iscrizione: <a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Compila qui</a>;
 
@@ -11,7 +11,7 @@ Se vuoi entrare entrare nel vivo dell'associazione Metro Olografix, o sempliceme
 
 I metodi di pagamento sono semplici:
 
-- mediante bonifico su conto corrente intestato ad Ass. Cult. Ricreativa “Metro Olografix”, IBAN `IT16W0335901600100000005051`.
+- con bonifico su conto corrente intestato ad Ass. Cult. Ricreativa “Metro Olografix”, IBAN `IT16W0335901600100000005051`.
 
 - Paypal all’indirizzo [info@olografix.org](https://www.paypal.com/paypalme/olografix) (se vi è possibile, aggiungete il costo della commissione in modo da non lasciarlo a carico di Metro Olografix)
 
