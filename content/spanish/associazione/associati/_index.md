@@ -3,11 +3,13 @@ title: "Asociate"
 layout: single
 ---
 
-Si quieres involucrarte con la asociación Metro Olografix, o simplemente apoyarla, puedes unirte en línea en 2 minutos:
+Si quieres involucrarte con la asociación Metro Olografix, o simplemente apoyarla, puedes unirte en línea en pocos minutos:
 
-- Completa el formulario electrónico de membresía: <a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Completa aquí</a>;
+- Completa el formulario electrónico de membresía:
 
-- Paga la cuota de membresía de 30 euros;
+<a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Completa aquí</a>
+
+- Paga la cuota de membresía de 30 euros
 
 Los métodos de pago son sencillos:
 

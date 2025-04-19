@@ -3,11 +3,13 @@ title: "Join us"
 layout: single
 ---
 
-If you want to get involved with the Metro Olografix association, or simply support it, you can join online in 2 minutes:
+If you want to get involved with the Metro Olografix association, or simply support it, you can join online in just a few minutes:
 
-- Fill out the electronic membership form: <a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Complete here</a>;
+- Fill out the electronic membership form:
 
-- Pay the membership fee of 30 euros;
+<a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Complete here</a>
+
+- Pay the membership fee of 30 euros
 
 The payment methods are simple:
 
