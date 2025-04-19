@@ -5,9 +5,11 @@ layout: single
 
 Se vuoi entrare nel vivo dell'associazione Metro Olografix, o semplicemente sostenerla, puoi associarti online in pochi minuti:
 
-- Riempi il modulo elettronico per l'iscrizione: <a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Compila qui</a>;
+- Riempi il modulo elettronico per l'iscrizione:
 
-- Paga la quota sociale di 30 euro;
+<a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Compila qui</a>
+
+- Paga la quota sociale di 30 euro
 
 I metodi di pagamento sono semplici:
 
