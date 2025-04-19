@@ -113,7 +113,8 @@
 
 <!-- Membership Banner -->
 <div class="bg-accent text-primary-light p-4 rounded-lg mb-4 mt-4">
-    <a href="https://associati.olografix.org" class="block text-center text-xl font-bold rainbow-text">
+    {{ $associati := .Site.GetPage "/associazione/associati" }}
+    <a href="{{ $associati.RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
         {{ T "membershipBanner" }}
     </a>
 </div>
