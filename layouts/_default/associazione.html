@@ -7,23 +7,23 @@
 </article>
 
 <div class="mt-8 flex max-w-full flex-row">
-    {{ with .GetPage "/associazione/statuto" }}
+    {{ with .Site.GetPage "/associazione/statuto" }}
     <div
-        class="flex-col w-full bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
+        class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
         <a href="{{ .RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
-            Statuto
+            {{ .Title }}
         </a>
     </div>
     {{ end }}
 
-    <!-- {{ with .GetPage "/associazione/atto-costitutivo" }}
+    {{ with .Site.GetPage "/associazione/associati" }}
     <div
         class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
         <a href="{{ .RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
-            Atto costitutivo
+            {{ .Title }}
         </a>
     </div>
-    {{ end }} -->
+    {{ end }}
 </div>
 
 <article>
