@@ -9,7 +9,7 @@ Se vuoi entrare nel vivo dell'associazione Metro Olografix, o semplicemente sost
 
 <a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Compila qui</a>
 
-- Paga la quota sociale di 30 euro
+- Versa la quota sociale di 30 euro
 
 I metodi di pagamento sono semplici:
 
