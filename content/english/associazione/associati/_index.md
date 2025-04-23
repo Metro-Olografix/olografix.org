@@ -24,3 +24,9 @@ Because you share the hacker spirit; because you like Metro Olografix's activiti
 As you can see, there are many reasons! **Additionally, as a member, it is your right to participate in assemblies and vote.**
 
 If you haven't already done so, take two minutes to read the association's statutes, particularly [Art. 5 - rights and duties of members](/associazione/statuto/#art-5--diritti-e-doveri-dei-soci).
+
+And on top of it all, with an extra contribution of **3 euros** you can receive your own physical **member card!**, depicted below.
+
+![Metro Olografix Card](/images/TesseraPropaganda.png)
+
+We don't do shipping, but if you can't come to the HQ to fetch it send us an email and we can figure something out!
