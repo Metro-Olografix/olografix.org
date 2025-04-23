@@ -24,3 +24,9 @@ Porque compartes el espíritu hacker; porque te gustan las actividades de Metro 
 ¡Como puedes ver, hay muchas razones! **Además, como miembro, es tu derecho participar en las asambleas y votar.**
 
 Si aún no lo has hecho, tómate dos minutos para leer los estatutos de la asociación, particularmente el [Art. 5 - derechos y deberes de los miembros](/associazione/statuto/#art-5--diritti-e-doveri-dei-soci).
+
+Si como no bastase, con una contribucion extra de **3 euros** puedes recibir tu propria **tarjeta socio** fisica!
+
+![Carta Metro Olografix](/images/TesseraPropaganda.png)
+
+No hacemos envios, pero si no puedes venir a la sede a agarrarla mandanos una mail y encontraremos una solucion!

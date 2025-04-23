@@ -24,3 +24,9 @@ Perchè condividi lo spirito hacker; perchè ti piacciono le attività della Met
 Come vedi i motivi sono tanti! **Inoltre come socia/o è un tuo diritto partecipare alle assemblee e votare.**
 
 Se non lo hai già fatto, prenditi due minuti per leggere lo statuto dell'associazione, in particolare l'[art. 5 - diritti e doveri dei soci](/associazione/statuto/#art-5--diritti-e-doveri-dei-soci).
+
+E come se non bastasse, con un contributo extra di **3 euro** si può ricevere la propria **tessera soci** fisica, raffigurata qui sotto!
+
+![Carta Metro Olografix](/images/TesseraPropaganda.png)
+
+Non effettuiamo spedizioni, ma se non potete venire in sede a prenderla inviateci una mail e troveremo una soluzione!
