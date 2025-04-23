@@ -18,7 +18,7 @@ None!
 - Some theory on IPv6, protocols, subnetting
 - Differences/innovations compared to IPv4
 - Implementation at the ISP level, prefix-delegation, IPoE, QiQ, etc.
-- Case 1: We'll activate IPv6 on the holographic mail server :)
-- Case 2: We'll activate IPv6 on the on-premises router!
+- Case 1: We'll activate IPv6 on the olografix mail server :)
+- Case 2: We'll activate IPv6 on the HQ's router!
 
 **Duration**: 2 hours

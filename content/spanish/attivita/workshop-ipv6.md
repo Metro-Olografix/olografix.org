@@ -18,7 +18,7 @@ Después de un breve paréntesis teórico sobre IPv6, exploraremos el aspecto de
 - Un poco de teoría sobre IPv6, protocolos, subnetting
 - Diferencias/novedades respecto a IPv4
 - Implementación a nivel ISP, prefix-delegation, IPoE, QiQ, etc.
-- Caso 1: ¡Activaremos IPv6 en el servidor de correo holográfico :)
+- Caso 1: ¡Activaremos IPv6 en el servidor de correo olografix :)
 - Caso 2: ¡Activaremos IPv6 en el router de la sede!
 
 **Duración**: 2 horas
