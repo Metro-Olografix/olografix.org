@@ -29,4 +29,4 @@ E come se non bastasse, con un contributo extra di **3 euro** si può ricevere l
 
 ![Carta Metro Olografix](/images/TesseraPropaganda.png)
 
-Non effettuiamo spedizioni, ma se non potete venire in sede a prenderla inviateci una mail e troveremo una soluzione
+Non effettuiamo spedizioni, ma se non potete venire in sede a prenderla inviateci una mail e troveremo una soluzione!
