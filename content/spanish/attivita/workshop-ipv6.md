@@ -1,5 +1,5 @@
 ---
-title: "Taller de IPv6"
+title: "¡El año de IPv6 en el escritorio!"
 subtitle: "Teoría e implementación práctica del protocolo IPv6: desde la red ISP hasta aplicaciones domésticas. Con Francesco 'sugo' Politi"
 date: "2025-06-13T19:00:00"
 endDate: "2025-06-13T21:00:00"

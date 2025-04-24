@@ -1,5 +1,5 @@
 ---
-title: "Workshop IPv6"
+title: "L'anno di IPv6 sul desktop!"
 subtitle: "Teoria e implementazione pratica del protocollo IPv6: dalla rete ISP alle applicazioni domestiche. Con Francesco 'sugo' Politi"
 date: "2025-06-13T19:00:00"
 endDate: "2025-06-13T21:00:00"

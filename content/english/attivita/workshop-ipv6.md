@@ -1,5 +1,5 @@
 ---
-title: "IPv6 Workshop"
+title: "The year of IPv6 on the desktop!"
 subtitle: "Theory and practical implementation of the IPv6 protocol: from ISP networks to home applications. With Francesco 'sugo' Politi"
 date: "2025-06-13T19:00:00"
 endDate: "2025-06-13T21:00:00"
