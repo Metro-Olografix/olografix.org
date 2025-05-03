@@ -9,7 +9,9 @@ Se vuoi entrare nel vivo dell'associazione Metro Olografix, o semplicemente sost
 
 <a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Compila qui</a>
 
-- Versa la quota sociale di 30 euro
+- Versa la quota sociale:
+    - Ordinaria: 30 euro
+    - Ridotta: 15 euro (riservata a Under 21, studentesse e studenti non lavoratrici o lavoratori)
 
 I metodi di pagamento sono semplici:
 
