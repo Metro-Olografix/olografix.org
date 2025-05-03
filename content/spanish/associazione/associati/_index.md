@@ -9,7 +9,9 @@ Si quieres involucrarte con la asociación Metro Olografix, o simplemente apoyar
 
 <a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Completa aquí</a>
 
-- Paga la cuota de membresía de 30 euros
+- Paga la cuota social:
+    - Ordinaria: 30 euros
+    - Reducida: 15 euros (reservada para menores de 21 años, estudiantes que no trabajan)
 
 Los métodos de pago son sencillos:
 

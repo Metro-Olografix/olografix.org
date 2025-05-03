@@ -9,7 +9,9 @@ If you want to get involved with the Metro Olografix association, or simply supp
 
 <a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Complete here</a>
 
-- Pay the membership fee of 30 euros
+- Pay the membership fee:
+    - Standard fee: 30 euro
+    - Reduced fee: 15 euro (reserved for those under 21, and students who are not workers)
 
 The payment methods are simple:
 
