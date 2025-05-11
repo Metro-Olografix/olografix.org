@@ -1,14 +1,13 @@
 ---
 title: "Bitcoin y la revolución del dinero"
 subtitle: "La historia del dinero, desde conchas hasta bitcoin: por qué bitcoin será el futuro de la moneda. Con Lorenzo Primiterra"
-date: "2025-05-23"
-endDate: "2025-05-23"
+date: "2025-05-23 21:00"
+endDate: "2025-05-23 23:00"
 recurring: false
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
 
-**HORARIO POR DEFINIR**
 
 ### **Descripción**  
 Un panorama sobre la historia del dinero, desde las primeras formas primitivas hasta llegar a bitcoin.

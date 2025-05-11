@@ -1,14 +1,13 @@
 ---
 title: "Bitcoin and the Money Revolution"
 subtitle: "The history of money, from shells to bitcoin: why bitcoin will be the future of currency. With Lorenzo Primiterra"
-date: "2025-05-23"
-endDate: "2025-05-23"
+date: "2025-05-23 21:00"
+endDate: "2025-05-23 23:00"
 recurring: false
 location: "Metro Olografix Headquarters - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
 
-**TIME TO BE DEFINED**
 
 ### **Description**  
 An overview of the history of money, from the first primitive forms to bitcoin.
