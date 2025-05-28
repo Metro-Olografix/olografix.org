@@ -22,3 +22,5 @@ Después de un breve paréntesis teórico sobre IPv6, exploraremos el aspecto de
 - Caso 2: ¡Activaremos IPv6 en el router de la sede!
 
 **Duración**: 2 horas
+
+**Costo**: Se requiere una contribución mínima de **5 euros** para la participación, esto nos ayuda a sostener las actividades de la asociación. Para los socios la participación es **gratuita**.

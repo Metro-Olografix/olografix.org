@@ -22,3 +22,5 @@ Nessuno!
 - Case 2: attiviamo IPv6 sul router in sede!
 
 **Durata**: 2 ore
+
+**Costo**: È richiesto un contributo minimo di **5 euro** per la partecipazione, questo ci aiuta a sostenere le attività dell'associazione. Per i soci la partecipazione è **gratuita**.

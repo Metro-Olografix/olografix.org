@@ -22,3 +22,5 @@ None!
 - Case 2: We'll activate IPv6 on the HQ's router!
 
 **Duration**: 2 hours
+
+**Cost**: A minimum contribution of **5 euros** is required for participation, this helps us support the association's activities. For members, participation is **free**.

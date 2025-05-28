@@ -18,6 +18,10 @@ The workshop's goal is to share which topics (and why they matter) a beginner sh
 
 **Duration: 2 hours**
 
+**Cost**: A minimum contribution of **5 euros** is required for participation, this helps us support the association's activities. For members, participation is **free**.
+
+---
+
 ### **Session 2: Introduction to malware analysis**
 **Afternoon - Time to be defined**
 
@@ -25,6 +29,8 @@ The workshop's goal is to share which topics (and why they matter) a beginner sh
 A client requests the analysis of an executable involved in an incident, presumably malware, responsible for encrypting company documents: in this context, we'll provide an overview of the tools that can help us, which techniques to use, and what information is useful to extract and then share internally and externally. Note: this workshop is an afternoon introduction for beginners - it's aimed at those who want to start getting their hands dirty and experimenting.
 
 **Duration: Afternoon**
+
+**Cost**: A minimum contribution of **5 euros** is required for participation, this helps us support the association's activities. For members, participation is **free**.
 
 ---
 

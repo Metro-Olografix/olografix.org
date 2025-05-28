@@ -18,6 +18,10 @@ L'obiettivo del workshop è di condividere quali sono gli argomenti (e il perch�
 
 **Durata: 2 ore**
 
+**Costo**: È richiesto un contributo minimo di **5 euro** per la partecipazione, questo ci aiuta a sostenere le attività dell'associazione. Per i soci la partecipazione è **gratuita**.
+
+---
+
 ### **Sessione 2: Introduzione alla malware analysis**
 **Pomeriggio - Orario da definire**
 
@@ -25,6 +29,8 @@ L'obiettivo del workshop è di condividere quali sono gli argomenti (e il perch�
 Viene richiesta dal cliente l'analisi di un eseguibile coinvolto in un incidente, presumibilmente un malware, responsabile di aver cifrato dei documenti aziendali: in questo contesto verrà fatta una panoramica di quali strumenti ci vengono in soccorso, quali tecniche utilizzare e quali informazioni è utile estrarre per poi condividerle internamente ed esternamente. Nota: questo workshop è un'introduzione, di un pomeriggio, per principianti - è rivolto quindi a chi vuole cominciare a sporcarsi le mani e sperimentare.
 
 **Durata: Pomeriggio**
+
+**Costo**: È richiesto un contributo minimo di **5 euro** per la partecipazione, questo ci aiuta a sostenere le attività dell'associazione. Per i soci la partecipazione è **gratuita**.
 
 ---
 

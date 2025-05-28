@@ -18,6 +18,10 @@ El objetivo del taller es compartir cuáles son los temas (y el porqué de ellos
 
 **Duración: 2 horas**
 
+**Costo**: Se requiere una contribución mínima de **5 euros** para la participación, esto nos ayuda a sostener las actividades de la asociación. Para los socios la participación es **gratuita**.
+
+---
+
 ### **Sesión 2: Introducción al análisis de malware**
 **Tarde - Horario por definir**
 
@@ -25,6 +29,8 @@ El objetivo del taller es compartir cuáles son los temas (y el porqué de ellos
 Un cliente solicita el análisis de un ejecutable involucrado en un incidente, presumiblemente malware, responsable de cifrar documentos de la empresa: en este contexto, se realizará una visión general de las herramientas que pueden ayudarnos, qué técnicas utilizar y qué información es útil extraer para luego compartirla interna y externamente. Nota: este taller es una introducción de una tarde para principiantes - está dirigido a aquellos que quieren comenzar a ensuciarse las manos y experimentar.
 
 **Duración: Tarde**
+
+**Costo**: Se requiere una contribución mínima de **5 euros** para la participación, esto nos ayuda a sostener las actividades de la asociación. Para los socios la participación es **gratuita**.
 
 ---
 
