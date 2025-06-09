@@ -1,8 +1,8 @@
 ---
 title: "Reverse Engineering Workshop: From Theory to Practice"
 subtitle: "A day dedicated to introducing reverse engineering and malware analysis for beginners"
-date: "2025-06-21"
-endDate: "2025-06-21"
+date: "2025-06-21T10:00:00"
+endDate: "2025-06-21T17:00:00"
 recurring: false
 location: "Metro Olografix Headquarters - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"

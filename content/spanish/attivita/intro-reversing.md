@@ -1,8 +1,8 @@
 ---
 title: "Taller de Ingeniería Inversa: De la Teoría a la Práctica"
 subtitle: "Un día dedicado a la introducción a la ingeniería inversa y al análisis de malware para principiantes"
-date: "2025-06-21"
-endDate: "2025-06-21"
+date: "2025-06-21T10:00:00"
+endDate: "2025-06-21T17:00:00"
 recurring: false
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
