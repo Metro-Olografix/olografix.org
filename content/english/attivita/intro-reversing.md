@@ -40,4 +40,6 @@ A client requests the analysis of an executable involved in an incident, presuma
 
 ---
 
-**Note:** Both workshops are complementary and designed for beginners who want to approach the world of reverse engineering, from theory to practice. You can participate in both sessions or individually based on your interests.
+**Note**: Both workshops are complementary and designed for beginners who want to approach the world of reverse engineering, from theory to practice. You can participate in both sessions or individually based on your interests.
+
+**Note**: If you will participate, please fill out this form https://cryptpad.fr/form/#/2/form/view/9vFqEVFxdw032LDZCL6xWL7FzbuTeosR37JosSAMOvI/

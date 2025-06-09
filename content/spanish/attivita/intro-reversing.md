@@ -40,4 +40,6 @@ Un cliente solicita el análisis de un ejecutable involucrado en un incidente, p
 
 ---
 
-**Nota:** Ambos talleres son complementarios y están diseñados para principiantes que quieren acercarse al mundo de la ingeniería inversa, desde la teoría hasta la práctica. Puedes participar en ambas sesiones o individualmente según tus intereses.
+**Nota**: Ambos talleres son complementarios y están diseñados para principiantes que quieren acercarse al mundo de la ingeniería inversa, desde la teoría hasta la práctica. Puedes participar en ambas sesiones o individualmente según tus intereses.
+
+**Nota**: Si participarás, completa este formulario https://cryptpad.fr/form/#/2/form/view/9vFqEVFxdw032LDZCL6xWL7FzbuTeosR37JosSAMOvI/

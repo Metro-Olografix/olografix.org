@@ -40,4 +40,6 @@ Viene richiesta dal cliente l'analisi di un eseguibile coinvolto in un incidente
 
 ---
 
-**Nota:** I due workshop sono complementari e progettati per principianti che vogliono avvicinarsi al mondo del reverse engineering, dalla teoria alla pratica. È possibile partecipare ad entrambe le sessioni o singolarmente in base ai propri interessi.
+**Nota**: I due workshop sono complementari e progettati per principianti che vogliono avvicinarsi al mondo del reverse engineering, dalla teoria alla pratica. È possibile partecipare ad entrambe le sessioni o singolarmente in base ai propri interessi.
+
+**Nota**: Se parteciperai, compila questo form https://cryptpad.fr/form/#/2/form/view/9vFqEVFxdw032LDZCL6xWL7FzbuTeosR37JosSAMOvI/
