@@ -47,11 +47,17 @@
             {{ $roleKey := printf "role_%s" (replace $lowercaseRole " " "_") }}
             {{ $translatedRole := T $roleKey }}
 
-            {{ partial "card.html" (dict
-            "title" (printf "%s \"%s\"" .name .nickname)
-            "content" $translatedRole
-            "goToLink" (printf "mailto:%s@olografix.org" $emailAddr)
-            "goToText" "email") }}
+            {{ if eq $emailAddr "" }}
+                {{ partial "card.html" (dict
+                "title" (printf "%s" .name)
+                "content" $translatedRole) }}
+            {{ else }}
+                {{ partial "card.html" (dict
+                "title" (printf "%s \"%s\"" .name .nickname)
+                "content" $translatedRole
+                "goToLink" (printf "mailto:%s@olografix.org" $emailAddr)
+                "goToText" "email") }}
+            {{ end }}
         {{ end }}
     </section>
 </article>
