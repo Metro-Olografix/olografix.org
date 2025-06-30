@@ -1,0 +1,40 @@
+{{ define "main" }}
+<h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
+
+<!-- Get all projects sorted by date (newest first) -->
+{{ $progetti := where .Site.RegularPages "Type" "progetti" }}
+{{ $progetti = sort $progetti ".Date" "desc" }}
+
+{{ if $progetti }}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {{ range $progetti }}
+        <!-- Set up variables for card partial -->
+        {{ $link := .RelPermalink | relLangURL }}
+        {{ $text := T "learnMoreText" }}
+        {{ $external := false }}
+        
+        <!-- Handle external URLs if present -->
+        {{ with .Params.externalUrl }}
+            {{ $link = . }}
+            {{ $text = T "goExternalText" }}
+            {{ $external = true }}
+        {{ end }}
+        
+        <!-- Use card partial -->
+        {{ partial "card.html" (dict
+            "title" .Title
+            "content" (.Params.subtitle | default .Summary)
+            "date" .Date
+            "goToLink" $link
+            "goToText" $text
+            "isExternal" $external
+            "withShadow" true
+            "fullHeight" true) }}
+    {{ end }}
+</div>
+{{ else }}
+    {{ partial "card.html" (dict
+        "content" (T "noProjectsMessage" | default "Non ci sono progetti in questa sezione.")
+        "withShadow" true) }}
+{{ end }}
+{{ end }}
