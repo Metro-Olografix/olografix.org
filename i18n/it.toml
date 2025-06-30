@@ -29,6 +29,7 @@ today = "Oggi"
 tomorrow = "Domani"
 next = "Prossimo:"
 calculating = "Calcolando la prossima data..."
+eventEnded = "Questo evento ricorrente è terminato."
 
 subscribeToCalendar = "Iscriviti al Calendario"
 calendarDescription = "Aggiungi i nostri eventi alla tua app calendario"

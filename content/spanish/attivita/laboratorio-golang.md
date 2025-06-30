@@ -2,6 +2,7 @@
 title: "Taller de Golang"
 subtitle: "Golang sin adornos: código, café y paciencia para entender qué son estas goroutines"
 date: "2025-04-16T18:30:00"
+endDate: "2025-06-25T18:30:00"
 recurring: true
 recurrenceType: "bi-weekly"
 recurrenceDay: "wednesday"

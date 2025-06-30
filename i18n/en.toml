@@ -29,6 +29,7 @@ today = "Today"
 tomorrow = "Tomorrow"
 next = "Next:"
 calculating = "Calculating next date..."
+eventEnded = "This recurring event has ended."
 
 subscribeToCalendar = "Subscribe to Calendar"
 calendarDescription = "Add our events to your calendar app"

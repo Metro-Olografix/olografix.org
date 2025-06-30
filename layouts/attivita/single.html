@@ -38,11 +38,13 @@
                     {{ if .Params.recurring }}
                     <div class="recurring-event mt-1" 
                         data-start-date="{{ .Date }}"
+                        {{ with .Params.endDate }}data-end-date="{{ . }}"{{ end }}
                         data-recurrence-type="{{ .Params.recurrenceType | default "weekly" }}"
                         data-recurrence-pattern="{{ .Params.recurrencePattern }}"
                         data-text-today="{{ T "today" | default "Today" }}"
                         data-text-tomorrow="{{ T "tomorrow" | default "Tomorrow" }}"
-                        data-text-next="{{ T "next" | default "Next:" }}">
+                        data-text-next="{{ T "next" | default "Next:" }}"
+                        data-text-ended="{{ T "eventEnded" | default "This recurring event has ended." }}">
                         <div class="flex items-center">
                             <i class="far fa-calendar-check mr-2"></i>
                             <span class="next-date">

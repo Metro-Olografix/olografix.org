@@ -2,6 +2,7 @@
 title: "Laboratorio su Golang"
 subtitle: "Golang senza fronzoli: codice, caffè e pazienza per capire cosa sono 'ste goroutine"
 date: "2025-04-16T18:30:00"
+endDate: "2025-06-25T18:30:00"
 recurring: true
 recurrenceType: "bi-weekly"
 recurrenceDay: "wednesday"

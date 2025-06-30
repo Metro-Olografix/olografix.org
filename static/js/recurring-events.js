@@ -1,5 +1,5 @@
 /**
- * Recurring events calculation and display
+ * Recurring events calculation and display with end date support
  */
 document.addEventListener("DOMContentLoaded", function() {
     // Find all elements with recurring event data
@@ -9,35 +9,48 @@ document.addEventListener("DOMContentLoaded", function() {
     recurringEvents.forEach(function(element) {
       // Extract data from element attributes
       const startDate = new Date(element.dataset.startDate);
+      const endDate = element.dataset.endDate ? new Date(element.dataset.endDate) : null;
       const recurrenceType = element.dataset.recurrenceType || 'weekly';
+      
       // Localization strings
       const todayText = element.dataset.textToday || 'Today';
       const tomorrowText = element.dataset.textTomorrow || 'Tomorrow';
       const nextText = element.dataset.textNext || 'Next:';
+      const endedText = element.dataset.textEnded || 'This recurring event has ended.';
       
       // Calculate next occurrence
-      const nextDate = calculateNextOccurrence(startDate, recurrenceType);
+      const nextDate = calculateNextOccurrence(startDate, recurrenceType, endDate);
       
       // Update the display
       const displayElement = element.querySelector('.next-date');
       if (displayElement) {
-        updateDateDisplay(displayElement, nextDate, todayText, tomorrowText, nextText);
+        updateDateDisplay(displayElement, nextDate, todayText, tomorrowText, nextText, endedText);
       }
     });
   });
   
   /**
-   * Calculate the next occurrence based on recurrence type
+   * Calculate the next occurrence based on recurrence type and respect end date
    * @param {Date} startDate - The original start date of the event
    * @param {string} recurrenceType - weekly, bi-weekly, monthly, or yearly
-   * @returns {Date} - The next occurrence date
+   * @param {Date|null} endDate - The end date of the recurring event (null if no end date)
+   * @returns {Date|null} - The next occurrence date, or null if the event has ended
    */
-  function calculateNextOccurrence(startDate, recurrenceType) {
+  function calculateNextOccurrence(startDate, recurrenceType, endDate) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     
+    // If there's an end date and it's already passed, return null
+    if (endDate && endDate < today) {
+      return null;
+    }
+    
     // If start date is in the future, that's the next occurrence
+    // But make sure it's not beyond the end date
     if (startDate > today) {
+      if (endDate && startDate > endDate) {
+        return null;
+      }
       return startDate;
     }
     
@@ -102,6 +115,11 @@ document.addEventListener("DOMContentLoaded", function() {
         break;
     }
     
+    // Check if the calculated next date is beyond the end date
+    if (endDate && nextDate > endDate) {
+      return null;
+    }
+    
     return nextDate;
   }
   
@@ -120,12 +138,19 @@ document.addEventListener("DOMContentLoaded", function() {
   /**
    * Format and display the next date with appropriate text
    * @param {HTMLElement} element - The element to update
-   * @param {Date} nextDate - The next occurrence date
+   * @param {Date|null} nextDate - The next occurrence date, or null if ended
    * @param {string} todayText - Localized "Today" text
    * @param {string} tomorrowText - Localized "Tomorrow" text
    * @param {string} nextText - Localized "Next:" text
+   * @param {string} endedText - Localized text for ended events
    */
-  function updateDateDisplay(element, nextDate, todayText, tomorrowText, nextText) {
+  function updateDateDisplay(element, nextDate, todayText, tomorrowText, nextText, endedText) {
+    // If nextDate is null, the recurring event has ended
+    if (!nextDate) {
+      element.innerHTML = `<em class="text-gray-500">${endedText}</em>`;
+      return;
+    }
+    
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     

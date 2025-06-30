@@ -2,6 +2,7 @@
 title: "Golang Workshop"
 subtitle: "Golang without frills: code, coffee, and patience to understand what these goroutines are"
 date: "2025-04-16T18:30:00"
+endDate: "2025-06-25T18:30:00"
 recurring: true
 recurrenceType: "bi-weekly"
 recurrenceDay: "wednesday"

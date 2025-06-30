@@ -41,17 +41,36 @@
 <!-- Get all activities including future events -->
 {{ $allActivities := where .Site.RegularPages "Type" "attivita" }}
 
-<!-- Modified classification for upcoming/past events -->
 {{ $upcomingActivities := slice }}
 {{ $pastActivities := slice }}
 
 <!-- Classify each activity -->
 {{ range $allActivities }}
-    {{ if or (ge .Date.Unix $now.Unix) (.Params.recurring) }}
-        <!-- Event is upcoming if: start date is in future OR it's recurring -->
+    {{ $isUpcoming := false }}
+    
+    {{ if .Params.recurring }}
+        <!-- For recurring events, check if they have an end date -->
+        {{ if .Params.endDate }}
+            <!-- Recurring event with end date: upcoming if end date is in future -->
+            {{ $endDate := time.AsTime .Params.endDate }}
+            {{ if ge $endDate.Unix $now.Unix }}
+                {{ $isUpcoming = true }}
+            {{ end }}
+        {{ else }}
+            <!-- Recurring event without end date: always upcoming -->
+            {{ $isUpcoming = true }}
+        {{ end }}
+    {{ else }}
+        <!-- Non-recurring event: upcoming if start date is in future -->
+        {{ if ge .Date.Unix $now.Unix }}
+            {{ $isUpcoming = true }}
+        {{ end }}
+    {{ end }}
+    
+    <!-- Add to appropriate list -->
+    {{ if $isUpcoming }}
         {{ $upcomingActivities = $upcomingActivities | append . }}
     {{ else }}
-        <!-- Event is past if: start date is in past AND it's not recurring -->
         {{ $pastActivities = $pastActivities | append . }}
     {{ end }}
 {{ end }}
@@ -108,11 +127,13 @@
 
                 <div class="recurring-event" 
                     data-start-date="{{ .Date }}"
+                    {{ with .Params.endDate }}data-end-date="{{ . }}"{{ end }}
                     data-recurrence-type="{{ .Params.recurrenceType | default "weekly" }}"
                     data-recurrence-pattern="{{ .Params.recurrencePattern }}"
                     data-text-today="{{ T "today" | default "Today" }}"
                     data-text-tomorrow="{{ T "tomorrow" | default "Tomorrow" }}"
-                    data-text-next="{{ T "next" | default "Next:" }}">
+                    data-text-next="{{ T "next" | default "Next:" }}"
+                    data-text-ended="{{ T "eventEnded" | default "This recurring event has ended." }}">
                     <div class="flex items-center mt-1">
                         <i class="far fa-calendar-check mr-2"></i>
                         <span class="next-date">
