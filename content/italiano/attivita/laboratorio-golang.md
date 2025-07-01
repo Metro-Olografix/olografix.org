@@ -6,7 +6,6 @@ endDate: "2025-06-25T18:30:00"
 recurring: true
 recurrenceType: "bi-weekly"
 recurrenceDay: "wednesday"
-recurrenceCount: 10
 recurrencePattern: "Ogni due mercoledì alle 18:30"
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
