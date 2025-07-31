@@ -43,3 +43,6 @@ role_presidente = "Presidente"
 role_vice_presidente = "Vicepresidente"
 role_tesoriere = "Tesorero"
 role_consigliere = "Miembro del Consejo"
+
+partitaIva = "Número de IVA"
+codiceFiscale = "Código Fiscal"

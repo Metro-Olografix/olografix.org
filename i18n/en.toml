@@ -43,3 +43,6 @@ role_presidente = "President"
 role_vice_presidente = "Vice President"
 role_tesoriere = "Treasurer"
 role_consigliere = "Board Member"
+
+partitaIva = "VAT Number"
+codiceFiscale = "Fiscal Code"

@@ -2,14 +2,22 @@
   <div class="container mx-auto px-4 sm:px-0 max-w-4xl">
     <div class="flex flex-col md:flex-row justify-between items-center py-2">
       <!-- Left side -->
-      <p class="text-center w-full md:w-auto text-white">
-        {{ T "poweredByHugo" }}
-        <span class="hugo-text"><span class="letter">H</span>ugo</span>
-      </p>
+      <div class="w-full md:w-auto text-white">
+        <p class="text-sm">
+          {{ T "partitaIva" }} 02399510680
+        </p>
+        <p class="text-sm">
+          {{ T "codiceFiscale" }} 91047350680
+        </p>
+      </div>
       <!-- Right side -->
-      <div class="flex space-x-4 justify-center w-full md:w-auto text-white">
+      <div class="flex flex-col space-y-1 justify-center w-full md:w-auto text-white">
+        <p class="text-end">
+          {{ T "poweredByHugo" }}
+          <span class="hugo-text"><span class="letter">H</span>ugo</span>
+        </p>
         <a href="{{ .Site.Params.archiveOldSite }}" target="_blank"
-          class="hover:text-gray-400 transition-colors duration-300">
+          class="hover:text-gray-400 transition-colors duration-300 text-end">
           {{ T "oldWebsite" }}↗
         </a>
       </div>
