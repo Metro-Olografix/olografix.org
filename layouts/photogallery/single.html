@@ -6,7 +6,7 @@
 {{ $albumData = $albumDataJson | transform.Unmarshal }}
 
 <article class="max-w-7xl mx-auto">
-    <header class="mb-12">
+    <header class="mb-8">
         <h1 class="text-4xl font-bold text-primary-dark tracking-tight">{{ .Title }}</h1>
         {{ with .Params.description }}
             <h2 class="text-xl text-primary-dark mt-4">{{ . }}</h2>
@@ -14,7 +14,7 @@
     </header>
 
     <section class="gallery-container">
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-6">
             {{ range $albumData.images }}
                 {{ $imageUrl := printf "%s/%s/%s" $serverBase $albumName .name }}
                 {{ $thumbnailUrl := printf "%s/%s/%s" $serverBase $albumName .thumbnail }}
