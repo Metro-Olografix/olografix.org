@@ -4,4 +4,4 @@ TZ = "Europe/Rome"
 
 [build]
 publish = "public"
-command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+command = "npm run og:generate && hugo --gc --minify -b $DEPLOY_PRIME_URL"
