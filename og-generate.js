@@ -232,7 +232,18 @@ async function generateOGImages() {
       if (!frontmatter?.title) continue;
 
       // Generate image filename
-      const relativePath = filePath.replace('content/', '').replace('.md', '').replace('italiano', 'it').replace('english', 'en').replace('spanish', 'es');
+      // Language mapping
+      const languageMap = {
+        'italiano': 'it',
+        'english': 'en',
+        'spanish': 'es'
+      };
+      let relativePath = filePath.replace('content/', '').replace('.md', '');
+      // Replace language names using regex and mapping
+      relativePath = relativePath.replace(
+        new RegExp(Object.keys(languageMap).join('|'), 'g'),
+        matched => languageMap[matched]
+      );
       const imageFileName = relativePath.replace(/\//g, '-') + '.png';
       const imagePath = join(outputDir, imageFileName);
 
