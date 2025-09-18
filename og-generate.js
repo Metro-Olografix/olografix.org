@@ -236,8 +236,12 @@ async function generateOGImages() {
       const imageFileName = relativePath.replace(/\//g, '-') + '.png';
       const imagePath = join(outputDir, imageFileName);
 
-      // Skip if exists
-      if (existsSync(imagePath)) continue;
+      // Skip if image exists and is up-to-date
+      if (existsSync(imagePath)) {
+        const imageStat = statSync(imagePath);
+        const markdownStat = statSync(filePath);
+        if (imageStat.mtime >= markdownStat.mtime) continue;
+      }
 
       console.log(`🎨 Generating: ${imageFileName}`);
 
