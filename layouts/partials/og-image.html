@@ -1,7 +1,12 @@
 {{- if .File -}}
 {{- $pathComponents := slice .Language.Lang -}}
 {{- if .Section }}{{ $pathComponents = $pathComponents | append .Section }}{{ end -}}
-{{- if ne .File.LogicalName "_index.md" }}{{ $pathComponents = $pathComponents | append (replace .File.LogicalName ".md" "") }}{{ else }}{{ $pathComponents = $pathComponents | append "_index" }}{{ end -}}
+{{- if ne .File.LogicalName "_index.md" -}}
+  {{- $logicalName := replace .File.LogicalName ".md" "" -}}
+  {{- $pathComponents = $pathComponents | append $logicalName -}}
+{{- else -}}
+  {{- $pathComponents = $pathComponents | append "_index" -}}
+{{- end -}}
 {{- $ogImagePath := printf "/images/og/%s.png" (delimit $pathComponents "-") -}}
 {{- if fileExists (printf "static%s" $ogImagePath) -}}
 {{- $ogImagePath -}}
