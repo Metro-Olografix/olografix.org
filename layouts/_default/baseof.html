@@ -20,42 +20,25 @@
   <meta property="og:title" content="{{ .Title | default .Site.Title }}" />
   <meta property="og:description" content="{{ .Params.subtitle | default .Site.Params.description }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
+  {{ $ogImage := partial "og-image.html" . }}
+  <meta property="og:image" content="{{ .Site.BaseURL }}{{ $ogImage }}" />
   {{ if .File }}
   {{ $pathComponents := slice .Language.Lang }}
   {{ if .Section }}{{ $pathComponents = $pathComponents | append .Section }}{{ end }}
-  {{ if ne .File.LogicalName "_index.md" }}{{ $pathComponents = $pathComponents | append (replace .File.LogicalName
-  ".md" "") }}{{ else }}{{ $pathComponents = $pathComponents | append "_index" }}{{ end }}
+  {{ if ne .File.LogicalName "_index.md" }}{{ $pathComponents = $pathComponents | append (replace .File.LogicalName ".md" "") }}{{ else }}{{ $pathComponents = $pathComponents | append "_index" }}{{ end }}
   {{ $ogImagePath := printf "/images/og/%s.png" (delimit $pathComponents "-") }}
   {{ if fileExists (printf "static%s" $ogImagePath) }}
-  <meta property="og:image" content="{{ .Site.BaseURL }}{{ $ogImagePath }}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/png" />
-  {{ else }}
-  <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}" />
   {{ end }}
-  {{ else }}
-  <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}" />
   {{ end }}
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ .Title | default .Site.Title }}" />
   <meta name="twitter:description" content="{{ .Params.subtitle | default .Site.Params.description }}" />
-  {{ if .File }}
-  {{ $pathComponents := slice .Language.Lang }}
-  {{ if .Section }}{{ $pathComponents = $pathComponents | append .Section }}{{ end }}
-  {{ if ne .File.LogicalName "_index.md" }}{{ $pathComponents = $pathComponents | append (replace .File.LogicalName
-  ".md" "") }}{{ else }}{{ $pathComponents = $pathComponents | append "_index" }}{{ end }}
-  {{ $ogImagePath := printf "/images/og/%s.png" (delimit $pathComponents "-") }}
-  {{ if fileExists (printf "static%s" $ogImagePath) }}
-  <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ $ogImagePath }}" />
-  {{ else }}
-  <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}" />
-  {{ end }}
-  {{ else }}
-  <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.image | default .Site.Params.image }}" />
-  {{ end }}
+  <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ partial "og-image.html" . }}" />
   <meta name="twitter:site" content="@MetroOlografix" />
 
   <script src="https://cdn.tailwindcss.com"></script>
