@@ -1,7 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Lexend:wght@100..900&display=swap');
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   scrollbar-gutter: stable;
-  overflow-y: scroll; /* Fallback for older browsers */
+  overflow-y: scroll;
+  /* Fallback for older browsers */
 }
 
 body {
@@ -18,14 +50,17 @@ body {
 }
 
 .logo-menu:hover {
-  transform: scale(1.05); /* Slightly enlarges on hover */
+  transform: scale(1.05);
+  /* Slightly enlarges on hover */
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -39,26 +74,32 @@ body {
   display: inline-block;
   position: relative;
 }
+
 .letter {
   display: inline-block;
   transition: transform 0.3s, opacity 0.3s;
 }
+
 .letter.rotate {
   animation: flipLetter 0.6s ease-out;
 }
+
 @keyframes flipLetter {
   0% {
     transform: rotateX(0deg);
     opacity: 1;
   }
+
   50% {
     transform: rotateX(90deg);
     opacity: 0;
   }
+
   51% {
     transform: rotateX(270deg);
     opacity: 0;
   }
+
   100% {
     transform: rotateX(360deg);
     opacity: 1;
@@ -69,9 +110,11 @@ body {
   33% {
     color: #e94560;
   }
+
   66% {
     color: #fca311;
   }
+
   100% {
     color: #ffffff;
   }
@@ -86,16 +129,17 @@ body {
 }
 
 .badge {
-  font-size: 12px; 
-  background-color: white; 
-  border: 1px solid #666666; 
-  border-radius: 4px; 
-  padding: 2px 8px; 
-  box-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+  font-size: 12px;
+  background-color: white;
+  border: 1px solid #666666;
+  border-radius: 4px;
+  padding: 2px 8px;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
 .badge-upcoming {
-  background-color: #10B981; /* Green */
+  background-color: #10B981;
+  /* Green */
   color: white;
   border-color: #059669;
 }
@@ -164,9 +208,17 @@ body {
 
 /* Subtle pulse animation while calculating */
 @keyframes pulse {
-  0% { opacity: 0.5; }
-  50% { opacity: 1; }
-  100% { opacity: 0.5; }
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
 }
 
 .recurring-event .loading {

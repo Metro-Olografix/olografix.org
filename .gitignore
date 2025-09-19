@@ -1,3 +1,5 @@
 *.py
 public/
 !scripts/*
+node_modules/
+static/images/og/

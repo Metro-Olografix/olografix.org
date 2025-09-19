@@ -1,0 +1,18 @@
+{
+  "name": "olografix-og-generator",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Simple OG image generation for Hugo",
+  "scripts": {
+    "og:generate": "node og-generate.js",
+    "build": "npm run og:generate && hugo",
+    "dev": "hugo server -D"
+  },
+  "dependencies": {
+    "satori": "^0.10.9",
+    "@resvg/resvg-js": "^2.4.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
