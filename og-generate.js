@@ -224,6 +224,14 @@ async function generateOGImages() {
 
   let generated = 0;
 
+  // Language mapping and regex compilation (moved outside the loop)
+  const languageMap = {
+    'italiano': 'it',
+    'english': 'en',
+    'spanish': 'es'
+  };
+  const langRegex = new RegExp(Object.keys(languageMap).join('|'), 'g');
+
   for (const filePath of markdownFiles) {
     try {
       const content = readFileSync(filePath, 'utf-8');
@@ -232,18 +240,9 @@ async function generateOGImages() {
       if (!frontmatter?.title) continue;
 
       // Generate image filename
-      // Language mapping
-      const languageMap = {
-        'italiano': 'it',
-        'english': 'en',
-        'spanish': 'es'
-      };
       let relativePath = filePath.replace('content/', '').replace('.md', '');
       // Replace language names using regex and mapping
-      relativePath = relativePath.replace(
-        new RegExp(Object.keys(languageMap).join('|'), 'g'),
-        matched => languageMap[matched]
-      );
+      relativePath = relativePath.replace(langRegex, matched => languageMap[matched]);
       const imageFileName = relativePath.replace(/\//g, '-') + '.png';
       const imagePath = join(outputDir, imageFileName);
 
