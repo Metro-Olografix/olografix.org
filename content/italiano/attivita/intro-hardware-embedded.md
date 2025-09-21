@@ -8,11 +8,13 @@ location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
 
+#### **🕒 Orario da definire**
+
 #### **Descrizione**  
 L'idea è di non usare più di tanto slides (comunque verrà spiegato il funzionamento di una porta seriale) ma di lavorare **veramente** con l'hardware.
 Alcuni punti che andremo a vedere:
 
- - Effettueremo un focus su i protocolli più usati per effettuare debug su hardware embedded (UART,SPI,JTAG)
+ - Effettueremo un focus su i protocolli più usati per effettuare debug su hardware embedded (UART,SPI,JTAG).
 
  - Proveremo a debuggare un hardware di test (T56 Zyxel probabilmente ma sono aperto a proposte) e proveremo a capire cosa c'è di bello nei firmware originali.
 
@@ -20,6 +22,6 @@ Alcuni punti che andremo a vedere:
 
 
 **Materiale necessario**:
- - Un adattatore seriale-usb (necessario se avete anche voi un hardware da voler debuggare insieme), un computer e tanta curiosità
+ - Un adattatore seriale-usb (necessario se avete anche voi un hardware da voler debuggare insieme), un computer e tanta curiosità.
 
 **Costo**: È richiesto un contributo minimo di **5 euro** per la partecipazione, questo ci aiuta a sostenere le attività dell'associazione. Per i soci la partecipazione è **gratuita**.
