@@ -13,7 +13,7 @@ Un percorso completo nel mondo delle **tecnologie quantistiche**, pensato per av
 
 L'attività è strutturata in due parti complementari:
 - **Talk divulgativo**: Un tuffo nel **quantum realm**.
-- **Mini-corso tecnico**: Approfondimento hands-on e principi delle tecnologie quantistiche (da definire quando).
+- **Mini-corso tecnico**: Approfondimento hands-on e principi delle tecnologie quantistiche (data da definire).
 
 Il **talk divulgativo** sarà una vera e propria introduzione generale alle tecnologie quantistiche, pensata per essere accessibile a tutti. Niente equazioni, solo concetti e possibilità future.
 

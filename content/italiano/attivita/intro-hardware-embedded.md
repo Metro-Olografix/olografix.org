@@ -6,6 +6,7 @@ endDate: "2025-11-15T00:00:00"
 recurring: false
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
+draft: true
 ---
 
 #### **🕒 Orario da definire**
