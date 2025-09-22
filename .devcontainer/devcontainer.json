@@ -1,0 +1,25 @@
+{
+  "name": "Hugo Dev Server",
+  "image": "hugomods/hugo:exts-0.131.0",
+  
+  "forwardPorts": [1313],
+  "portsAttributes": {
+    "1313": {
+      "label": "Hugo Server",
+      "onAutoForward": "silent"
+    }
+  },
+  
+  "postStartCommand": "hugo server --bind 0.0.0.0 --buildDrafts --port 1313",
+  
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace",
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "budparr.language-hugo-vscode"
+      ]
+    }
+  }
+}
