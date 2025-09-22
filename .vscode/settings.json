@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    "**/public": true,
+    "**/.hugo_build.lock": true
+  },
+  
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000
+}
