@@ -1,6 +1,6 @@
 {
   "name": "Hugo Dev Server",
-  "image": "hugomods/hugo:exts-0.131.0",
+  "image": "hugomods/hugo:exts-0.136.5",
   
   "forwardPorts": [1313],
   "portsAttributes": {
