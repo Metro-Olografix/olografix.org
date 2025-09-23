@@ -1,6 +1,6 @@
 ---
 title: "Introduzione alle tecnologie quantistiche"
-subtitle: "Un discorso a scopo divulgativo sul mondo quantistico a cura di Simone De Liberato"
+subtitle: "Hacking the fabric of reality for fun and profit, by Simone De Liberato"
 date: "2025-09-29T21:00:00"
 endDate: "2025-09-29T22:00:00"
 recurring: false
@@ -9,13 +9,7 @@ locationUrl: "https://www.openstreetmap.org/node/12539021893"
 ---
 
 #### **Descrizione**  
-Un percorso completo nel mondo delle **tecnologie quantistiche**, pensato per avvicinare sia il grande pubblico che chi vuole approfondimenti più tecnici.
-
-L'attività è strutturata in due parti complementari:
-- **Talk divulgativo**: Un tuffo nel **quantum realm**.
-- **Mini-corso tecnico**: Approfondimento hands-on e principi delle tecnologie quantistiche (data da definire).
-
-Il **talk divulgativo** sarà una vera e propria introduzione generale alle tecnologie quantistiche, pensata per essere accessibile a tutti. Niente equazioni, solo concetti e possibilità future.
+Un seminario accessibile a tutti (nessuna equazione, promesso) in cui saranno presentati i principi di base della meccanica quantistica e alcune delle sue applicazioni tecnologiche: dalla computazione quantistica, alla comunicazione quantistica, passando per sensoristica e crittografia
 
 **Materiale necessario**:
  - Nessuno.
