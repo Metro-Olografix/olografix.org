@@ -1,6 +1,6 @@
 ---
 title: "Introducción a las tecnologías cuánticas"
-subtitle: "Hackeando la estructura de la realidad por diversión y lucro, por Simone De Liberato"
+subtitle: "Hacking the fabric of reality for fun and profit, by Simone De Liberato"
 date: "2025-09-29T21:00:00"
 endDate: "2025-09-29T22:00:00"
 recurring: false
