@@ -1,8 +1,8 @@
 ---
 title: "Introducción al mágico mundo del hardware embebido"
 subtitle: "Depuración, volcado e ingeniería inversa de dispositivos embebidos"
-date: "2025-11-15T00:00:00"
-endDate: "2025-11-15T00:00:00"
+date: "2025-12-06T00:00:00"
+endDate: "2025-12-06T00:00:00"
 recurring: false
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
