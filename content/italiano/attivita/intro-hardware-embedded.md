@@ -1,14 +1,13 @@
 ---
 title: "Introduzione al magico mondo dell'hardware embedded"
 subtitle: "Debug, dump e reverse engineering di dispositivi embedded"
-date: "2025-12-06T00:00:00"
-endDate: "2025-12-06T00:00:00"
+date: "2025-12-06T15:00:00"
+endDate: "2025-12-06T17:00:00"
 recurring: false
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
 draft: false
 ---
-#### **🕒 Orario da definire**
 
 #### **Descrizione**
 
