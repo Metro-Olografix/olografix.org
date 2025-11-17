@@ -1,15 +1,13 @@
 ---
 title: "Introducción al mágico mundo del hardware embebido"
 subtitle: "Depuración, volcado e ingeniería inversa de dispositivos embebidos"
-date: "2025-12-06T00:00:00"
-endDate: "2025-12-06T00:00:00"
+date: "2025-12-06T15:00:00"
+endDate: "2025-12-06T17:00:00"
 recurring: false
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
-draft: true
+draft: false
 ---
-
-#### **🕒 Horario por definir**
 
 #### **Descripción**  
 La idea es no usar tantas diapositivas (de todos modos se explicará el funcionamiento de un puerto serial) sino trabajar **realmente** con el hardware.  
