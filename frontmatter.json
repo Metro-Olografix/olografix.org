@@ -1,0 +1,499 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "hugo",
+  "frontMatter.content.publicFolder": "static",
+  "frontMatter.preview.host": "http://localhost:1313",
+  "frontMatter.content.i18n": [
+    {
+      "title": "Italiano",
+      "locale": "it",
+      "path": "content/italiano"
+    },
+    {
+      "title": "English",
+      "locale": "en",
+      "path": "content/english"
+    },
+    {
+      "title": "Español",
+      "locale": "es",
+      "path": "content/spanish"
+    }
+  ],
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Attività",
+      "path": "[[workspace]]/content/italiano/attivita",
+      "contentTypes": [
+        "attivita"
+      ],
+      "defaultLocale": "it",
+      "locales": [
+        {
+          "title": "Italiano",
+          "locale": "it",
+          "path": ""
+        },
+        {
+          "title": "English",
+          "locale": "en",
+          "path": "../../english/attivita"
+        },
+        {
+          "title": "Español",
+          "locale": "es",
+          "path": "../../spanish/attivita"
+        }
+      ]
+    },
+    {
+      "title": "Progetti",
+      "path": "[[workspace]]/content/italiano/progetti",
+      "contentTypes": [
+        "progetti"
+      ],
+      "defaultLocale": "it",
+      "locales": [
+        {
+          "title": "Italiano",
+          "locale": "it",
+          "path": ""
+        },
+        {
+          "title": "English",
+          "locale": "en",
+          "path": "../../english/progetti"
+        },
+        {
+          "title": "Español",
+          "locale": "es",
+          "path": "../../spanish/progetti"
+        }
+      ]
+    },
+    {
+      "title": "Photogallery",
+      "path": "[[workspace]]/content/italiano/photogallery",
+      "contentTypes": [
+        "photogallery"
+      ],
+      "defaultLocale": "it",
+      "locales": [
+        {
+          "title": "Italiano",
+          "locale": "it",
+          "path": ""
+        },
+        {
+          "title": "English",
+          "locale": "en",
+          "path": "../../english/photogallery"
+        },
+        {
+          "title": "Español",
+          "locale": "es",
+          "path": "../../spanish/photogallery"
+        }
+      ]
+    },
+    {
+      "title": "Associazione",
+      "path": "[[workspace]]/content/italiano/associazione",
+      "contentTypes": [
+        "associazione"
+      ],
+      "defaultLocale": "it",
+      "locales": [
+        {
+          "title": "Italiano",
+          "locale": "it",
+          "path": ""
+        },
+        {
+          "title": "English",
+          "locale": "en",
+          "path": "../../english/associazione"
+        },
+        {
+          "title": "Español",
+          "locale": "es",
+          "path": "../../spanish/associazione"
+        }
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "attivita",
+      "pageBundle": false,
+      "previewPath": "/attivita",
+      "filePrefix": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Subtitle",
+          "name": "subtitle",
+          "type": "string",
+          "description": "Optional tagline or short description"
+        },
+        {
+          "title": "Start Date & Time",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "required": true,
+          "dateFormat": "yyyy-MM-dd'T'HH:mm:ss"
+        },
+        {
+          "title": "End Date & Time",
+          "name": "endDate",
+          "type": "datetime",
+          "description": "Optional end date for multi-day events",
+          "dateFormat": "yyyy-MM-dd'T'HH:mm:ss"
+        },
+        {
+          "title": "Location",
+          "name": "location",
+          "type": "string",
+          "description": "Physical location of the event"
+        },
+        {
+          "title": "Location URL",
+          "name": "locationUrl",
+          "type": "string",
+          "description": "Map URL (e.g., OpenStreetMap link)"
+        },
+        {
+          "title": "External URL",
+          "name": "externalUrl",
+          "type": "string",
+          "description": "URL for external event page"
+        },
+        {
+          "title": "Footer URL",
+          "name": "footerUrl",
+          "type": "string",
+          "description": "URL for footer button"
+        },
+        {
+          "title": "Recurring Event",
+          "name": "recurring",
+          "type": "boolean",
+          "default": false,
+          "description": "Is this a recurring event?"
+        },
+        {
+          "title": "Recurrence Type",
+          "name": "recurrenceType",
+          "type": "choice",
+          "choices": [
+            "weekly",
+            "bi-weekly",
+            "monthly",
+            "yearly"
+          ],
+          "description": "How often does the event recur?"
+        },
+        {
+          "title": "Recurrence Day",
+          "name": "recurrenceDay",
+          "type": "choice",
+          "choices": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ],
+          "description": "Day of the week for recurring events"
+        },
+        {
+          "title": "Recurrence Count",
+          "name": "recurrenceCount",
+          "type": "number",
+          "description": "Number of occurrences"
+        },
+        {
+          "title": "Recurrence Until",
+          "name": "recurrenceUntil",
+          "type": "datetime",
+          "description": "End date for recurrence (alternative to count)",
+          "dateFormat": "yyyy-MM-dd"
+        },
+        {
+          "title": "Recurrence Pattern",
+          "name": "recurrencePattern",
+          "type": "string",
+          "description": "Human-readable recurrence description"
+        },
+        {
+          "title": "Draft",
+          "name": "draft",
+          "type": "draft",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "progetti",
+      "pageBundle": false,
+      "previewPath": "/progetti",
+      "filePrefix": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Subtitle",
+          "name": "subtitle",
+          "type": "string",
+          "description": "Optional project tagline"
+        },
+        {
+          "title": "Date",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "required": true,
+          "dateFormat": "yyyy-MM-dd"
+        },
+        {
+          "title": "External URL",
+          "name": "externalUrl",
+          "type": "string",
+          "description": "Project website or external page"
+        },
+        {
+          "title": "Footer URL",
+          "name": "footerUrl",
+          "type": "string",
+          "description": "URL for footer button"
+        },
+        {
+          "title": "Draft",
+          "name": "draft",
+          "type": "draft",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "photogallery",
+      "pageBundle": true,
+      "defaultFileName": "index",
+      "previewPath": "/photogallery",
+      "filePrefix": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string",
+          "description": "Gallery description"
+        },
+        {
+          "title": "Album",
+          "name": "album",
+          "type": "string",
+          "description": "Album identifier"
+        },
+        {
+          "title": "Year",
+          "name": "year",
+          "type": "string",
+          "description": "Event year (YYYY)"
+        },
+        {
+          "title": "Layout",
+          "name": "layout",
+          "type": "choice",
+          "choices": [
+            "single",
+            "list"
+          ],
+          "description": "Template to use for this gallery"
+        },
+        {
+          "title": "Type",
+          "name": "type",
+          "type": "string",
+          "default": "photogallery",
+          "hidden": true
+        }
+      ]
+    },
+    {
+      "name": "associazione",
+      "pageBundle": false,
+      "previewPath": "/associazione",
+      "filePrefix": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Layout",
+          "name": "layout",
+          "type": "choice",
+          "choices": [
+            "single",
+            "associazione"
+          ],
+          "description": "Template to use for this page"
+        },
+        {
+          "title": "Has Table of Contents",
+          "name": "hasTOC",
+          "type": "boolean",
+          "default": false,
+          "description": "Show table of contents"
+        },
+        {
+          "title": "Draft",
+          "name": "draft",
+          "type": "draft",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "default",
+      "pageBundle": false,
+      "previewPath": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Date",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "Draft",
+          "name": "draft",
+          "type": "draft",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.dateFormat": "yyyy-MM-dd'T'HH:mm:ss",
+  "frontMatter.taxonomy.frontMatterType": "YAML",
+  "frontMatter.content.supportedFileTypes": [
+    "md",
+    "mdx",
+    "markdown"
+  ],
+  "frontMatter.dashboard.openOnStart": false,
+  "frontMatter.panel.freeform": true,
+  "frontMatter.content.fmHighlight": true,
+  "frontMatter.content.wysiwyg": true,
+  "frontMatter.taxonomy.seoContentLengh": -1,
+  "frontMatter.taxonomy.seoDescriptionLength": 160,
+  "frontMatter.taxonomy.seoSlugLength": 75,
+  "frontMatter.taxonomy.seoDescriptionField": "description",
+  "frontMatter.media.supportedMimeTypes": [
+    "image/*",
+    "video/*",
+    "audio/*"
+  ],
+  "frontMatter.content.snippets": {
+    "Image with caption": {
+      "description": "Insert an image with caption",
+      "body": [
+        "{{< figure src=\"[[&mediaUrl]]\" alt=\"[[alt]]\" caption=\"[[caption]]\" >}}"
+      ],
+      "fields": [
+        {
+          "name": "mediaUrl",
+          "title": "Image URL",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "alt",
+          "title": "Alt text",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "caption",
+          "title": "Caption",
+          "type": "string",
+          "default": ""
+        }
+      ]
+    },
+    "Gallery Image": {
+      "description": "Reference an image from the gallery server",
+      "body": "![[[alt]]]({{< param \"galleryServer\" >}}/[[path]])",
+      "fields": [
+        {
+          "name": "path",
+          "title": "Image path on gallery server",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "alt",
+          "title": "Alt text",
+          "type": "string",
+          "default": ""
+        }
+      ]
+    }
+  },
+  "frontMatter.content.placeholders": [
+    {
+      "id": "year",
+      "value": "{{year}}"
+    },
+    {
+      "id": "month",
+      "value": "{{month}}"
+    },
+    {
+      "id": "day",
+      "value": "{{day}}"
+    },
+    {
+      "id": "now",
+      "value": "{{now}}"
+    },
+    {
+      "id": "galleryServer",
+      "value": "https://gallery.olografix.org"
+    }
+  ],
+  "frontMatter.git.enabled": false,
+  "frontMatter.content.draftField": {
+    "name": "draft",
+    "type": "boolean"
+  }
+}

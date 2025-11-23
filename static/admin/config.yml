@@ -1,0 +1,400 @@
+backend:
+  name: proxy
+  branch: master
+  proxy_url: http://localhost:8081/api/v1
+  local_backend: true
+
+local_backend: true
+media_folder: "static/images"
+public_folder: "/static/"
+
+collections:
+  - name: "associazione_posts"
+    label: "[IT] Associazione"
+    folder: "content/italiano/associazione/"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "attivita_posts"
+    label: "[IT] Attività"
+    folder: "content/italiano/attivita/"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Subtitle",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - {
+          label: "End Date",
+          name: "endDate",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "External URL",
+          name: "externalUrl",
+          widget: "string",
+          required: false,
+          hint: "URL for external event page",
+        }
+      - {
+          label: "Footer URL",
+          name: "footerUrl",
+          widget: "string",
+          required: false,
+          hint: "URL for footer button",
+        }
+      - {
+          label: "Recurring",
+          name: "recurring",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "Recurrence Type",
+          name: "recurrenceType",
+          widget: "select",
+          options: ["weekly", "bi-weekly", "monthly", "yearly"],
+          required: false,
+        }
+      - {
+          label: "Recurrence Day",
+          name: "recurrenceDay",
+          widget: "select",
+          options:
+            [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday",
+            ],
+          required: false,
+          hint: "For weekly/bi-weekly events",
+        }
+      - {
+          label: "Recurrence Count",
+          name: "recurrenceCount",
+          widget: "number",
+          default: 10,
+          required: false,
+          hint: "Number of occurrences",
+        }
+      - {
+          label: "Recurrence Until",
+          name: "recurrenceUntil",
+          widget: "datetime",
+          required: false,
+          hint: "Alternative to count: end date for recurrence (YYYY-MM-DD)",
+        }
+      - {
+          label: "Recurrence Pattern",
+          name: "recurrencePattern",
+          widget: "string",
+          required: false,
+          hint: "Human-readable description (auto-generated if empty)",
+        }
+      - {
+          label: "Location",
+          name: "location",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Location URL",
+          name: "locationUrl",
+          widget: "string",
+          required: false,
+          hint: "Map URL for the location",
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "progetti_posts"
+    label: "[IT] Progetti"
+    folder: "content/italiano/progetti/"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Subtitle",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - {
+          label: "External URL",
+          name: "externalUrl",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  # - name: "photo_gallery_posts"
+  #   label: "[IT] Photogallery"
+  #   folder: "content/italiano/photogallery/"
+  #   create: true
+  #   fields:
+  #     - { label: "Title", name: "title", widget: "string" }
+  #     - {
+  #         label: "Description",
+  #         name: "description",
+  #         widget: "string",
+  #         required: false,
+  #       }
+  #     - { label: "Album", name: "album", widget: "string" }
+  #     - { label: "Year", name: "year", widget: "string", required: false }
+  - name: "en_associazione_posts"
+    label: "[EN] Associazione"
+    folder: "content/english/associazione/"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "en_attivita_posts"
+    label: "[EN] Attività"
+    folder: "content/english/attivita/"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Subtitle",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - {
+          label: "End Date",
+          name: "endDate",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "External URL",
+          name: "externalUrl",
+          widget: "string",
+          required: false,
+          hint: "URL for external event page",
+        }
+      - {
+          label: "Footer URL",
+          name: "footerUrl",
+          widget: "string",
+          required: false,
+          hint: "URL for footer button",
+        }
+      - {
+          label: "Recurring",
+          name: "recurring",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "Recurrence Type",
+          name: "recurrenceType",
+          widget: "select",
+          options: ["weekly", "bi-weekly", "monthly", "yearly"],
+          required: false,
+        }
+      - {
+          label: "Recurrence Day",
+          name: "recurrenceDay",
+          widget: "select",
+          options:
+            [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday",
+            ],
+          required: false,
+          hint: "For weekly/bi-weekly events",
+        }
+      - {
+          label: "Recurrence Count",
+          name: "recurrenceCount",
+          widget: "number",
+          default: 10,
+          required: false,
+          hint: "Number of occurrences",
+        }
+      - {
+          label: "Recurrence Until",
+          name: "recurrenceUntil",
+          widget: "datetime",
+          required: false,
+          hint: "Alternative to count: end date for recurrence (YYYY-MM-DD)",
+        }
+      - {
+          label: "Recurrence Pattern",
+          name: "recurrencePattern",
+          widget: "string",
+          required: false,
+          hint: "Human-readable description (auto-generated if empty)",
+        }
+      - {
+          label: "Location",
+          name: "location",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Location URL",
+          name: "locationUrl",
+          widget: "string",
+          required: false,
+          hint: "Map URL for the location",
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "en_progetti_posts"
+    label: "[EN] Progetti"
+    folder: "content/english/progetti/"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Subtitle",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - {
+          label: "External URL",
+          name: "externalUrl",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "es_associazione_posts"
+    label: "[ES] Associazione"
+    folder: "content/spanish/associazione/"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "es_attivita_posts"
+    label: "[ES] Attività"
+    folder: "content/spanish/attivita/"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Subtitle",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - {
+          label: "End Date",
+          name: "endDate",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "External URL",
+          name: "externalUrl",
+          widget: "string",
+          required: false,
+          hint: "URL for external event page",
+        }
+      - {
+          label: "Footer URL",
+          name: "footerUrl",
+          widget: "string",
+          required: false,
+          hint: "URL for footer button",
+        }
+      - {
+          label: "Recurring",
+          name: "recurring",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "Recurrence Type",
+          name: "recurrenceType",
+          widget: "select",
+          options: ["weekly", "bi-weekly", "monthly", "yearly"],
+          required: false,
+        }
+      - {
+          label: "Recurrence Day",
+          name: "recurrenceDay",
+          widget: "select",
+          options:
+            [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday",
+            ],
+          required: false,
+          hint: "For weekly/bi-weekly events",
+        }
+      - {
+          label: "Recurrence Count",
+          name: "recurrenceCount",
+          widget: "number",
+          default: 10,
+          required: false,
+          hint: "Number of occurrences",
+        }
+      - {
+          label: "Recurrence Until",
+          name: "recurrenceUntil",
+          widget: "datetime",
+          required: false,
+          hint: "Alternative to count: end date for recurrence (YYYY-MM-DD)",
+        }
+      - {
+          label: "Recurrence Pattern",
+          name: "recurrencePattern",
+          widget: "string",
+          required: false,
+          hint: "Human-readable description (auto-generated if empty)",
+        }
+      - {
+          label: "Location",
+          name: "location",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Location URL",
+          name: "locationUrl",
+          widget: "string",
+          required: false,
+          hint: "Map URL for the location",
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "es_progetti_posts"
+    label: "[ES] Progetti"
+    folder: "content/spanish/progetti/"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Subtitle",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - {
+          label: "External URL",
+          name: "externalUrl",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
