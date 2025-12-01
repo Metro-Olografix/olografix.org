@@ -23,9 +23,15 @@
     url = "/associazione/associati"
     weight = 6
 [[main]]
+    name = "Shop"
+    url = "https://shop.olografix.org/"
+    weight = 7
+    [main.params]
+        external = true
+[[main]]
     name = "Vai al vecchio sito"
     url = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
-    weight = 7
+    weight = 8
     [main.params]
         fullwidthVisible = false
         external = true

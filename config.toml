@@ -71,7 +71,7 @@ target = ".*"
   
   [[params.direttivo]]
     name = "Marzia Calabrese"
-    nickname = ""
+    nickname = "paperotta"
     role = "tesoriere"
   
   [[params.direttivo]]
