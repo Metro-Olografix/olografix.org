@@ -64,3 +64,9 @@
         filter: brightness(0.7);
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .christmas-light {
+        animation: none;
+    }
+}
