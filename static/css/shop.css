@@ -1,0 +1,72 @@
+/* Christmas lights effect */
+.christmas-lights-wrapper {
+    position: relative;
+}
+
+.christmas-lights {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.christmas-light {
+    position: absolute;
+    width: 10px;
+    height: 14px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: twinkle 1.5s ease-in-out infinite;
+}
+
+.christmas-light.red {
+    background: radial-gradient(ellipse at 50% 30%, #ff4444, #cc0000);
+    box-shadow: 0 0 12px #ff0000, 0 0 24px rgba(255, 0, 0, 0.5);
+}
+
+.christmas-light.green {
+    background: radial-gradient(ellipse at 50% 30%, #44ff44, #00cc00);
+    box-shadow: 0 0 12px #00ff00, 0 0 24px rgba(0, 255, 0, 0.5);
+}
+
+.christmas-light.blue {
+    background: radial-gradient(ellipse at 50% 30%, #4488ff, #0066cc);
+    box-shadow: 0 0 12px #0088ff, 0 0 24px rgba(0, 136, 255, 0.5);
+}
+
+.christmas-light.yellow {
+    background: radial-gradient(ellipse at 50% 30%, #ffff44, #cccc00);
+    box-shadow: 0 0 12px #ffff00, 0 0 24px rgba(255, 255, 0, 0.5);
+}
+
+.christmas-light.orange {
+    background: radial-gradient(ellipse at 50% 30%, #ff8844, #cc6600);
+    box-shadow: 0 0 12px #ff8800, 0 0 24px rgba(255, 136, 0, 0.5);
+}
+
+.christmas-light.purple {
+    background: radial-gradient(ellipse at 50% 30%, #cc44ff, #8800cc);
+    box-shadow: 0 0 12px #aa00ff, 0 0 24px rgba(170, 0, 255, 0.5);
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        filter: brightness(0.7);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .christmas-light {
+        animation: none;
+    }
+}

@@ -46,3 +46,10 @@ role_consigliere = "Board Member"
 
 partitaIva = "VAT Number"
 codiceFiscale = "Fiscal Code"
+
+shopHeader = "Visit Our Shop!"
+shopPileTitle = "Olografix Branded Fleece"
+shopPileDescription = "Support Olografix with our exclusive merchandise!<br /><strong>Special Promos:</strong><ul><li>Fleece + Moca T-shirt Bundle at <strong>€35</strong></li><li>Fleece + MX 30 Years T-shirt Bundle at <strong>€35</strong></li></ul>"
+visitShop = "Visit Shop"
+pileFrontAlt = "Olografix Fleece - Front"
+pileBackAlt = "Olografix Fleece - Back"

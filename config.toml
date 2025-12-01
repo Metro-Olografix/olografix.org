@@ -54,6 +54,8 @@ target = ".*"
 
   archiveOldSite = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
 
+  enableShopEffect = true
+
   github = "https://github.com/Metro-Olografix"
   instagram = "https://www.instagram.com/metroolografix"
   linkedin = "https://it.linkedin.com/company/metro-olografix"
