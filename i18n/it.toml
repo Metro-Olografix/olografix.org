@@ -46,3 +46,10 @@ role_consigliere = "Consigliere"
 
 partitaIva = "Partita IVA"
 codiceFiscale = "Codice Fiscale"
+
+shopHeader = "Visita il nostro shop!"
+shopPileTitle = "Pile brandizzati Metro Olografix"
+shopPileDescription = "Sostieni Metro Olografix con il nostro merchandising esclusivo! Scopri i pile brandizzati e molto altro nello shop."
+visitShop = "Vai allo Shop"
+pileFrontAlt = "Pile Olografix - Fronte"
+pileBackAlt = "Pile Olografix - Retro"

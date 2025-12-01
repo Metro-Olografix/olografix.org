@@ -46,3 +46,10 @@ role_consigliere = "Miembro del Consejo"
 
 partitaIva = "Número de IVA"
 codiceFiscale = "Código Fiscal"
+
+shopHeader = "¡Visita Nuestra Tienda!"
+shopPileTitle = "Polar Olografix de Marca"
+shopPileDescription = "¡Apoya a Olografix con nuestros productos exclusivos! Descubre nuestros polares de marca y mucho más en la tienda."
+visitShop = "Visitar Tienda"
+pileFrontAlt = "Polar Olografix - Frente"
+pileBackAlt = "Polar Olografix - Atrás"

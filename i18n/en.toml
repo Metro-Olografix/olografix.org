@@ -46,3 +46,10 @@ role_consigliere = "Board Member"
 
 partitaIva = "VAT Number"
 codiceFiscale = "Fiscal Code"
+
+shopHeader = "Visit Our Shop!"
+shopPileTitle = "Olografix Branded Fleece"
+shopPileDescription = "Support Olografix with our exclusive merchandise! Discover our branded fleece and much more in the shop."
+visitShop = "Visit Shop"
+pileFrontAlt = "Olografix Fleece - Front"
+pileBackAlt = "Olografix Fleece - Back"
