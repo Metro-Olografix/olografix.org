@@ -49,7 +49,7 @@ codiceFiscale = "Codice Fiscale"
 
 shopHeader = "Visita il nostro shop!"
 shopPileTitle = "Pile brandizzati Metro Olografix"
-shopPileDescription = "Sostieni Metro Olografix con il nostro merchandising esclusivo! Scopri i pile brandizzati e molto altro nello shop."
+shopPileDescription = "Sostieni Metro Olografix con il nostro merchandising esclusivo!<br /><strong>Promo speciali:</strong><ul><li>Bundle Pile + T-shirt Moca a <strong>5€</strong></li><li>Bundle Pile + T-shirt MX 30 anni a <strong>5€</strong></li></ul>"
 visitShop = "Vai allo Shop"
 pileFrontAlt = "Pile Olografix - Fronte"
 pileBackAlt = "Pile Olografix - Retro"

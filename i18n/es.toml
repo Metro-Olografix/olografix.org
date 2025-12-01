@@ -49,7 +49,7 @@ codiceFiscale = "Código Fiscal"
 
 shopHeader = "¡Visita Nuestra Tienda!"
 shopPileTitle = "Polar Olografix de Marca"
-shopPileDescription = "¡Apoya a Olografix con nuestros productos exclusivos! Descubre nuestros polares de marca y mucho más en la tienda."
+shopPileDescription = "¡Apoya a Olografix con nuestros productos exclusivos!<br /><strong>Promos especiales:</strong><ul><li>Bundle Polar + Camiseta Moca a <strong>5€</strong></li><li>Bundle Polar + Camiseta MX 30 años a <strong>5€</strong></li></ul>"
 visitShop = "Visitar Tienda"
 pileFrontAlt = "Polar Olografix - Frente"
 pileBackAlt = "Polar Olografix - Atrás"

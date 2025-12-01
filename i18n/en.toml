@@ -49,7 +49,7 @@ codiceFiscale = "Fiscal Code"
 
 shopHeader = "Visit Our Shop!"
 shopPileTitle = "Olografix Branded Fleece"
-shopPileDescription = "Support Olografix with our exclusive merchandise! Discover our branded fleece and much more in the shop."
+shopPileDescription = "Support Olografix with our exclusive merchandise!<br /><strong>Special Promos:</strong><ul><li>Fleece + Moca T-shirt Bundle at <strong>€5</strong></li><li>Fleece + MX 30 Years T-shirt Bundle at <strong>€5</strong></li></ul>"
 visitShop = "Visit Shop"
 pileFrontAlt = "Olografix Fleece - Front"
 pileBackAlt = "Olografix Fleece - Back"
