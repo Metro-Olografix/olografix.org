@@ -7,19 +7,5 @@
   "files.autoSaveDelay": 1000,
   "github.codespaces.defaultExtensions": [
     "eliostruyf.vscode-front-matter"
-  ],
-  "[markdown]": {
-    "editor.fontSize": 14,
-    "editor.lineHeight": 26,
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 64,
-    "editor.lineNumbers": "off",
-    "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
-    },
-    "editor.minimap.enabled": false
-  },
-  "idf.pythonInstallPath": "/home/mic/.pyenv/shims/python"
+  ]
 }
