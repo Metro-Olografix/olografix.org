@@ -8,13 +8,19 @@
 
 @layer components {
   .prose {
+    color: #333;
+
     & p {
       margin-top: 1.25em;
       margin-bottom: 1.25em;
     }
     & a {
-      color: #042a59;
+      color: var(--color-accent);
       text-decoration: underline;
+
+      &:hover {
+        color: var(--color-primary-dark);
+      }
     }
     & ul {
       list-style-type: disc;
@@ -61,7 +67,7 @@
       font-style: italic;
       color: #1a202c;
       border-left-width: 0.25rem;
-      border-left-color: #e2e8f0;
+      border-left-color: var(--color-primary-light);
       padding-left: 1rem;
     }
     & code {
@@ -78,13 +84,9 @@
       margin-bottom: 1.25em;
     }
     & hr {
-      border-color: #e2e8f0;
+      border-color: var(--color-primary-light);
       margin-top: 3em;
       margin-bottom: 3em;
     }
-  }
-  
-  .prose a:hover {
-      color: #16213e;
   }
 }
