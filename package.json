@@ -5,14 +5,18 @@
   "description": "Simple OG image generation for Hugo",
   "scripts": {
     "og:generate": "node og-generate.js",
+    "tailwind:generate-css": "tailwindcss -i ./static/css/tailwind_conf.css -o ./static/css/tailwind_out.css --watch",
     "build": "npm run og:generate && hugo",
     "dev": "hugo server -D"
   },
   "dependencies": {
-    "satori": "^0.10.9",
-    "@resvg/resvg-js": "^2.4.1"
+    "@resvg/resvg-js": "^2.4.1",
+    "satori": "^0.10.9"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.17"
   }
 }
