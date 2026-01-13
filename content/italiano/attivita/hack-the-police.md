@@ -15,7 +15,7 @@ Deep dive su un'incursione leggendaria che ha fatto storia: l'attacco di [Phinea
 – **spiegazione accessibile** anche a chi non mastica cybersecurity  
 – **mini-lab pratico**, se c'è tempo e voglia di sporcarsi le mani
 
-Una serata per persone curiose tecniche e non che hanno voglia di capire come funziona davvero un attacco hacker 🏴‍☠️
+Una serata per persone curiose, tecniche e non, che hanno voglia di capire come funziona davvero un attacco hacker 🏴‍☠️
 
 
 Ne parliamo insieme a  **_metantz_**
