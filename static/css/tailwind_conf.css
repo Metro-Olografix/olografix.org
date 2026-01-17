@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-dark: #16213e;
+  --color-primary-light: #e2e8f0;
+  --color-accent: #042a59;
+}
+
+@layer components {
+  .prose {
+    color: #333;
+
+    & p {
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+    }
+    & a {
+      color: var(--color-accent);
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--color-primary-dark);
+      }
+    }
+    & ul {
+      list-style-type: disc;
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+      padding-left: 1.625em;
+    }
+    & ol {
+      list-style-type: decimal;
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+      padding-left: 1.625em;
+    }
+    & li {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+    & h1 {
+      font-size: 2.25em;
+      margin-top: 0;
+      margin-bottom: 0.8em;
+      font-weight: 800;
+    }
+    & h2 {
+      font-size: 1.5em;
+      margin-top: 2em;
+      margin-bottom: 1em;
+      font-weight: 700;
+    }
+    & h3 {
+      font-size: 1.25em;
+      margin-top: 1.6em;
+      margin-bottom: 0.6em;
+      font-weight: 600;
+    }
+    & h4 {
+      font-size: 1.125em;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      font-weight: 600;
+    }
+    & blockquote {
+      font-weight: 500;
+      font-style: italic;
+      color: #1a202c;
+      border-left-width: 0.25rem;
+      border-left-color: var(--color-primary-light);
+      padding-left: 1rem;
+    }
+    & code {
+      color: #1a202c;
+      font-weight: 600;
+      font-size: 0.875em;
+    }
+    & pre {
+      background-color: #f7fafc;
+      overflow: auto;
+      padding: 1rem;
+      border-radius: 0.375rem;
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+    }
+    & hr {
+      border-color: var(--color-primary-light);
+      margin-top: 3em;
+      margin-bottom: 3em;
+    }
+  }
+}
