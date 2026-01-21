@@ -6,6 +6,19 @@
     name = "L'associazione"
     pageRef = "/associazione/"
     weight = 2
+    identifier = "associazione"
+
+[[main]]
+    name = "La sede"
+    pageRef = "/associazione/sede/"
+    weight = 1
+    parent = "associazione"
+
+[[main]]
+    name = "Statuto"
+    pageRef = "/associazione/statuto/"
+    weight = 2
+    parent = "associazione"
 [[main]]
     name = "Attività"
     pageRef = "/attivita/"

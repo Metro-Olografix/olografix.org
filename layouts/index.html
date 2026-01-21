@@ -13,12 +13,10 @@
     <!-- sede -->
     <div class="md:col-span-2 h-full">
         {{ partial "card.html" (dict
-        "title" (partial "headquarters-header.html" .)
+        "title" (partial "space-header.html" .)
         "content" (T "hqDescription")
-        "goToLink" "https://www.openstreetmap.org/node/12539021893"
-        "goToText" (T "hqGotoMap")
-        "isExternal" true
-        "targetBlank" true
+        "goToSection" "associazione/sede"
+        "goToText" (T "visitSpace")
         "withShadow" true
         "fullHeight" true) }}
     </div>

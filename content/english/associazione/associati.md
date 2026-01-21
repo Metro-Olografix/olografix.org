@@ -21,7 +21,7 @@ The payment methods are simple:
 
 ## Why become a member?
 
-Because you share the hacker spirit; because you like Metro Olografix's activities; because you want to contribute to the association's life as you can; because you enjoy coming to chat at the headquarters on Monday evenings :)
+Because you share the hacker spirit; because you like Metro Olografix's activities; because you want to contribute to the association's life as you can; because you enjoy coming to chat at the space on Monday evenings :)
 
 As you can see, there are many reasons! **Additionally, as a member, it is your right to participate in assemblies and vote.**
 
@@ -31,4 +31,4 @@ And on top of it all, with an extra contribution of **3 euros** you can receive 
 
 ![Metro Olografix Card](/images/TesseraPropaganda.png)
 
-We don't do shipping, but if you can't come to the HQ to fetch it send us an email and we can figure something out!
+We don't do shipping, but if you can't come to the space to fetch it send us an email and we can figure something out!

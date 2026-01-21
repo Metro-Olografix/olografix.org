@@ -450,13 +450,15 @@
         }
       ]
     },
-    "Gallery Image": {
-      "description": "Reference an image from the gallery server",
-      "body": "![[[alt]]]({{< param \"galleryServer\" >}}/[[path]])",
+    "Positioned image": {
+      "description": "Insert an image with Tailwind positioning (left, right, center) - mobile responsive",
+      "body": [
+        "<img src=\"[[&mediaUrl]]\" alt=\"[[alt]]\" class=\"[[positionClass]] [[sizeClass]] max-w-full rounded-lg shadow-md\" />"
+      ],
       "fields": [
         {
-          "name": "path",
-          "title": "Image path on gallery server",
+          "name": "mediaUrl",
+          "title": "Image URL",
           "type": "string",
           "default": ""
         },
@@ -465,6 +467,32 @@
           "title": "Alt text",
           "type": "string",
           "default": ""
+        },
+        {
+          "name": "positionClass",
+          "title": "Position",
+          "type": "choice",
+          "choices": [
+            "w-full mb-4 md:float-right md:w-auto md:ml-4",
+            "w-full mb-4 md:float-left md:w-auto md:mr-4",
+            "w-full mb-4 md:w-auto md:mx-auto md:block"
+          ],
+          "default": "w-full mb-4 md:float-right md:w-auto md:ml-4"
+        },
+        {
+          "name": "sizeClass",
+          "title": "Size (desktop)",
+          "type": "choice",
+          "choices": [
+            "md:w-48",
+            "md:w-64",
+            "md:w-80",
+            "md:w-96",
+            "md:max-w-sm",
+            "md:max-w-md",
+            "md:max-w-lg"
+          ],
+          "default": "md:w-64"
         }
       ]
     }
