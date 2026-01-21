@@ -17,7 +17,7 @@ Per contribuire al sito, avrai bisogno di:
 
 1. **Hugo Extended** - [Istruzioni di installazione](https://gohugo.io/installation/)
 2. **Git**
-3. Un editor di testo (consigliato VS Code)
+3. **VS Code** con l'estensione **Front Matter CMS** (consigliato)
 
 ### Installazione e test locale
 
@@ -31,6 +31,45 @@ hugo server -D
 ```
 
 Ora puoi vedere il sito in esecuzione all'indirizzo [http://localhost:1313](http://localhost:1313)
+
+## Usare Front Matter CMS (metodo consigliato)
+
+[Front Matter CMS](https://frontmatter.codes/) è un'estensione per VS Code che semplifica la gestione dei contenuti Hugo. Il repository è già configurato per utilizzarla.
+
+### Installazione
+
+1. Apri VS Code
+2. Installa l'estensione **Front Matter CMS** (`eliostruyf.vscode-front-matter`) dal marketplace
+3. Apri la cartella del repository in VS Code
+
+### Come usarla
+
+Una volta installata, vedrai l'icona di Front Matter nella barra laterale sinistra (icona con la "FM").
+
+**Dashboard**: Clicca sull'icona per aprire la dashboard dove puoi:
+- Vedere tutti i contenuti del sito organizzati per tipo
+- Creare nuove attività, progetti o pagine
+- Modificare i contenuti esistenti
+
+**Creare una nuova attività**:
+1. Apri la dashboard di Front Matter
+2. Clicca su "Create content"
+3. Seleziona il tipo di contenuto (es. "attivita")
+4. Compila i campi del frontmatter tramite l'interfaccia grafica
+5. Scrivi il contenuto nel pannello dell'editor
+
+**Modificare un contenuto esistente**:
+1. Apri un file `.md` dalla dashboard o dall'explorer
+2. Il pannello laterale di Front Matter mostrerà tutti i campi del frontmatter
+3. Modifica i valori direttamente dall'interfaccia grafica
+
+### Vantaggi
+
+- Non devi ricordare la sintassi del frontmatter
+- Autocompletamento dei campi
+- Validazione automatica dei valori
+- Anteprima delle date in formato leggibile
+- Gestione semplificata delle immagini
 
 ## Contribuire al sito
 
