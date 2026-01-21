@@ -94,6 +94,7 @@ target = ".*"
 
 [outputs]
   home = ["HTML", "ICS"]
+  section = ['html', 'rss']
 
 [outputFormats]
   [outputFormats.ICS]

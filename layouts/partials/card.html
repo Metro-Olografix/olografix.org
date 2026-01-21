@@ -1,12 +1,13 @@
 {{ $showFooter := or (.goToSection) (.goToLink) (.badge) }}
 
-<div class="bg-white p-4 border-4 border-primary-dark w-full {{ if (default false .withShadow) }} shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] {{ end }} mb-4 relative flex flex-col {{ if (default false .fullHeight) }}h-full{{ end }}">
+<div
+    class="bg-white p-4 border-4 border-primary-dark w-full {{ if (default false .withShadow) }} shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] {{ end }} mb-4 relative flex flex-col {{ if (default false .fullHeight) }}h-full{{ end }}">
     <!-- main content -->
     <div class="{{ if $showFooter }}flex-grow{{ end }}">
         {{ with .title }}
         <h3 class="text-xl font-bold mb-2 text-accent">{{ . | safeHTML }}</h3>
         {{ end }}
-        
+
         <!-- date and recurrence info if provided -->
         {{ if or .date .recurring }}
         <div class="text-sm text-gray-600 mb-3">
@@ -18,7 +19,7 @@
                 {{ if ne (dateFormat "15:04" .) "00:00" }}
                 <span class="mx-2">{{ dateFormat "15:04" . }}</span>
                 {{ end }}
-                
+
                 {{ with $.endDate }}
                 <span class="mx-2">-</span>
                 <span>{{ dateFormat "02 Jan 2006" . }}</span>
@@ -29,22 +30,19 @@
                 {{ end }}
             </div>
             {{ end }}
-            
+
             {{ if .recurring }}
             <div class="flex items-center">
                 <i class="fas fa-sync-alt mr-2"></i>
-                <span class="font-semibold">{{ .recurrencePattern | default (printf "%s" (humanize (.recurrenceType | default "weekly"))) }}</span>
+                <span class="font-semibold">{{ .recurrencePattern | default (printf "%s" (humanize (.recurrenceType |
+                    default "weekly"))) }}</span>
             </div>
 
-            <div class="recurring-event" 
-                data-start-date="{{ .date }}"
-                {{ with .endDate }}data-end-date="{{ . }}"{{ end }}
-                data-recurrence-type="{{ .recurrenceType | default "weekly" }}"
-                data-recurrence-pattern="{{ .recurrencePattern }}"
-                data-text-today="{{ T "today" | default "Today" }}"
-                data-text-tomorrow="{{ T "tomorrow" | default "Tomorrow" }}"
-                data-text-next="{{ T "next" | default "Next:" }}"
-                data-text-ended="{{ T "eventEnded" | default "This recurring event has ended." }}">
+            <div class="recurring-event" data-start-date="{{ .date }}" {{ with .endDate }}data-end-date="{{ . }}" {{ end
+                }} data-recurrence-type="{{ .recurrenceType | default " weekly" }}"
+                data-recurrence-pattern="{{ .recurrencePattern }}" data-text-today="{{ T " today" | default "Today" }}"
+                data-text-tomorrow="{{ T " tomorrow" | default "Tomorrow" }}" data-text-next="{{ T " next" |
+                default "Next:" }}" data-text-ended="{{ T " eventEnded" | default "This recurring event has ended." }}">
                 <div class="flex items-center mt-1">
                     <i class="far fa-calendar-check mr-2"></i>
                     <span class="next-date">
@@ -54,12 +52,13 @@
                 </div>
             </div>
             {{ end }}
-            
+
             {{ with .location }}
             <div class="flex items-center mt-1">
                 <i class="fas fa-map-marker-alt mr-2"></i>
                 {{ if $.locationUrl }}
-                <a href="{{ $.locationUrl }}" target="_blank" rel="noopener" class="hover:underline text-accent">{{ . }}</a>
+                <a href="{{ $.locationUrl }}" target="_blank" rel="noopener" class="hover:underline text-accent">{{ .
+                    }}</a>
                 {{ else }}
                 <span>{{ . }}</span>
                 {{ end }}
@@ -67,7 +66,7 @@
             {{ end }}
         </div>
         {{ end }}
-        
+
         <!-- content -->
         <div class="prose text-justify">{{ .content | safeHTML }}</div>
     </div>
@@ -77,7 +76,7 @@
     <div class="mt-auto pt-2 bg-gray-100 px-4 py-1 -mx-4 -mb-4 flex items-center justify-between">
         <!-- badge -->
         {{ with .badge }}
-        <span class="badge {{ if eq . "Prossimamente" }}badge-upcoming{{ end }}">
+        <span class="badge {{ if eq . (T "comingEvent") }}badge-upcoming{{ end }}">
             {{ . }}
         </span>
         {{ else }}
@@ -85,21 +84,17 @@
         {{ end }}
         <!-- link href generation -->
         {{ if or (.goToSection) (.goToLink) }}
-            {{ $link := "" }}
-            {{ if .goToSection }}
-                {{ $section := site.GetPage "section" .goToSection }}
-                {{ $link = ($section.RelPermalink | relLangURL) }}
-            {{ else if .goToLink }}
-                {{ $link = .goToLink }}
-            {{ end }}
-            <a href="{{ $link }}" 
-               class="text-sm text-accent hover:underline ml-auto"
-               {{ if .isExternal }}
-                   target="_blank"
-                   rel="noopener noreferrer"
-               {{ end }}>
-                {{ .goToText }} >>
-            </a>
+        {{ $link := "" }}
+        {{ if .goToSection }}
+        {{ $section := site.GetPage "section" .goToSection }}
+        {{ $link = ($section.RelPermalink | relLangURL) }}
+        {{ else if .goToLink }}
+        {{ $link = .goToLink }}
+        {{ end }}
+        <a href="{{ $link }}" class="text-sm text-accent hover:underline ml-auto" {{ if .isExternal }} target="_blank"
+            rel="noopener noreferrer" {{ end }}>
+            {{ .goToText }} >>
+        </a>
         {{ end }}
     </div>
     {{ end }}
