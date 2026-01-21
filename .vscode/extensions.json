@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "budparr.language-hugo-vscode",
-    "zaaack.markdown-editor"
+    "zaaack.markdown-editor",
+    "eliostruyf.vscode-front-matter"
   ]
 }
