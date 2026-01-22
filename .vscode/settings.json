@@ -2,5 +2,5 @@
   "files.exclude": {
     "**/public": true,
     "**/.hugo_build.lock": true
-  },
+  }
 }

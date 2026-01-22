@@ -2,12 +2,12 @@
 <article>
     <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
     {{ partial "card.html" (dict
-        "content" .Content
-        "withShadow" true ) }}
+    "content" .Content
+    "withShadow" true ) }}
 </article>
 
 <div class="mt-8 flex max-w-full flex-row">
-    {{ with .Site.GetPage "/associazione/statuto" }}
+    {{ with .CurrentSection.GetPage "statuto.md" }}
     <div
         class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
         <a href="{{ .RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
@@ -16,7 +16,7 @@
     </div>
     {{ end }}
 
-    {{ with .Site.GetPage "/associazione/associati" }}
+    {{ with .CurrentSection.GetPage "associati.md" }}
     <div
         class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
         <a href="{{ .RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
@@ -33,31 +33,31 @@
         {{ $boardMembers := .Site.Params.direttivo }}
         {{ $shuffled := shuffle $boardMembers }}
         {{ range $shuffled }}
-            {{ $emailAddr := .nickname }}
-            {{ $lowercaseRole := lower .role }}
+        {{ $emailAddr := .nickname }}
+        {{ $lowercaseRole := lower .role }}
 
-            {{ if eq $lowercaseRole "presidente" }}
-                {{ $emailAddr = "presidente" }}
-            {{ else if eq $lowercaseRole "vice presidente" }}
-                {{ $emailAddr = "segretario" }}
-            {{ else if eq $lowercaseRole "tesoriere" }}
-                {{ $emailAddr = "tesoriere" }}
-            {{ end }}
+        {{ if eq $lowercaseRole "presidente" }}
+        {{ $emailAddr = "presidente" }}
+        {{ else if eq $lowercaseRole "vice presidente" }}
+        {{ $emailAddr = "segretario" }}
+        {{ else if eq $lowercaseRole "tesoriere" }}
+        {{ $emailAddr = "tesoriere" }}
+        {{ end }}
 
-            {{ $roleKey := printf "role_%s" (replace $lowercaseRole " " "_") }}
-            {{ $translatedRole := T $roleKey }}
+        {{ $roleKey := printf "role_%s" (replace $lowercaseRole " " "_") }}
+        {{ $translatedRole := T $roleKey }}
 
-            {{ if eq $emailAddr "" }}
-                {{ partial "card.html" (dict
-                "title" (printf "%s" .name)
-                "content" $translatedRole) }}
-            {{ else }}
-                {{ partial "card.html" (dict
-                "title" (printf "%s \"%s\"" .name .nickname)
-                "content" $translatedRole
-                "goToLink" (printf "mailto:%s@olografix.org" $emailAddr)
-                "goToText" "email") }}
-            {{ end }}
+        {{ if eq $emailAddr "" }}
+        {{ partial "card.html" (dict
+        "title" (printf "%s" .name)
+        "content" $translatedRole) }}
+        {{ else }}
+        {{ partial "card.html" (dict
+        "title" (printf "%s \"%s\"" .name .nickname)
+        "content" $translatedRole
+        "goToLink" (printf "mailto:%s@olografix.org" $emailAddr)
+        "goToText" "email") }}
+        {{ end }}
         {{ end }}
     </section>
 </article>
