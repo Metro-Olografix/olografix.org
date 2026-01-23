@@ -55,6 +55,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // Global event listeners
   document.addEventListener("keydown", handleEscapeKey);
 
+  // Mobile dropdown toggle for sub-menus
+  document.querySelectorAll(".mobile-dropdown-toggle").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const dropdown = button.closest(".mobile-dropdown");
+      const content = dropdown.querySelector(".mobile-dropdown-content");
+      const arrow = dropdown.querySelector(".mobile-dropdown-arrow");
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+      // Toggle visibility
+      content.classList.toggle("hidden");
+      button.setAttribute("aria-expanded", !isExpanded);
+
+      // Rotate arrow
+      if (arrow) {
+        arrow.classList.toggle("rotate-180");
+      }
+    });
+  });
+
   // Fetch and update headquarter status
   function updateHeadquarterStatus() {
     const dotElement = document.getElementById("statusDot");

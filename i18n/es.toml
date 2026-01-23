@@ -15,6 +15,7 @@ hqStatusOpen = "Abierta"
 hqStatusClose = "Cerrada"
 hqDescription = "<p>Ven a visitarnos en nuestra nueva sede en <strong>Viale Marconi 278/1</strong>, Pescara.</p><p>Nos encontramos todos los lunes en la noche a las 21:00.</p>"
 hqGotoMap = "Mapa"
+visitSpace = "¡Ven a visitarnos!"
 nextUpcomingEvent = "Proximo Evento"
 
 dateLabel = "Dia"
