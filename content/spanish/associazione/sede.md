@@ -28,7 +28,7 @@ Nos encontramos en **Viale Marconi 278/1**, cerca del Estadio Adriático.
 ## Qué encontrar
 
 <!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/lab-sede.png"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-left md:w-auto md:mr-4"},{"name":"sizeClass","value":"max-w-lg"}]} -->
-<img src="/images/lab-sede.png" alt="" class="w-full mb-4 md:float-left md:w-auto md:mr-4 max-w-lg max-w-full rounded-lg shadow-md" />
+<img src="/images/lab-sede.png" alt="" class="w-full mb-4 md:float-left md:w-auto md:mr-8 max-w-lg max-w-full rounded-lg shadow-md mb-6" />
 <!-- FM:Snippet:End -->
 
 ### El laboratorio

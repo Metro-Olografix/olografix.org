@@ -13,7 +13,7 @@ Da Gennaio 2025, Metro Olografix ha inaugurato un nuovo spazio a Pescara!
 
 ## Indirizzo
 
-Ci troviamo in **Viale Marconi 278/1**, vicino lo Stadio Adriatico.
+Ci troviamo in **Viale Marconi 278/1**, vicino allo Stadio Adriatico.
 
 [OpenStreetMap](https://www.openstreetmap.org/node/12539021893)
 
@@ -28,7 +28,7 @@ Ci troviamo in **Viale Marconi 278/1**, vicino lo Stadio Adriatico.
 ## Cosa trovare
 
 <!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/lab-sede.png"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-left md:w-auto md:mr-4"},{"name":"sizeClass","value":"max-w-lg"}]} -->
-<img src="/images/lab-sede.png" alt="" class="w-full mb-4 md:float-left md:w-auto md:mr-4 max-w-lg max-w-full rounded-lg shadow-md" />
+<img src="/images/lab-sede.png" alt="" class="w-full mb-4 md:float-left md:w-auto md:mr-8 max-w-lg max-w-full rounded-lg shadow-md mb-6" />
 <!-- FM:Snippet:End -->
 
 ### Il laboratorio
@@ -61,13 +61,13 @@ Consulta la pagina [Attività](/attivita) per il calendario degli eventi!
 
 Ci riuniamo il lunedì sera a partire dalle 21!
 
-Puoi trovarci anche altri giorni, se vuoi esserne sicur* scrivici sui canali social o a `pescara [chiocciola] olografix [punto] org`.
+Puoi trovarci anche altri giorni, se vuoi esserne sicurə scrivici sui canali social o a `pescara [chiocciola] olografix [punto] org`.
 
 ### SpaceAPI
 
-Aderiamo allo standard di [SpaceAPI](https://spaceapi.io/), puoi trovare la heatmap con le propabilità di trovare la sede aperta [qui](https://mapall.space/heatmap/show.php?id=Metro%20Olografix).
+Aderiamo allo standard di [SpaceAPI](https://spaceapi.io/), puoi trovare la heatmap con le probabilità di trovare la sede aperta [qui](https://mapall.space/heatmap/show.php?id=Metro%20Olografix).
 
-È disponibile un app per Android per consultare lo stato dello spazio velocemente, distribuita su [F-Droid](https://f-droid.org/packages/io.spaceapi.community.myhackerspace/) e [Play Store](https://play.google.com/store/apps/details?id=io.spaceapi.community.myhackerspace).
+È disponibile un'app per Android per consultare lo stato dello spazio velocemente, distribuita su [F-Droid](https://f-droid.org/packages/io.spaceapi.community.myhackerspace/) e [Play Store](https://play.google.com/store/apps/details?id=io.spaceapi.community.myhackerspace).
 
 ![](https://spaceapistatusimage.hosted.quelltext.eu/status?url=https%3A%2F%2Fsede.olografix.org%2Fspaceapi.json)
 
