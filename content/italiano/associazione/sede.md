@@ -21,7 +21,7 @@ Ci troviamo in **Viale Marconi 278/1**, vicino allo Stadio Adriatico.
 
 ### Come raggiungerci
 
-- In autobus: le due linee più comode per raggiungere la sede sono il **21** e il **6**.
+- In autobus: le due linee più comode per raggiungere la sede sono il **21** e il **6** (approvato da [@ilovetrasportounicoabruzzese](https://www.instagram.com/ilovetrasportounicoabruzzese/)!).
 
 - In treno: scendere alla stazione di **Pescara Porta Nuova**, poi sono circa 15 minuti a piedi.
 
