@@ -5,6 +5,7 @@
   "description": "Simple OG image generation for Hugo",
   "scripts": {
     "og:generate": "node og-generate.js",
+    "tailwind:generate-css": "tailwindcss -i ./static/css/tailwind_conf.css -o ./static/css/tailwind_out.css --watch",
     "build": "npm run og:generate && hugo",
     "dev": "hugo server -D"
   },
@@ -14,5 +15,8 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.17"
   }
 }
