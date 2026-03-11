@@ -143,6 +143,32 @@ function formatDateTime(d) {
 
 // ── Test suites ──────────────────────────────────────────────────────────────
 
+function testLineEndings(raw, label) {
+  // RFC 5545 §3.1: lines must be delimited by CRLF
+  const hasCRLF = raw.includes("\r\n");
+  const hasBareLF = raw.replace(/\r\n/g, "").includes("\n");
+  assert(hasCRLF, `${label}: must use CRLF line endings`);
+  assert(!hasBareLF, `${label}: must not contain bare LF (non-CRLF) line endings`);
+}
+
+function testLineLengths(raw, label) {
+  // RFC 5545 §3.1: lines should not exceed 75 octets
+  // After unfolding, the raw lines (before CRLF split) should each be <= 75 bytes
+  const lines = raw.split(/\r\n|\n/);
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    // Skip continuation lines (start with space/tab) — they're part of a folded line
+    if (/^[ \t]/.test(line)) continue;
+    const octets = Buffer.byteLength(line, "utf-8");
+    if (octets > 75) {
+      assert(
+        false,
+        `${label}:${i + 1}: line exceeds 75 octets (${octets}) — "${line.slice(0, 60)}..."`
+      );
+    }
+  }
+}
+
 function testFileStructure(raw, label) {
   // Must start and end correctly
   assert(raw.startsWith("BEGIN:VCALENDAR"), `${label}: must start with BEGIN:VCALENDAR`);
@@ -571,6 +597,8 @@ for (const { ics, content, lang } of calendars) {
 
   console.log(`  [${lang}] ${label}: ${events.length} events (${sources.size} source files)`);
 
+  testLineEndings(raw, label);
+  testLineLengths(raw, label);
   testFileStructure(raw, label);
   testLineIntegrity(raw, label);
   testEventProperties(events, label);

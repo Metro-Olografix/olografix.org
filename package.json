@@ -7,6 +7,7 @@
     "og:generate": "node og-generate.js",
     "build": "npm run og:generate && hugo",
     "dev": "hugo server -D",
+    "postbuild:ics": "node scripts/fix-ics.js",
     "test:ics": "node tests/validate-ics.js"
   },
   "dependencies": {

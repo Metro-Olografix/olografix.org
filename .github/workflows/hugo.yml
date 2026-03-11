@@ -61,6 +61,8 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Post-process ICS calendars (line folding + CRLF)
+        run: npm run postbuild:ics
       - name: Validate ICS calendars
         run: npm run test:ics
       - name: Upload artifact
