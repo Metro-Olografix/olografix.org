@@ -1,8 +1,8 @@
 ---
 title: "Connected Without Permission"
 subtitle: "Let's build networks that belong to no one"
-date: "2026-03-21T17:00:00"
-endDate: "2026-03-21T19:00:00"
+date: "2026-03-21T18:00:00"
+endDate: "2026-03-21T20:00:00"
 recurring: false
 location: "Metro Olografix Headquarters - Viale Marconi 278/1, Pescara"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
