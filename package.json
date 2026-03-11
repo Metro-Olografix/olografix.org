@@ -6,7 +6,8 @@
   "scripts": {
     "og:generate": "node og-generate.js",
     "build": "npm run og:generate && hugo",
-    "dev": "hugo server -D"
+    "dev": "hugo server -D",
+    "test:ics": "node tests/validate-ics.js"
   },
   "dependencies": {
     "@resvg/resvg-js": "^2.4.1",
