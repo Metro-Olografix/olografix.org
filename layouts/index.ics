@@ -24,112 +24,125 @@ END:VTIMEZONE
 {{- range where .Site.RegularPages "Section" "attivita" }}
 {{- $isAllDay := eq (.Date.Format "15:04") "00:00" }}
 {{- $isRecurring := .Params.recurring }}
+{{- /* Compute DTSTART line */ -}}
+{{- $dtstartLine := "" -}}
+{{- if $isAllDay -}}
+  {{- $dtstartLine = printf "DTSTART;VALUE=DATE:%s" (.Date.Format "20060102") -}}
+{{- else -}}
+  {{- $dtstartLine = printf "DTSTART;TZID=Europe/Rome:%s" (.Date.Format "20060102T150405") -}}
+{{- end -}}
+{{- /* Compute DTEND line */ -}}
+{{- $dtendLine := "" -}}
+{{- if $isRecurring -}}
+  {{- if .Params.eventEndTime -}}
+    {{- if $isAllDay -}}
+      {{- $dtendLine = printf "DTEND;VALUE=DATE:%s" ((time.AsTime .Params.eventEndTime).Format "20060102") -}}
+    {{- else -}}
+      {{- $dtendLine = printf "DTEND;TZID=Europe/Rome:%s" ((time.AsTime .Params.eventEndTime).Format "20060102T150405") -}}
+    {{- end -}}
+  {{- else if .Params.duration -}}
+    {{- $durationNs := mul .Params.duration 60000000000 -}}
+    {{- $endTime := .Date.Add $durationNs -}}
+    {{- if $isAllDay -}}
+      {{- $dtendLine = printf "DTEND;VALUE=DATE:%s" ($endTime.Format "20060102") -}}
+    {{- else -}}
+      {{- $dtendLine = printf "DTEND;TZID=Europe/Rome:%s" ($endTime.Format "20060102T150405") -}}
+    {{- end -}}
+  {{- else -}}
+    {{- if $isAllDay -}}
+      {{- $nextDay := .Date.AddDate 0 0 1 -}}
+      {{- $dtendLine = printf "DTEND;VALUE=DATE:%s" ($nextDay.Format "20060102") -}}
+    {{- else -}}
+      {{- $oneHourLater := .Date.Add 3600000000000 -}}
+      {{- $dtendLine = printf "DTEND;TZID=Europe/Rome:%s" ($oneHourLater.Format "20060102T150405") -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- if .Params.endDate -}}
+    {{- if and $isAllDay (eq ((time.AsTime .Params.endDate).Format "15:04") "00:00") -}}
+      {{- $endDate := (time.AsTime .Params.endDate).AddDate 0 0 1 -}}
+      {{- $dtendLine = printf "DTEND;VALUE=DATE:%s" ($endDate.Format "20060102") -}}
+    {{- else -}}
+      {{- $dtendLine = printf "DTEND;TZID=Europe/Rome:%s" ((time.AsTime .Params.endDate).Format "20060102T150405") -}}
+    {{- end -}}
+  {{- else if $isAllDay -}}
+    {{- $nextDay := .Date.AddDate 0 0 1 -}}
+    {{- $dtendLine = printf "DTEND;VALUE=DATE:%s" ($nextDay.Format "20060102") -}}
+  {{- else -}}
+    {{- $oneHourLater := .Date.Add 3600000000000 -}}
+    {{- $dtendLine = printf "DTEND;TZID=Europe/Rome:%s" ($oneHourLater.Format "20060102T150405") -}}
+  {{- end -}}
+{{- end -}}
+{{- /* Compute RRULE line */ -}}
+{{- $rruleLine := "" -}}
+{{- if $isRecurring -}}
+  {{- $freq := "" -}}
+  {{- $interval := "" -}}
+  {{- if eq .Params.recurrenceType "weekly" -}}
+    {{- $freq = "WEEKLY" -}}
+  {{- else if eq .Params.recurrenceType "bi-weekly" -}}
+    {{- $freq = "WEEKLY" -}}
+    {{- $interval = ";INTERVAL=2" -}}
+  {{- else if eq .Params.recurrenceType "monthly" -}}
+    {{- $freq = "MONTHLY" -}}
+  {{- else if eq .Params.recurrenceType "yearly" -}}
+    {{- $freq = "YEARLY" -}}
+  {{- end -}}
+  {{- $byDay := "" -}}
+  {{- if .Params.recurrenceDay -}}
+    {{- $dayMap := dict "monday" "MO" "tuesday" "TU" "wednesday" "WE" "thursday" "TH" "friday" "FR" "saturday" "SA" "sunday" "SU" -}}
+    {{- $dayCode := index $dayMap (lower .Params.recurrenceDay) -}}
+    {{- if $dayCode -}}
+      {{- $byDay = printf ";BYDAY=%s" $dayCode -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $until := "" -}}
+  {{- $count := "" -}}
+  {{- if .Params.recurrenceCount -}}
+    {{- $count = printf ";COUNT=%d" .Params.recurrenceCount -}}
+  {{- else if .Params.endDate -}}
+    {{- $untilDate := time.AsTime .Params.endDate -}}
+    {{- if $isAllDay -}}
+      {{- $until = printf ";UNTIL=%s" ($untilDate.UTC.Format "20060102T235959Z") -}}
+    {{- else -}}
+      {{- $until = printf ";UNTIL=%s" ($untilDate.UTC.Format "20060102T150405Z") -}}
+    {{- end -}}
+  {{- else if .Params.recurrenceUntil -}}
+    {{- $untilDate := time.AsTime .Params.recurrenceUntil -}}
+    {{- $until = printf ";UNTIL=%s" ($untilDate.UTC.Format "20060102T150405Z") -}}
+  {{- end -}}
+  {{- if $freq -}}
+    {{- $rruleLine = printf "RRULE:FREQ=%s%s%s%s%s" $freq $interval $until $count $byDay -}}
+  {{- end -}}
+{{- end -}}
+{{- /* Escape text fields */ -}}
+{{- $summary := replace (replace (replace .Title "\\" "\\\\") ";" "\\;") "," "\\," -}}
+{{- $location := "" -}}
+{{- if .Params.location -}}
+  {{- $location = replace (replace (replace .Params.location "\\" "\\\\") ";" "\\;") "," "\\," -}}
+{{- end -}}
+{{- $altDesc := "" -}}
+{{- if .Params.subtitle -}}
+  {{- $altDesc = replace (replace (replace .Params.subtitle "\\" "\\\\") ";" "\\;") "," "\\," -}}
+{{- end }}
 BEGIN:VEVENT
 UID:{{ .Params.uid | default (printf "%s@olografix.org" .File.BaseFileName) }}
-DTSTAMP:{{ now.Format "20060102T150405Z" }}
-{{- if $isAllDay }}
-DTSTART;VALUE=DATE:{{ .Date.Format "20060102" }}
-{{- else }}
-DTSTART;TZID=Europe/Rome:{{ .Date.Format "20060102T150405" }}
-{{- end }}
-{{- /* Handle DTEND logic differently for recurring vs non-recurring events */ -}}
-{{- if $isRecurring }}
-  {{- /* For recurring events, use duration or eventEndTime, NOT endDate */ -}}
-  {{- if .Params.eventEndTime }}
-    {{- /* Use explicit event end time */ -}}
-    {{- if $isAllDay }}
-DTEND;VALUE=DATE:{{ (time.AsTime .Params.eventEndTime).Format "20060102" }}
-    {{- else }}
-DTEND;TZID=Europe/Rome:{{ (time.AsTime .Params.eventEndTime).Format "20060102T150405" }}
-    {{- end }}
-  {{- else if .Params.duration }}
-    {{- /* Use duration (in minutes) - convert to nanoseconds */ -}}
-    {{- $durationNs := mul .Params.duration 60000000000 }}
-    {{- $endTime := .Date.Add $durationNs }}
-    {{- if $isAllDay }}
-DTEND;VALUE=DATE:{{ $endTime.Format "20060102" }}
-    {{- else }}
-DTEND;TZID=Europe/Rome:{{ $endTime.Format "20060102T150405" }}
-    {{- end }}
-  {{- else }}
-    {{- /* Default: 1 hour duration for timed events, same day for all-day */ -}}
-    {{- if $isAllDay }}
-      {{- $nextDay := .Date.AddDate 0 0 1 }}
-DTEND;VALUE=DATE:{{ $nextDay.Format "20060102" }}
-    {{- else }}
-      {{- /* 1 hour = 3600000000000 nanoseconds */ -}}
-      {{- $oneHourLater := .Date.Add 3600000000000 }}
-DTEND;TZID=Europe/Rome:{{ $oneHourLater.Format "20060102T150405" }}
-    {{- end }}
-  {{- end }}
-{{- else }}
-  {{- /* For non-recurring events, endDate is the actual end time */ -}}
-  {{- if .Params.endDate }}
-    {{- if and $isAllDay (eq ((time.AsTime .Params.endDate).Format "15:04") "00:00") }}
-      {{- /* All-day event with all-day end */ -}}
-      {{- $endDate := (time.AsTime .Params.endDate).AddDate 0 0 1 }}
-DTEND;VALUE=DATE:{{ $endDate.Format "20060102" }}
-    {{- else }}
-      {{- /* Timed event or all-day with specific end time */ -}}
-DTEND;TZID=Europe/Rome:{{ (time.AsTime .Params.endDate).Format "20060102T150405" }}
-    {{- end }}
-  {{- else if $isAllDay }}
-    {{- /* Single all-day event without end date */ -}}
-    {{- $nextDay := .Date.AddDate 0 0 1 }}
-DTEND;VALUE=DATE:{{ $nextDay.Format "20060102" }}
-  {{- end }}
-{{- end }}
-SUMMARY:{{ .Title }}
-{{- if .Params.location }}
-LOCATION:{{ .Params.location }}
+DTSTAMP:{{ now.UTC.Format "20060102T150405Z" }}
+{{ $dtstartLine }}
+{{ $dtendLine }}
+SUMMARY:{{ $summary }}
+{{- if $location }}
+LOCATION:{{ $location }}
 {{- end }}
 {{- if .Params.externalUrl }}
 URL:{{ .Params.externalUrl }}
 {{- end }}
-{{- if $isRecurring }}
-  {{- $freq := "" -}}
-  {{- $interval := "" -}}
-  {{- if eq .Params.recurrenceType "weekly" }}
-    {{- $freq = "WEEKLY" -}}
-  {{- else if eq .Params.recurrenceType "bi-weekly" }}
-    {{- $freq = "WEEKLY" -}}
-    {{- $interval = ";INTERVAL=2" -}}
-  {{- else if eq .Params.recurrenceType "monthly" }}
-    {{- $freq = "MONTHLY" -}}
-  {{- else if eq .Params.recurrenceType "yearly" }}
-    {{- $freq = "YEARLY" -}}
-  {{- end }}
-  {{- $byDay := "" -}}
-  {{- if .Params.recurrenceDay }}
-    {{- $dayMap := dict "monday" "MO" "tuesday" "TU" "wednesday" "WE" "thursday" "TH" "friday" "FR" "saturday" "SA" "sunday" "SU" -}}
-    {{- $dayCode := index $dayMap (lower .Params.recurrenceDay) -}}
-    {{- if $dayCode }}
-      {{- $byDay = printf ";BYDAY=%s" $dayCode -}}
-    {{- end }}
-  {{- end }}
-  {{- $until := "" -}}
-  {{- $count := "" -}}
-  {{- /* For recurring events: recurrenceCount takes precedence, then endDate as series end */ -}}
-  {{- if .Params.recurrenceCount }}
-    {{- $count = printf ";COUNT=%d" .Params.recurrenceCount -}}
-  {{- else if .Params.endDate }}
-    {{- /* For recurring events, endDate means "stop recurring after this date" */ -}}
-    {{- $untilDate := time.AsTime .Params.endDate }}
-    {{- if $isAllDay }}
-      {{- $until = printf ";UNTIL=%s" ($untilDate.UTC.Format "20060102T235959Z") -}}
-    {{- else }}
-      {{- $until = printf ";UNTIL=%s" ($untilDate.UTC.Format "20060102T150405Z") -}}
-    {{- end }}
-  {{- else if .Params.recurrenceUntil }}
-    {{- /* Fallback to recurrenceUntil for backward compatibility */ -}}
-    {{- $untilDate := time.AsTime .Params.recurrenceUntil }}
-    {{- $until = printf ";UNTIL=%s" ($untilDate.UTC.Format "20060102T150405Z") -}}
-  {{- end }}
-RRULE:FREQ={{ $freq }}{{ $interval }}{{ $until }}{{ $count }}{{ $byDay }}
+{{- if $rruleLine }}
+{{ $rruleLine }}
 {{- end }}
 DESCRIPTION:https://olografix.org{{ .RelPermalink }}
-{{- if .Params.subtitle }}
-X-ALT-DESC:{{ .Params.subtitle }}
+{{- if $altDesc }}
+X-ALT-DESC:{{ $altDesc }}
 {{- end }}
 {{- if .Params.status }}
 STATUS:{{ upper .Params.status }}
