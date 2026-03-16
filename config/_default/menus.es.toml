@@ -33,7 +33,7 @@
     weight = 5
 [[main]]
     name = "Asociate"
-    url = "/associazione/associati"
+    pageRef = "/associazione/associati/"
     weight = 6
 [[main]]
     name = "Shop"
