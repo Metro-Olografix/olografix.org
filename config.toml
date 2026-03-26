@@ -34,7 +34,7 @@ defaultContentLanguageInSubdir = false
     languageName = 'ES'
     title = 'Metro Olografix'
     contentDir = "content/spanish"
-    weight = 2
+    weight = 3
     [languages.es.permalinks]
       progetti = "projects/:slug"
       attivita = "activities/:slug"
