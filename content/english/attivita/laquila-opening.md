@@ -2,7 +2,7 @@
 title: "Metro Olografix L'Aquila Node — Grand Opening"
 subtitle: "A hackerspace lights up in L'Aquila."
 date: "2026-05-17T17:00:00"
-endDate: "2026-12-23T23:00:00"
+endDate: "2026-05-17T23:00:00"
 recurring: false
 location: "Metro Olografix AQ - Via Rustici, 4 (under the arch), L'Aquila"
 locationUrl: "https://www.openstreetmap.org/node/13787603509"
