@@ -9,7 +9,7 @@ It's a place to tinker, break things (and maybe fix them), learn from others and
 
 ## Address
 
-We're located at **Via Rustici, 4**, L'Aquila.
+We're located at **Via Ed Arco Cirillo, 10**, L'Aquila.
 
 [OpenStreetMap](https://www.openstreetmap.org/search?query=Via+Rustici+4+L%27Aquila)
 

@@ -9,7 +9,7 @@ Es un lugar para cacharrear, romper cosas (y quizás arreglarlas), aprender de l
 
 ## Dirección
 
-Nos encontramos en **Via Rustici, 4**, L'Aquila.
+Nos encontramos en **Via Ed Arco Cirillo, 10**, L'Aquila.
 
 [OpenStreetMap](https://www.openstreetmap.org/search?query=Via+Rustici+4+L%27Aquila)
 

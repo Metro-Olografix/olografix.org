@@ -4,13 +4,13 @@ subtitle: "Un espacio hacker se enciende en L'Aquila."
 date: "2026-05-17T17:00:00"
 endDate: "2026-05-17T23:00:00"
 recurring: false
-location: "Metro Olografix AQ - Via Rustici, 4 (bajo el arco), L'Aquila"
+location: "Metro Olografix AQ - Via Ed Arco Cirillo, 10, L'Aquila"
 locationUrl: "https://www.openstreetmap.org/node/13787603509"
 ---
 
 Después de 32 años de experimentación, Metro Olografix abre un nuevo espacio en L'Aquila.
 
-Está en Via Rustici 4, bajo un arco en pleno centro histórico. Un lugar que hasta ayer no existía, en una zona que nunca había tenido nada parecido.
+Está en Via Ed Arco Cirillo 10, en pleno centro histórico. Un lugar que hasta ayer no existía, en una zona que nunca había tenido nada parecido.
 
 ### ¿Por qué un espacio físico?
 

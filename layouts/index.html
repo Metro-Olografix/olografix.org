@@ -16,14 +16,14 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {{ partial "card.html" (dict
-        "title" (partial "space-header.html" (dict "sedeId" "pescara" "city" "Pescara"))
+        "title" (partial "space-header.html" (dict "sedeId" "pescara" "city" "Pescara" "icon" "🌊"))
         "content" (T "hqDescription")
         "goToSection" "associazione/sede"
         "goToText" (T "visitSpace")
         "withShadow" true) }}
 
         {{ partial "card.html" (dict
-        "title" (partial "space-header.html" (dict "sedeId" "laquila" "city" "L'Aquila"))
+        "title" (partial "space-header.html" (dict "sedeId" "laquila" "city" "L'Aquila" "icon" "⛰️"))
         "content" (T "laquilaDescription")
         "goToSection" "associazione/sede-laquila"
         "goToText" (T "visitSpace")

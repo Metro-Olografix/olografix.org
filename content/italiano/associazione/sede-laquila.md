@@ -9,8 +9,9 @@ Da 2026, Metro Olografix è presente anche a L'Aquila!
 
 ## Indirizzo
 
-Ci troviamo in **Via Rustici, 4**, L'Aquila.
+Ci troviamo in **Via Ed Arco Cirillo, 10**, L'Aquila.
 
+<!-- Su Open Street Map la sede è riportata qui ed è giusto  -->
 [OpenStreetMap](https://www.openstreetmap.org/search?query=Via+Rustici+4+L%27Aquila)
 
 ### Attività e workshop

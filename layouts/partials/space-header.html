@@ -1,7 +1,11 @@
 {{ $id := .sedeId | default "pescara" }}
 <div class="flex items-center justify-between mb-2">
     <div class="flex items-center gap-3">
+        {{ if .icon }}
+        <span class="text-2xl">{{ .icon }}</span>
+        {{ else }}
         <img src="/images/home.png" alt="Space" class="h-8 md:h-10 w-8 md:w-10" />
+        {{ end }}
         {{ with .city }}
         <div>
             <div class="font-bold">{{ . }}</div>
