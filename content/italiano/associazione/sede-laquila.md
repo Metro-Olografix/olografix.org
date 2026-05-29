@@ -3,7 +3,7 @@ title: "Sede L'Aquila"
 layout: single
 ---
 
-Da 2026, Metro Olografix è presente anche a L'Aquila!
+Dal 2026, Metro Olografix è presente anche a L'Aquila!
 
 È un posto dove smanettare, rompere cose (e magari aggiustarle), imparare dagli altri e condividere quello che sai. Aperto a tuttə, anche se non hai mai toccato un saldatore.
 
