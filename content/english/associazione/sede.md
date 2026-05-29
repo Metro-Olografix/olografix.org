@@ -1,5 +1,5 @@
 ---
-title: "The Space"
+title: "Space Pescara"
 layout: single
 ---
 

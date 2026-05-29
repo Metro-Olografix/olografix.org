@@ -1,5 +1,5 @@
 ---
-title: "La sede"
+title: "Sede Pescara"
 layout: single
 ---
 

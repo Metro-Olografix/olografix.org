@@ -1,24 +1,33 @@
 {{ define "main" }}
 
-<div class="grid grid-cols-1 md:grid-cols-5 gap-4 h-full">
-    <!-- associazione -->
-    <div class="md:col-span-3 h-full">
-        {{ partial "card.html" (dict
-        "content" (.Site.Params.description)
-        "goToSection" "associazione"
-        "goToText" (T "learnMoreText")
-        "withShadow" true
-        "fullHeight" true) }}
+<!-- Intro — full width -->
+<div class="mb-8">
+    {{ partial "card.html" (dict
+    "content" (.Site.Params.description)
+    "goToSection" "associazione"
+    "goToText" (T "learnMoreText")
+    "withShadow" true) }}
+</div>
+
+<!-- Le nostre sedi — 2-up grid -->
+<div class="mb-8">
+    <div class="flex items-baseline gap-3 mb-4">
+        <h2 class="text-3xl font-bold text-primary-dark font-mono">// {{ T "sediHeader" }}</h2>
     </div>
-    <!-- sede -->
-    <div class="md:col-span-2 h-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {{ partial "card.html" (dict
-        "title" (partial "space-header.html" .)
+        "title" (partial "space-header.html" (dict "sedeId" "pescara" "city" "Pescara"))
         "content" (T "hqDescription")
         "goToSection" "associazione/sede"
         "goToText" (T "visitSpace")
-        "withShadow" true
-        "fullHeight" true) }}
+        "withShadow" true) }}
+
+        {{ partial "card.html" (dict
+        "title" (partial "space-header.html" (dict "sedeId" "laquila" "city" "L'Aquila"))
+        "content" (T "laquilaDescription")
+        "goToSection" "associazione/sede-laquila"
+        "goToText" (T "visitSpace")
+        "withShadow" true) }}
     </div>
 </div>
 

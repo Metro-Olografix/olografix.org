@@ -9,9 +9,14 @@
     identifier = "associazione"
 
 [[main]]
-    name = "La sede"
+    name = "Sede Pescara"
     pageRef = "/associazione/sede/"
     weight = 1
+    parent = "associazione"
+[[main]]
+    name = "Sede L'Aquila"
+    pageRef = "/associazione/sede-laquila/"
+    weight = 2
     parent = "associazione"
 
 [[main]]

@@ -75,53 +75,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Fetch and update headquarter status
-  function updateHeadquarterStatus() {
-    const dotElement = document.getElementById("statusDot");
-    const containerElement = document.getElementById("statusContainer");
-    const loadingStatus = document.getElementById("headquarterStatusLoading");
-    const openStatus = document.getElementById("headquarterStatusOpen");
-    const closeStatus = document.getElementById("headquarterStatusClose");
-    
-    fetch("https://sede.olografix.org/status")
+  // Fetch and update a single sede's status widget
+  function updateSedeStatus(sedeId, apiUrl) {
+    const dotElement = document.getElementById(`${sedeId}-statusDot`);
+    const containerElement = document.getElementById(`${sedeId}-statusContainer`);
+    const loadingStatusElement = document.getElementById(`${sedeId}-statusLoading`);
+    const openStatusElement = document.getElementById(`${sedeId}-statusOpen`);
+    const closeStatusElement = document.getElementById(`${sedeId}-statusClose`);
+
+    if (!dotElement) return; // not on a page that shows this sede
+
+    fetch(apiUrl)
       .then(response => response.text())
       .then(data => {
         const isOpen = data.trim() === "true";
-        if (dotElement && containerElement) {
-          containerElement.classList.remove("bg-gray-100", "bg-green-100", "bg-red-100");
-          containerElement.classList.add(isOpen ? "bg-green-100" : "bg-red-100");
-          
-          dotElement.classList.remove("bg-gray-300", "bg-green-500", "bg-red-500");
-          dotElement.classList.add(isOpen ? "bg-green-500" : "bg-red-500");
+        containerElement.classList.remove("bg-gray-100", "bg-green-100", "bg-red-100");
+        containerElement.classList.add(isOpen ? "bg-green-100" : "bg-red-100");
 
-          loadingStatus.classList.remove("text-gray-600");
-          loadingStatus.classList.add("hidden");
+        dotElement.classList.remove("bg-gray-300", "bg-green-500", "bg-red-500");
+        dotElement.classList.add(isOpen ? "bg-green-500" : "bg-red-500");
 
-          openStatus.classList.remove("hidden");
-          openStatus.classList.toggle("hidden", !isOpen);
-          
-          closeStatus.classList.remove("hidden");
-          closeStatus.classList.toggle("hidden", isOpen);
-        }
+        loadingStatusElement.classList.add("hidden");
+        openStatusElement.classList.toggle("hidden", !isOpen);
+        closeStatusElement.classList.toggle("hidden", isOpen);
       })
       .catch(error => {
-        console.error("Error fetching headquarter status:", error);
-        if (dotElement && containerElement) {
-          containerElement.classList.remove("bg-green-100", "bg-red-100");
-          containerElement.classList.add("bg-gray-100");
-          
-          dotElement.classList.remove("bg-green-500", "bg-red-500");
-          dotElement.classList.add("bg-gray-300");
-
-          loadingStatus.classList.remove("hidden");
-          openStatus.classList.add("hidden");
-          closeStatus.classList.add("hidden");
-        }
+        console.error(`Error fetching status for ${sedeId}:`, error);
+        containerElement.classList.remove("bg-green-100", "bg-red-100");
+        containerElement.classList.add("bg-gray-100");
+        dotElement.classList.remove("bg-green-500", "bg-red-500");
+        dotElement.classList.add("bg-gray-300");
+        loadingStatusElement.classList.remove("hidden");
+        openStatusElement.classList.add("hidden");
+        closeStatusElement.classList.add("hidden");
       });
   }
 
-  updateHeadquarterStatus();
-  setInterval(updateHeadquarterStatus, 60000); // Update every 60 seconds
+  function updateAllSediStatus() {
+    updateSedeStatus("pescara", "https://sede.olografix.org/s/pescara/status");
+    updateSedeStatus("laquila", "https://sede.olografix.org/s/laquila/status");
+  }
+
+  updateAllSediStatus();
+  setInterval(updateAllSediStatus, 60000); // Update every 60 seconds
 });
 
 eval(
