@@ -11,7 +11,7 @@ Es un lugar para cacharrear, romper cosas (y quizás arreglarlas), aprender de l
 
 Nos encontramos en **Via Ed Arco Cirillo, 10**, L'Aquila.
 
-[OpenStreetMap](https://www.openstreetmap.org/search?query=Via+Rustici+4+L%27Aquila)
+[OpenStreetMap](https://www.openstreetmap.org/node/13787603509)
 
 ### Actividades y talleres
 

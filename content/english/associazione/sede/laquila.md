@@ -1,5 +1,5 @@
 ---
-title: "Space L'Aquila"
+title: "L'Aquila"
 layout: single
 ---
 
@@ -11,7 +11,7 @@ It's a place to tinker, break things (and maybe fix them), learn from others and
 
 We're located at **Via Ed Arco Cirillo, 10**, L'Aquila.
 
-[OpenStreetMap](https://www.openstreetmap.org/search?query=Via+Rustici+4+L%27Aquila)
+[OpenStreetMap](https://www.openstreetmap.org/node/13787603509)
 
 ### Activities and workshops
 
