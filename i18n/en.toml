@@ -21,6 +21,7 @@ laquilaDescription = "<p>Come and visit us at our space in <strong>Via Ed Arco C
 hqGotoMap = "Map"
 visitSpace = "Come visit!"
 nextUpcomingEvent = "Next Upcoming Event"
+noUpcomingActivities = "No events scheduled at the moment — but we meet at the space every week. Come by."
 
 dateLabel = "Date"
 recurrenceLabel = "Recurrence"

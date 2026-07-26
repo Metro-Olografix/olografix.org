@@ -1,15 +1,98 @@
 {{ define "main" }}
 
-<!-- Intro — full width -->
-<div class="mb-8">
+<!-- Compute the nearest upcoming activity once; it drives the hero -->
+{{ $now := now }}
+{{ $activities := where .Site.RegularPages "Type" "attivita" }}
+{{ $activities = $activities | intersect .Site.AllPages }}
+{{ $upcomingActivities := where $activities "Date" "ge" $now }}
+{{ $upcomingActivities = sort $upcomingActivities ".Date" "asc" }}
+
+<!-- ================================================================= -->
+<!-- HERO — when an event is coming up, it leads. Otherwise identity   -->
+<!-- leads (the intro card below) and this section is skipped entirely -->
+<!-- ================================================================= -->
+{{ if gt (len $upcomingActivities) 0 }}
+{{ $ev := index $upcomingActivities 0 }}
+<section class="mt-2 mb-10">
+
+    <!-- resolve link (external overrides internal) -->
+    {{ $link := $ev.RelPermalink | relLangURL }}
+    {{ $external := false }}
+    {{ with $ev.Params.externalUrl }}{{ $link = . }}{{ $external = true }}{{ end }}
+
+    <article
+        class="bg-white border-4 border-primary-dark shadow-[8px_8px_0px_0px_rgba(22,33,62,1)] p-6 md:p-8">
+        <!-- live signal: // header + blinking green dot -->
+        <div class="flex items-center gap-2 mb-5">
+            <span class="text-sm font-bold uppercase tracking-wide text-primary-dark">// {{ T "nextUpcomingEvent" }}</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#059669] blink" role="img"
+                aria-label="{{ T "hqStatusOpen" }}"></span>
+        </div>
+
+        <div class="flex flex-col md:flex-row md:items-stretch gap-6 md:gap-8">
+            <!-- date stamp: green day number = the live signal -->
+            <div
+                class="flex md:flex-col items-baseline md:items-start gap-3 md:gap-1 md:justify-center md:w-40 md:pr-6 shrink-0">
+                <span class="text-6xl md:text-7xl font-bold leading-none text-[#059669]">{{ $ev.Date.Format "02" }}</span>
+                <span class="flex flex-col leading-tight">
+                    <span class="text-xl font-bold uppercase text-primary-dark">{{ time.Format "January" $ev.Date }}</span>
+                    <span class="text-lg text-gray-700">{{ $ev.Date.Format "2006" }}</span>
+                </span>
+            </div>
+
+            <!-- details -->
+            <div class="flex-grow flex flex-col">
+                <h2 class="text-2xl md:text-4xl font-bold text-accent mb-3 text-balance break-words">{{ $ev.Title }}</h2>
+
+                {{ $startTime := $ev.Date.Format "15:04" }}
+                {{ if ne $startTime "00:00" }}
+                <div class="flex items-center mb-2 text-gray-700">
+                    <i class="far fa-clock mr-2 text-primary-dark" aria-hidden="true"></i>
+                    <span>{{ $startTime }}</span>
+                    {{ with $ev.Params.endDate }}
+                    {{ $endTime := (time.AsTime .).Format "15:04" }}
+                    {{ if ne $endTime "00:00" }}<span class="mx-2">–</span><span>{{ $endTime }}</span>{{ end }}
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                {{ with $ev.Params.location }}
+                <div class="flex items-center mb-3 text-gray-700">
+                    <i class="fas fa-map-marker-alt mr-2 text-primary-dark" aria-hidden="true"></i>
+                    {{ if $ev.Params.locationUrl }}
+                    <a href="{{ $ev.Params.locationUrl }}" target="_blank" rel="noopener"
+                        class="text-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark">{{ . }}</a>
+                    {{ else }}
+                    <span>{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                <p class="text-gray-700 mb-6 flex-grow">{{ $ev.Params.subtitle | default $ev.Summary }}</p>
+
+                <div>
+                    <a href="{{ $link }}" {{ if $external }}target="_blank" rel="noopener noreferrer"{{ end }}
+                        class="inline-block bg-accent hover:bg-primary-dark text-primary-light font-bold px-6 py-3 rounded-md transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark">
+                        {{ T "learnMoreText" }} →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+{{ end }}
+
+<!-- Intro — who we are. Leads the page (with weight) when no event is queued;
+     sits quietly under the event hero when one is. -->
+<div class="mb-8 {{ if gt (len $upcomingActivities) 0 }}mt-0{{ else }}mt-2{{ end }}">
     {{ partial "card.html" (dict
     "content" (.Site.Params.description)
     "goToSection" "associazione"
     "goToText" (T "learnMoreText")
-    "withShadow" true) }}
+    "withShadow" (eq (len $upcomingActivities) 0)) }}
 </div>
 
-<!-- Le nostre sedi — 2-up grid -->
+<!-- Le nostre sedi — 2-up grid (proof of life) -->
 <div class="mb-8">
     <div class="flex items-baseline gap-3 mb-4">
         <h2 class="text-3xl font-bold text-primary-dark font-mono">// {{ T "sediHeader" }}</h2>
@@ -31,137 +114,31 @@
     </div>
 </div>
 
-<!-- Get upcoming activities to highlight the nearest one -->
-{{ $now := now }}
-{{ $activities := where .Site.RegularPages "Type" "attivita" }}
-{{ $activities = $activities | intersect .Site.AllPages }}
-{{ $upcomingActivities := where $activities "Date" "ge" $now }}
-{{ $upcomingActivities := sort $upcomingActivities ".Date" "asc" }}
-
-<!-- Check if we have any upcoming activities to highlight -->
-{{ if gt (len $upcomingActivities) 0 }}
-<!-- Extract the nearest upcoming activity -->
-{{ $highlightedActivity := index $upcomingActivities 0 }}
-
-<!-- Create the highlighted activity card -->
-<div class="mt-8 bg-green-50 border-2 border-green-500 p-4 shadow-md">
-    <h2 class="text-2xl font-bold mb-2 text-green-700">{{ T "nextUpcomingEvent" | default "Upcoming Event" }}</h2>
-    <div class="flex flex-col md:flex-row gap-6">
-        <div class="md:w-2/3">
-            <h3 class="text-xl font-bold text-green-800 mb-2">{{ $highlightedActivity.Title }}</h3>
-
-            {{ $startTime := $highlightedActivity.Date.Format "15:04" }}
-            {{ $endTime := "00:00" }}
-
-            {{ with $highlightedActivity.Params.endDate }}
-            {{ $endTime = (time.AsTime .).Format "15:04" }}
-            {{ end }}
-
-            {{ if or (ne $startTime "00:00") (ne $endTime "00:00") }}
-            <div class="flex items-center mb-3 text-gray-700">
-                <i class="far fa-clock mr-2 text-green-600"></i>
-
-                {{ if ne $startTime "00:00" }}
-                <span>{{ $startTime }}</span>
-                {{ end }}
-
-                {{ with $highlightedActivity.Params.endDate }}
-                <span class="mx-2">-</span>
-
-                {{ $formattedEndTime := (time.AsTime .).Format "15:04" }}
-                {{ if ne $formattedEndTime "00:00" }}
-                <span>{{ $formattedEndTime }}</span>
-                {{ end }}
-                {{ end }}
-            </div>
-            {{ end }}
-
-            {{ with $highlightedActivity.Params.location }}
-            <div class="flex items-center mb-3 text-gray-700">
-                <i class="fas fa-map-marker-alt mr-2 text-green-600"></i>
-                {{ if $highlightedActivity.Params.locationUrl }}
-                <a href="{{ $highlightedActivity.Params.locationUrl }}" target="_blank" rel="noopener"
-                    class="hover:underline text-accent">{{ . }}</a>
-                {{ else }}
-                <span>{{ . }}</span>
-                {{ end }}
-            </div>
-            {{ end }}
-
-            <p class="mb-4 text-gray-700">{{ $highlightedActivity.Params.subtitle | default $highlightedActivity.Summary
-                }}</p>
-
-            <!-- Generate link URL -->
-            {{ $link := "" }}
-            {{ if $highlightedActivity.Params.externalUrl }}
-            {{ $link = $highlightedActivity.Params.externalUrl }}
-            {{ else }}
-            {{ $link = $highlightedActivity.RelPermalink | relLangURL }}
-            {{ end }}
-
-            <a href="{{ $link }}"
-                class="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors">
-                {{ T "learnMoreText" }} →
-            </a>
-        </div>
-        <div class="md:w-1/3 flex items-center justify-center">
-            <div class="text-center">
-                <div class="text-5xl font-bold text-green-700 mb-2">
-                    {{ $highlightedActivity.Date.Format "02" }}
-                </div>
-                <div class="text-xl text-green-600 uppercase">
-                    {{ time.AsTime $highlightedActivity.Date | time.Format "January" }}
-                </div>
-                <div class="text-lg text-green-600">
-                    {{ $highlightedActivity.Date.Format "2006" }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{{ end }}
-
-<!-- Membership Banner -->
-<div class="bg-accent text-primary-light p-4 rounded-lg mb-4 mt-4">
-    {{ $associati := .Site.GetPage "/associazione/associati" }}
-    <a href="{{ $associati.RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
-        {{ T "membershipBanner" }}
-    </a>
-</div>
-
-{{ partial "shop.html" . }}
-
+<!-- Attività + Progetti -->
 <section class="mb-8">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
         <!-- Activities Column -->
         <div class="flex flex-col">
             <h2 class="text-3xl font-bold mb-4 text-primary-dark">{{ T "activitiesHeader" }}</h2>
 
-            {{ $now := now }}
-            {{ $activities := where .Site.RegularPages "Type" "attivita" }}
-            {{ $activities = $activities | intersect .Site.AllPages }}
-
-            <!-- Split upcoming and past events -->
-            {{ $upcomingActivities := where $activities "Date" "ge" $now }}
-            {{ $pastActivities := where $activities "Date" "lt" $now }}
-
-            <!-- Sort upcoming activities by date (ascending - nearest first) -->
-            {{ $upcomingActivities := sort $upcomingActivities ".Date" "asc" }}
-            <!-- Sort past activities by date (descending - most recent first) -->
-            {{ $pastActivities := sort $pastActivities ".Date" "desc" }}
-
-            <!-- Create a final sorted list where upcoming ALWAYS come first -->
-            {{ $displayActivities := slice }}
-            {{ $displayActivities = $upcomingActivities }}
-            {{ if lt (len $displayActivities) 4 }}
-            {{ $displayActivities = $displayActivities | append (first (sub 4 (len $displayActivities)) $pastActivities)
-            }}
+            {{ if eq (len $upcomingActivities) 0 }}
+            <p class="text-sm text-gray-700 mb-4">{{ T "noUpcomingActivities" }}</p>
             {{ end }}
 
-            <!-- Skip the highlighted activity if there's one -->
+            <!-- Split upcoming and past events -->
+            {{ $pastActivities := where $activities "Date" "lt" $now }}
+            {{ $pastActivities := sort $pastActivities ".Date" "desc" }}
+
+            <!-- Upcoming always first, backfill with past -->
+            {{ $displayActivities := $upcomingActivities }}
+            {{ if lt (len $displayActivities) 4 }}
+            {{ $displayActivities = $displayActivities | append (first (sub 4 (len $displayActivities)) $pastActivities) }}
+            {{ end }}
+
+            <!-- Skip the event already featured in the hero -->
             {{ if gt (len $upcomingActivities) 0 }}
-            {{ $highlightedActivity := index $upcomingActivities 0 }}
-            {{ $displayActivities = where $displayActivities "Permalink" "ne" $highlightedActivity.Permalink }}
+            {{ $heroActivity := index $upcomingActivities 0 }}
+            {{ $displayActivities = where $displayActivities "Permalink" "ne" $heroActivity.Permalink }}
             {{ end }}
 
             <div class="grid grid-rows-2 gap-4 flex-grow">
@@ -192,18 +169,18 @@
                 "locationUrl" .Params.locationUrl
                 "goToLink" $link
                 "goToText" $text
-                "badge" (cond $upcoming (T "comingEvent") "")
+                "badge" (cond $upcoming (T "comingEvent") (T "pastEvents"))
                 "isExternal" $external
                 "fullHeight" true
                 "withShadow" false) }}
                 {{ end }}
             </div>
 
-            {{ $activities := site.GetPage "section" "attivita" }}
+            {{ $activitiesSection := site.GetPage "section" "attivita" }}
             <div class="mt-4">
-                <a href="{{ $activities.RelPermalink | relLangURL }}"
-                    class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg w-full text-center">{{ T
-                    "allActivities" }}</a>
+                <a href="{{ $activitiesSection.RelPermalink | relLangURL }}"
+                    class="inline-block w-full text-center px-4 py-2 rounded-md border-2 border-primary-dark text-primary-dark font-bold hover:bg-primary-dark hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark">{{
+                    T "allActivities" }}</a>
             </div>
         </div>
 
@@ -241,14 +218,25 @@
                 {{ end }}
             </div>
 
-            {{ $projects := site.GetPage "section" "progetti" }}
+            {{ $projectsSection := site.GetPage "section" "progetti" }}
             <div class="mt-4">
-                <a href="{{ $projects.RelPermalink | relLangURL }}"
-                    class="inline-block bg-accent text-primary-light px-4 py-2 rounded-lg w-full text-center">{{ T
-                    "allProjects" }}</a>
+                <a href="{{ $projectsSection.RelPermalink | relLangURL }}"
+                    class="inline-block w-full text-center px-4 py-2 rounded-md border-2 border-primary-dark text-primary-dark font-bold hover:bg-primary-dark hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark">{{
+                    T "allProjects" }}</a>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Membership — present but demoted below the event + activities -->
+<div class="bg-accent text-primary-light px-4 py-2.5 mb-8">
+    {{ $associati := .Site.GetPage "/associazione/associati" }}
+    <a href="{{ $associati.RelPermalink | relLangURL }}"
+        class="block text-center text-base md:text-lg font-bold hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-light">
+        {{ T "membershipBanner" }}
+    </a>
+</div>
+
+{{ partial "shop.html" . }}
 
 {{ end }}

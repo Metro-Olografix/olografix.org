@@ -21,6 +21,7 @@ laquilaDescription = "<p>Vieni a trovarci nella nostra sede in <strong>Via Ed Ar
 hqGotoMap = "Mappa"
 visitSpace = "Vieni a trovarci!"
 nextUpcomingEvent = "Prossimo Evento"
+noUpcomingActivities = "Nessun evento in programma al momento — ma ci vediamo in sede ogni settimana. Passa a trovarci."
 
 dateLabel = "Data"
 recurrenceLabel = "Ricorrenza"

@@ -1,6 +1,7 @@
 <!-- Shop Promotion Section -->
 <section class="mt-8 mb-8">
     <div class="christmas-lights-wrapper">
+        {{ if partial "is-lights-season.html" . }}
         <div class="christmas-lights">
             <!-- Top lights -->
             <div class="christmas-light red" style="left: 3%; top: 0; animation-delay: 0s;"></div>
@@ -67,6 +68,7 @@
             <div class="christmas-light red" style="right: 0; top: 89%; animation-delay: 0.4s; transform: rotate(90deg);"></div>
             <div class="christmas-light green" style="right: 0; top: 95%; animation-delay: 0.9s; transform: rotate(90deg);"></div>
         </div>
+        {{ end }}
 
         {{ partial "card.html" (dict
             "title" (T "shopHeader")
