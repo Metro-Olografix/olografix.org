@@ -1,0 +1,15 @@
+{{- /*
+  Single source of truth for the seasonal Christmas-lights effect.
+  Returns "true" (truthy in Hugo) only when BOTH hold:
+    1. the master switch `enableShopEffect` is on, and
+    2. today falls in the holiday window: 1 Dec – 6 Jan (through the Epiphany / Befana).
+  Returns "" (falsy) otherwise, so the shop card ships plain off-season.
+
+  This is evaluated at build time. The site rebuilds daily via GitHub Actions
+  (cron '0 0 * * *', TZ Europe/Rome), so the effect turns on/off at the right
+  date within 24h without anyone flipping a flag.
+*/ -}}
+{{- $m := int (now.Format "1") -}}
+{{- $d := int (now.Format "2") -}}
+{{- $inSeason := or (eq $m 12) (and (eq $m 1) (le $d 6)) -}}
+{{- if and .Site.Params.enableShopEffect $inSeason -}}true{{- end -}}

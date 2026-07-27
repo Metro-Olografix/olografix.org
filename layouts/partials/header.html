@@ -88,10 +88,16 @@
               class="h-full w-auto object-contain max-w-none" />
           </a>
         </div>
-        <a href="{{ .Site.BaseURL | relLangURL }}">
+        <a href="{{ .Site.BaseURL | relLangURL }}" aria-label="Metro Olografix — home">
+          {{ if .IsHome }}
           <h1 class="text-2xl md:text-5xl font-bold m-0 transition-all duration-300">
-            Metro Olografix<span class="inline-block blink">_</span>
+            Metro Olografix<span class="inline-block blink" aria-hidden="true">_</span>
           </h1>
+          {{ else }}
+          <p class="text-2xl md:text-5xl font-bold m-0 transition-all duration-300">
+            Metro Olografix<span class="inline-block blink" aria-hidden="true">_</span>
+          </p>
+          {{ end }}
         </a>
       </div>
     </div>

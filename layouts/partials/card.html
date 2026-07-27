@@ -5,7 +5,7 @@
     <!-- main content -->
     <div class="{{ if $showFooter }}flex-grow{{ end }}">
         {{ with .title }}
-        <h3 class="text-xl font-bold mb-2 text-accent">{{ . | safeHTML }}</h3>
+        <h3 class="text-xl font-bold mb-2 text-accent break-words">{{ . | safeHTML }}</h3>
         {{ end }}
 
         <!-- date and recurrence info if provided -->
@@ -14,7 +14,7 @@
             {{ with .date }}
             <div class="flex items-center mb-1">
                 <i class="far fa-calendar-alt mr-2"></i>
-                <span>{{ dateFormat "02 Jan 2006" . }}</span>
+                <span>{{ time.Format "02 Jan 2006" . }}</span>
                 <!-- Show time if it's not 00:00 -->
                 {{ if ne (dateFormat "15:04" .) "00:00" }}
                 <span class="mx-2">{{ dateFormat "15:04" . }}</span>
@@ -22,7 +22,7 @@
 
                 {{ with $.endDate }}
                 <span class="mx-2">-</span>
-                <span>{{ dateFormat "02 Jan 2006" . }}</span>
+                <span>{{ time.Format "02 Jan 2006" . }}</span>
                 <!-- Show end time if it's not 00:00 -->
                 {{ if ne (dateFormat "15:04" .) "00:00" }}
                 <span class="mx-2">{{ dateFormat "15:04" . }}</span>
@@ -68,7 +68,7 @@
         {{ end }}
 
         <!-- content -->
-        <div class="prose text-justify">{{ .content | safeHTML }}</div>
+        <div class="prose">{{ .content | safeHTML }}</div>
     </div>
 
     <!-- footer -->

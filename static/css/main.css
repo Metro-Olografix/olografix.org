@@ -224,3 +224,32 @@ body {
 .recurring-event .loading {
   animation: pulse 1.5s infinite ease-in-out;
 }
+
+/* ---- Keyboard focus (AA): visible ring on every interactive element ---- */
+/* :where() keeps specificity at 0 so per-element Tailwind utilities still win. */
+:where(a, button, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 2px solid #16213e;
+  outline-offset: 2px;
+}
+
+/* On the dark surfaces (header bar, mobile menu, footer) flip the ring to light. */
+.bg-primary-dark a:focus-visible,
+.bg-primary-dark button:focus-visible,
+footer a:focus-visible,
+footer button:focus-visible {
+  outline-color: #e2e8f0;
+}
+
+/* ---- Respect reduced-motion: stop the terminal animations (blink, rainbow,
+   letter flip, pulse, seasonal lights) and make transitions instant. ---- */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

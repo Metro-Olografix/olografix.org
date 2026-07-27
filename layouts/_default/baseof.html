@@ -94,7 +94,7 @@
   <link href="/css/lightbox.min.css" rel="stylesheet" />
   <script src="/js/lightbox-plus-jquery.min.js"></script>
   {{end}}
-  {{ if eq .Site.Params.enableShopEffect true }}
+  {{ if partial "is-lights-season.html" . }}
   <link rel="stylesheet" href="/css/shop.css" />
   {{ end }}
   <link rel="stylesheet" href="/css/fontawesome.css" />

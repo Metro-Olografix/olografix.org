@@ -70,3 +70,12 @@
         animation: none;
     }
 }
+
+/* On small screens the 60+ absolutely-positioned bulbs crowd and overlap the
+   card (and the side columns can bleed past the viewport edge). They're a
+   desktop flourish, so drop them on mobile and keep the plain shop card. */
+@media (max-width: 640px) {
+    .christmas-lights {
+        display: none;
+    }
+}
