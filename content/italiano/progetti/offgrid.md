@@ -4,8 +4,8 @@ subtitle: "Comunicazioni off-grid per comunità resilienti"
 date: 2026-01-01
 ---
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/lora.jpg"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:w-48"}]} -->
-<img src="/images/lora.jpg" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/lora-1280.webp"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:w-48"}]} -->
+<img src="/images/opt/lora-1280.webp" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 Le reti di comunicazione che usiamo ogni giorno -- telefonia mobile, Internet, Wi-Fi -- dipendono da infrastrutture centralizzate, aziende private e alimentazione elettrica costante. Quando una di queste viene a mancare, per un'emergenza naturale, un guasto o semplicemente perché ci si trova in una zona non coperta, si resta isolati.

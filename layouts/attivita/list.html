@@ -12,16 +12,16 @@
     <div class="sec__body">
       <div class="calbar">
         <div class="calbar__info">
-          <i class="far fa-calendar-alt calbar__ico" aria-hidden="true"></i>
+          {{ partial "icon.html" "calendar-alt" }}
           <div>
             <div class="calbar__t">{{ T "subscribeToCalendar" | default "Subscribe to Calendar" }}</div>
             <div class="calbar__d">{{ T "calendarDescription" | default "Add our events to your calendar app" }}</div>
           </div>
         </div>
         <div class="calbar__btns">
-          <a href="{{ $calendarUrl }}" class="gbtn"><i class="fas fa-download" aria-hidden="true"></i> {{ T "downloadCalendar" | default "Download" }}</a>
-          <a href="webcal:{{ strings.TrimPrefix "https://" (strings.TrimPrefix "http://" .Site.BaseURL) }}calendar.ics" class="gbtn"><i class="fas fa-calendar-plus" aria-hidden="true"></i> {{ T "subscribeDirectly" | default "Subscribe" }}</a>
-          <button type="button" class="gbtn" id="copyButton" data-url="{{ $calendarUrl }}" data-copied="{{ T "copiedText" | default "Copied!" }}"><i class="far fa-copy" aria-hidden="true"></i> <span>{{ T "copyUrl" | default "Copy URL" }}</span></button>
+          <a href="{{ $calendarUrl }}" class="gbtn">{{ partial "icon.html" "download" }} {{ T "downloadCalendar" | default "Download" }}</a>
+          <a href="webcal:{{ strings.TrimPrefix "https://" (strings.TrimPrefix "http://" .Site.BaseURL) }}calendar.ics" class="gbtn">{{ partial "icon.html" "calendar-plus" }} {{ T "subscribeDirectly" | default "Subscribe" }}</a>
+          <button type="button" class="gbtn" id="copyButton" data-url="{{ $calendarUrl }}" data-copied="{{ T "copiedText" | default "Copied!" }}">{{ partial "icon.html" "copy" }} <span>{{ T "copyUrl" | default "Copy URL" }}</span></button>
         </div>
       </div>
       <p class="calbar__note"><a href="https://www.fossify.org/apps/" target="_blank" rel="noopener">{{ T "androidSuggestion" }}</a></p>

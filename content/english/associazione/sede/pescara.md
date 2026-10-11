@@ -3,8 +3,8 @@ title: "Pescara"
 layout: single
 ---
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/photo_2025-10-13_21-31-15.jpg"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:max-w-sm"}]} -->
-<img src="/images/photo_2025-10-13_21-31-15.jpg" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 md:max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/photo_2025-10-13_21-31-15-640.webp"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:max-w-sm"}]} -->
+<img src="/images/opt/photo_2025-10-13_21-31-15-640.webp" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 md:max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 Since January 2025, Metro Olografix has opened a new space in Pescara!
@@ -27,8 +27,8 @@ We're located at **Viale Marconi 278/1**, near the Stadio Adriatico.
 
 ## What you'll find
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/lab-sede.png"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-left md:w-auto md:mr-4"},{"name":"sizeClass","value":"max-w-lg"}]} -->
-<img src="/images/lab-sede.png" alt="" class="w-full mb-4 md:float-left md:w-auto md:mr-8 max-w-lg max-w-full rounded-lg shadow-md mb-6" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/lab-sede-1280.webp"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-left md:w-auto md:mr-4"},{"name":"sizeClass","value":"max-w-lg"}]} -->
+<img src="/images/opt/lab-sede-1280.webp" alt="" class="w-full mb-4 md:float-left md:w-auto md:mr-8 max-w-lg max-w-full rounded-lg shadow-md mb-6" />
 <!-- FM:Snippet:End -->
 
 ### The lab
@@ -42,8 +42,8 @@ The space is equipped with a lab for electronics and making. All equipment is av
 
 <br />
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/workshop-sede.png"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"max-w-sm"}]} -->
-<img src="/images/workshop-sede.png" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/workshop-sede-1280.webp"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"max-w-sm"}]} -->
+<img src="/images/opt/workshop-sede-1280.webp" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 ### Activities and workshops

@@ -5,9 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const openBtn = document.getElementById("ob");
   const closeBtn = document.getElementById("cm");
 
+  // While the menu is open, everything behind it is inert: no focus, no screen-reader access.
+  const behind = [document.getElementById("nav"), document.getElementById("main"), document.querySelector(".foot")].filter(Boolean);
+
   function setMenu(open) {
     if (!menu) return;
     menu.classList.toggle("open", open);
+    behind.forEach((el) => { el.inert = open; });
     // No scroll lock: the menu is a full-screen overlay, and locking the page makes it jump on mobile browsers.
     if (openBtn) openBtn.setAttribute("aria-expanded", String(open));
     if (open && closeBtn) closeBtn.focus();
@@ -18,6 +22,18 @@ document.addEventListener("DOMContentLoaded", () => {
   closeBtn?.addEventListener("click", () => setMenu(false));
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menu?.classList.contains("open")) setMenu(false);
+  });
+
+  // ── Desktop dropdown: keep aria-expanded in sync with hover / keyboard focus
+  document.querySelectorAll(".dd").forEach((dd) => {
+    const btn = dd.querySelector("button");
+    if (!btn) return;
+    btn.setAttribute("aria-expanded", "false");
+    const set = (v) => btn.setAttribute("aria-expanded", String(v));
+    dd.addEventListener("mouseenter", () => set(true));
+    dd.addEventListener("mouseleave", () => set(dd.contains(document.activeElement)));
+    dd.addEventListener("focusin", () => set(true));
+    dd.addEventListener("focusout", (e) => { if (!dd.contains(e.relatedTarget)) set(false); });
   });
 
   // ── Nav background once the page scrolls ───────────────────────
