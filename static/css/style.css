@@ -132,6 +132,7 @@ main>.sec:first-child{padding-top:0}
 /* intro */
 .intro__text{max-width:62ch;font-size:clamp(1rem,1.8vw,1.2rem);line-height:1.85;color:var(--w2);margin-bottom:2.25rem}
 .intro__cta{max-width:480px}
+.intro__cta--next{margin-top:1.25rem}
 
 /* ═══════════ LOCATIONS ═══════════ */
 .locs__grid{display:grid;grid-template-columns:1fr;gap:var(--gap)}
@@ -409,8 +410,6 @@ main{flex:1;display:block}
 /* board */
 .bcard__mail{overflow-wrap:anywhere}
 
-/* home: membership link under the intro */
-.intro__more{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
 
 /* shop copy */
 .christmas-lights-wrapper{position:relative}
