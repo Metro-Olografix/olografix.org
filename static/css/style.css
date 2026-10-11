@@ -29,7 +29,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth;color-scheme:dark;scrollbar-color:var(--line-h) var(--black)}
+html{background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth;color-scheme:dark;scrollbar-color:var(--line-h) var(--black)}
 ::selection{background:var(--w);color:var(--black)}
 :focus-visible{outline:1px solid var(--w);outline-offset:3px}
 body{font-family:var(--sans);background:var(--bg);color:var(--w);min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6}
@@ -89,13 +89,13 @@ b,strong{font-weight:600}
 .nav__burger span{display:block;width:100%;height:1.5px;background:var(--w)}
 
 /* ═══════════ MOBILE MENU ═══════════ */
-.mmenu{position:fixed;inset:0;background:var(--black);z-index:200;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility .25s}
+.mmenu{position:fixed;inset:0;overscroll-behavior:contain;background:var(--black);z-index:200;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility .25s}
 .mmenu.open{opacity:1;visibility:visible}
 .mmenu__top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem clamp(1.25rem,4vw,2.5rem)}
 .mmenu__top img{height:1.5rem;width:auto}
 .mmenu__x{font-size:1.5rem;color:var(--w3);padding:8px;transition:color .2s}
 .mmenu__x:hover{color:var(--w)}
-.mmenu__body{flex:1;display:flex;flex-direction:column;justify-content:safe center;overflow-y:auto;padding:1rem clamp(1.25rem,4vw,2.5rem)}
+.mmenu__body{flex:1;display:flex;flex-direction:column;justify-content:safe center;overflow-y:auto;overscroll-behavior:contain;padding:1rem clamp(1.25rem,4vw,2.5rem)}
 .mmenu__body>a{display:block;font-size:clamp(1.6rem,6vw,3rem);font-weight:600;padding:.6rem 0;color:var(--w3);transition:color .2s,transform .3s var(--ease)}
 .mmenu__body>a:hover,.mmenu__body>a.on{color:var(--w);transform:translateX(16px)}
 .mmenu__foot{padding:1.5rem clamp(1.25rem,4vw,2.5rem) 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;border-top:1px solid var(--line)}
@@ -493,13 +493,22 @@ main{flex:1;display:block}
 .acard__sub a{color:var(--w3);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--w4)}
 .acard__sub a:hover{color:var(--w);text-decoration-color:var(--w)}
 
-/* Phone: the hero mosaic fills the whole hero, edge to edge: one wide photo over a 2×2 grid, five distinct photos */
+/* Phone: a real mosaic that fills the hero edge to edge — 4 columns × 6 rows, mixed tile sizes, all 10 tiles,
+   placed so repeated photos never touch. */
 @media(max-width:599px){
   :root{--hero-h:75svh}
   .mosaic{padding-top:0}
-  .mosaic__grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:calc((var(--hero-h) - 8px) / 3);padding:0;height:var(--hero-h)}
-  .mosaic__grid>*{grid-column:auto!important;grid-row:auto!important;display:block!important}
-  .mosaic__grid>.m6,.mosaic__grid>.m7,.mosaic__grid>.m8,.mosaic__grid>.m9,.mosaic__grid>.m10{display:none!important}
-  .mosaic__grid>.m1{grid-column:1/-1!important}
+  .mosaic__grid{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(6,1fr);grid-auto-rows:auto;padding:0;height:var(--hero-h)}
+  .mosaic__grid>*{display:block!important}
+  .mosaic__grid>.m1{grid-column:1/3!important;grid-row:1/3!important}
+  .mosaic__grid>.m2{grid-column:3/5!important;grid-row:1/2!important}
+  .mosaic__grid>.m3{grid-column:3/4!important;grid-row:2/3!important}
+  .mosaic__grid>.m4{grid-column:4/5!important;grid-row:2/5!important}
+  .mosaic__grid>.m5{grid-column:1/2!important;grid-row:3/5!important}
+  .mosaic__grid>.m6{grid-column:2/4!important;grid-row:3/4!important}
+  .mosaic__grid>.m7{grid-column:2/3!important;grid-row:4/5!important}
+  .mosaic__grid>.m8{grid-column:3/4!important;grid-row:4/5!important}
+  .mosaic__grid>.m9{grid-column:3/5!important;grid-row:5/7!important}
+  .mosaic__grid>.m10{grid-column:1/3!important;grid-row:5/7!important}
 }
 

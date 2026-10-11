@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function setMenu(open) {
     if (!menu) return;
     menu.classList.toggle("open", open);
-    document.body.style.overflow = open ? "hidden" : "";
+    // No scroll lock: the menu is a full-screen overlay, and locking the page makes it jump on mobile browsers.
     if (openBtn) openBtn.setAttribute("aria-expanded", String(open));
     if (open && closeBtn) closeBtn.focus();
     if (!open && openBtn) openBtn.focus();
