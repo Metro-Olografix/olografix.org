@@ -477,7 +477,7 @@ main{flex:1;display:block}
 .acard__sub a:hover{color:var(--w);text-decoration-color:var(--w)}
 
 /* Phone: a real mosaic that fills the hero edge to edge under the nav bar (75svh in all) — 4 columns × 6 rows, mixed tile sizes, all 10 tiles,
-   placed so repeated photos never touch. */
+   ten different photos (data/mosaic.json). */
 @media(max-width:37.4375em){
   :root{--hero-h:75svh}
   .mosaic__grid{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(6,1fr);grid-auto-rows:auto;padding:0;height:calc(var(--hero-h) - var(--nav-h) - 5px)}
