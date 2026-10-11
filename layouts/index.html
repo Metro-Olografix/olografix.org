@@ -5,8 +5,8 @@
 {{ $split := partial "classify-activities.html" $activities }}
 {{ $upcoming := $split.upcoming }}
 
-<!-- MOSAIC — ten real photos, each from a different photogallery album (data/mosaic.json, drawn by
-     scripts/pick-mosaic.py); the headline counts the years since 1994 -->
+<!-- MOSAIC — ten real photos, hand-picked from the photogallery and the sedi (data/mosaic.json, in tile
+     order m1 … m10); the headline counts the years since 1994 -->
 <section class="mosaic" aria-labelledby="h-hero">
   <div class="mosaic__grid" aria-hidden="true">
     {{ range $i, $t := site.Data.mosaic }}
