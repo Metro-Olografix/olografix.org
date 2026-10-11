@@ -40,7 +40,7 @@
         (dict "id" "laquila" "path" "~/laquila" "map" "AQ_SEDE_white.svg" "text" (T "laquilaDescription")) }}
       {{ $page := site.GetPage (printf "/associazione/sede/%s" .id) }}
       <a href="{{ with $page }}{{ .RelPermalink }}{{ end }}" class="loc__card">
-        <img src="/images/map_backgrounds/{{ .map }}?v=2" class="loc__map" alt="" />
+        <img src="/images/map_backgrounds/{{ .map }}?v=3" class="loc__map" alt="" />
         <h3 class="loc__title">{{ .path }}</h3>
         <div class="loc__text">{{ .text | safeHTML }}</div>
         {{ partial "sede-status.html" (dict "id" .id) }}
