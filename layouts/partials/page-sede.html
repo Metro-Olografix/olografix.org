@@ -2,7 +2,7 @@
 {{ $id := .File.ContentBaseName }}
 {{ $maps := dict "pescara" "PE_SEDE_white.svg" "laquila" "AQ_SEDE_white.svg" }}
 <div class="sede__hero">
-  {{ with index $maps $id }}<img src="/images/map_backgrounds/{{ . }}?v=3" class="sede__map sede__map--{{ $id }}" alt="" />{{ end }}
+  {{ with index $maps $id }}<img src="/images/map_backgrounds/{{ . }}?v=9" class="sede__map sede__map--{{ $id }}" alt="" />{{ end }}
   <div class="sede__hero-over"></div>
   <div class="wrap sede__hero-in">
     {{ partial "breadcrumbs.html" . }}
