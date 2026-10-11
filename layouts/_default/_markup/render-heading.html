@@ -11,5 +11,5 @@
 {{- $level := add (sub .Level $min) 2 -}}
 {{- if lt $level 2 }}{{ $level = 2 }}{{ end -}}
 {{- if gt $level 6 }}{{ $level = 6 }}{{ end -}}
-<h{{ $level }} id="{{ .Anchor }}"{{ with .Attributes.class }} class="{{ . }}"{{ end }}>{{ .Text }}</h{{ $level }}>
+<h{{ $level }} id="{{ .Anchor }}"{{ with .Attributes.class }} class="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</h{{ $level }}>
 {{- /**/ -}}
