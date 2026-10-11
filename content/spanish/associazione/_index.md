@@ -1,6 +1,8 @@
 ---
 title: "La asociación"
 layout: associazione
+image: "/images/photo_2025-10-13_21-31-15.jpg"
+imagePosition: "center 40%"
 slug: "association"
 url: "/es/asociacion/"
 ---
