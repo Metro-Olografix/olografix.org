@@ -51,4 +51,4 @@ Partecipazione gratuita. Per iscriverti [registrati qui](https://cryptpad.fr/for
 
 *Progetto realizzato in collaborazione con il **Comitato Soci Coop Etruria L'Aquila**.*
 
-![](/images/1000141906.jpg)
+![](/images/opt/1000141906-1280.webp)

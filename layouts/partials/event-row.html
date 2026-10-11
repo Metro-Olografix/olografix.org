@@ -10,12 +10,12 @@
     <div class="ev__meta">
       {{ $start := $p.Date.Format "15:04" }}
       {{ if ne $start "00:00" }}
-      <span><i class="far fa-clock" aria-hidden="true"></i> {{ $start }}{{ with $p.Params.endDate }}{{ $end := (time.AsTime .).Format "15:04" }}{{ if ne $end "00:00" }}–{{ $end }}{{ end }}{{ end }}</span>
+      <span>{{ partial "icon.html" "clock" }} {{ $start }}{{ with $p.Params.endDate }}{{ $end := (time.AsTime .).Format "15:04" }}{{ if ne $end "00:00" }}–{{ $end }}{{ end }}{{ end }}</span>
       {{ end }}
       {{ if $p.Params.recurring }}
-      <span><i class="fas fa-sync-alt" aria-hidden="true"></i> {{ $p.Params.recurrencePattern | default (humanize ($p.Params.recurrenceType | default "weekly")) }}</span>
+      <span>{{ partial "icon.html" "sync-alt" }} {{ $p.Params.recurrencePattern | default (humanize ($p.Params.recurrenceType | default "weekly")) }}</span>
       {{ end }}
-      {{ with $p.Params.location }}<span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ . }}</span>{{ end }}
+      {{ with $p.Params.location }}<span>{{ partial "icon.html" "map-marker-alt" }} {{ . }}</span>{{ end }}
     </div>
     {{ if $p.Params.recurring }}{{ partial "recurring-next.html" $p }}{{ end }}
     {{ if .summary }}{{ with $p.Params.subtitle }}<p class="ev__sum">{{ . }}</p>{{ end }}{{ end }}

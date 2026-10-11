@@ -2,7 +2,7 @@
        Args: page, title, subtitle, image, imagePosition (optional CSS object-position, e.g. "center 90%"), image (optional: full-bleed photo behind the title, same treatment as the sede map headers) */ -}}
 {{ if .image }}
 <header class="sede__hero">
-  <img src="{{ .image }}" class="sede__map sede__map--photo" alt=""{{ with .imagePosition }} style="object-position:{{ . | safeCSS }}"{{ end }} />
+  {{ partial "img.html" (dict "src" .image "alt" "" "class" "sede__map sede__map--photo" "style" (cond (ne .imagePosition nil) (printf "object-position:%s" .imagePosition) "")) }}
   <div class="sede__hero-over"></div>
   <div class="wrap sede__hero-in">
     {{ partial "breadcrumbs.html" .page }}
