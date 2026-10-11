@@ -16,7 +16,7 @@ Metro Olografix sta costruendo una rete LoRA sperimentale in Abruzzo, partendo d
 
 La rete utilizza il protocollo open source Meshtastic e conta attualmente diversi nodi attivi tra Pescara, Chieti e la costa adriatica, con test in corso verso le aree interne. In parallelo stiamo esplorando Reticulum, un protocollo di nuova generazione con crittografia nativa, come possibile evoluzione futura.
 
-### Come partecipare
+## Come partecipare
 
 Non serve essere esperti. Il progetto è aperto a chiunque e ci sono diversi modi per contribuire.
 
@@ -26,7 +26,7 @@ Non serve essere esperti. Il progetto è aperto a chiunque e ci sono diversi mod
 
 **Offrire un tetto.** Chi abita in un punto alto (ultimo piano, collina, posizione panoramica) e può ospitare un piccolo dispositivo esterno, anche alimentato a pannello solare, darebbe un contributo particolarmente prezioso per estendere la copertura.
 
-### Risorse
+## Risorse
 
 - [Knowledge base LoRA](https://kb.olografix.org/it/lora/home)
 - [Hardware consigliato](https://kb.olografix.org/it/lora/hardware)

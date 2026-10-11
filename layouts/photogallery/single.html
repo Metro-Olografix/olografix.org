@@ -8,10 +8,11 @@
     <div class="sec__body sec__body--full">
       {{ with resources.GetRemote (printf "%s/%s/index.json" $serverBase $albumName) }}
       {{ $albumData := . | transform.Unmarshal }}
-      <div class="gallery">
-        {{ range $albumData.images }}
-        <a href="{{ printf "%s/%s/%s" $serverBase $albumName .name }}" data-lightbox="gallery">
-          <img src="{{ printf "%s/%s/%s" $serverBase $albumName .thumbnail }}" alt="" loading="lazy" width="300" height="300" />
+      {{ $total := len $albumData.images }}
+      <div class="gallery" data-lb-counter="{{ T "galleryCounter" }}" data-lb-prev="{{ T "galleryPrev" }}" data-lb-next="{{ T "galleryNext" }}" data-lb-close="{{ T "galleryClose" }}">
+        {{ range $i, $img := $albumData.images }}
+        <a href="{{ printf "%s/%s/%s" $serverBase $albumName $img.name }}" data-lightbox="gallery" aria-label="{{ T "galleryPhotoLabel" (dict "N" (add $i 1) "Total" $total) }}">
+          <img src="{{ printf "%s/%s/%s" $serverBase $albumName $img.thumbnail }}" alt="" loading="lazy" width="300" height="300" />
         </a>
         {{ end }}
       </div>

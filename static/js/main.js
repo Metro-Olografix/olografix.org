@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.getElementById("cm");
 
   // While the menu is open, everything behind it is inert: no focus, no screen-reader access.
-  const behind = [document.getElementById("nav"), document.getElementById("main"), document.querySelector(".foot")].filter(Boolean);
+  const behind = [document.querySelector(".skip"), document.getElementById("nav"), document.getElementById("main"), document.querySelector(".foot")].filter(Boolean);
 
   function setMenu(open) {
     if (!menu) return;
@@ -30,10 +30,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!btn) return;
     btn.setAttribute("aria-expanded", "false");
     const set = (v) => btn.setAttribute("aria-expanded", String(v));
-    dd.addEventListener("mouseenter", () => set(true));
-    dd.addEventListener("mouseleave", () => set(dd.contains(document.activeElement)));
-    dd.addEventListener("focusin", () => set(true));
-    dd.addEventListener("focusout", (e) => { if (!dd.contains(e.relatedTarget)) set(false); });
+    // Esc dismisses the open menu (WCAG 1.4.13) until the pointer or focus leaves, or the button is used again.
+    const reopen = () => dd.classList.remove("dd--closed");
+    dd.addEventListener("mouseenter", () => { if (!dd.classList.contains("dd--closed")) set(true); });
+    dd.addEventListener("mouseleave", () => { reopen(); set(dd.contains(document.activeElement)); });
+    dd.addEventListener("focusin", () => { if (!dd.classList.contains("dd--closed")) set(true); });
+    dd.addEventListener("focusout", (e) => { if (!dd.contains(e.relatedTarget)) { reopen(); set(false); } });
+    btn.addEventListener("click", () => { reopen(); set(true); });
+    dd.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape" || dd.classList.contains("dd--closed")) return;
+      dd.classList.add("dd--closed");
+      set(false);
+      btn.focus();
+    });
   });
 
   // ── Nav background once the page scrolls ───────────────────────
@@ -48,24 +57,67 @@ document.addEventListener("DOMContentLoaded", () => {
     laquila: "https://sede.olografix.org/s/laquila/status",
   };
 
+  // Only touch the text when the state changes, so the live region isn't re-announced every minute.
+  function setStatus(widgets, state) {
+    widgets.forEach((w) => {
+      if (w.dataset.state === state) return;
+      w.dataset.state = state;
+      const text = { open: w.dataset.textOpen, closed: w.dataset.textClosed, unknown: w.dataset.textUnknown }[state];
+      w.querySelector(".status__t").textContent = text;
+    });
+  }
+
   function updateSedeStatus(sedeId) {
     const widgets = document.querySelectorAll(`.status[data-sede="${sedeId}"]`);
     if (!widgets.length) return;
-    fetch(STATUS_API[sedeId])
-      .then((r) => r.text())
+    fetch(STATUS_API[sedeId], { cache: "no-store", signal: AbortSignal.timeout?.(8000) })
+      .then((r) => (r.ok ? r.text() : Promise.reject(new Error(`HTTP ${r.status}`))))
       .then((data) => {
-        const isOpen = data.trim() === "true";
-        widgets.forEach((w) => {
-          w.dataset.state = isOpen ? "open" : "closed";
-          w.querySelector(".status__t").textContent = isOpen ? w.dataset.textOpen : w.dataset.textClosed;
-        });
+        // Anything but a plain true/false (an error page, an empty body) is "unknown", never "closed".
+        const value = data.trim();
+        if (value !== "true" && value !== "false") throw new Error(`unexpected response "${value.slice(0, 40)}"`);
+        setStatus(widgets, value === "true" ? "open" : "closed");
       })
-      .catch((err) => console.error(`Error fetching status for ${sedeId}:`, err));
+      .catch((err) => {
+        console.error(`Error fetching status for ${sedeId}:`, err);
+        setStatus(widgets, "unknown");
+      });
   }
 
-  const updateAll = () => Object.keys(STATUS_API).forEach(updateSedeStatus);
-  updateAll();
-  setInterval(updateAll, 60000);
+  if (document.querySelector(".status[data-sede]")) {
+    const updateAll = () => Object.keys(STATUS_API).forEach(updateSedeStatus);
+    let timer;
+    const poll = () => {
+      updateAll();
+      timer = setInterval(updateAll, 60000);
+    };
+    // No polling while the tab is in the background; refresh as soon as it comes back.
+    document.addEventListener("visibilitychange", () => {
+      clearInterval(timer);
+      if (!document.hidden) poll();
+    });
+    poll();
+  }
+
+  // ── Photogallery lightbox (lightbox2, loaded only on gallery pages) ──
+  const gallery = document.querySelector(".gallery[data-lb-counter]");
+  if (gallery && window.lightbox) {
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.lightbox.option({
+      albumLabel: gallery.dataset.lbCounter,
+      alwaysShowNavOnTouchDevices: true,
+      ...(still && { fadeDuration: 0, imageFadeDuration: 0, resizeDuration: 0 }),
+    });
+    // lightbox2 builds its controls with English labels (and none on close): name them in the page language
+    // just before it opens. Capture phase, so this runs before lightbox2's own click handler.
+    const label = (selector, text) => document.querySelector(selector)?.setAttribute("aria-label", text);
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("[data-lightbox]")) return;
+      label(".lb-prev", gallery.dataset.lbPrev);
+      label(".lb-next", gallery.dataset.lbNext);
+      label(".lb-close", gallery.dataset.lbClose);
+    }, true);
+  }
 });
 
 eval(
