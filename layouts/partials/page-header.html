@@ -1,29 +1,11 @@
 {{- /* Page header: breadcrumb + display title (+ optional subtitle). Two kinds:
-       - with a photo: hero-height, the photo full-bleed behind the title (same treatment as the sede map headers),
-         or, for a portrait photo, beside the title on the grid;
+       - with a photo: hero-height, the photo full-bleed behind the title (same treatment as the sede map headers);
        - without: compact, so the content starts right after the title instead of under an empty black hero.
        Args: page, title, subtitle, image, imagePosition (optional CSS object-position, e.g. "center 90%").
        image/imagePosition fall back to the page's own front matter, so any page can opt into a photo header. */ -}}
 {{ $image := .image | default .page.Params.image }}
 {{ $position := .imagePosition | default .page.Params.imagePosition | default "" }}
-{{- /* A portrait photo can't fill a wide header (it would be magnified into an unreadable slice under the veil):
-       it sits beside the title on the grid instead, whole and without a veil. */ -}}
-{{ $portrait := false }}
-{{ with $image }}{{ $file := printf "static%s" . }}{{ if fileExists $file }}{{ with imageConfig $file }}{{ $portrait = lt .Width .Height }}{{ end }}{{ end }}{{ end }}
-{{ if and $image $portrait }}
-<header class="pside">
-  <div class="wrap pside__in">
-    <figure class="pside__photo">
-      {{ partial "img.html" (dict "src" $image "alt" "" "sizes" "(max-width: 767px) 100vw, 40vw" "style" (cond (ne $position "") (printf "object-position:%s" $position) "")) }}
-    </figure>
-    <div class="pside__text">
-      {{ partial "breadcrumbs.html" .page }}
-      <h1 class="sede__title">{{ .title | default .page.Title }}</h1>
-      {{ with .subtitle }}<p class="phdr__sub">{{ . }}</p>{{ end }}
-    </div>
-  </div>
-</header>
-{{ else if $image }}
+{{ if $image }}
 <header class="sede__hero">
   {{ partial "img.html" (dict "src" $image "alt" "" "class" "sede__map sede__map--photo" "style" (cond (ne $position "") (printf "object-position:%s" $position) "")) }}
   <div class="sede__hero-over"></div>

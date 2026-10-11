@@ -1,8 +1,6 @@
 ---
 title: "L'associazione"
 layout: associazione
-image: "/images/photo_2025-10-13_21-31-15.jpg"
-imagePosition: "center 40%"
 ---
 **Metro Olografix** è una comunità viva, nata per condividere e diffondere la passione per la tecnologia e la libertà dell’informazione. Fondata nel 1994 a **Pescara**, promuove un’idea pura e alternativa di **cultura telematica**, ispirata ai pionieri delle BBS (Bulletin Board System), quando Internet era ancora un territorio inesplorato e affascinante.
 <br /><br />
