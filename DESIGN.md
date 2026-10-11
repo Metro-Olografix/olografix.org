@@ -114,7 +114,7 @@ components:
 
 The site reads like a bulletin from the BBS era, typeset as a modern editorial page. Pages are indexes of a community's activity: events by year, projects by name, sedi, the board. Each entry gets a strong sans headline and is separated from the next by a single hairline rule. Everything around the content is pure black, so the white type alone carries the page. Hierarchy comes from scale, weight and opacity, not from color, boxes or ornament.
 
-Information is dense, but each line is easy to scan. Machine text (paths, dates in columns, emails, handles, IDs, code) is set in IBM Plex Mono, and that mono voice is the system's link to its terminal heritage (`~/pescara`). Everything else, including navigation and buttons, is Plex Sans. Photographs show real people and the real lab. They sit in grayscale until hovered, then come back to color, the way a bulletin quotes reality rather than decorating with it.
+Information is dense, but each line is easy to scan. Machine text (paths, dates in columns, emails, handles, IDs, code) is set in IBM Plex Mono, and that mono voice is the system's link to its terminal heritage (`~/pescara`). Everything else, including navigation and buttons, is Plex Sans. Photographs show real people and the real lab. They sit in grayscale until hovered, then come back to color, the way a bulletin quotes reality rather than decorating with it. The photogallery is the exception: there the photos are the content, so albums and album pages show them in color.
 
 The palette is monochrome by design. The only colors are status signals: red when a sede is closed, green when something is upcoming. Corners are square everywhere, and nothing casts a shadow.
 
@@ -126,7 +126,7 @@ The secondary north star is the discipline the bulletin is set in. From Swiss In
 - The official MX monogram in the nav; monogram + lettering in the footer.
 - Hairline rules (1px) and index-style rows instead of cards.
 - Square corners only. No shadows. Depth comes from tone and gradient overlays.
-- Grayscale photography that regains color on hover.
+- Grayscale photography that regains color on hover (except in the photogallery, which is in color).
 - Color appears only as live status.
 - Swiss/Bauhaus discipline: grid-snapped, flush-left, asymmetric, elementary geometry.
 
@@ -282,7 +282,7 @@ The photogallery opens photos in lightbox2, reskinned in `lightbox.min.css` (the
 - **Do** keep the page ground true black (#000) and draw all structure with 1px #1a1a1a hairlines.
 - **Do** set every path, email, handle, ID and column-aligned date in Plex Mono, and every name, label, status and sentence in Plex Sans.
 - **Do** build lists as hairline-separated index rows with the tone-fill and nudge hover.
-- **Do** show photography in grayscale at rest and bring back color only on hover.
+- **Do** show photography in grayscale at rest and bring back color only on hover, except in the photogallery, where the photos are the content and stay in color.
 - **Do** use the CTA Line for primary navigation-style calls to action.
 - **Do** use the expo-out ease `cubic-bezier(.16,1,.3,1)` for movement and 0.2s linear color transitions for hover color changes.
 - **Do** set all type flush-left and snap every element to the column grid.
