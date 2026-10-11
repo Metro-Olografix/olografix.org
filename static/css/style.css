@@ -440,3 +440,11 @@ main{flex:1;display:block}
 .prose ul,.prose ol{display:flow-root}
 .sede__map--pescara{transform:scale(3);transform-origin:60% 52%}
 .sede__map--photo{filter:grayscale(1) contrast(1.1);opacity:.55;object-position:center 65%}
+
+/* Phone/tablet: the fixed bar is solid so the logo never sits on a photo; content starts below it */
+:root{--nav-h:3.1rem}
+@media(max-width:1099px){
+  .nav,.nav.scrolled{background:var(--black);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid var(--line)}
+  .mosaic{padding-top:calc(var(--nav-h) + 4px)}
+  .sede__hero{margin-top:var(--nav-h)}
+}
