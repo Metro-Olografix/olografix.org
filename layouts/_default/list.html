@@ -1,15 +1,18 @@
 {{ define "main" }}
-<h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
-{{ range .Pages }}
-<article class="mb-8">
-    <h2 class="text-2xl font-bold mb-2">
-        {{ $url := .Permalink }}
-        {{ if .Params.externalUrl }}
-            {{ $url = .Params.externalUrl }}
-        {{ end }}
-        <a href="{{ $url }}" class="text-accent hover:underline">>> {{ .Title }}{{ if .Params.externalUrl }}↗{{ end }}</a>
-    </h2>
-    <p class="mt-2">{{ .Params.subtitle | default .Summary }}</p>
-</article>
-{{ end }}
+{{ partial "page-header.html" (dict "page" .) }}
+<section class="sec">
+  <div class="wrap sec__in">
+    <div class="sec__body">
+      {{ with .Content }}<div class="prose prose--wide list__intro">{{ . }}</div>{{ end }}
+      {{ range .Pages }}
+      {{ $url := .RelPermalink }}{{ $ext := false }}
+      {{ with .Params.externalUrl }}{{ $url = . }}{{ $ext = true }}{{ end }}
+      <a href="{{ $url }}" class="prow prow--plain"{{ if $ext }} target="_blank" rel="noopener"{{ end }}>
+        <span class="prow__name">{{ .Title }}{{ if $ext }}<span class="prow__ext">↗</span>{{ end }}</span>
+        <span class="prow__desc">{{ .Params.subtitle | default .Summary | plainify }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
 {{ end }}

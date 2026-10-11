@@ -1,0 +1,4 @@
+{{- /* Is menu entry .entry the current page (or an ancestor of it)? Used by nav + mobile menu. */ -}}
+{{- $url := .entry.URL -}}
+{{- $home := "/" | relLangURL -}}
+{{- return (or (eq .page.RelPermalink $url) (and (hasPrefix .page.RelPermalink $url) (ne $url $home) (ne $url "/"))) -}}

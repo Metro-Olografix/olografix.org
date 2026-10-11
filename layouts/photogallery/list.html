@@ -1,82 +1,33 @@
 {{ define "main" }}
-<h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
+{{ partial "page-header.html" (dict "page" .) }}
 
 {{ $pages := .Pages }}
-{{ $pagesWithYear := where $pages "Params.year" "!=" nil }}
-{{ $pagesWithoutYear := where $pages "Params.year" "=" nil }}
+{{ $withYear := where $pages "Params.year" "!=" nil }}
+{{ $withoutYear := where $pages "Params.year" "=" nil }}
 
-{{ if $pagesWithYear }}
-    {{ $grouped := $pagesWithYear.GroupByParam "year" }}
-    <div class="space-y-8 mb-6">
-        {{ range $grouped.Reverse }}
-        <div class="weight-group mb-6">
-            <h2 class="text-2xl font-bold mb-4 bg-gray-200 p-2 rounded">{{ .Key }}</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {{ range sort .Pages "Title" "asc" }}
-                    {{ $cardContent := .Description }}
-                    {{ if eq .Params.layout "list" }}
-                        {{ $nestedContent := .Description }}
-                        {{ $nestedContent = printf "%s<div class='border-t border-gray-200'><p class='text-sm font-semibold'>Albums:</p><ul class='space-y-1 pl-4'>" $nestedContent }}
-                        
-                        {{ range .Pages }}
-                            {{ $nestedContent = printf "%s<li><a href='%s' class='text-accent hover:underline'>%s</a></li>" $nestedContent (.RelPermalink | relLangURL) .Title }}
-                        {{ end }}
-                        
-                        {{ $nestedContent = printf "%s</ul></div>" $nestedContent }}
-                        {{ $cardContent = $nestedContent }}
-                    {{ end }}
-                
-                    <!-- Use card partial -->
-                    {{ partial "card.html" (dict
-                        "title" .Title
-                        "content" $cardContent
-                        "goToLink" (.RelPermalink | relLangURL)
-                        "goToText" (T "goText")
-                        "withShadow" true
-                        "fullHeight" true) }}
-                {{ end }}
-            </div>
-        </div>
-        {{ end }}
+{{ range ($withYear.GroupByParam "year").Reverse }}
+<section class="sec" aria-labelledby="h-y{{ .Key }}">
+  <div class="wrap sec__in">
+    <h2 class="sec__h sec__h--year" id="h-y{{ .Key }}">{{ .Key }}</h2>
+    <div class="sec__body albums">
+      {{ range sort .Pages "Title" "asc" }}{{ partial "album-row.html" . }}{{ end }}
     </div>
+  </div>
+</section>
 {{ end }}
 
-{{ if $pagesWithoutYear }}
-    <div class="space-y-6 mb-6">
-        <h2 class="text-xl font-bold mb-4">Other Albums</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {{ range sort $pagesWithoutYear "Title" "asc" }}
-                {{ $cardContent := .Description }}
-                {{ if eq .Params.layout "list" }}
-                    {{ $nestedContent := .Description }}
-                    {{ $nestedContent = printf "%s<div class='border-t border-gray-200'><p class='text-sm font-semibold'>Sub-albums:</p><ul class='space-y-1 pl-4'>" $nestedContent }}
-                    
-                    {{ range .Pages }}
-                        {{ $nestedContent = printf "%s<li><a href='%s' class='text-accent hover:underline'>%s</a></li>" $nestedContent (.RelPermalink | relLangURL) .Title }}
-                    {{ end }}
-                    
-                    {{ $nestedContent = printf "%s</ul></div>" $nestedContent }}
-                    {{ $cardContent = $nestedContent }}
-                {{ end }}
-            
-                <!-- Use card partial -->
-                {{ partial "card.html" (dict
-                    "title" .Title
-                    "content" $cardContent
-                    "goToLink" (.RelPermalink | relLangURL)
-                    "goToText" (T "goText")
-                    "withShadow" true
-                    "fullHeight" true) }}
-            {{ end }}
-        </div>
+{{ with $withoutYear }}
+<section class="sec" aria-labelledby="h-other">
+  <div class="wrap sec__in">
+    <h2 class="sec__h" id="h-other">{{ T "otherAlbums" }}</h2>
+    <div class="sec__body albums">
+      {{ range sort . "Title" "asc" }}{{ partial "album-row.html" . }}{{ end }}
     </div>
+  </div>
+</section>
 {{ end }}
 
 {{ if not $pages }}
-    {{ partial "card.html" (dict
-        "content" "Non ci sono ancora album in questa sezione."
-        "withShadow" true) }}
+<section class="sec"><div class="wrap sec__in"><div class="sec__body"><p class="empty">{{ T "noAlbums" }}</p></div></div></section>
 {{ end }}
 {{ end }}

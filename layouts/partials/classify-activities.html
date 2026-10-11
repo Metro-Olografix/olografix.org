@@ -1,0 +1,18 @@
+{{- /* Split activity pages into upcoming (asc) and past (desc). Recurring events stay upcoming until their endDate. */ -}}
+{{- $now := now -}}
+{{- $upcoming := slice -}}
+{{- $past := slice -}}
+{{- range . -}}
+  {{- $isUpcoming := false -}}
+  {{- if .Params.recurring -}}
+    {{- if .Params.endDate -}}
+      {{- if ge (time.AsTime .Params.endDate).Unix $now.Unix }}{{ $isUpcoming = true }}{{ end -}}
+    {{- else -}}
+      {{- $isUpcoming = true -}}
+    {{- end -}}
+  {{- else if ge .Date.Unix $now.Unix -}}
+    {{- $isUpcoming = true -}}
+  {{- end -}}
+  {{- if $isUpcoming }}{{ $upcoming = $upcoming | append . }}{{ else }}{{ $past = $past | append . }}{{ end -}}
+{{- end -}}
+{{- return (dict "upcoming" (sort $upcoming ".Date" "asc") "past" (sort $past ".Date" "desc")) -}}

@@ -1,26 +1,14 @@
-<footer class="w-full bg-primary-dark">
-  <div class="container mx-auto px-4 sm:px-0 max-w-5xl">
-    <div class="flex flex-col md:flex-row justify-between items-center py-2">
-      <!-- Left side -->
-      <div class="w-full md:w-auto text-white">
-        <p class="text-sm">
-          {{ T "partitaIva" }} 02399510680
-        </p>
-        <p class="text-sm">
-          {{ T "codiceFiscale" }} 91047350680
-        </p>
-      </div>
-      <!-- Right side -->
-      <div class="flex flex-col space-y-1 justify-center w-full md:w-auto text-white">
-        <p class="text-end">
-          {{ T "poweredByHugo" }}
-          <span class="hugo-text"><span class="letter">H</span>ugo</span>
-        </p>
-        <a href="{{ .Site.Params.archiveOldSite }}" target="_blank"
-          class="hover:text-gray-400 transition-colors duration-300 text-end">
-          {{ T "oldWebsite" }}↗
-        </a>
-      </div>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__l">
+      <p>{{ T "partitaIva" }} 02399510680</p>
+      <p>{{ T "codiceFiscale" }} 91047350680</p>
+      <p class="foot__credit">{{ T "mapCredit" | safeHTML }}</p>
+    </div>
+    {{ partial "socials.html" . }}
+    <div class="foot__r">
+      <p>{{ T "poweredByHugo" }} <span class="hugo-text"><span class="letter">H</span>ugo</span></p>
+      <a href="{{ .Site.Params.archiveOldSite }}" target="_blank" rel="noopener">{{ T "oldWebsite" }} ↗</a>
     </div>
   </div>
 </footer>
