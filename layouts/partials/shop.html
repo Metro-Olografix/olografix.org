@@ -6,12 +6,14 @@
         <h3>{{ T "shopPileTitle" }}</h3>
         <div>{{ T "shopPileDescription" | safeHTML }}</div>
       </div>
-      <div class="christmas-lights-wrapper">
+      <div class="christmas-lights-wrapper shop__media">
         {{ if partial "is-lights-season.html" . }}{{ partial "christmas-lights.html" . }}{{ end }}
-        <div class="shop__imgs">
-          <div class="shop__img"><img src="/images/pile-fronte.png" alt="{{ T "pileFrontAlt" }}" loading="lazy" width="512" height="510" /></div>
-          <div class="shop__img"><img src="/images/pile-retro.png" alt="{{ T "pileBackAlt" }}" loading="lazy" width="512" height="556" /></div>
-        </div>
+        <figure class="shop__photo" style="--ar:1">
+          <img src="/images/ed_pile_fumo_2_hq.jpeg" alt="{{ T "shopPilePhotoAlt" }}" loading="lazy" width="847" height="847" />
+        </figure>
+        <figure class="shop__photo" style="--ar:1.333">
+          <img src="/images/n_telecom.png" alt="{{ T "shopTshirtPhotoAlt" }}" loading="lazy" width="640" height="480" />
+        </figure>
       </div>
       <div class="shop__bot">
         <a href="https://shop.olografix.org" target="_blank" rel="noopener" class="cta shop__cta">

@@ -440,3 +440,9 @@ main{flex:1;display:block}
 .prose ul,.prose ol{display:flow-root}
 .sede__map--pescara{transform:scale(3);transform-origin:60% 52%}
 .sede__map--photo{filter:grayscale(1) contrast(1.1);opacity:.55;object-position:center 65%}
+.shop__media{display:flex;gap:var(--gap);align-items:flex-start;margin-bottom:clamp(1.5rem,3vw,2.25rem)}
+@media(max-width:479px){.shop__media{flex-direction:column}}
+/* each photo grows by its aspect ratio, so side by side they share one height */
+.shop__photo{flex:var(--ar,1) 1 0;min-width:0;overflow:hidden;background:var(--surface)}
+.shop__photo img{width:100%;height:auto;filter:grayscale(1) contrast(1.1) brightness(.85);transition:filter .5s var(--ease),transform .5s var(--ease)}
+.shop__photo:hover img{filter:none;transform:scale(1.03)}
