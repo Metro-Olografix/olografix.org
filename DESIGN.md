@@ -102,7 +102,7 @@ components:
 
 The site reads like a bulletin from the BBS era, typeset as a modern editorial page. Pages are indexes of a community's activity: events by year, projects by name, sedi, the board. Each entry gets a strong sans headline and is separated from the next by a single hairline rule. Everything around the content is pure black, so the white type alone carries the page. Hierarchy comes from scale, weight and opacity, not from color, boxes or ornament.
 
-Information is dense, but each line is easy to scan. Machine text (paths, dates in columns, emails, handles, IDs, code) is set in IBM Plex Mono, and that mono voice is the system's link to its terminal heritage (`/home/metro/pescara`). Everything else, including navigation and buttons, is Plex Sans. Photographs show real people and the real lab. They sit in grayscale until hovered, then come back to color, the way a bulletin quotes reality rather than decorating with it.
+Information is dense, but each line is easy to scan. Machine text (paths, dates in columns, emails, handles, IDs, code) is set in IBM Plex Mono, and that mono voice is the system's link to its terminal heritage (`~/pescara`). Everything else, including navigation and buttons, is Plex Sans. Photographs show real people and the real lab. They sit in grayscale until hovered, then come back to color, the way a bulletin quotes reality rather than decorating with it.
 
 The palette is monochrome by design. The only colors are status signals: red when a sede is closed, green when something is upcoming. Corners are square everywhere, and nothing casts a shadow.
 
@@ -161,7 +161,7 @@ The palette is monochrome white on black, plus two signal colors that carry mean
 - **Body** (400, clamp(0.95rem→1.05rem), 1.85): prose capped at 660px (about 65–70ch). Lead text runs up to 1.2rem at 80% white.
 - **Emphasis** (SemiBold 600): `strong`/`b` inside running text, used sparingly.
 - **Label** (Plex Sans 400–500, 0.72–0.85rem): nav links, buttons, badges, info-block labels (uppercase, 0.08em tracking), event metadata, status.
-- **Machine** (Plex Mono 400, 0.7–0.95rem): breadcrumb paths (`~ / …`), `/home/metro/…` card titles, dates in event columns, emails, nicknames, P.IVA/C.F., code.
+- **Machine** (Plex Mono 400, 0.7–0.95rem): breadcrumb paths (`~ / …`), `~/pescara`-style card titles, dates in event columns, emails, nicknames, P.IVA/C.F., code.
 
 ### Named Rules
 **The Machine Text Rule.** Plex Mono is only for text a machine would produce or read: paths, URLs, domains, emails, handles, IDs, code, and dates aligned in a column. Navigation, buttons, labels and sentences are Plex Sans. Mono is Regular only.
@@ -228,7 +228,7 @@ These rows are the bulletin's line items: projects, events and board members.
 Facts about a sede (Orario, Come arrivare, Zona, Contatti). Each block has an uppercase mono label (0.65rem, 0.08em tracking, Text 46), a value in Title weight, and a sub-line in Text 46. The blocks sit in a collapsed-border lattice.
 
 ### Location Cards
-Map-backed cards with an SVG street map scaled into the frame and a black gradient from the bottom. Each card has a mono path title (`/home/metro/pescara`), a short description and a live status line with an LED dot.
+Map-backed cards with an SVG street map scaled into the frame and a black gradient from the bottom. Each card has a mono path title (`~/pescara`), a short description and a live status line with an LED dot.
 
 ### Logo
 The logo comes from the official MX Graphics Standards Manual and is never redrawn.

@@ -78,3 +78,6 @@ shopTshirtPhotoAlt = "Two people wearing Metro Olografix t-shirts outside the sp
 shopIntro = "Support Metro Olografix with our exclusive merchandise."
 shopBundleName = "Fleece + MX 30 Years T-shirt bundle"
 shopBundlePrice = "€35"
+photosLabel = "photos"
+hqStatusOpenTitle = "open"
+hqStatusCloseTitle = "closed"

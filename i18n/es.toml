@@ -78,3 +78,6 @@ shopTshirtPhotoAlt = "Dos personas con camisetas de Metro Olografix frente al es
 shopIntro = "Apoya a Metro Olografix con nuestros productos exclusivos."
 shopBundleName = "Bundle Polar + Camiseta MX 30 años"
 shopBundlePrice = "35€"
+photosLabel = "fotos"
+hqStatusOpenTitle = "abierta"
+hqStatusCloseTitle = "cerrada"

@@ -78,3 +78,6 @@ shopTshirtPhotoAlt = "Due persone con le t-shirt Metro Olografix davanti alla ve
 shopIntro = "Sostieni Metro Olografix con il nostro merchandising esclusivo."
 shopBundleName = "Bundle Pile + T-shirt MX 30 anni"
 shopBundlePrice = "35€"
+photosLabel = "foto"
+hqStatusOpenTitle = "aperta"
+hqStatusCloseTitle = "chiusa"
