@@ -1,6 +1,7 @@
 ---
 title: "The association"
 layout: associazione
+image: "/images/why-2025-1000141814.jpg"
 slug: "association"
 url: "/en/association/"
 ---

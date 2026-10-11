@@ -1,6 +1,7 @@
 ---
 title: "Associati"
 layout: single
+image: "/images/tessera.jpeg"
 ---
 
 Se vuoi entrare nel vivo dell'associazione Metro Olografix, o semplicemente sostenerla, puoi associarti online in pochi minuti:
