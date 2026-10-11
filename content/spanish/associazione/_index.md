@@ -1,6 +1,7 @@
 ---
 title: "La asociación"
 layout: associazione
+image: "/images/why-2025-1000141814.jpg"
 slug: "association"
 url: "/es/asociacion/"
 ---
