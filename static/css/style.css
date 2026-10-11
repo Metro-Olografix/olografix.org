@@ -60,12 +60,12 @@ b,strong{font-weight:600}
 /* dropdown */
 .dd{position:relative}
 .dd__menu{display:none;position:absolute;top:100%;left:-16px;z-index:50;padding-top:10px}
-.dd:hover .dd__menu,.dd:focus-within .dd__menu{display:block}
+.dd:not(.dd--closed):hover .dd__menu,.dd:not(.dd--closed):focus-within .dd__menu{display:block}
 .dd__inner{background:var(--surface);border:1px solid var(--line);padding:6px 0;min-width:170px}
 .dd__inner a{display:block;padding:8px 16px;font-size:.8rem;color:var(--w3);transition:all .15s}
 .dd__inner a:hover{color:var(--w);background:var(--surface-h)}
 .dd svg{width:10px;height:10px;margin-left:3px;transition:transform .2s}
-.dd:hover svg,.dd:focus-within svg{transform:rotate(180deg)}
+.dd:not(.dd--closed):hover svg,.dd:not(.dd--closed):focus-within svg{transform:rotate(180deg)}
 
 .nav__lang{display:none;grid-column:4/-1;grid-row:1;justify-self:end}
 @media(min-width:1100px){.nav__lang{display:block}}
@@ -94,7 +94,7 @@ b,strong{font-weight:600}
 
 /* ═══════════ MOBILE MENU ═══════════ */
 .mmenu{position:fixed;inset:0;overscroll-behavior:contain;background:var(--black);z-index:200;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility .25s}
-.mmenu.open{opacity:1;visibility:visible}
+.mmenu.open{opacity:1;visibility:visible;transition:opacity .25s var(--ease),visibility 0s}
 .mmenu__top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem clamp(1.25rem,4vw,2.5rem)}
 .mmenu__top img{height:1.5rem;width:auto}
 .mmenu__x{font-size:1.5rem;color:var(--w3);padding:8px;min-width:44px;min-height:44px;transition:color .2s}
@@ -223,7 +223,9 @@ main>.sec:first-child{padding-top:0}
 /* ═══════════ INNER PAGES ═══════════ */
 .phdr{padding-top:clamp(7rem,14vw,10rem);padding-bottom:clamp(1.5rem,4vw,3rem)}
 .phdr__bc{font-family:var(--mono);font-size:.7rem;color:var(--w4);margin-bottom:1.25rem}
-.phdr__bc a{transition:color .2s}
+.phdr__bc a{position:relative;transition:color .2s}
+.phdr__bc a::after{content:'';position:absolute;inset:-5px -4px}
+.phdr__bc li:first-child a::after{inset:-5px -9px}
 .phdr__bc a:hover{color:var(--w)}
 .phdr__title{font-size:clamp(2.5rem,6vw,4rem);font-weight:700;letter-spacing:-.03em}
 
