@@ -20,19 +20,20 @@
   --w:#fff; --w2:rgba(255,255,255,.8); --w3:rgba(255,255,255,.62); --w4:rgba(255,255,255,.46);
   --red:#e53e3e; --green:#22c55e;
   --veil:rgba(5,5,5,.95); --veil-soft:rgba(5,5,5,.3);
-  --veil-nav:rgba(5,5,5,.88); --veil-card:rgba(5,5,5,.82); --veil-mid:rgba(5,5,5,.6); --veil-faint:rgba(5,5,5,.05);
+  --veil-card:rgba(5,5,5,.82); --veil-mid:rgba(5,5,5,.6); --veil-faint:rgba(5,5,5,.05);
   --scrim:rgba(0,0,0,.92); --scrim-mid:rgba(0,0,0,.4);
   --green-tint:rgba(34,197,94,.12);
   --sans:'IBM Plex Sans',system-ui,sans-serif;
   --mono:'Plex','IBM Plex Mono',ui-monospace,monospace;
   --max:1180px;
+  --nav-h:3.5rem;
   --gap:clamp(1rem,2vw,1.5rem);
   --sec:clamp(3.5rem,7vw,6rem);
   --ease:cubic-bezier(.16,1,.3,1);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth;color-scheme:dark;scrollbar-color:var(--line-h) var(--black)}
+html{scroll-padding-top:calc(var(--nav-h) + 1rem);background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth;color-scheme:dark;scrollbar-color:var(--line-h) var(--black)}
 ::selection{background:var(--w);color:var(--black)}
 :focus-visible{outline:1px solid var(--w);outline-offset:3px}
 body{font-family:var(--sans);background:var(--bg);color:var(--w);min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6}
@@ -46,10 +47,10 @@ b,strong{font-weight:600}
 .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem);position:relative;z-index:1}
 
 /* ═══════════ NAV ═══════════ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.6rem 0;transition:background .3s,backdrop-filter .3s}
-.nav.scrolled{background:var(--veil-nav);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
-.nav__in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
-@media(min-width:68.75em){.nav__in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}}
+/* A solid black bar with a hairline: the nav never sits on a photo; the mosaic and image headers start below it */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--black);border-bottom:1px solid var(--line)}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:var(--nav-h)}
+@media(min-width:68.75em){.nav__in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:center}}
 .nav__mark{display:flex;align-items:center;padding:3px 0;transition:opacity .2s;flex-shrink:0;grid-column:1/4;grid-row:1;justify-self:start}.nav__mark img{height:24px;width:auto}
 .nav__mark:hover{opacity:.6}
 
@@ -97,9 +98,10 @@ b,strong{font-weight:600}
 /* ═══════════ MOBILE MENU ═══════════ */
 .mmenu{position:fixed;inset:0;overscroll-behavior:contain;background:var(--black);z-index:200;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility .25s}
 .mmenu.open{opacity:1;visibility:visible;transition:opacity .25s var(--ease),visibility 0s}
-.mmenu__top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem clamp(1.25rem,4vw,2.5rem)}
+/* Same height and hairline as the nav bar, so the logo and the burger/close button don't move when the menu opens */
+.mmenu__top{display:flex;justify-content:space-between;align-items:center;flex-shrink:0;height:calc(var(--nav-h) + 1px);padding:0 clamp(1.25rem,4vw,2.5rem);border-bottom:1px solid var(--line)}
 .mmenu__top img{height:1.5rem;width:auto}
-.mmenu__x{font-size:1.5rem;color:var(--w3);padding:8px;min-width:44px;min-height:44px;transition:color .2s}
+.mmenu__x{font-size:1.5rem;color:var(--w3);padding:8px;min-width:44px;min-height:44px;margin-right:-8px;transition:color .2s}
 .mmenu__x:hover{color:var(--w)}
 .mmenu__body{flex:1;display:flex;flex-direction:column;justify-content:safe center;overflow-y:auto;overscroll-behavior:contain;padding:1rem clamp(1.25rem,4vw,2.5rem)}
 .mmenu__body>a{display:block;font-size:clamp(1.6rem,6vw,3rem);font-weight:600;padding:.6rem 0;color:var(--w3);transition:color .2s,transform .3s var(--ease)}
@@ -158,7 +160,7 @@ main>.sec:first-child{padding-top:0}
 .status[data-state=closed]{color:var(--red)}
 
 /* ═══════════ MOSAIC ═══════════ */
-.mosaic{width:100vw;margin-left:calc(-50vw + 50%);position:relative;z-index:1;overflow:hidden;padding-top:clamp(2rem,4vw,3rem)}
+.mosaic{width:100vw;margin-left:calc(-50vw + 50%);position:relative;z-index:1;overflow:hidden;padding-top:calc(var(--nav-h) + 5px)}
 .mosaic__grid{display:grid;gap:4px;padding:0 4px;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(70px,11vw,130px)}
 .mosaic__grid>*{overflow:hidden;position:relative}
 .mosaic__grid img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.85);transition:filter .5s var(--ease),transform .5s var(--ease)}
@@ -175,7 +177,7 @@ main>.sec:first-child{padding-top:0}
 .m9{grid-column:4/10;grid-row:4/5}
 .m10{grid-column:10/13;grid-row:3/5}
 
-.mosaic__text{position:absolute;left:0;right:0;bottom:0;padding:clamp(1.5rem,4vw,3rem);padding-top:8rem;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.4) 50%,transparent 100%);z-index:3;pointer-events:none}
+.mosaic__text{position:absolute;left:0;right:0;bottom:0;padding:8rem 0 clamp(1.5rem,4vw,3rem);background:linear-gradient(to top,var(--scrim) 0%,var(--scrim-mid) 50%,transparent 100%);z-index:3;pointer-events:none}
 .mosaic__text a{pointer-events:auto}
 .mosaic__h{font-size:clamp(2rem,5.5vw,4rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:1rem}
 .mosaic__cta{max-width:280px}
@@ -432,9 +434,9 @@ main{flex:1;display:block}
 .shop__btn{display:inline-block;border-color:var(--w4);color:var(--w)}
 
 /* Page headers match the home mosaic's height (same formulas as .mosaic__grid rows) */
-:root{--hero-h:calc(clamp(2rem,4vw,3rem) + 4*clamp(70px,11vw,130px) + 12px)}
-@media(max-width:56.1875em){:root{--hero-h:calc(clamp(2rem,4vw,3rem) + 4*clamp(60px,14vw,100px) + 12px)}}
-@media(max-width:30em){:root{--hero-h:calc(clamp(2rem,4vw,3rem) + 3*clamp(60px,18vw,100px) + 8px)}}
+:root{--hero-h:calc(var(--nav-h) + 5px + 4*clamp(70px,11vw,130px) + 12px)}
+@media(max-width:56.1875em){:root{--hero-h:calc(var(--nav-h) + 5px + 4*clamp(60px,14vw,100px) + 12px)}}
+@media(max-width:30em){:root{--hero-h:calc(var(--nav-h) + 5px + 3*clamp(60px,18vw,100px) + 8px)}}
 .sede__hero{min-height:var(--hero-h)}
 .phdr{min-height:var(--hero-h);display:flex;flex-direction:column;justify-content:flex-end;padding-top:5rem}
 
@@ -474,12 +476,11 @@ main{flex:1;display:block}
 .acard__sub a{color:var(--w3);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--w4)}
 .acard__sub a:hover{color:var(--w);text-decoration-color:var(--w)}
 
-/* Phone: a real mosaic that fills the hero edge to edge — 4 columns × 6 rows, mixed tile sizes, all 10 tiles,
+/* Phone: a real mosaic that fills the hero edge to edge under the nav bar (75svh in all) — 4 columns × 6 rows, mixed tile sizes, all 10 tiles,
    placed so repeated photos never touch. */
 @media(max-width:37.4375em){
   :root{--hero-h:75svh}
-  .mosaic{padding-top:0}
-  .mosaic__grid{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(6,1fr);grid-auto-rows:auto;padding:0;height:var(--hero-h)}
+  .mosaic__grid{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(6,1fr);grid-auto-rows:auto;padding:0;height:calc(var(--hero-h) - var(--nav-h) - 5px)}
   .mosaic__grid>*{display:block!important}
   .mosaic__grid>.m1{grid-column:1/3!important;grid-row:1/3!important}
   .mosaic__grid>.m2{grid-column:3/5!important;grid-row:1/2!important}
