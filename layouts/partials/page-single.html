@@ -1,0 +1,18 @@
+{{- /* Generic content page: header, optional side-column TOC, prose, optional footer link. */ -}}
+{{ if and (.Params.externalUrl) (.Params.forceRedirect | default true) }}
+<meta http-equiv="refresh" content="0; url={{ .Params.externalUrl }}" />
+{{ end }}
+{{ partial "page-header.html" (dict "page" . "subtitle" .Params.subtitle) }}
+<article class="sec">
+  <div class="wrap sec__in">
+    {{ if and (.Params.hasTOC | default false) (gt (len .TableOfContents) 32) }}
+    <aside class="sec__h toc" aria-label="{{ T "toc" }}">{{ .TableOfContents }}</aside>
+    {{ end }}
+    <div class="sec__body">
+      <div class="prose prose--wide">{{ .Content }}</div>
+      {{ with .Params.footerUrl }}
+      <div class="actbtns"><a href="{{ . }}" class="obtn" target="_blank" rel="noopener">{{ T "goExternalText" }} ↗</a></div>
+      {{ end }}
+    </div>
+  </div>
+</article>

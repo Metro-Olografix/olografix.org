@@ -61,3 +61,15 @@ pileFrontAlt = "Pile Olografix - Fronte"
 pileBackAlt = "Pile Olografix - Retro"
 
 comingEvent = "Prossimamente"
+
+# Underground Bulletin theme
+heroTitle = "{{ .Count }} anni di cultura hacker"
+skipToContent = "Vai al contenuto"
+mainNav = "Navigazione principale"
+openMenu = "Apri menu"
+closeMenu = "Chiudi menu"
+language = "Lingua"
+toc = "Indice"
+otherAlbums = "Altri album"
+noAlbums = "Non ci sono ancora album in questa sezione."
+mapCredit = "Mappe © <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener\">OpenStreetMap</a> · estratti <a href=\"https://extract.bbbike.org/\" target=\"_blank\" rel=\"noopener\">BBBike</a>"

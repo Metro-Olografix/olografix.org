@@ -1,0 +1,3 @@
+{{ define "main" }}
+{{ if in .File.Dir "sede" }}{{ partial "page-sede.html" . }}{{ else }}{{ partial "page-single.html" . }}{{ end }}
+{{ end }}

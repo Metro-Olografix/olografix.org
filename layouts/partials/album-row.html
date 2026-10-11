@@ -1,0 +1,10 @@
+{{- /* One gallery album; list-layout albums also show their sub-albums. Context: the page. */ -}}
+<article class="album">
+  <h3 class="album__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ with .Description }}<p class="album__desc">{{ . }}</p>{{ end }}
+  {{ if eq .Params.layout "list" }}
+  <ul class="album__sub">
+    {{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+  </ul>
+  {{ end }}
+</article>

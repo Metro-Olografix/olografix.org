@@ -1,0 +1,4 @@
+{{- /* Live open/closed status text, filled in by static/js/main.js from sede.olografix.org. Args: id */ -}}
+<span class="status" id="{{ .id }}-status" data-sede="{{ .id }}" data-state="loading" data-text-open="{{ T "hqStatusOpen" }}" data-text-closed="{{ T "hqStatusClose" }}" role="status">
+  <span class="status__t">{{ T "hqStatusLoading" }}</span>
+</span>

@@ -1,0 +1,33 @@
+<nav class="nav" id="nav" aria-label="{{ T "mainNav" }}">
+  <div class="wrap nav__in">
+    <a href="{{ "/" | relLangURL }}" class="nav__mark"><img src="/images/metro-light.png" alt="Metro Olografix — Home" height="24" /><span class="nav__brand" aria-hidden="true"><span class="nav__brand-name">metro<br />olografix</span></span></a>
+
+    <div class="nav__links">
+      {{ range .Site.Menus.main }}
+      {{ if and (not .Parent) (.Params.fullwidthVisible | default true) }}
+      {{ $active := partial "menu-active.html" (dict "entry" . "page" $) }}
+      {{ $fx := cond (eq .Params.rainbowEffect true) "rainbow-text" "" }}
+      {{ if .HasChildren }}
+      <div class="dd">
+        <button type="button" class="{{ if $active }}on {{ end }}{{ $fx }}" aria-haspopup="true">{{ .Name }}<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="square" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
+        <div class="dd__menu">
+          <div class="dd__inner">
+            <a href="{{ .URL | relLangURL }}"{{ if eq $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a>
+            {{ range .Children }}
+            <a href="{{ .URL | relLangURL }}"{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}{{ if partial "menu-active.html" (dict "entry" . "page" $) }} aria-current="page"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      {{ else }}
+      <a href="{{ .URL | relLangURL }}" class="{{ if $active }}on {{ end }}{{ $fx }}"{{ if $active }} aria-current="page"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
+      {{ end }}
+      {{ end }}
+      {{ end }}
+    </div>
+
+    <div class="nav__lang">{{ partial "lang-switch.html" . }}</div>
+
+    <button type="button" class="nav__burger" id="ob" aria-label="{{ T "openMenu" }}" aria-controls="mm" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>

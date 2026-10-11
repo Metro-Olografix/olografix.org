@@ -1,0 +1,24 @@
+{{- /* One activity as an index row. Args: page, dateFormat, badge, badgeClass, summary (bool) */ -}}
+{{ $p := .page }}
+{{ $link := $p.RelPermalink }}
+{{ $ext := false }}
+{{ with $p.Params.externalUrl }}{{ $link = . }}{{ $ext = true }}{{ end }}
+<a href="{{ $link }}" class="ev"{{ if $ext }} target="_blank" rel="noopener"{{ end }}>
+  <div class="ev__date"><time datetime="{{ $p.Date.Format "2006-01-02T15:04" }}">{{ time.Format (.dateFormat | default "02 Jan 2006") $p.Date }}</time></div>
+  <div>
+    <div class="ev__title">{{ $p.Title }}{{ if $ext }}<span class="prow__ext">↗</span>{{ end }}</div>
+    <div class="ev__meta">
+      {{ $start := $p.Date.Format "15:04" }}
+      {{ if ne $start "00:00" }}
+      <span><i class="far fa-clock" aria-hidden="true"></i> {{ $start }}{{ with $p.Params.endDate }}{{ $end := (time.AsTime .).Format "15:04" }}{{ if ne $end "00:00" }}–{{ $end }}{{ end }}{{ end }}</span>
+      {{ end }}
+      {{ if $p.Params.recurring }}
+      <span><i class="fas fa-sync-alt" aria-hidden="true"></i> {{ $p.Params.recurrencePattern | default (humanize ($p.Params.recurrenceType | default "weekly")) }}</span>
+      {{ end }}
+      {{ with $p.Params.location }}<span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ . }}</span>{{ end }}
+    </div>
+    {{ if $p.Params.recurring }}{{ partial "recurring-next.html" $p }}{{ end }}
+    {{ if .summary }}{{ with $p.Params.subtitle }}<p class="ev__sum">{{ . }}</p>{{ end }}{{ end }}
+  </div>
+  {{ with .badge }}<span class="ev__badge {{ $.badgeClass | default "ev__badge--up" }}">{{ . }}</span>{{ else }}<span></span>{{ end }}
+</a>

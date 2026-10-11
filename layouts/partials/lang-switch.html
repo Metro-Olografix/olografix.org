@@ -1,0 +1,8 @@
+{{ if gt (len .AllTranslations) 1 }}
+<ul class="lang" aria-label="{{ T "language" }}">
+  {{ range .AllTranslations }}
+  {{ $current := eq .Language.Lang $.Language.Lang }}
+  <li><a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}"{{ if $current }} class="on" aria-current="true"{{ end }}>{{ .Language.LanguageName }}</a></li>
+  {{ end }}
+</ul>
+{{ end }}

@@ -1,123 +1,55 @@
+// Metro Olografix — site behaviour. No dependencies.
 document.addEventListener("DOMContentLoaded", () => {
-  // Cache DOM elements
-  const elements = {
-    menu: document.getElementById("menu"),
-    closeMenuButton: document.getElementById("closeMenuButton"),
-    openMenuButton: document.getElementById("openMenuButton"),
-  };
+  // ── Mobile menu ────────────────────────────────────────────────
+  const menu = document.getElementById("mm");
+  const openBtn = document.getElementById("ob");
+  const closeBtn = document.getElementById("cm");
 
-  // State management
-  const menuState = {
-    isOpen: false,
-  };
-
-  /**
-   * Toggles the menu state and updates UI accordingly
-   * @param {boolean} [forceClose] - Optional parameter to force close the menu
-   */
-  function toggleMenu(forceClose = false) {
-    menuState.isOpen = forceClose ? false : !menuState.isOpen;
-
-    // Update mobile menu visibility
-    if (elements.menu) {
-      elements.menu.classList[menuState.isOpen ? "remove" : "add"]("hidden");
-    }
+  function setMenu(open) {
+    if (!menu) return;
+    menu.classList.toggle("open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+    if (openBtn) openBtn.setAttribute("aria-expanded", String(open));
+    if (open && closeBtn) closeBtn.focus();
+    if (!open && openBtn) openBtn.focus();
   }
 
-  // Event Handlers
-  function handleEscapeKey(event) {
-    if (event.key === "Escape" && menuState.isOpen) {
-      event.stopPropagation(); // Prevent event bubbling
-      toggleMenu(true);
-    }
-  }
-
-  function handleMenuButtonClick(event) {
-    if (event) {
-      event.preventDefault();
-    }
-    toggleMenu();
-  }
-
-  // Event Listeners
-  if (elements.openMenuButton) {
-    elements.openMenuButton.addEventListener("click", handleMenuButtonClick);
-  }
-
-  // Separate close button handler to ensure it always forces close
-  if (elements.closeMenuButton) {
-    elements.closeMenuButton.addEventListener("click", (event) => {
-      event.stopPropagation(); // Prevent event bubbling
-      toggleMenu(true);
-    });
-  }
-
-  // Global event listeners
-  document.addEventListener("keydown", handleEscapeKey);
-
-  // Mobile dropdown toggle for sub-menus
-  document.querySelectorAll(".mobile-dropdown-toggle").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-      const dropdown = button.closest(".mobile-dropdown");
-      const content = dropdown.querySelector(".mobile-dropdown-content");
-      const arrow = dropdown.querySelector(".mobile-dropdown-arrow");
-      const isExpanded = button.getAttribute("aria-expanded") === "true";
-
-      // Toggle visibility
-      content.classList.toggle("hidden");
-      button.setAttribute("aria-expanded", !isExpanded);
-
-      // Rotate arrow
-      if (arrow) {
-        arrow.classList.toggle("rotate-180");
-      }
-    });
+  openBtn?.addEventListener("click", () => setMenu(true));
+  closeBtn?.addEventListener("click", () => setMenu(false));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu?.classList.contains("open")) setMenu(false);
   });
 
-  // Fetch and update a single sede's status widget
-  function updateSedeStatus(sedeId, apiUrl) {
-    const dotElement = document.getElementById(`${sedeId}-statusDot`);
-    const containerElement = document.getElementById(`${sedeId}-statusContainer`);
-    const loadingStatusElement = document.getElementById(`${sedeId}-statusLoading`);
-    const openStatusElement = document.getElementById(`${sedeId}-statusOpen`);
-    const closeStatusElement = document.getElementById(`${sedeId}-statusClose`);
+  // ── Nav background once the page scrolls ───────────────────────
+  const nav = document.getElementById("nav");
+  const onScroll = () => nav?.classList.toggle("scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-    if (!dotElement) return; // not on a page that shows this sede
+  // ── Live sede status (open / closed) ───────────────────────────
+  const STATUS_API = {
+    pescara: "https://sede.olografix.org/s/pescara/status",
+    laquila: "https://sede.olografix.org/s/laquila/status",
+  };
 
-    fetch(apiUrl)
-      .then(response => response.text())
-      .then(data => {
+  function updateSedeStatus(sedeId) {
+    const widgets = document.querySelectorAll(`.status[data-sede="${sedeId}"]`);
+    if (!widgets.length) return;
+    fetch(STATUS_API[sedeId])
+      .then((r) => r.text())
+      .then((data) => {
         const isOpen = data.trim() === "true";
-        containerElement.classList.remove("bg-gray-100", "bg-green-100", "bg-red-100");
-        containerElement.classList.add(isOpen ? "bg-green-100" : "bg-red-100");
-
-        dotElement.classList.remove("bg-gray-300", "bg-green-500", "bg-red-500");
-        dotElement.classList.add(isOpen ? "bg-green-500" : "bg-red-500");
-
-        loadingStatusElement.classList.add("hidden");
-        openStatusElement.classList.toggle("hidden", !isOpen);
-        closeStatusElement.classList.toggle("hidden", isOpen);
+        widgets.forEach((w) => {
+          w.dataset.state = isOpen ? "open" : "closed";
+          w.querySelector(".status__t").textContent = isOpen ? w.dataset.textOpen : w.dataset.textClosed;
+        });
       })
-      .catch(error => {
-        console.error(`Error fetching status for ${sedeId}:`, error);
-        containerElement.classList.remove("bg-green-100", "bg-red-100");
-        containerElement.classList.add("bg-gray-100");
-        dotElement.classList.remove("bg-green-500", "bg-red-500");
-        dotElement.classList.add("bg-gray-300");
-        loadingStatusElement.classList.remove("hidden");
-        openStatusElement.classList.add("hidden");
-        closeStatusElement.classList.add("hidden");
-      });
+      .catch((err) => console.error(`Error fetching status for ${sedeId}:`, err));
   }
 
-  function updateAllSediStatus() {
-    updateSedeStatus("pescara", "https://sede.olografix.org/s/pescara/status");
-    updateSedeStatus("laquila", "https://sede.olografix.org/s/laquila/status");
-  }
-
-  updateAllSediStatus();
-  setInterval(updateAllSediStatus, 60000); // Update every 60 seconds
+  const updateAll = () => Object.keys(STATUS_API).forEach(updateSedeStatus);
+  updateAll();
+  setInterval(updateAll, 60000);
 });
 
 eval(
