@@ -1,15 +1,38 @@
 {{ define "main" }}
 {{ partial "page-header.html" (dict "page" . "image" "/images/lora.jpg" "imagePosition" "55% 24%") }}
+
+{{- /* One section per project, same grid as Attività: mark + start year in the side column,
+       name, subtitle and links (own page / external domains) in the body. Newest first. */ -}}
 {{ $progetti := sort (where .Site.RegularPages "Type" "progetti") ".Date" "desc" }}
-<section class="sec">
+{{ range $progetti }}
+{{ $hasPage := and (not .Params.externalUrl) (gt (len (plainify .Content)) 0) }}
+<section class="sec proj" aria-labelledby="p-{{ .File.ContentBaseName }}">
   <div class="wrap sec__in">
+    <div class="sec__h proj__side">
+      <span class="proj__mark">{{ partial "project-mark.html" . }}</span>
+      <span class="sec__h--year proj__year">{{ .Date.Format "2006" }}</span>
+    </div>
     <div class="sec__body">
-      {{ range $progetti }}
-      {{ partial "project-row.html" . }}
-      {{ else }}
-      <p class="empty">{{ T "noProjectsMessage" | default "Non ci sono progetti in questa sezione." }}</p>
-      {{ end }}
+      <h2 class="proj__name" id="p-{{ .File.ContentBaseName }}">
+        {{ if $hasPage }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ else if .Params.externalUrl }}<a href="{{ .Params.externalUrl }}" target="_blank" rel="noopener">{{ .Title }}</a>{{ else }}{{ .Title }}{{ end }}
+      </h2>
+      {{ with .Params.subtitle }}<p class="proj__sub">{{ . }}</p>{{ end }}
+      <div class="proj__links">
+        {{ if $hasPage }}
+        <a href="{{ .RelPermalink }}" class="cta proj__cta">
+          <span class="cta__label">{{ T "learnMoreText" }}</span>
+          <span class="cta__line"></span>
+          <span class="cta__arrow">→</span>
+        </a>
+        {{ end }}
+        {{ range slice .Params.externalUrl .Params.footerUrl }}
+        {{ with . }}<a href="{{ . }}" class="proj__ext" target="_blank" rel="noopener">{{ (urls.Parse .).Host | strings.TrimPrefix "www." }} ↗</a>{{ end }}
+        {{ end }}
+      </div>
     </div>
   </div>
 </section>
+{{ else }}
+<section class="sec"><div class="wrap sec__in"><div class="sec__body"><p class="empty">{{ T "noProjectsMessage" | default "Non ci sono progetti in questa sezione." }}</p></div></div></section>
+{{ end }}
 {{ end }}

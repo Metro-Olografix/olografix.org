@@ -1,4 +1,9 @@
-{{- /* Live open/closed status text, filled in by static/js/main.js from sede.olografix.org. Args: id */ -}}
+{{- /* Live open/closed status text, filled in by static/js/main.js from sede.olografix.org.
+       Args: id, title (bool: long form set inline in the sede page title, e.g. "è aperta") */ -}}
+{{ if .title }}
+<span class="status status--title" id="{{ .id }}-status" data-sede="{{ .id }}" data-state="loading" data-text-open="{{ T "hqStatusOpenTitle" }}" data-text-closed="{{ T "hqStatusCloseTitle" }}" aria-live="polite"><span class="status__t">…</span></span>
+{{- else }}
 <span class="status" id="{{ .id }}-status" data-sede="{{ .id }}" data-state="loading" data-text-open="{{ T "hqStatusOpen" }}" data-text-closed="{{ T "hqStatusClose" }}" role="status">
   <span class="status__t">{{ T "hqStatusLoading" }}</span>
 </span>
+{{- end }}

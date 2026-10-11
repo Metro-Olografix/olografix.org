@@ -36,8 +36,8 @@
     <h2 class="sec__h" id="h-sedi">{{ T "sediHeader" }}</h2>
     <div class="sec__body locs__grid">
       {{ range slice
-        (dict "id" "pescara" "path" "/home/metro/pescara" "map" "PE_SEDE_white.svg" "text" (T "hqDescription"))
-        (dict "id" "laquila" "path" "/home/metro/laquila" "map" "AQ_SEDE_white.svg" "text" (T "laquilaDescription")) }}
+        (dict "id" "pescara" "path" "~/pescara" "map" "PE_SEDE_white.svg" "text" (T "hqDescription"))
+        (dict "id" "laquila" "path" "~/laquila" "map" "AQ_SEDE_white.svg" "text" (T "laquilaDescription")) }}
       {{ $page := site.GetPage (printf "/associazione/sede/%s" .id) }}
       <a href="{{ with $page }}{{ .RelPermalink }}{{ end }}" class="loc__card">
         <img src="/images/map_backgrounds/{{ .map }}?v=2" class="loc__map" alt="" />

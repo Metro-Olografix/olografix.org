@@ -9,7 +9,7 @@
 <section class="sec" aria-labelledby="h-y{{ .Key }}">
   <div class="wrap sec__in">
     <h2 class="sec__h sec__h--year" id="h-y{{ .Key }}">{{ .Key }}</h2>
-    <div class="sec__body albums">
+    <div class="sec__body agrid">
       {{ range sort .Pages "Title" "asc" }}{{ partial "album-row.html" . }}{{ end }}
     </div>
   </div>
@@ -20,7 +20,7 @@
 <section class="sec" aria-labelledby="h-other">
   <div class="wrap sec__in">
     <h2 class="sec__h" id="h-other">{{ T "otherAlbums" }}</h2>
-    <div class="sec__body albums">
+    <div class="sec__body agrid">
       {{ range sort . "Title" "asc" }}{{ partial "album-row.html" . }}{{ end }}
     </div>
   </div>
