@@ -45,11 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ── Nav background once the page scrolls ───────────────────────
-  const nav = document.getElementById("nav");
-  const onScroll = () => nav?.classList.toggle("scrolled", window.scrollY > 40);
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
 
   // ── Live sede status (open / closed) ───────────────────────────
   const STATUS_API = {
