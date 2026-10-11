@@ -314,7 +314,8 @@
     "overview": "The site reads like a bulletin from the BBS era, typeset as a modern editorial page. Pages are indexes of a community's activity: events by year, projects by name, sedi, the board. Each entry gets a heavy sans headline and is separated from the next by a single hairline rule. Everything around the content is pure black, so the white type alone carries the page. Hierarchy comes from scale, weight and opacity, not from color, boxes or ornament.\n\nInformation is dense, but each line is easy to scan. Every piece of metadata (dates, places, breadcrumbs, emails, status) is set in IBM Plex Mono, and that mono voice is the system's link to its terminal heritage (`/home/metro/pescara`). Photographs show real people and the real lab. They sit in grayscale until hovered, then come back to color, the way a bulletin quotes reality rather than decorating with it.\n\nThe palette is monochrome by design. The only colors are status signals: red when a sede is closed, green when something is upcoming. Corners are square everywhere, and nothing casts a shadow.\n\nThe secondary north star is the discipline the bulletin is set in. From Swiss International Style it takes an objective grid that every element snaps to, flush-left ragged-right type, asymmetric balance instead of centered symmetry, strong contrast in scale between display and text, and photography used as fact, not mood. From the Bauhaus it takes form following function and an elementary geometry (square, circle, line) as the only source of graphic form. Where the two north stars meet, the bulletin decides *what* is said and Swiss/Bauhaus decides *how it is set*. When a choice is unclear, choose the one a Swiss typographer would defend on grid and legibility grounds.",
     "keyCharacteristics": [
       "Pure black ground, white type at four fixed opacities, no decorative backgrounds.",
-      "Heavy, tightly tracked Plex Sans headlines (700–800, −0.02 to −0.03em) over a mono metadata layer.",
+      "IBM Plex Sans in the official MX hierarchy (H1 700, H2 600, H3 500), with Plex Mono reserved for machine text.",
+      "The official MX monogram in the nav; monogram + lettering in the footer.",
       "Hairline rules (1px) and index-style rows instead of cards.",
       "Square corners only. No shadows. Depth comes from tone and gradient overlays.",
       "Grayscale photography that regains color on hover.",
@@ -329,7 +330,7 @@
       },
       {
         "name": "The Four Whites Rule",
-        "body": "Text uses exactly four values: 100%, 80%, 62% and 46% white. Hierarchy is decided by choosing among them. Don't introduce a fifth opacity or a tinted gray.",
+        "body": "Text uses exactly four values: 100%, 80%, 62% and 46% white. The lowest tier is set so that every tier passes WCAG AA (4.5:1) on black. Hierarchy is decided by choosing among them. Don't introduce a fifth opacity or a tinted gray.",
         "section": "colors"
       },
       {
@@ -338,13 +339,13 @@
         "section": "colors"
       },
       {
-        "name": "The Mono Means Data Rule",
-        "body": "If a piece of text is a date, place, path, email, status, count or navigation, set it in Plex Mono. If it's a name or a sentence, set it in Plex Sans. Never mix the two within one line's role.",
+        "name": "The Machine Text Rule",
+        "body": "Plex Mono is only for text a machine would produce or read: paths, URLs, domains, emails, handles, IDs, code, and dates aligned in a column. Navigation, buttons, labels and sentences are Plex Sans. Mono is Regular only.",
         "section": "typography"
       },
       {
-        "name": "The Heavy Masthead Rule",
-        "body": "Headlines are 700–800 with negative tracking. Mid-weight (500) headlines don't exist in this system.",
+        "name": "The Manual Hierarchy Rule",
+        "body": "Heading weights follow the MX manual: H1 Bold 700, H2 SemiBold 600, H3 Medium 500, emphasis SemiBold 600. Nothing is heavier than 700.",
         "section": "typography"
       },
       {
@@ -384,10 +385,12 @@
       "Do build icons and graphic marks from squares, circles and lines."
     ],
     "donts": [
+      "Don't redraw, recolour, stretch or annotate the MX logo, or typeset \"metro olografix\" beside it. Use the official SVGs.",
+      "Don't use Plex Mono for navigation, buttons or sentences, or at any weight other than Regular.",
       "Don't use red or green for anything except live status (The LED Rule).",
       "Don't round corners or add box-shadows to any surface.",
       "Don't introduce a text opacity outside 100/80/62/46%.",
-      "Don't use Unicode glyphs or emoji as icons. Project marks are 24px outline SVGs (1.5px stroke, square caps) drawn from squares, circles and lines.",
+      "Don't use Unicode glyphs (`((•))`, `◇`, `↻`, `⌘`, `☆`) as project or feature icons. They are slated for replacement and should not be extended into new work.",
       "Don't wrap content in filled cards. Rows and hairline lattices carry the structure.",
       "Don't center or justify text, and don't bring in Bauhaus red/yellow/blue."
     ],
