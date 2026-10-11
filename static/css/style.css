@@ -11,6 +11,8 @@
 @font-face { font-family:'IBM Plex Sans'; src:url('/fonts/plex-sans/ibm-plex-sans-latin-700-normal.woff2') format('woff2'); font-weight:700; font-display:swap; }
 
 @font-face { font-family:'Plex'; src:url('/fonts/IBMPlexMono-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+/* Mono Bold is used only to reproduce the fleece print in the Shop section */
+@font-face { font-family:'Plex'; src:url('/fonts/IBMPlexMono-Bold.ttf') format('truetype'); font-weight:700; font-display:swap; }
 
 :root {
   --black:#000; --bg:#000; --surface:#0e0e0e; --surface-h:#161616;
@@ -196,12 +198,6 @@ main>.sec:first-child{padding-top:0}
 .prow:hover .prow__desc,.prow:focus-visible .prow__desc{color:var(--w3)}
 
 /* ═══════════ SHOP ═══════════ */
-.shop__imgs{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-bottom:clamp(1.5rem,3vw,2.25rem)}
-.shop__img{overflow:hidden;background:#fff;aspect-ratio:1}
-.shop__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.shop__img:hover img{transform:scale(1.04)}
-.shop__bot{display:flex;align-items:center;justify-content:space-between;gap:var(--gap)}
-.shop__cta{flex:1;max-width:280px}
 
 /* ═══════════ FOOTER ═══════════ */
 .foot{border-top:1px solid var(--line);padding:clamp(2rem,4vw,3.5rem) 0 1.5rem;margin-top:auto}
@@ -417,10 +413,6 @@ main{flex:1;display:block}
 .intro__more{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
 
 /* shop copy */
-.shop__copy{max-width:60ch;margin-bottom:clamp(1.5rem,3vw,2rem);color:var(--w3);font-size:.95rem;line-height:1.7}
-.shop__copy h3{font-size:1.05rem;font-weight:500;color:var(--w);margin-bottom:.5rem}
-.shop__copy strong{color:var(--w);font-weight:600}
-.shop__copy ul{list-style:square;padding-left:1.25rem;margin-top:.5rem}
 .christmas-lights-wrapper{position:relative}
 
 /* 404 */
@@ -440,9 +432,27 @@ main{flex:1;display:block}
 .prose ul,.prose ol{display:flow-root}
 .sede__map--pescara{transform:scale(3);transform-origin:60% 52%}
 .sede__map--photo{filter:grayscale(1) contrast(1.1);opacity:.55;object-position:center 65%}
-.shop__media{display:flex;gap:var(--gap);align-items:flex-start;margin-bottom:clamp(1.5rem,3vw,2.25rem)}
-@media(max-width:479px){.shop__media{flex-direction:column}}
-/* each photo grows by its aspect ratio, so side by side they share one height */
-.shop__photo{flex:var(--ar,1) 1 0;min-width:0;overflow:hidden;background:var(--surface)}
-.shop__photo img{width:100%;height:auto;filter:grayscale(1) contrast(1.1) brightness(.85);transition:filter .5s var(--ease),transform .5s var(--ease)}
+
+/* ═══════════ SHOP ═══════════
+   From ideas/ideashop.jpeg: photo on the left, slogan block on the right. */
+.shop__in{align-items:center}
+.shop__media{grid-column:1/-1}
+.shop__text{grid-column:1/-1}
+@media(min-width:768px){
+  .shop__media{grid-column:1/6}
+  .shop__text{grid-column:7/-1}
+}
+.shop__photo{aspect-ratio:1;overflow:hidden;background:var(--surface)}
+.shop__photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.85);transition:filter .5s var(--ease),transform .5s var(--ease)}
 .shop__photo:hover img{filter:none;transform:scale(1.03)}
+.shop__label{font-family:var(--mono);font-size:.78rem;font-weight:400;text-transform:uppercase;letter-spacing:.1em;color:var(--w4);margin-bottom:1rem}
+/* The fleece print: mono bold caps, every line justified to the width of INFORMATION (11ch) */
+.shop__print{font-family:var(--mono);font-weight:700;font-size:clamp(1.9rem,4.2vw,3.3rem);line-height:1.2;width:11ch;margin-bottom:clamp(1.5rem,3vw,2.25rem)}
+.shop__line{display:flex;justify-content:space-between;align-items:baseline}
+.shop__free{background:var(--w);color:var(--black);padding:0 .12em;margin-right:-.12em}
+.shop__intro{max-width:46ch;color:var(--w3);font-size:clamp(.95rem,1.4vw,1.05rem);line-height:1.7;margin-bottom:.5rem}
+.shop__intro strong{color:var(--w)}
+.shop__deal{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .75rem;color:var(--w3);font-size:clamp(.95rem,1.4vw,1.05rem);margin-bottom:clamp(1.75rem,3vw,2.25rem)}
+.shop__price{font-family:var(--mono);color:var(--w);font-size:1.15em}
+.shop__btn{display:inline-block;border-color:var(--w4);color:var(--w)}
+
