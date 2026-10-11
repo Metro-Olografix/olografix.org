@@ -1,27 +1,23 @@
-<section class="sec" aria-labelledby="h-shop">
-  <div class="wrap sec__in">
-    <h2 class="sec__h" id="h-shop">Shop</h2>
-    <div class="sec__body">
-      <div class="shop__copy">
-        <h3>{{ T "shopPileTitle" }}</h3>
-        <div>{{ T "shopPileDescription" | safeHTML }}</div>
-      </div>
-      <div class="christmas-lights-wrapper shop__media">
-        {{ if partial "is-lights-season.html" . }}{{ partial "christmas-lights.html" . }}{{ end }}
-        <figure class="shop__photo" style="--ar:1">
-          <img src="/images/ed_pile_fumo_2_hq.jpeg" alt="{{ T "shopPilePhotoAlt" }}" loading="lazy" width="847" height="847" />
-        </figure>
-        <figure class="shop__photo" style="--ar:1.333">
-          <img src="/images/n_telecom.png" alt="{{ T "shopTshirtPhotoAlt" }}" loading="lazy" width="640" height="480" />
-        </figure>
-      </div>
-      <div class="shop__bot">
-        <a href="https://shop.olografix.org" target="_blank" rel="noopener" class="cta shop__cta">
-          <span class="cta__label">{{ T "visitShop" }}</span>
-          <span class="cta__line"></span>
-          <span class="cta__arrow">↗</span>
-        </a>
-      </div>
+{{- /* Shop (ideas/ideashop.jpeg): photo left; label, slogan with boxed "free", two lines, outlined button right. */ -}}
+<section class="sec shop" aria-labelledby="h-shop">
+  <div class="wrap sec__in shop__in">
+    <div class="christmas-lights-wrapper shop__media">
+      {{ if partial "is-lights-season.html" . }}{{ partial "christmas-lights.html" . }}{{ end }}
+      <figure class="shop__photo">
+        <img src="/images/ed_pile_fumo_2_hq.jpeg" alt="{{ T "shopPilePhotoAlt" }}" loading="lazy" width="847" height="847" />
+      </figure>
+    </div>
+
+    <div class="shop__text">
+      <h2 class="shop__label" id="h-shop">Shop</h2>
+      <p class="shop__print" lang="en">
+        <span class="shop__line">INFORMATION</span>
+        <span class="shop__line"><span>WANTS</span> <span>TO</span></span>
+        <span class="shop__line"><span>BE</span> <span class="shop__free">FREE.</span></span>
+      </p>
+      <p class="shop__intro"><strong>{{ T "shopPileTitle" }}.</strong> {{ T "shopIntro" }}</p>
+      <p class="shop__deal"><span>{{ T "shopBundleName" }}</span> <span class="shop__price">{{ T "shopBundlePrice" }}</span></p>
+      <a href="https://shop.olografix.org" target="_blank" rel="noopener" class="obtn shop__btn">{{ T "visitShop" }} ↗</a>
     </div>
   </div>
 </section>
