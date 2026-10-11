@@ -7,3 +7,5 @@ static/images/og/
 # Impeccable transient tooling artifacts (session hook cache + dated critique reports)
 .impeccable/hook.cache.json
 .impeccable/critique/
+# Local sketches and design notes
+ideas/
