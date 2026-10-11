@@ -16,19 +16,19 @@ typography:
   display:
     fontFamily: "'IBM Plex Sans', system-ui, sans-serif"
     fontSize: "clamp(2.5rem, 6vw, 4rem)"
-    fontWeight: 800
+    fontWeight: 700
     lineHeight: 1.05
     letterSpacing: "-0.03em"
   headline:
     fontFamily: "'IBM Plex Sans', system-ui, sans-serif"
     fontSize: "clamp(1.4rem, 3.2vw, 2.1rem)"
-    fontWeight: 700
+    fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "-0.02em"
   title:
     fontFamily: "'IBM Plex Sans', system-ui, sans-serif"
     fontSize: "1.05rem"
-    fontWeight: 600
+    fontWeight: 500
     lineHeight: 1.6
   body:
     fontFamily: "'IBM Plex Sans', system-ui, sans-serif"
@@ -100,9 +100,9 @@ components:
 **Creative North Star: "The Underground Bulletin"**
 **Secondary North Star: Swiss Style / Bauhaus**
 
-The site reads like a bulletin from the BBS era, typeset as a modern editorial page. Pages are indexes of a community's activity: events by year, projects by name, sedi, the board. Each entry gets a heavy sans headline and is separated from the next by a single hairline rule. Everything around the content is pure black, so the white type alone carries the page. Hierarchy comes from scale, weight and opacity, not from color, boxes or ornament.
+The site reads like a bulletin from the BBS era, typeset as a modern editorial page. Pages are indexes of a community's activity: events by year, projects by name, sedi, the board. Each entry gets a strong sans headline and is separated from the next by a single hairline rule. Everything around the content is pure black, so the white type alone carries the page. Hierarchy comes from scale, weight and opacity, not from color, boxes or ornament.
 
-Information is dense, but each line is easy to scan. Every piece of metadata (dates, places, breadcrumbs, emails, status) is set in IBM Plex Mono, and that mono voice is the system's link to its terminal heritage (`/home/metro/pescara`). Photographs show real people and the real lab. They sit in grayscale until hovered, then come back to color, the way a bulletin quotes reality rather than decorating with it.
+Information is dense, but each line is easy to scan. Machine text (paths, dates in columns, emails, handles, IDs, code) is set in IBM Plex Mono, and that mono voice is the system's link to its terminal heritage (`/home/metro/pescara`). Everything else, including navigation and buttons, is Plex Sans. Photographs show real people and the real lab. They sit in grayscale until hovered, then come back to color, the way a bulletin quotes reality rather than decorating with it.
 
 The palette is monochrome by design. The only colors are status signals: red when a sede is closed, green when something is upcoming. Corners are square everywhere, and nothing casts a shadow.
 
@@ -110,7 +110,8 @@ The secondary north star is the discipline the bulletin is set in. From Swiss In
 
 **Key Characteristics:**
 - Pure black ground, white type at four fixed opacities, no decorative backgrounds.
-- Heavy, tightly tracked Plex Sans headlines (700–800, −0.02 to −0.03em) over a mono metadata layer.
+- IBM Plex Sans in the official MX hierarchy (H1 700, H2 600, H3 500), with Plex Mono reserved for machine text.
+- The official MX monogram in the nav; monogram + lettering in the footer.
 - Hairline rules (1px) and index-style rows instead of cards.
 - Square corners only. No shadows. Depth comes from tone and gradient overlays.
 - Grayscale photography that regains color on hover.
@@ -129,13 +130,13 @@ The palette is monochrome white on black, plus two signal colors that carry mean
 - **Night Surface** (surface): the hover fill on list rows, the dropdown menu background, the image placeholder.
 - **Night Surface Raised** (surface-hover): the hover fill inside the dropdown.
 - **Hairline** (hairline): every rule, border and divider: row separators, outline buttons, info-block grids, the footer top rule.
-- **Text 80** (white-80): lead paragraphs and brand-name text in the nav.
+- **Text 80** (white-80): lead paragraphs.
 - **Text 62** (white-62): body prose, secondary descriptions, nav links at rest, button labels at rest.
 - **Text 46** (white-46): tertiary metadata: dates, footer text, section labels, icons at rest, year dividers.
 
 ### Signal
-- **LED Red** (signal-red): sede "closed" status only, with a soft glow (6px) and a slow pulse.
-- **LED Green** (signal-green): "open" and "upcoming" status only (the status dot, and the upcoming-event badge on a 12% tint).
+- **LED Red** (signal-red): sede "closed" status text only.
+- **LED Green** (signal-green): "open" status text and the upcoming-event badge (on a 12% tint) only.
 
 ### Named Rules
 **The LED Rule.** Red and green are status lights, not brand colors. They appear only where they report live state (open, closed, upcoming). Never use them for buttons, links, headings, highlights or campaign emphasis.
@@ -149,19 +150,23 @@ The palette is monochrome white on black, plus two signal colors that carry mean
 **Display Font:** IBM Plex Sans (with system-ui, sans-serif)
 **Label/Mono Font:** IBM Plex Mono, self-hosted as "Plex" (with ui-monospace, monospace)
 
-**Character:** Plex Sans at heavy weights gives the bulletin its masthead voice: compact, slightly engineered, confident. Plex Mono is the machine voice. Both come from the same superfamily, so the switch from prose to metadata feels like changing register, not changing brand.
+**Source of truth:** the MX Graphics Standards Manual (github.com/Metro-Olografix/mx-graphics-assets). IBM Plex Sans is the primary typeface for all communication, in Regular 400, Medium 500, SemiBold 600 and Bold 700. IBM Plex Mono (Regular only) is for code, URLs, domains, paths and other technical strings.
+
+**Character:** Plex Sans carries the bulletin's voice: compact, slightly engineered, confident. Plex Mono is the machine voice. Both come from the same superfamily, so the switch from prose to metadata feels like changing register, not changing brand.
 
 ### Hierarchy
-- **Display** (800, clamp(2.5rem→4rem), 1.05, −0.03em): page titles, the sede title, the mosaic headline (up to 800 / 5.5vw on the home mosaic).
-- **Headline** (700, clamp(1.4rem→2.1rem), 1.2, −0.02em): project names in the project index. A year divider uses the same scale at 800 in Text 46.
-- **Title** (600, 0.95–1.05rem): event titles, board names, location titles, info-block values.
+- **Display / H1** (Bold 700, clamp(2.5rem→4rem), 1.05, −0.03em): page titles, the sede title, the mosaic headline.
+- **Headline / H2** (SemiBold 600, clamp(1.4rem→2.1rem), 1.2, −0.02em): project names, section side headings, year dividers (Text 46), markdown h2.
+- **Title / H3** (Medium 500, 0.95–1.1rem): event titles, board names, album titles, info-block values, markdown h3/h4.
 - **Body** (400, clamp(0.95rem→1.05rem), 1.85): prose capped at 660px (about 65–70ch). Lead text runs up to 1.2rem at 80% white.
-- **Label** (mono 400–500, 0.65–0.85rem): dates, breadcrumbs, metadata, nav links (0.8rem), buttons, footer. Section labels are uppercase with 0.08–0.1em tracking.
+- **Emphasis** (SemiBold 600): `strong`/`b` inside running text, used sparingly.
+- **Label** (Plex Sans 400–500, 0.72–0.85rem): nav links, buttons, badges, info-block labels (uppercase, 0.08em tracking), event metadata, status.
+- **Machine** (Plex Mono 400, 0.7–0.95rem): breadcrumb paths (`~ / …`), `/home/metro/…` card titles, dates in event columns, emails, nicknames, P.IVA/C.F., code.
 
 ### Named Rules
-**The Mono Means Data Rule.** If a piece of text is a date, place, path, email, status, count or navigation, set it in Plex Mono. If it's a name or a sentence, set it in Plex Sans. Never mix the two within one line's role.
+**The Machine Text Rule.** Plex Mono is only for text a machine would produce or read: paths, URLs, domains, emails, handles, IDs, code, and dates aligned in a column. Navigation, buttons, labels and sentences are Plex Sans. Mono is Regular only.
 
-**The Heavy Masthead Rule.** Headlines are 700–800 with negative tracking. Mid-weight (500) headlines don't exist in this system.
+**The Manual Hierarchy Rule.** Heading weights follow the MX manual: H1 Bold 700, H2 SemiBold 600, H3 Medium 500, emphasis SemiBold 600. Nothing is heavier than 700.
 
 **The Flush Left Rule.** All type is set flush-left, ragged-right. No centered headings, no justified text. Contrast comes from the jump in scale between display and body (about 4:1), not from intermediate sizes.
 
@@ -225,8 +230,17 @@ Facts about a sede (Orario, Come arrivare, Zona, Contatti). Each block has an up
 ### Location Cards
 Map-backed cards with an SVG street map scaled into the frame and a black gradient from the bottom. Each card has a mono path title (`/home/metro/pescara`), a short description and a live status line with an LED dot.
 
+### Logo
+The logo comes from the official MX Graphics Standards Manual and is never redrawn.
+- **Files:** `static/images/logo/MX_white.svg` (monogram) and `MX_lettering_white.svg` (monogram + "metro olografix" lettering, with the redrawn "m"). Black versions are alongside. The white files are the official SVGs with the fill set to white, matching the official white PNGs.
+- **Monogram only:** nav bar and mobile menu, where space is tight and the brand is already established.
+- **Monogram + lettering:** footer (formal context, next to the legal data).
+- **Proportions:** 13:8. Never stretch, rotate, recolour (white on black only here), or add effects.
+- **Clear space:** at least the width of the main stroke on every side.
+- **Never** set "metro olografix" next to the monogram in live text; the lettering only exists as the official SVG, under the monogram, at the monogram's width.
+
 ### Navigation
-- **Desktop (≥1100px):** the logo mark, a two-line mono brand name, mono links starting on grid column 4 (0.8rem, Text 62 at rest, white on hover) and the mono language switch flush right. The active page is white with a 1px underline offset 4px. The dropdown is a square Night Surface panel with a Hairline border, and its chevron rotates 180° when open.
+- **Desktop (≥1100px):** the official MX monogram (24px high), Plex Sans links starting on grid column 4 (0.85rem, Text 62 at rest, white on hover) and the language switch flush right. The active page is white with a 1px underline offset 4px. The dropdown is a square Night Surface panel with a Hairline border, and its chevron rotates 180° when open.
 - **Scrolled:** a translucent black bar with backdrop blur.
 - **Mobile:** a burger of two 1.5px lines. It opens a full-screen black overlay with huge Plex Sans links (clamp(1.75rem→3rem)/600) that slide 16px right on hover.
 
@@ -246,6 +260,8 @@ A full-bleed 12-column grid of real photos with 4px gaps. Photos show at `graysc
 - **Do** build icons and graphic marks from squares, circles and lines.
 
 ### Don't:
+- **Don't** redraw, recolour, stretch or annotate the MX logo, or typeset "metro olografix" beside it. Use the official SVGs.
+- **Don't** use Plex Mono for navigation, buttons or sentences, or at any weight other than Regular.
 - **Don't** use red or green for anything except live status (The LED Rule).
 - **Don't** round corners or add box-shadows to any surface.
 - **Don't** introduce a text opacity outside 100/80/62/46%.
@@ -254,6 +270,8 @@ A full-bleed 12-column grid of real photos with 4px gaps. Photos show at `graysc
 - **Don't** center or justify text, and don't bring in Bauhaus red/yellow/blue.
 
 ## Implementation (Hugo)
+
+- Brand source: github.com/Metro-Olografix/mx-graphics-assets (logo SVG/PNG, fonts, Graphics Standards Manual). Check it before changing logo or type.
 
 - Stylesheet: `static/css/style.css` (plain CSS, no framework, no build step). Fonts are self-hosted in `static/fonts/`.
 - Page shell: `layouts/_default/baseof.html` → `partials/nav.html`, `partials/mobile-menu.html`, `partials/footer.html`.
