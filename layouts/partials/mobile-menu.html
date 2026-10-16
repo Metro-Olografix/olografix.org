@@ -7,12 +7,12 @@
     {{ range .Site.Menus.main }}
     {{ if not .Parent }}
     {{ $active := partial "menu-active.html" (dict "entry" . "page" $) }}
-    <a href="{{ .URL | relLangURL }}"{{ if $active }} class="on" aria-current="page"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
+    <a href="{{ .URL | relLangURL | safeURL }}"{{ if $active }} class="on" aria-current="page"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
     {{ if .HasChildren }}
     <div class="mmenu__sub">
       {{ range .Children }}
       {{ $subActive := partial "menu-active.html" (dict "entry" . "page" $) }}
-      <a href="{{ .URL | relLangURL }}"{{ if $subActive }} class="on" aria-current="page"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
+      <a href="{{ .URL | relLangURL | safeURL }}"{{ if $subActive }} class="on" aria-current="page"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
       {{ end }}
     </div>
     {{ end }}

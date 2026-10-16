@@ -11,15 +11,15 @@
         <button type="button" {{ if $active }}class="on" {{ end }}aria-haspopup="true">{{ .Name }}<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="square" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
         <div class="dd__menu">
           <div class="dd__inner">
-            <a href="{{ .URL | relLangURL }}"{{ if eq $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a>
+            <a href="{{ .URL | relLangURL | safeURL }}"{{ if eq $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a>
             {{ range .Children }}
-            <a href="{{ .URL | relLangURL }}"{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}{{ if partial "menu-active.html" (dict "entry" . "page" $) }} aria-current="page"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
+            <a href="{{ .URL | relLangURL | safeURL }}"{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}{{ if partial "menu-active.html" (dict "entry" . "page" $) }} aria-current="page"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
             {{ end }}
           </div>
         </div>
       </div>
       {{ else }}
-      <a href="{{ .URL | relLangURL }}" {{ if $active }}class="on" aria-current="page"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
+      <a href="{{ .URL | relLangURL | safeURL }}" {{ if $active }}class="on" aria-current="page"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}{{ if .Params.external }} ↗{{ end }}</a>
       {{ end }}
       {{ end }}
       {{ end }}
