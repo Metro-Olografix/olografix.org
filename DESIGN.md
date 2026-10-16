@@ -196,7 +196,7 @@ The content is index-shaped. Lists are rows divided by hairlines. On wider scree
 
 The home mosaic breaks out of the column to full viewport width on a 12-column photo grid with 4px gaps. It starts below the nav bar (4px under its hairline), never underneath it. It drops to 6 columns below 900px and 4 below 480px, hiding the tiles it can't place.
 
-Under the mosaic, the home opens with the **section index**: the nav voices as compact cards in a hairline lattice (see Components), so the page and the menu tell the same story. The sections that follow keep the menu's names and order — L'associazione (with the sedi and their live status inside), Attività (whose live end is "Prossimi eventi"; the archive of past events is on the Attività page), Progetti, BBS, Associati and Shop. Photogallery stays in the menu and the index without its own home section: the mosaic already speaks for it.
+Under the mosaic, the home keeps the menu's names and order — L'associazione (with the sedi and their live status inside), Attività (whose live end is "Prossimi eventi"; the archive of past events is on the Attività page), Progetti, Associati, Shop, with the BBS closing the page as it closes the menu. Photogallery stays in the menu without its own home section: the mosaic already speaks for it.
 
 All pages share one 12-column section grid (gutter clamp(1rem, 2vw, 1.5rem)). A side heading (Plex Sans 700, 1.05rem, white) sits in columns 1–3 and the content in columns 4–12. Below 768px (48em) the heading stacks above the content and the grid drops its column gaps, since every child then spans the full row. Sections after the first are separated by a 1px hairline that spans the content edges, with an even vertical rhythm (clamp(3.5rem, 7vw, 6rem)) on both sides. The desktop nav uses the same grid: logo in column 1, brand in 2–3, links starting on column 4 so they line up with section content, and the language switch (IT · EN · ES) flush right. Social links live in the footer and the mobile menu.
 
@@ -269,11 +269,8 @@ The logo comes from the official MX Graphics Standards Manual and is never redra
 ### Photo Mosaic
 A full-bleed 12-column grid of real photos with 4px gaps. Photos show at `grayscale(1) contrast(1.1) brightness(.85)` and return to color with a 1.06 zoom on hover (0.5s). A display headline and a CTA sit over a bottom gradient, on the same left edge as the logo and the section side headings.
 
-### Section Index (home)
-Right under the mosaic, the nav voices reprised as compact cards: same names, same order, same destinations as the menu (Home and the old-site link excluded). A 1px-gap lattice on the Hairline color draws the cards; each card is the mono index number (01…), the name in Plex Sans 0.85rem/500 and an arrow (→ internal, ↗ external) that nudges on hover. The lattice ends with a terminal-style "EOF" cell, which keeps the grid full at 1, 2 or 4 columns. One column below 480px, two up to 768px, four above.
-
 ### BBS (home + menu)
-The association was born as a BBS and the board still runs, so it gets a recognizable access: a top-level "BBS" entry in the menu (and the mobile menu) pointing at `telnet://bbs.olografix.org`, a card in the section index, and a compact home section — a short paragraph of what it is, then a "how to connect" label and the command itself (`$ telnet bbs.olografix.org`) in Plex Mono as the link (The Machine Text Rule). The footer link stays.
+The association was born as a BBS and the board still runs, so it gets a recognizable access: the last entry of the menu (and the mobile menu), "BBS", pointing at `telnet://bbs.olografix.org`, and the last home section — a short paragraph of what it is, ending on a colon that the command itself answers (`$ telnet bbs.olografix.org`, Plex Mono as the link: The Machine Text Rule). The footer link stays.
 
 ### Associati (home)
 Joining the community outweighs buying from the Shop, so it precedes it: a short invitation, the membership fees in one Plex Sans line, and the page's only filled button — the inverted `.obtn` (white ground, black label), the strongest action the bulletin can make.

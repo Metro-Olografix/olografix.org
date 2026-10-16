@@ -499,29 +499,12 @@ main{flex:1;display:block}
 .soc .ico{width:1.05em;height:1.05em}
 .calbar__info>.ico{font-size:1.15rem;color:var(--w4)}
 
-/* ═══════════ HOME: SECTION INDEX ═══════════
-   The nav voices reprised as compact cards under the mosaic, in a 1px-gap hairline lattice:
-   same names, same order, same destinations as the menu. The trailing EOF cell keeps the
-   lattice whole (7 links + EOF = 8 cells = 1, 2 or 4 columns at every breakpoint). */
-.idx{border-block:1px solid var(--line)}
-.idx__in{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line)}
-@media(min-width:30em){.idx__in{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:48em){.idx__in{grid-template-columns:repeat(4,1fr)}}
-.idx__in a{display:flex;align-items:center;gap:.6rem;background:var(--black);min-height:3.4rem;padding:.75rem .9rem;font-family:var(--sans);font-size:.85rem;font-weight:500;color:var(--w2);transition:color .2s,background-color .2s}
-.idx__in a:hover,.idx__in a:focus-visible{color:var(--w);background:var(--surface)}
-.idx__n{font-family:var(--mono);font-size:.7rem;color:var(--w4);flex-shrink:0;transition:color .2s}
-.idx__in a:hover .idx__n,.idx__in a:focus-visible .idx__n{color:var(--w3)}
-.idx__name{min-width:0;overflow-wrap:break-word}
-.idx__go{margin-left:auto;color:var(--w4);flex-shrink:0;transition:transform .3s var(--ease),color .3s}
-.idx__in a:hover .idx__go,.idx__in a:focus-visible .idx__go{color:var(--w);transform:translateX(4px)}
-.idx__in a:hover .idx__go--ext,.idx__in a:focus-visible .idx__go--ext{transform:translate(2px,-2px)}
-.idx__end{display:flex;align-items:center;background:var(--black);min-height:3.4rem;padding:.75rem .9rem;font-family:var(--mono);font-size:.7rem;color:var(--w4)}
-
 /* Small uppercase label naming a sub-part inside a section ("Le nostre sedi" under L'associazione,
    "Prossimi eventi" under Attività): the label-section voice of the type scale */
 .sec__sub{font-family:var(--sans);font-size:.72rem;font-weight:400;text-transform:uppercase;letter-spacing:.08em;color:var(--w4);margin-bottom:1rem}
 
-/* BBS: the command is the access — machine text, prompted like a terminal */
+/* BBS: the sentence ends on a colon and the command answers it — machine text, prompted like a terminal */
+.bbs__intro{margin-bottom:1.25rem}
 .bbs__cmd{display:inline-flex;align-items:baseline;font-family:var(--mono);font-size:clamp(1rem,1.8vw,1.2rem);color:var(--w);border-bottom:1px solid var(--w3);padding-bottom:3px;transition:color .2s,border-color .2s}
 .bbs__cmd:hover,.bbs__cmd:focus-visible{border-color:var(--w)}
 .bbs__prompt{color:var(--w4);margin-right:.5em}

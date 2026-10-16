@@ -37,12 +37,6 @@
     pageRef = "/photogallery/"
     weight = 5
 [[main]]
-    name = "BBS"
-    url = "telnet://bbs.olografix.org"
-    weight = 6
-    [main.params]
-        external = true
-[[main]]
     name = "Associati"
     pageRef = "/associazione/associati/"
     weight = 7
@@ -53,9 +47,15 @@
     [main.params]
         external = true
 [[main]]
+    name = "BBS"
+    url = "telnet://bbs.olografix.org"
+    weight = 9
+    [main.params]
+        external = true
+[[main]]
     name = "Vai al vecchio sito"
     url = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
-    weight = 9
+    weight = 10
     [main.params]
         fullwidthVisible = false
         external = true
