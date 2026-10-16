@@ -4,6 +4,8 @@
 {{ $activities = $activities | intersect .Site.AllPages }}
 {{ $split := partial "classify-activities.html" $activities }}
 {{ $upcoming := $split.upcoming }}
+{{ $activitiesSection := site.GetPage "section" "attivita" }}
+{{ $assoc := site.GetPage "section" "associazione" }}
 
 <!-- MOSAIC — ten real photos, hand-picked from the photogallery and the sedi (data/mosaic.json, in tile
      order m1 … m10); the headline counts the years since 1994 -->
@@ -24,34 +26,65 @@
   </div>
 </section>
 
-<!-- SEDI — where and when, with the live open/closed light -->
-<section class="sec" id="sedi" aria-labelledby="h-sedi">
-  <div class="wrap sec__in">
-    <h2 class="sec__h" id="h-sedi">{{ T "sediHeader" }}</h2>
-    <div class="sec__body locs__grid">
-      {{ range slice
-        (dict "id" "pescara" "path" "~/pescara" "map" "PE_SEDE_white.svg" "text" (T "hqDescription"))
-        (dict "id" "laquila" "path" "~/laquila" "map" "AQ_SEDE_white.svg" "text" (T "laquilaDescription")) }}
-      {{ $page := site.GetPage (printf "/associazione/sede/%s" .id) }}
-      <a href="{{ with $page }}{{ .RelPermalink }}{{ end }}" class="loc__card">
-        <img src="/images/map_backgrounds/{{ .map }}?v=9" class="loc__map" alt="" />
-        <div class="loc__body">
-          <h3 class="loc__title">{{ .path }}</h3>
-          <div class="loc__text">{{ .text | safeHTML }}</div>
-          {{ partial "sede-status.html" (dict "id" .id) }}
-        </div>
+<!-- SECTION INDEX — the nav voices reprised as compact cards right under the hero: same names,
+     same order, same destinations as the menu -->
+<nav class="idx" aria-label="{{ T "idxLabel" }}">
+  <div class="wrap">
+    <div class="idx__in">
+      {{ $i := 0 }}
+      {{ range .Site.Menus.main }}
+      {{ if and (not .Parent) (ne .PageRef "/") (.Params.fullwidthVisible | default true) }}
+      {{ $i = add $i 1 }}
+      <a href="{{ .URL | relLangURL | safeURL }}"{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>
+        <span class="idx__n">{{ printf "%02d" $i }}</span>
+        <span class="idx__name">{{ .Name }}</span>
+        <span class="idx__go{{ if .Params.external }} idx__go--ext{{ end }}" aria-hidden="true">{{ if .Params.external }}↗{{ else }}→{{ end }}</span>
       </a>
       {{ end }}
+      {{ end }}
+      <span class="idx__end" aria-hidden="true">EOF</span>
+    </div>
+  </div>
+</nav>
+
+<!-- L'ASSOCIAZIONE — who we are and where: the sedi belong to the association, as in the menu -->
+<section class="sec" id="associazione" aria-labelledby="h-assoc">
+  <div class="wrap sec__in">
+    <h2 class="sec__h" id="h-assoc">{{ $assoc.Title }}</h2>
+    <div class="sec__body">
+      <p class="intro__text">{{ .Site.Params.description }}</p>
+      <h3 class="sec__sub" id="h-sedi">{{ T "sediHeader" }}</h3>
+      <div class="locs__grid">
+        {{ range slice
+          (dict "id" "pescara" "path" "~/pescara" "map" "PE_SEDE_white.svg" "text" (T "hqDescription"))
+          (dict "id" "laquila" "path" "~/laquila" "map" "AQ_SEDE_white.svg" "text" (T "laquilaDescription")) }}
+        {{ $page := site.GetPage (printf "/associazione/sede/%s" .id) }}
+        <a href="{{ with $page }}{{ .RelPermalink }}{{ end }}" class="loc__card">
+          <img src="/images/map_backgrounds/{{ .map }}?v=9" class="loc__map" alt="" />
+          <div class="loc__body">
+            <h3 class="loc__title">{{ .path }}</h3>
+            <div class="loc__text">{{ .text | safeHTML }}</div>
+            {{ partial "sede-status.html" (dict "id" .id) }}
+          </div>
+        </a>
+        {{ end }}
+      </div>
+      <a href="{{ $assoc.RelPermalink }}" class="cta sec__more">
+        <span class="cta__label">{{ T "learnMoreText" }}</span>
+        <span class="cta__line"></span>
+        <span class="cta__arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- PROSSIMI EVENTI -->
-{{ $activitiesSection := site.GetPage "section" "attivita" }}
-<section class="sec" aria-labelledby="h-next">
+<!-- ATTIVITÀ — the section carries the menu's name; "Prossimi eventi" is its live end, the archive
+     of past events lives on the Attività page -->
+<section class="sec" id="attivita" aria-labelledby="h-attivita">
   <div class="wrap sec__in">
-    <h2 class="sec__h" id="h-next">{{ T "upcomingEvents" }}</h2>
+    <h2 class="sec__h" id="h-attivita">{{ T "activitiesHeader" }}</h2>
     <div class="sec__body">
+      <h3 class="sec__sub" id="h-upcoming">{{ T "upcomingEvents" }}</h3>
       {{ if $upcoming }}
       <div class="evlist">
         {{ range first 3 $upcoming }}
@@ -70,33 +103,10 @@
   </div>
 </section>
 
-<!-- L'ASSOCIAZIONE -->
-{{ $assoc := site.GetPage "section" "associazione" }}
-<section class="sec" aria-labelledby="h-assoc">
-  <div class="wrap sec__in">
-    <h2 class="sec__h" id="h-assoc">{{ $assoc.Title }}</h2>
-    <div class="sec__body">
-      <p class="intro__text">{{ .Site.Params.description }}</p>
-      <a href="{{ $assoc.RelPermalink }}" class="cta intro__cta">
-        <span class="cta__label">{{ T "learnMoreText" }}</span>
-        <span class="cta__line"></span>
-        <span class="cta__arrow">→</span>
-      </a>
-      {{ with site.GetPage "/associazione/associati" }}
-      <a href="{{ .RelPermalink }}" class="cta intro__cta intro__cta--next">
-        <span class="cta__label">{{ .Title }}</span>
-        <span class="cta__line"></span>
-        <span class="cta__arrow">→</span>
-      </a>
-      {{ end }}
-    </div>
-  </div>
-</section>
-
 <!-- PROGETTI -->
 {{ $projects := sort (where .Site.RegularPages "Type" "progetti") ".Date" "desc" }}
 {{ $projectsSection := site.GetPage "section" "progetti" }}
-<section class="sec" aria-labelledby="h-prog">
+<section class="sec" id="progetti" aria-labelledby="h-prog">
   <div class="wrap sec__in">
     <h2 class="sec__h" id="h-prog">{{ T "projectsHeader" }}</h2>
     <div class="sec__body">
@@ -111,6 +121,33 @@
     </div>
   </div>
 </section>
+
+<!-- BBS — the association was born as a bulletin board and the board is still running: what it is
+     and how to reach it, so it doesn't live only in the footer -->
+<section class="sec" id="bbs" aria-labelledby="h-bbs">
+  <div class="wrap sec__in">
+    <h2 class="sec__h" id="h-bbs">BBS</h2>
+    <div class="sec__body">
+      <p class="intro__text">{{ T "bbsIntro" }}</p>
+      <h3 class="sec__sub">{{ T "bbsHowTo" }}</h3>
+      <a href="telnet://bbs.olografix.org" class="bbs__cmd"><span class="bbs__prompt" aria-hidden="true">$</span> telnet bbs.olografix.org</a>
+    </div>
+  </div>
+</section>
+
+<!-- ASSOCIATI — the invitation to join the community, with more weight than the Shop that follows -->
+{{ with site.GetPage "/associazione/associati" }}
+<section class="sec" id="associati" aria-labelledby="h-join">
+  <div class="wrap sec__in">
+    <h2 class="sec__h" id="h-join">{{ .Title }}</h2>
+    <div class="sec__body">
+      <p class="intro__text">{{ T "joinIntro" }}</p>
+      <p class="join__fees">{{ T "joinFees" }}</p>
+      <a href="{{ .RelPermalink }}" class="obtn obtn--solid">{{ .Title }}</a>
+    </div>
+  </div>
+</section>
+{{ end }}
 
 {{ partial "shop.html" . }}
 
