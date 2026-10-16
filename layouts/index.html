@@ -26,27 +26,6 @@
   </div>
 </section>
 
-<!-- SECTION INDEX — the nav voices reprised as compact cards right under the hero: same names,
-     same order, same destinations as the menu -->
-<nav class="idx" aria-label="{{ T "idxLabel" }}">
-  <div class="wrap">
-    <div class="idx__in">
-      {{ $i := 0 }}
-      {{ range .Site.Menus.main }}
-      {{ if and (not .Parent) (ne .PageRef "/") (.Params.fullwidthVisible | default true) }}
-      {{ $i = add $i 1 }}
-      <a href="{{ .URL | relLangURL | safeURL }}"{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>
-        <span class="idx__n">{{ printf "%02d" $i }}</span>
-        <span class="idx__name">{{ .Name }}</span>
-        <span class="idx__go{{ if .Params.external }} idx__go--ext{{ end }}" aria-hidden="true">{{ if .Params.external }}↗{{ else }}→{{ end }}</span>
-      </a>
-      {{ end }}
-      {{ end }}
-      <span class="idx__end" aria-hidden="true">EOF</span>
-    </div>
-  </div>
-</nav>
-
 <!-- L'ASSOCIAZIONE — who we are and where: the sedi belong to the association, as in the menu -->
 <section class="sec" id="associazione" aria-labelledby="h-assoc">
   <div class="wrap sec__in">
@@ -122,19 +101,6 @@
   </div>
 </section>
 
-<!-- BBS — the association was born as a bulletin board and the board is still running: what it is
-     and how to reach it, so it doesn't live only in the footer -->
-<section class="sec" id="bbs" aria-labelledby="h-bbs">
-  <div class="wrap sec__in">
-    <h2 class="sec__h" id="h-bbs">BBS</h2>
-    <div class="sec__body">
-      <p class="intro__text">{{ T "bbsIntro" }}</p>
-      <h3 class="sec__sub">{{ T "bbsHowTo" }}</h3>
-      <a href="telnet://bbs.olografix.org" class="bbs__cmd"><span class="bbs__prompt" aria-hidden="true">$</span> telnet bbs.olografix.org</a>
-    </div>
-  </div>
-</section>
-
 <!-- ASSOCIATI — the invitation to join the community, with more weight than the Shop that follows -->
 {{ with site.GetPage "/associazione/associati" }}
 <section class="sec" id="associati" aria-labelledby="h-join">
@@ -150,5 +116,17 @@
 {{ end }}
 
 {{ partial "shop.html" . }}
+
+<!-- BBS — the association was born as a bulletin board and the board is still running: what it is
+     and how to reach it, so it doesn't live only in the footer. Last section, as in the menu -->
+<section class="sec" id="bbs" aria-labelledby="h-bbs">
+  <div class="wrap sec__in">
+    <h2 class="sec__h" id="h-bbs">BBS</h2>
+    <div class="sec__body">
+      <p class="intro__text bbs__intro">{{ T "bbsIntro" }}</p>
+      <a href="telnet://bbs.olografix.org" class="bbs__cmd"><span class="bbs__prompt" aria-hidden="true">$</span> telnet bbs.olografix.org</a>
+    </div>
+  </div>
+</section>
 
 {{ end }}
