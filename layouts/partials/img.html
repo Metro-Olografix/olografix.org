@@ -1,0 +1,15 @@
+{{- /* Responsive image. Uses pre-built WebP variants in static/images/opt/<name>-<640|1280|1920>.webp
+       (generated from the originals in static/images/) when they exist, falling back to the original.
+       Args: src (original path, e.g. "/images/lab-sede.png"), sizes, alt, class, loading, style, width, height */ -}}
+{{- $base := path.BaseName .src -}}
+{{- $srcset := slice -}}
+{{- $fallback := .src -}}
+{{- range slice 640 1280 1920 -}}
+  {{- $p := printf "/images/opt/%s-%d.webp" $base . -}}
+  {{- if fileExists (printf "static%s" $p) -}}
+    {{- $srcset = $srcset | append (printf "%s %dw" $p .) -}}
+    {{- if le . 1280 }}{{ $fallback = $p }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $fallback }}"{{ with $srcset }} srcset="{{ delimit . ", " }}" sizes="{{ $.sizes | default "100vw" }}"{{ end }} alt="{{ .alt }}"{{ with .class }} class="{{ . }}"{{ end }}{{ with .loading }} loading="{{ . }}"{{ end }}{{ with .style }} style="{{ . | safeCSS }}"{{ end }}{{ with .width }} width="{{ . }}"{{ end }}{{ with .height }} height="{{ . }}"{{ end }} decoding="async" />
+{{- /**/ -}}

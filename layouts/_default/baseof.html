@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" class="bg-indigo-50">
+<html lang="{{ .Site.LanguageCode }}">
 
 <head>
   <meta charset="UTF-8" />
+  <script>document.documentElement.classList.add('js')</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#000000" />
   <title>{{ .Title }} - {{ .Site.Title }}</title>
   <meta name="description" content="{{ .Params.description | default .Site.Params.description }}" />
   <!-- Favicon -->
@@ -14,6 +17,9 @@
 
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ .Permalink }}" />
+  {{ range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+  {{ end }}
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -21,7 +27,7 @@
   <meta property="og:description" content="{{ .Params.subtitle | default .Site.Params.description }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
   {{ $ogImage := partial "og-image.html" . }}
-  <meta property="og:image" content="{{ .Site.BaseURL }}{{ $ogImage }}" />
+  <meta property="og:image" content="{{ $ogImage | absURL }}" />
   {{ if .File }}
   {{ $pathComponents := slice .Language.Lang }}
   {{ if .Section }}{{ $pathComponents = $pathComponents | append .Section }}{{ end }}
@@ -38,82 +44,34 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ .Title | default .Site.Title }}" />
   <meta name="twitter:description" content="{{ .Params.subtitle | default .Site.Params.description }}" />
-  <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ partial "og-image.html" . }}" />
+  <meta name="twitter:image" content="{{ partial "og-image.html" . | absURL }}" />
   <meta name="twitter:site" content="@MetroOlografix" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/css/main.css" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            "primary-dark": "#16213e",
-            "primary-light": "#e2e8f0",
-            accent: "#042a59",
-          },
-          typography: {
-            DEFAULT: {
-              css: {
-                color: '#333',
-                a: {
-                  color: '#042a59',
-                  '&:hover': {
-                    color: '#16213e',
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-      plugins: [
-        function ({ addComponents }) {
-          addComponents({
-            '.prose': {
-              '& p': { marginTop: '1.25em', marginBottom: '1.25em' },
-              '& a': { color: '#042a59', textDecoration: 'underline' },
-              '& ul': { listStyleType: 'disc', marginTop: '1.25em', marginBottom: '1.25em', paddingLeft: '1.625em' },
-              '& ol': { listStyleType: 'decimal', marginTop: '1.25em', marginBottom: '1.25em', paddingLeft: '1.625em' },
-              '& li': { marginTop: '0.5em', marginBottom: '0.5em' },
-              '& h1': { fontSize: '2.25em', marginTop: '0', marginBottom: '0.8em', fontWeight: '800' },
-              '& h2': { fontSize: '1.5em', marginTop: '2em', marginBottom: '1em', fontWeight: '700' },
-              '& h3': { fontSize: '1.25em', marginTop: '1.6em', marginBottom: '0.6em', fontWeight: '600' },
-              '& h4': { fontSize: '1.125em', marginTop: '1.5em', marginBottom: '0.5em', fontWeight: '600' },
-              '& blockquote': { fontWeight: '500', fontStyle: 'italic', color: '#1a202c', borderLeftWidth: '0.25rem', borderLeftColor: '#e2e8f0', paddingLeft: '1rem' },
-              '& code': { color: '#1a202c', fontWeight: '600', fontSize: '0.875em' },
-              '& pre': { backgroundColor: '#f7fafc', overflow: 'auto', padding: '1rem', borderRadius: '0.375rem', marginTop: '1.25em', marginBottom: '1.25em' },
-              '& hr': { borderColor: '#e2e8f0', marginTop: '3em', marginBottom: '3em' },
-            }
-          })
-        }
-      ],
-    };
-  </script>
+  <link rel="preload" href="/fonts/plex-sans/ibm-plex-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/css/style.css" />
   {{ if in .RelPermalink "/photogallery/" }}
   <link href="/css/lightbox.min.css" rel="stylesheet" />
-  <script src="/js/lightbox-plus-jquery.min.js"></script>
-  {{end}}
+  <script src="/js/lightbox-plus-jquery.min.js" defer></script>
+  {{ end }}
   {{ if partial "is-lights-season.html" . }}
   <link rel="stylesheet" href="/css/shop.css" />
   {{ end }}
-  <link rel="stylesheet" href="/css/fontawesome.css" />
 
-  <!-- Analytics (Umami) -->
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="8a990d14-c129-4220-9c0d-be2e2c59ee34"></script>
+  {{ with .Site.Params.umamiWebsiteId }}
+  <!-- Analytics (Umami). Remove `umamiWebsiteId` from config.toml to ship without it. -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="{{ . }}"></script>
+  {{ end }}
 </head>
 
-<body class="min-h-screen flex flex-col">
-  <!-- Moved header and menu outside the container -->
-  {{ partial "header.html" . }}
-  {{ partial "menu.html" . }}
+<body>
+  <a class="skip" href="#main">{{ T "skipToContent" }}</a>
+  {{ partial "nav.html" . }}
+  {{ partial "mobile-menu.html" . }}
 
-  <div class="container mx-auto px-4 sm:px-0 max-w-5xl flex-grow relative">
-    <main class="max-w-5xl">
-      {{ if ne .Page.Path "/404" }} {{ partial "breadcrumbs.html" . }} {{ end
-      }} {{ block "main" . }}{{ end }}
-    </main>
-  </div>
+  <main id="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+
   {{ partial "footer.html" . }}
   <script src="/js/main.js"></script>
   <script src="/js/recurring-events.js"></script>

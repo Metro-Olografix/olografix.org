@@ -1,6 +1,7 @@
 ---
 title: "Join us"
 layout: single
+image: "/images/tessera.jpeg"
 ---
 
 If you want to get involved with the Metro Olografix association, or simply support it, you can join online in just a few minutes:

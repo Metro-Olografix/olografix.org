@@ -1,0 +1,9 @@
+{{- /* One project as an index row with its geometric mark. Context: the page. */ -}}
+{{ $link := .RelPermalink }}
+{{ $ext := false }}
+{{ with .Params.externalUrl }}{{ $link = . }}{{ $ext = true }}{{ end }}
+<a href="{{ $link }}" class="prow"{{ if $ext }} target="_blank" rel="noopener"{{ end }}>
+  <span class="prow__ico">{{ partial "project-mark.html" . }}</span>
+  <span class="prow__name">{{ .Title }}{{ if $ext }}<span class="prow__ext">↗</span>{{ end }}</span>
+  <span class="prow__desc">{{ .Params.subtitle | default .Summary | plainify }}</span>
+</a>

@@ -142,6 +142,19 @@
           "description": "Optional tagline or short description"
         },
         {
+          "title": "Header photo",
+          "name": "image",
+          "type": "image",
+          "isPreviewImage": true,
+          "description": "Optional. A real photo of this event/project (e.g. /images/foo.jpg). It fills the page header, like Attività and Progetti, and becomes the share image when no generated one exists. Leave empty for a compact text header."
+        },
+        {
+          "title": "Header photo focus",
+          "name": "imagePosition",
+          "type": "string",
+          "description": "Optional CSS object-position for the header photo, e.g. \"center 30%\"."
+        },
+        {
           "title": "Start Date & Time",
           "name": "date",
           "type": "datetime",
@@ -261,6 +274,19 @@
           "description": "Optional project tagline"
         },
         {
+          "title": "Header photo",
+          "name": "image",
+          "type": "image",
+          "isPreviewImage": true,
+          "description": "Optional. A real photo of this event/project (e.g. /images/foo.jpg). It fills the page header, like Attività and Progetti, and becomes the share image when no generated one exists. Leave empty for a compact text header."
+        },
+        {
+          "title": "Header photo focus",
+          "name": "imagePosition",
+          "type": "string",
+          "description": "Optional CSS object-position for the header photo, e.g. \"center 30%\"."
+        },
+        {
           "title": "Date",
           "name": "date",
           "type": "datetime",
@@ -352,6 +378,19 @@
           "required": true
         },
         {
+          "title": "Header photo",
+          "name": "image",
+          "type": "image",
+          "isPreviewImage": true,
+          "description": "Optional. A real photo of this event/project (e.g. /images/foo.jpg). It fills the page header, like Attività and Progetti, and becomes the share image when no generated one exists. Leave empty for a compact text header."
+        },
+        {
+          "title": "Header photo focus",
+          "name": "imagePosition",
+          "type": "string",
+          "description": "Optional CSS object-position for the header photo, e.g. \"center 30%\"."
+        },
+        {
           "title": "Layout",
           "name": "layout",
           "type": "choice",
@@ -386,6 +425,19 @@
           "name": "title",
           "type": "string",
           "required": true
+        },
+        {
+          "title": "Header photo",
+          "name": "image",
+          "type": "image",
+          "isPreviewImage": true,
+          "description": "Optional. A real photo of this event/project (e.g. /images/foo.jpg). It fills the page header, like Attività and Progetti, and becomes the share image when no generated one exists. Leave empty for a compact text header."
+        },
+        {
+          "title": "Header photo focus",
+          "name": "imagePosition",
+          "type": "string",
+          "description": "Optional CSS object-position for the header photo, e.g. \"center 30%\"."
         },
         {
           "title": "Date",

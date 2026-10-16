@@ -39,17 +39,23 @@
 [[main]]
     name = "Associati"
     pageRef = "/associazione/associati/"
-    weight = 6
+    weight = 7
 [[main]]
     name = "Shop"
     url = "https://shop.olografix.org/"
-    weight = 7
+    weight = 8
+    [main.params]
+        external = true
+[[main]]
+    name = "BBS"
+    url = "telnet://bbs.olografix.org"
+    weight = 9
     [main.params]
         external = true
 [[main]]
     name = "Vai al vecchio sito"
     url = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
-    weight = 8
+    weight = 10
     [main.params]
         fullwidthVisible = false
         external = true

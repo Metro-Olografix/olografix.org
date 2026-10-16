@@ -1,6 +1,7 @@
 ---
 title: "Asociate"
 layout: single
+image: "/images/tessera.jpeg"
 ---
 
 Si quieres involucrarte con la asociación Metro Olografix, o simplemente apoyarla, puedes unirte en línea en pocos minutos:

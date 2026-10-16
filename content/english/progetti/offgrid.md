@@ -4,8 +4,8 @@ subtitle: "Off-grid communications for resilient communities"
 date: 2026-01-01
 ---
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/lora.jpg"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:w-48"}]} -->
-<img src="/images/lora.jpg" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/lora-1280.webp"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:w-48"}]} -->
+<img src="/images/opt/lora-1280.webp" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 The communication networks we use every day -- mobile telephony, the Internet, Wi-Fi -- depend on centralized infrastructure, private companies, and a constant power supply. When any of these fails, whether due to a natural emergency, a technical fault, or simply because you are in an area with no coverage, you are cut off.
@@ -16,7 +16,7 @@ Metro Olografix is building an experimental LoRA network in Abruzzo, starting fr
 
 The network uses the open-source Meshtastic protocol and currently has several active nodes between Pescara, Chieti, and the Adriatic coast, with tests underway toward inland areas. In parallel, we are exploring Reticulum, a next-generation protocol with native encryption, as a possible future evolution.
 
-### How to participate
+## How to participate
 
 No expertise is required. The project is open to everyone and there are several ways to contribute.
 
@@ -26,7 +26,7 @@ No expertise is required. The project is open to everyone and there are several 
 
 **Offer a rooftop.** If you live in an elevated location (top floor, hilltop, panoramic position) and can host a small outdoor device, even solar-powered, you would make a particularly valuable contribution to extending coverage.
 
-### Resources
+## Resources
 
 - [LoRA knowledge base](https://kb.olografix.org/it/lora/home)
 - [Recommended hardware](https://kb.olografix.org/it/lora/hardware)

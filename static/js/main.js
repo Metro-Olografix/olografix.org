@@ -1,123 +1,118 @@
+// Metro Olografix — site behaviour. No dependencies.
 document.addEventListener("DOMContentLoaded", () => {
-  // Cache DOM elements
-  const elements = {
-    menu: document.getElementById("menu"),
-    closeMenuButton: document.getElementById("closeMenuButton"),
-    openMenuButton: document.getElementById("openMenuButton"),
-  };
+  // ── Mobile menu ────────────────────────────────────────────────
+  const menu = document.getElementById("mm");
+  const openBtn = document.getElementById("ob");
+  const closeBtn = document.getElementById("cm");
 
-  // State management
-  const menuState = {
-    isOpen: false,
-  };
+  // While the menu is open, everything behind it is inert: no focus, no screen-reader access.
+  const behind = [document.querySelector(".skip"), document.getElementById("nav"), document.getElementById("main"), document.querySelector(".foot")].filter(Boolean);
 
-  /**
-   * Toggles the menu state and updates UI accordingly
-   * @param {boolean} [forceClose] - Optional parameter to force close the menu
-   */
-  function toggleMenu(forceClose = false) {
-    menuState.isOpen = forceClose ? false : !menuState.isOpen;
-
-    // Update mobile menu visibility
-    if (elements.menu) {
-      elements.menu.classList[menuState.isOpen ? "remove" : "add"]("hidden");
-    }
+  function setMenu(open) {
+    if (!menu) return;
+    menu.classList.toggle("open", open);
+    behind.forEach((el) => { el.inert = open; });
+    // No scroll lock: the menu is a full-screen overlay, and locking the page makes it jump on mobile browsers.
+    if (openBtn) openBtn.setAttribute("aria-expanded", String(open));
+    if (open && closeBtn) closeBtn.focus();
+    if (!open && openBtn) openBtn.focus();
   }
 
-  // Event Handlers
-  function handleEscapeKey(event) {
-    if (event.key === "Escape" && menuState.isOpen) {
-      event.stopPropagation(); // Prevent event bubbling
-      toggleMenu(true);
-    }
-  }
+  openBtn?.addEventListener("click", () => setMenu(true));
+  closeBtn?.addEventListener("click", () => setMenu(false));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu?.classList.contains("open")) setMenu(false);
+  });
 
-  function handleMenuButtonClick(event) {
-    if (event) {
-      event.preventDefault();
-    }
-    toggleMenu();
-  }
-
-  // Event Listeners
-  if (elements.openMenuButton) {
-    elements.openMenuButton.addEventListener("click", handleMenuButtonClick);
-  }
-
-  // Separate close button handler to ensure it always forces close
-  if (elements.closeMenuButton) {
-    elements.closeMenuButton.addEventListener("click", (event) => {
-      event.stopPropagation(); // Prevent event bubbling
-      toggleMenu(true);
-    });
-  }
-
-  // Global event listeners
-  document.addEventListener("keydown", handleEscapeKey);
-
-  // Mobile dropdown toggle for sub-menus
-  document.querySelectorAll(".mobile-dropdown-toggle").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-      const dropdown = button.closest(".mobile-dropdown");
-      const content = dropdown.querySelector(".mobile-dropdown-content");
-      const arrow = dropdown.querySelector(".mobile-dropdown-arrow");
-      const isExpanded = button.getAttribute("aria-expanded") === "true";
-
-      // Toggle visibility
-      content.classList.toggle("hidden");
-      button.setAttribute("aria-expanded", !isExpanded);
-
-      // Rotate arrow
-      if (arrow) {
-        arrow.classList.toggle("rotate-180");
-      }
+  // ── Desktop dropdown: keep aria-expanded in sync with hover / keyboard focus
+  document.querySelectorAll(".dd").forEach((dd) => {
+    const btn = dd.querySelector("button");
+    if (!btn) return;
+    btn.setAttribute("aria-expanded", "false");
+    const set = (v) => btn.setAttribute("aria-expanded", String(v));
+    // Esc dismisses the open menu (WCAG 1.4.13) until the pointer or focus leaves, or the button is used again.
+    const reopen = () => dd.classList.remove("dd--closed");
+    dd.addEventListener("mouseenter", () => { if (!dd.classList.contains("dd--closed")) set(true); });
+    dd.addEventListener("mouseleave", () => { reopen(); set(dd.contains(document.activeElement)); });
+    dd.addEventListener("focusin", () => { if (!dd.classList.contains("dd--closed")) set(true); });
+    dd.addEventListener("focusout", (e) => { if (!dd.contains(e.relatedTarget)) { reopen(); set(false); } });
+    btn.addEventListener("click", () => { reopen(); set(true); });
+    dd.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape" || dd.classList.contains("dd--closed")) return;
+      dd.classList.add("dd--closed");
+      set(false);
+      btn.focus();
     });
   });
 
-  // Fetch and update a single sede's status widget
-  function updateSedeStatus(sedeId, apiUrl) {
-    const dotElement = document.getElementById(`${sedeId}-statusDot`);
-    const containerElement = document.getElementById(`${sedeId}-statusContainer`);
-    const loadingStatusElement = document.getElementById(`${sedeId}-statusLoading`);
-    const openStatusElement = document.getElementById(`${sedeId}-statusOpen`);
-    const closeStatusElement = document.getElementById(`${sedeId}-statusClose`);
 
-    if (!dotElement) return; // not on a page that shows this sede
+  // ── Live sede status (open / closed) ───────────────────────────
+  const STATUS_API = {
+    pescara: "https://sede.olografix.org/s/pescara/status",
+    laquila: "https://sede.olografix.org/s/laquila/status",
+  };
 
-    fetch(apiUrl)
-      .then(response => response.text())
-      .then(data => {
-        const isOpen = data.trim() === "true";
-        containerElement.classList.remove("bg-gray-100", "bg-green-100", "bg-red-100");
-        containerElement.classList.add(isOpen ? "bg-green-100" : "bg-red-100");
+  // Only touch the text when the state changes, so the live region isn't re-announced every minute.
+  function setStatus(widgets, state) {
+    widgets.forEach((w) => {
+      if (w.dataset.state === state) return;
+      w.dataset.state = state;
+      const text = { open: w.dataset.textOpen, closed: w.dataset.textClosed, unknown: w.dataset.textUnknown }[state];
+      w.querySelector(".status__t").textContent = text;
+    });
+  }
 
-        dotElement.classList.remove("bg-gray-300", "bg-green-500", "bg-red-500");
-        dotElement.classList.add(isOpen ? "bg-green-500" : "bg-red-500");
-
-        loadingStatusElement.classList.add("hidden");
-        openStatusElement.classList.toggle("hidden", !isOpen);
-        closeStatusElement.classList.toggle("hidden", isOpen);
+  function updateSedeStatus(sedeId) {
+    const widgets = document.querySelectorAll(`.status[data-sede="${sedeId}"]`);
+    if (!widgets.length) return;
+    fetch(STATUS_API[sedeId], { cache: "no-store", signal: AbortSignal.timeout?.(8000) })
+      .then((r) => (r.ok ? r.text() : Promise.reject(new Error(`HTTP ${r.status}`))))
+      .then((data) => {
+        // Anything but a plain true/false (an error page, an empty body) is "unknown", never "closed".
+        const value = data.trim();
+        if (value !== "true" && value !== "false") throw new Error(`unexpected response "${value.slice(0, 40)}"`);
+        setStatus(widgets, value === "true" ? "open" : "closed");
       })
-      .catch(error => {
-        console.error(`Error fetching status for ${sedeId}:`, error);
-        containerElement.classList.remove("bg-green-100", "bg-red-100");
-        containerElement.classList.add("bg-gray-100");
-        dotElement.classList.remove("bg-green-500", "bg-red-500");
-        dotElement.classList.add("bg-gray-300");
-        loadingStatusElement.classList.remove("hidden");
-        openStatusElement.classList.add("hidden");
-        closeStatusElement.classList.add("hidden");
+      .catch((err) => {
+        console.error(`Error fetching status for ${sedeId}:`, err);
+        setStatus(widgets, "unknown");
       });
   }
 
-  function updateAllSediStatus() {
-    updateSedeStatus("pescara", "https://sede.olografix.org/s/pescara/status");
-    updateSedeStatus("laquila", "https://sede.olografix.org/s/laquila/status");
+  if (document.querySelector(".status[data-sede]")) {
+    const updateAll = () => Object.keys(STATUS_API).forEach(updateSedeStatus);
+    let timer;
+    const poll = () => {
+      updateAll();
+      timer = setInterval(updateAll, 60000);
+    };
+    // No polling while the tab is in the background; refresh as soon as it comes back.
+    document.addEventListener("visibilitychange", () => {
+      clearInterval(timer);
+      if (!document.hidden) poll();
+    });
+    poll();
   }
 
-  updateAllSediStatus();
-  setInterval(updateAllSediStatus, 60000); // Update every 60 seconds
+  // ── Photogallery lightbox (lightbox2, loaded only on gallery pages) ──
+  const gallery = document.querySelector(".gallery[data-lb-counter]");
+  if (gallery && window.lightbox) {
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.lightbox.option({
+      albumLabel: gallery.dataset.lbCounter,
+      alwaysShowNavOnTouchDevices: true,
+      ...(still && { fadeDuration: 0, imageFadeDuration: 0, resizeDuration: 0 }),
+    });
+    // lightbox2 builds its controls with English labels (and none on close): name them in the page language
+    // just before it opens. Capture phase, so this runs before lightbox2's own click handler.
+    const label = (selector, text) => document.querySelector(selector)?.setAttribute("aria-label", text);
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("[data-lightbox]")) return;
+      label(".lb-prev", gallery.dataset.lbPrev);
+      label(".lb-next", gallery.dataset.lbNext);
+      label(".lb-close", gallery.dataset.lbClose);
+    }, true);
+  }
 });
 
 eval(

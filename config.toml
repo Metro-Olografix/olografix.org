@@ -56,6 +56,9 @@ target = ".*"
 
   enableShopEffect = true
 
+  # Umami analytics; delete this line to ship with no third-party scripts.
+  umamiWebsiteId = "8a990d14-c129-4220-9c0d-be2e2c59ee34"
+
   github = "https://github.com/Metro-Olografix"
   instagram = "https://www.instagram.com/metroolografix"
   linkedin = "https://it.linkedin.com/company/metro-olografix"
