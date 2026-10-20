@@ -21,6 +21,7 @@
       <a href="{{ (site.GetPage "/associazione").RelPermalink }}" class="cta mosaic__cta">
         <span class="cta__label">{{ T "whoWeAre" }}</span>
         <span class="cta__line"></span>
+        <span class="cta__arrow">→</span>
       </a>
     </div>
   </div>
@@ -89,9 +90,11 @@
   <div class="wrap sec__in">
     <h2 class="sec__h" id="h-prog">{{ T "projectsHeader" }}</h2>
     <div class="sec__body">
-      {{ range first 3 $projects }}
-      {{ partial "project-row.html" . }}
-      {{ end }}
+      <div class="evlist">
+        {{ range first 3 $projects }}
+        {{ partial "project-row.html" . }}
+        {{ end }}
+      </div>
       <a href="{{ $projectsSection.RelPermalink }}" class="cta sec__more">
         <span class="cta__label">{{ T "allProjects" }}</span>
         <span class="cta__line"></span>

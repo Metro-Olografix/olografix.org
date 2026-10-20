@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-11T10:23:04.051584+00:00",
+  "generatedAt": "2026-10-20T16:35:21.004176+00:00",
   "title": "Design System: Metro Olografix",
   "extensions": {
     "colorMeta": {
@@ -53,6 +53,21 @@
         "role": "neutral",
         "displayName": "Hairline",
         "canonical": "#1a1a1a",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(57% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(83% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "#333333",
         "tonalRamp": [
           "oklch(15% 0 0)",
           "oklch(25% 0 0)",
@@ -158,51 +173,60 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Page titles, sede title, mosaic headline."
+        "purpose": "Page titles, the sede title, the mosaic headline."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Project names in the index; year dividers."
+        "purpose": "Year dividers, markdown h2, generic list names; the Progetti page runs a step larger."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Event titles, board names, location titles, info values."
+        "purpose": "Event titles and the project names in the home rows, board names, album titles, info values."
       },
       "body": {
         "displayName": "Body",
         "purpose": "Prose, max 660px measure."
       },
       "label": {
-        "displayName": "Label (Mono)",
-        "purpose": "Dates, places, paths, emails, status, nav, buttons, footer."
+        "displayName": "Label",
+        "purpose": "Nav links, buttons, badges, status, event metadata, info-block labels."
       },
       "label-section": {
         "displayName": "Section Label",
-        "purpose": "Uppercase tracked mono section labels."
+        "purpose": "Uppercase tracked sub-labels naming a part of a section."
+      },
+      "machine": {
+        "displayName": "Machine",
+        "purpose": "Paths, URLs, emails, handles, IDs, code, years and dates in row columns, the BBS command."
       }
     },
     "shadows": [
       {
-        "name": "led-glow",
-        "value": "0 0 6px currentColor",
-        "purpose": "Status dot glow only; the system is otherwise shadowless."
+        "name": "christmas-light-glow",
+        "value": "0 0 12px #ff0000, 0 0 24px rgba(255,0,0,.5)",
+        "purpose": "Seasonal exception only (1 Dec to 6 Jan): the coloured bulbs on the Shop photo. The system is otherwise shadowless; never on a surface."
       }
     ],
     "motion": [
       {
         "name": "ease-expo-out",
         "value": "cubic-bezier(.16,1,.3,1)",
-        "purpose": "All movement: nudges, reveals, CTA line draw, image zoom."
-      },
-      {
-        "name": "ease-spring",
-        "value": "cubic-bezier(.34,1.56,.64,1)",
-        "purpose": "Defined token; reserved for playful overshoot."
+        "purpose": "All movement: nudges, CTA line draw, image zoom, mosaic hover."
       },
       {
         "name": "hover-color",
         "value": "0.2s",
-        "purpose": "Color/border steps to white on hover."
+        "purpose": "Color, border and ground steps toward white on hover."
+      },
+      {
+        "name": "nudge",
+        "value": "0.25s–0.3s",
+        "purpose": "Title and arrow nudges on rows and CTAs (4–16px, always horizontal)."
+      },
+      {
+        "name": "image-zoom",
+        "value": "0.5s",
+        "purpose": "Photo grayscale-to-color and 1.03–1.06 zoom on hover."
       },
       {
         "name": "cta-draw",
@@ -210,21 +234,12 @@
         "purpose": "White line drawing across the CTA hairline."
       },
       {
-        "name": "reveal",
-        "value": "0.7s, translateY(24px), stagger 80ms",
-        "purpose": "Fade-up on scroll into view."
-      },
-      {
-        "name": "led-pulse",
-        "value": "2.4s ease-in-out infinite",
-        "purpose": "Status LED breathing."
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "With prefers-reduced-motion, every transition and animation collapses and smooth scrolling is off."
       }
     ],
     "breakpoints": [
-      {
-        "name": "xs",
-        "value": "480px"
-      },
       {
         "name": "sm",
         "value": "600px"
@@ -238,87 +253,103 @@
         "value": "768px"
       },
       {
-        "name": "nav",
+        "name": "mosaic",
         "value": "900px"
+      },
+      {
+        "name": "gallery",
+        "value": "1024px"
+      },
+      {
+        "name": "nav",
+        "value": "1100px"
       }
     ]
   },
   "components": [
     {
+      "name": "Solid Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Commits the visitor: white ground, black label. One per page (Associati on the home).",
+      "html": "<a class=\"ds-obtn-solid\" href=\"#\">Associati</a>",
+      "css": ".ds-obtn-solid{display:inline-block;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem;font-weight:500;padding:.8rem 1.75rem;border:1px solid #fff;background:#fff;color:#000;text-decoration:none;transition:color .2s,border-color .2s,background-color .2s}.ds-obtn-solid:hover{border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.8)}.ds-obtn-solid:focus-visible{outline:1px solid #fff;outline-offset:3px}"
+    },
+    {
       "name": "Outline Button",
       "kind": "button",
       "refersTo": "button-outline",
-      "description": "Primary action button: square ghost outline in mono.",
-      "html": "<a class=\"ds-obtn\" href=\"#\">Statuto</a>",
-      "css": ".ds-obtn{display:inline-block;font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.85rem;font-weight:500;padding:.8rem 1.75rem;border:1px solid #1a1a1a;color:rgba(255,255,255,.62);background:transparent;text-decoration:none;transition:all .2s}.ds-obtn:hover,.ds-obtn:focus-visible{border-color:#fff;color:#fff;background:#0e0e0e;outline:none}"
+      "description": "A distinct action beside the reading flow, often leaving the site (label ends in an arrow). Border at Text 46, label full white.",
+      "html": "<a class=\"ds-obtn\" href=\"#\">Vai allo Shop ↗</a>",
+      "css": ".ds-obtn{display:inline-block;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem;font-weight:500;padding:.8rem 1.75rem;border:1px solid rgba(255,255,255,.46);background:transparent;color:#fff;text-decoration:none;transition:color .2s,border-color .2s,background-color .2s}.ds-obtn:hover{border-color:#fff;background:#0e0e0e}.ds-obtn:focus-visible{outline:1px solid #fff;outline-offset:3px}"
     },
     {
       "name": "Small Ghost Button",
       "kind": "button",
       "refersTo": "button-ghost-small",
-      "description": "Utility actions (calendar download, subscribe, copy URL).",
-      "html": "<a class=\"ds-gbtn\" href=\"#\">Iscriviti</a>",
-      "css": ".ds-gbtn{display:inline-flex;align-items:center;gap:6px;font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.7rem;padding:.45rem .85rem;border:1px solid #1a1a1a;color:rgba(255,255,255,.62);background:transparent;text-decoration:none;transition:all .2s}.ds-gbtn:hover,.ds-gbtn:focus-visible{border-color:#fff;color:#fff;outline:none}"
+      "description": "A control, not a call to action: calendar download, subscribe, copy URL.",
+      "html": "<a class=\"ds-gbtn\" href=\"#\">Copia URL</a>",
+      "css": ".ds-gbtn{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.78rem;padding:.45rem .85rem;border:1px solid #1a1a1a;background:transparent;color:rgba(255,255,255,.62);text-decoration:none;transition:color .2s,border-color .2s}.ds-gbtn:hover{border-color:#fff;color:#fff}.ds-gbtn:focus-visible{outline:1px solid #fff;outline-offset:3px}"
     },
     {
       "name": "CTA Line",
       "kind": "custom",
       "refersTo": "cta-line",
-      "description": "Signature CTA: mono label, stretching hairline that draws white on hover, nudging arrow.",
-      "html": "<a class=\"ds-cta\" href=\"#\"><span class=\"ds-cta__label\">Scopri di più</span><span class=\"ds-cta__line\"></span><span class=\"ds-cta__arrow\">→</span></a>",
-      "css": ".ds-cta{display:flex;align-items:center;gap:1.25rem;width:320px;color:#fff;text-decoration:none}.ds-cta__label{font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.85rem;font-weight:500;white-space:nowrap;border-bottom:1px solid rgba(255,255,255,.62);padding-bottom:2px}.ds-cta__line{flex:1;height:1px;background:#1a1a1a;position:relative;overflow:hidden}.ds-cta__line::after{content:'';position:absolute;left:0;top:0;height:1px;width:0;background:#fff;transition:width .6s cubic-bezier(.16,1,.3,1)}.ds-cta:hover .ds-cta__line::after,.ds-cta:focus-visible .ds-cta__line::after{width:100%}.ds-cta__arrow{color:rgba(255,255,255,.62);transition:transform .3s cubic-bezier(.16,1,.3,1),color .3s}.ds-cta:hover .ds-cta__arrow,.ds-cta:focus-visible .ds-cta__arrow{transform:translateX(6px);color:#fff}.ds-cta:focus-visible{outline:none}"
+      "description": "Continue within the site: underlined label, a hairline that draws white on hover, and an arrow that nudges right.",
+      "html": "<a class=\"ds-cta\" href=\"#\"><span class=\"ds-cta__label\">Tutte le attività</span><span class=\"ds-cta__line\"></span><span class=\"ds-cta__arrow\">→</span></a>",
+      "css": ".ds-cta{display:inline-flex;align-items:center;gap:1.5rem;width:100%;max-width:380px;color:#fff;text-decoration:none}.ds-cta__label{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,.62);padding-bottom:2px}.ds-cta__line{flex:1;height:1px;background:#1a1a1a;position:relative;overflow:hidden}.ds-cta__line::after{content:'';position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-cta__arrow{color:rgba(255,255,255,.62);transition:transform .3s cubic-bezier(.16,1,.3,1),color .3s}.ds-cta:hover .ds-cta__line::after,.ds-cta:focus-visible .ds-cta__line::after{transform:scaleX(1)}.ds-cta:hover .ds-cta__arrow,.ds-cta:focus-visible .ds-cta__arrow{transform:translateX(6px);color:#fff}.ds-cta:focus-visible{outline:1px solid #fff;outline-offset:3px}"
     },
     {
       "name": "Event Row",
       "kind": "card",
       "refersTo": "list-row",
-      "description": "Index row: mono date, title, mono meta, upcoming badge; hairline-separated.",
-      "html": "<a class=\"ds-ev\" href=\"#\"><span class=\"ds-ev__date\">28 Apr 2026</span><span><span class=\"ds-ev__title\">Connessi Senza Permesso</span><span class=\"ds-ev__meta\">18:30–20:30 · Sede MX, Pescara</span></span><span class=\"ds-ev__badge\">Prossimo</span></a>",
-      "css": ".ds-ev{display:grid;grid-template-columns:90px 1fr auto;gap:1.5rem;align-items:start;padding:1.25rem 0;border-bottom:1px solid #1a1a1a;color:#fff;text-decoration:none;font-family:'IBM Plex Sans',system-ui,sans-serif;transition:all .2s;width:560px}.ds-ev:hover,.ds-ev:focus-visible{background:#0e0e0e;margin:0 -.75rem;padding-left:.75rem;padding-right:.75rem;outline:none}.ds-ev__date{font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.8rem;color:rgba(255,255,255,.46);padding-top:2px}.ds-ev__title{display:block;font-size:1.05rem;font-weight:600;margin-bottom:3px;transition:transform .25s cubic-bezier(.16,1,.3,1)}.ds-ev:hover .ds-ev__title{transform:translateX(4px)}.ds-ev__meta{font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.7rem;color:rgba(255,255,255,.46)}.ds-ev__badge{font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.65rem;padding:3px 8px;background:rgba(34,197,94,.12);color:#22c55e}"
+      "description": "Index row: date in mono, title, meta line, upcoming badge; hairline-separated, tone fill and 4px nudge on hover.",
+      "html": "<a class=\"ds-ev\" href=\"#\"><div class=\"ds-ev__date\">17 mag</div><div><div class=\"ds-ev__title\">Inaugurazione nodo Metro Olografix - L'Aquila</div><div class=\"ds-ev__meta\">17:00–23:00 · Via Ed Arco Cirillo, 10, L'Aquila</div></div><span class=\"ds-ev__badge\">Prossimamente</span></a>",
+      "css": ".ds-ev{display:grid;grid-template-columns:90px 1fr auto;gap:1.5rem;align-items:start;padding:1.25rem 0;border-bottom:1px solid #1a1a1a;color:#fff;text-decoration:none;transition:background-color .2s}.ds-ev:hover,.ds-ev:focus-visible{background:#0e0e0e;margin:0 -.75rem;padding-left:.75rem;padding-right:.75rem;outline:none}.ds-ev__date{font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.8rem;color:rgba(255,255,255,.46);padding-top:2px;white-space:nowrap}.ds-ev__title{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:1.05rem;font-weight:500;margin-bottom:3px;transition:transform .25s cubic-bezier(.16,1,.3,1)}.ds-ev:hover .ds-ev__title,.ds-ev:focus-visible .ds-ev__title{transform:translateX(4px)}.ds-ev__meta{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.78rem;color:rgba(255,255,255,.46)}.ds-ev__badge{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.72rem;padding:3px 8px;background:rgba(34,197,94,.12);color:#22c55e;white-space:nowrap}"
     },
     {
       "name": "Project Row",
       "kind": "card",
       "refersTo": "list-row",
-      "description": "Project index row: icon, heavy name, muted description.",
-      "html": "<a class=\"ds-prow\" href=\"#\"><span class=\"ds-prow__ico\">01</span><span class=\"ds-prow__name\">Abruzzo Off-Grid</span><span class=\"ds-prow__desc\">Una rete wireless resiliente e decentralizzata basata su Meshtastic e LoRa.</span></a>",
-      "css": ".ds-prow{display:grid;grid-template-columns:3rem 1fr 1.1fr;gap:1.5rem;align-items:start;padding:1.5rem 0;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;color:#fff;text-decoration:none;font-family:'IBM Plex Sans',system-ui,sans-serif;transition:all .25s;width:680px}.ds-prow:hover,.ds-prow:focus-visible{background:#0e0e0e;margin:0 -.75rem;padding-left:.75rem;padding-right:.75rem;outline:none}.ds-prow__ico{font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.8rem;color:rgba(255,255,255,.46);line-height:2.4}.ds-prow__name{font-size:2rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-prow:hover .ds-prow__name{transform:translateX(6px)}.ds-prow__desc{font-size:.9rem;color:rgba(255,255,255,.46);line-height:1.65;transition:color .25s}.ds-prow:hover .ds-prow__desc{color:rgba(255,255,255,.62)}"
+      "description": "The home's project row: the Event Row grammar, with the start year in the date column and the subtitle as its second line; an arrow marks an external link.",
+      "html": "<a class=\"ds-pr\" href=\"#\"><div class=\"ds-pr__year\">2024</div><div><div class=\"ds-pr__title\">Stop Piracy-Shield<span class=\"ds-pr__ext\">↗</span></div><p class=\"ds-pr__sum\">Lanciamo un appello urgente per la sospensione immediata del sistema Piracy-Shield.</p></div><span></span></a>",
+      "css": ".ds-pr{display:grid;grid-template-columns:90px 1fr auto;gap:1.5rem;align-items:start;padding:1.25rem 0;border-bottom:1px solid #1a1a1a;color:#fff;text-decoration:none;transition:background-color .2s}.ds-pr:hover,.ds-pr:focus-visible{background:#0e0e0e;margin:0 -.75rem;padding-left:.75rem;padding-right:.75rem;outline:none}.ds-pr__year{font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.8rem;color:rgba(255,255,255,.46);padding-top:2px}.ds-pr__title{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:1.05rem;font-weight:500;margin-bottom:3px;transition:transform .25s cubic-bezier(.16,1,.3,1)}.ds-pr:hover .ds-pr__title,.ds-pr:focus-visible .ds-pr__title{transform:translateX(4px)}.ds-pr__ext{font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.8em;color:rgba(255,255,255,.46);margin-left:.25em}.ds-pr__sum{margin-top:.4rem;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.9rem;line-height:1.6;color:rgba(255,255,255,.62);max-width:60ch}"
     },
     {
       "name": "Info Block",
       "kind": "card",
       "refersTo": "info-block",
-      "description": "Sede fact block in a collapsed hairline lattice.",
-      "html": "<div class=\"ds-info\"><div class=\"ds-info__l\">Orario</div><div class=\"ds-info__v\">Lunedì sera, 21:00</div><div class=\"ds-info__s\">Altri giorni su appuntamento</div></div>",
-      "css": ".ds-info{padding:1.5rem;border:1px solid #1a1a1a;width:220px;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#fff}.ds-info__l{font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.65rem;color:rgba(255,255,255,.46);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}.ds-info__v{font-size:1rem;font-weight:600;margin-bottom:.3rem}.ds-info__s{font-size:.8rem;color:rgba(255,255,255,.46);line-height:1.5}"
+      "description": "A fact about a sede in a collapsed hairline lattice: uppercase label, value, sub-line.",
+      "html": "<div class=\"ds-info\"><div class=\"ds-info__label\">Orario</div><div class=\"ds-info__val\">Lunedì, dalle 21:00</div><div class=\"ds-info__sub\">Pescara</div></div>",
+      "css": ".ds-info{padding:1.5rem;border:1px solid #1a1a1a;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#fff}.ds-info__label{font-size:.72rem;color:rgba(255,255,255,.46);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}.ds-info__val{font-size:1rem;font-weight:500;margin-bottom:.3rem}.ds-info__sub{font-size:.8rem;line-height:1.5;color:rgba(255,255,255,.46)}"
     },
     {
-      "name": "Status LED",
-      "kind": "chip",
+      "name": "Live Status",
+      "kind": "custom",
       "refersTo": "status",
-      "description": "Live sede status: pulsing LED dot plus mono label. Red = closed, green = open.",
-      "html": "<span class=\"ds-status\"><span class=\"ds-dot\"></span>Sede chiusa</span>",
-      "css": ".ds-status{display:inline-flex;align-items:center;gap:8px;font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.7rem;color:#e53e3e}.ds-dot{width:7px;height:7px;border-radius:50%;background:#e53e3e;box-shadow:0 0 6px #e53e3e;animation:ds-pulse 2.4s infinite ease-in-out}@keyframes ds-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}"
+      "description": "Open/closed state of a sede, as colored text only (no dot, no glow). Unknown is Text 46, never closed.",
+      "html": "<div class=\"ds-st-row\"><span class=\"ds-st ds-st--open\">Aperta</span><span class=\"ds-st ds-st--closed\">Chiusa</span><span class=\"ds-st\">Stato non disponibile</span></div>",
+      "css": ".ds-st-row{display:flex;gap:1.5rem;flex-wrap:wrap}.ds-st{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.72rem;color:rgba(255,255,255,.46)}.ds-st--open{color:#22c55e}.ds-st--closed{color:#e53e3e}"
     },
     {
       "name": "Navigation",
       "kind": "nav",
       "refersTo": "nav",
-      "description": "Desktop nav: mono links at 52% white, active page white and underlined.",
-      "html": "<nav class=\"ds-nav\"><a href=\"#\">Home</a><a href=\"#\" class=\"on\">L'associazione</a><a href=\"#\">Attività</a><a href=\"#\">Progetti</a><a href=\"#\">Shop ↗</a></nav>",
-      "css": ".ds-nav{display:flex;gap:1.75rem;padding:1rem 1.5rem;background:rgba(5,5,5,.88);backdrop-filter:blur(24px);font-family:'Plex','IBM Plex Mono',ui-monospace,monospace;font-size:.8rem}.ds-nav a{color:rgba(255,255,255,.62);text-decoration:none;transition:color .2s}.ds-nav a:hover,.ds-nav a:focus-visible,.ds-nav a.on{color:#fff;outline:none}.ds-nav a.on{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}"
+      "description": "Solid black bar with a hairline: Plex Sans links at Text 62, white on hover, active page white and underlined.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Home</a><a href=\"#\" class=\"on\">Attività</a><a href=\"#\">Progetti</a><a href=\"#\">Associati</a><a href=\"#\">Shop ↗</a></nav>",
+      "css": ".ds-nav{display:flex;gap:1.75rem;padding:1rem 1.5rem;background:#000;border-bottom:1px solid #1a1a1a;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem}.ds-nav a{color:rgba(255,255,255,.62);text-decoration:none;transition:color .2s}.ds-nav a:hover,.ds-nav a:focus-visible,.ds-nav a.on{color:#fff;outline:none}.ds-nav a.on{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}"
     }
   ],
   "narrative": {
     "northStar": "The Underground Bulletin",
-    "overview": "The site reads like a bulletin from the BBS era, typeset as a modern editorial page. Pages are indexes of a community's activity: events by year, projects by name, sedi, the board. Each entry gets a heavy sans headline and is separated from the next by a single hairline rule. Everything around the content is pure black, so the white type alone carries the page. Hierarchy comes from scale, weight and opacity, not from color, boxes or ornament.\n\nInformation is dense, but each line is easy to scan. Every piece of metadata (dates, places, breadcrumbs, emails, status) is set in IBM Plex Mono, and that mono voice is the system's link to its terminal heritage (`/home/metro/pescara`). Photographs show real people and the real lab. They sit in grayscale until hovered, then come back to color, the way a bulletin quotes reality rather than decorating with it.\n\nThe palette is monochrome by design. The only colors are status signals: red when a sede is closed, green when something is upcoming. Corners are square everywhere, and nothing casts a shadow.\n\nThe secondary north star is the discipline the bulletin is set in. From Swiss International Style it takes an objective grid that every element snaps to, flush-left ragged-right type, asymmetric balance instead of centered symmetry, strong contrast in scale between display and text, and photography used as fact, not mood. From the Bauhaus it takes form following function and an elementary geometry (square, circle, line) as the only source of graphic form. Where the two north stars meet, the bulletin decides *what* is said and Swiss/Bauhaus decides *how it is set*. When a choice is unclear, choose the one a Swiss typographer would defend on grid and legibility grounds.",
+    "overview": "The site reads like a bulletin from the BBS era, typeset as a modern editorial page. Pages are indexes of a community's activity: events by year, projects by name, sedi, the board. Each entry gets a strong sans headline and is separated from the next by a single hairline rule. Everything around the content is pure black, so the white type alone carries the page. Hierarchy comes from scale, weight and opacity, not from color, boxes or ornament.\n\nInformation is dense, but each line is easy to scan. Machine text (paths, dates in columns, emails, handles, IDs, code) is set in IBM Plex Mono, and that mono voice is the system's link to its terminal heritage (`~/pescara`). Everything else, including navigation and buttons, is Plex Sans. Photographs show real people and the real lab. They sit in grayscale until hovered, then come back to color, the way a bulletin quotes reality rather than decorating with it. The photogallery is the exception: there the photos are the content, so albums and album pages show them in color.\n\nThe palette is monochrome by design. The only colors are status signals: red when a sede is closed, green when something is upcoming. Corners are square everywhere, and nothing casts a shadow.\n\nThe secondary north star is the discipline the bulletin is set in. From Swiss International Style it takes an objective grid that every element snaps to, flush-left ragged-right type, asymmetric balance instead of centered symmetry, strong contrast in scale between display and text, and photography used as fact, not mood. From the Bauhaus it takes form following function and an elementary geometry (square, circle, line) as the only source of graphic form. Where the two north stars meet, the bulletin decides *what* is said and Swiss/Bauhaus decides *how it is set*. When a choice is unclear, choose the one a Swiss typographer would defend on grid and legibility grounds.",
     "keyCharacteristics": [
       "Pure black ground, white type at four fixed opacities, no decorative backgrounds.",
       "IBM Plex Sans in the official MX hierarchy (H1 700, H2 600, H3 500), with Plex Mono reserved for machine text.",
       "The official MX monogram in the nav; monogram + lettering in the footer.",
       "Hairline rules (1px) and index-style rows instead of cards.",
       "Square corners only. No shadows. Depth comes from tone and gradient overlays.",
-      "Grayscale photography that regains color on hover.",
+      "Grayscale photography that regains color on hover (except in the photogallery, which is in color).",
       "Color appears only as live status.",
       "Swiss/Bauhaus discipline: grid-snapped, flush-left, asymmetric, elementary geometry."
     ],
@@ -340,7 +371,7 @@
       },
       {
         "name": "The Machine Text Rule",
-        "body": "Plex Mono is only for text a machine would produce or read: paths, URLs, domains, emails, handles, IDs, code, and dates aligned in a column. Navigation, buttons, labels and sentences are Plex Sans. Mono is Regular only.",
+        "body": "Plex Mono is only for text a machine would produce or read: paths, URLs, domains, emails, handles, IDs, code, and dates aligned in a column. Navigation, buttons, labels and sentences are Plex Sans. Mono is Regular only; the one exception is the Shop's fleece print, which reproduces a printed garment in Bold.",
         "section": "typography"
       },
       {
@@ -370,15 +401,15 @@
       },
       {
         "name": "The Elementary Forms Rule",
-        "body": "All graphic form comes from Bauhaus primitives: the square, the circle and the line. Use them in white or white tiers, built from geometry (CSS or SVG). Each project has a 24px outline mark (1.5px stroke, square caps) built from these primitives: a node triangle (Abruzzo Off-Grid), a struck-through square (Stop Piracy-Shield), a circle around a square (Refurbish Ninja), a tent of lines (MOCA), and broadcast arcs (CYBER-FREEDOM). The 7px status dot is the existing circle.",
+        "body": "All graphic form comes from Bauhaus primitives: the square, the circle and the line. Use them in white or white tiers, built from geometry (CSS or SVG). Each project has a 24px outline mark (1.5px stroke, square caps) built from these primitives: a node triangle (Abruzzo Off-Grid), a struck-through square (Stop Piracy-Shield), a circle around a square (Refurbish Ninja), a tent of lines (MOCA), and broadcast arcs (CYBER-FREEDOM).",
         "section": "shapes"
       }
     ],
     "dos": [
       "Do keep the page ground true black (#000) and draw all structure with 1px #1a1a1a hairlines.",
-      "Do set every date, place, path, email and status in Plex Mono, and every name and sentence in Plex Sans.",
+      "Do set every path, email, handle, ID and column-aligned date in Plex Mono, and every name, label, status and sentence in Plex Sans.",
       "Do build lists as hairline-separated index rows with the tone-fill and nudge hover.",
-      "Do show photography in grayscale at rest and bring back color only on hover.",
+      "Do show photography in grayscale at rest and bring back color only on hover, except in the photogallery, where the photos are the content and stay in color.",
       "Do use the CTA Line for primary navigation-style calls to action.",
       "Do use the expo-out ease `cubic-bezier(.16,1,.3,1)` for movement and 0.2s linear color transitions for hover color changes.",
       "Do set all type flush-left and snap every element to the column grid.",
@@ -386,14 +417,13 @@
     ],
     "donts": [
       "Don't redraw, recolour, stretch or annotate the MX logo, or typeset \"metro olografix\" beside it. Use the official SVGs.",
-      "Don't use Plex Mono for navigation, buttons or sentences, or at any weight other than Regular.",
+      "Don't use Plex Mono for navigation, buttons or sentences, or at any weight other than Regular (the Shop's fleece print is the only Bold).",
       "Don't use red or green for anything except live status (The LED Rule).",
       "Don't round corners or add box-shadows to any surface.",
       "Don't introduce a text opacity outside 100/80/62/46%.",
       "Don't use Unicode glyphs (`((•))`, `◇`, `↻`, `⌘`, `☆`) as project or feature icons. They are slated for replacement and should not be extended into new work.",
       "Don't wrap content in filled cards. Rows and hairline lattices carry the structure.",
       "Don't center or justify text, and don't bring in Bauhaus red/yellow/blue."
-    ],
-    "secondaryNorthStar": "Swiss Style / Bauhaus"
+    ]
   }
 }

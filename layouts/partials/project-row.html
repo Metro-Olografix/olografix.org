@@ -1,9 +1,14 @@
-{{- /* One project as an index row with its geometric mark. Context: the page. */ -}}
+{{- /* One project as an index row, same anatomy as an event row: the start year sits in the date column
+       (machine text), name and subtitle in the content column. The geometric marks live on the
+       Progetti page, where they anchor the year in the side column. Context: the page. */ -}}
 {{ $link := .RelPermalink }}
 {{ $ext := false }}
 {{ with .Params.externalUrl }}{{ $link = . }}{{ $ext = true }}{{ end }}
-<a href="{{ $link }}" class="prow"{{ if $ext }} target="_blank" rel="noopener"{{ end }}>
-  <span class="prow__ico">{{ partial "project-mark.html" . }}</span>
-  <span class="prow__name">{{ .Title }}{{ if $ext }}<span class="prow__ext">↗</span>{{ end }}</span>
-  <span class="prow__desc">{{ .Params.subtitle | default .Summary | plainify }}</span>
+<a href="{{ $link }}" class="ev"{{ if $ext }} target="_blank" rel="noopener"{{ end }}>
+  <div class="ev__date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006" }}</time></div>
+  <div>
+    <div class="ev__title">{{ .Title }}{{ if $ext }}<span class="prow__ext">↗</span>{{ end }}</div>
+    {{ with .Params.subtitle | default .Summary | plainify }}<p class="ev__sum">{{ . }}</p>{{ end }}
+  </div>
+  <span></span>
 </a>

@@ -9,3 +9,6 @@ static/images/og/
 .impeccable/critique/
 # Local sketches and design notes
 ideas/
+
+.agents/
+.claude/
