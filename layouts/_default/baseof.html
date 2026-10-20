@@ -49,7 +49,7 @@
 
   <link rel="preload" href="/fonts/plex-sans/ibm-plex-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/style.css" />
-  {{ if in .RelPermalink "/photogallery/" }}
+  {{ if and (eq .Section "photogallery") .Params.album (ne .Params.layout "list") }}
   <link href="/css/lightbox.min.css" rel="stylesheet" />
   <script src="/js/lightbox-plus-jquery.min.js" defer></script>
   {{ end }}

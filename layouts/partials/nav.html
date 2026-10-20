@@ -8,8 +8,8 @@
       {{ $active := partial "menu-active.html" (dict "entry" . "page" $) }}
       {{ if .HasChildren }}
       <div class="dd">
-        <button type="button" {{ if $active }}class="on" {{ end }}aria-haspopup="true">{{ .Name }}<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="square" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
-        <div class="dd__menu">
+        <button type="button" {{ if $active }}class="on" {{ end }}aria-expanded="false" aria-controls="dd-{{ .Identifier }}">{{ .Name }}<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="square" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
+        <div class="dd__menu" id="dd-{{ .Identifier }}">
           <div class="dd__inner">
             <a href="{{ .URL | relLangURL | safeURL }}"{{ if eq $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a>
             {{ range .Children }}
