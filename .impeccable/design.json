@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-20T16:35:21.004176+00:00",
+  "generatedAt": "2026-10-20T17:07:45.626443+00:00",
   "title": "Design System: Metro Olografix",
   "extensions": {
     "colorMeta": {
@@ -185,7 +185,7 @@
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Prose, max 660px measure."
+        "purpose": "Prose, max 34em measure (about 75 characters; 36em on long-form pages)."
       },
       "label": {
         "displayName": "Label",
@@ -198,6 +198,66 @@
       "machine": {
         "displayName": "Machine",
         "purpose": "Paths, URLs, emails, handles, IDs, code, years and dates in row columns, the BBS command."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Event metadata, small ghost buttons, the recurring-event note."
+      },
+      "label-small": {
+        "displayName": "Label small",
+        "purpose": "Dropdown links, sub-lines, footer links and the live status."
+      },
+      "body-small": {
+        "displayName": "Body small",
+        "purpose": "Row summaries, project descriptions, the calendar title."
+      },
+      "base": {
+        "displayName": "Base",
+        "purpose": "Icon sizing in the social links, markdown h4."
+      },
+      "title-large": {
+        "displayName": "Title large",
+        "purpose": "Album titles, markdown h3."
+      },
+      "info-value": {
+        "displayName": "Info value",
+        "purpose": "The value line in a sede info block."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Intro paragraphs and the page subtitle, at 80% white."
+      },
+      "lead-small": {
+        "displayName": "Lead small",
+        "purpose": "The project subtitle on the Progetti page."
+      },
+      "headline-small": {
+        "displayName": "Headline small",
+        "purpose": "Markdown h2 inside prose."
+      },
+      "year": {
+        "displayName": "Year",
+        "purpose": "Year dividers in the side column of Attività and the photogallery."
+      },
+      "project-name": {
+        "displayName": "Project name",
+        "purpose": "Project names on the Progetti page, one sheet per project."
+      },
+      "mosaic-headline": {
+        "displayName": "Mosaic headline",
+        "purpose": "The home headline over the photo mosaic."
+      },
+      "menu-link": {
+        "displayName": "Menu link",
+        "purpose": "Mobile menu links."
+      },
+      "glyph": {
+        "displayName": "Glyph",
+        "purpose": "Sizes icons in the calendar bar and the mobile menu socials."
+      },
+      "glyph-large": {
+        "displayName": "Glyph large",
+        "purpose": "The close mark of the mobile menu."
       }
     },
     "shadows": [
@@ -235,8 +295,13 @@
       },
       {
         "name": "reduced-motion",
-        "value": "0.01ms",
-        "purpose": "With prefers-reduced-motion, every transition and animation collapses and smooth scrolling is off."
+        "value": "animations 0.01ms; movement off",
+        "purpose": "With prefers-reduced-motion, smooth scrolling is off and the movement stops (nudges, zooms, the CTA line draw, the chevron turn, the skip link slide); colour, border and tone steps stay as the hover feedback."
+      },
+      {
+        "name": "lights-twinkle",
+        "value": "1.5s x 2",
+        "purpose": "Seasonal Shop lights: two twinkles per bulb, then they rest lit (about four seconds in all)."
       }
     ],
     "breakpoints": [
@@ -273,7 +338,7 @@
       "refersTo": "button-solid",
       "description": "Commits the visitor: white ground, black label. One per page (Associati on the home).",
       "html": "<a class=\"ds-obtn-solid\" href=\"#\">Associati</a>",
-      "css": ".ds-obtn-solid{display:inline-block;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem;font-weight:500;padding:.8rem 1.75rem;border:1px solid #fff;background:#fff;color:#000;text-decoration:none;transition:color .2s,border-color .2s,background-color .2s}.ds-obtn-solid:hover{border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.8)}.ds-obtn-solid:focus-visible{outline:1px solid #fff;outline-offset:3px}"
+      "css": ".ds-obtn-solid{display:inline-block;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem;font-weight:500;padding:.8rem 1.75rem;border:1px solid #fff;background:#fff;color:#000;text-decoration:none;transition:color .2s,border-color .2s,background-color .2s}.ds-obtn-solid:hover{border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.8)}.ds-obtn-solid:focus-visible{outline:2px solid #fff;outline-offset:3px}"
     },
     {
       "name": "Outline Button",
@@ -281,7 +346,7 @@
       "refersTo": "button-outline",
       "description": "A distinct action beside the reading flow, often leaving the site (label ends in an arrow). Border at Text 46, label full white.",
       "html": "<a class=\"ds-obtn\" href=\"#\">Vai allo Shop ↗</a>",
-      "css": ".ds-obtn{display:inline-block;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem;font-weight:500;padding:.8rem 1.75rem;border:1px solid rgba(255,255,255,.46);background:transparent;color:#fff;text-decoration:none;transition:color .2s,border-color .2s,background-color .2s}.ds-obtn:hover{border-color:#fff;background:#0e0e0e}.ds-obtn:focus-visible{outline:1px solid #fff;outline-offset:3px}"
+      "css": ".ds-obtn{display:inline-block;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem;font-weight:500;padding:.8rem 1.75rem;border:1px solid rgba(255,255,255,.46);background:transparent;color:#fff;text-decoration:none;transition:color .2s,border-color .2s,background-color .2s}.ds-obtn:hover{border-color:#fff;background:#0e0e0e}.ds-obtn:focus-visible{outline:2px solid #fff;outline-offset:3px}"
     },
     {
       "name": "Small Ghost Button",
@@ -289,7 +354,7 @@
       "refersTo": "button-ghost-small",
       "description": "A control, not a call to action: calendar download, subscribe, copy URL.",
       "html": "<a class=\"ds-gbtn\" href=\"#\">Copia URL</a>",
-      "css": ".ds-gbtn{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.78rem;padding:.45rem .85rem;border:1px solid #1a1a1a;background:transparent;color:rgba(255,255,255,.62);text-decoration:none;transition:color .2s,border-color .2s}.ds-gbtn:hover{border-color:#fff;color:#fff}.ds-gbtn:focus-visible{outline:1px solid #fff;outline-offset:3px}"
+      "css": ".ds-gbtn{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.78rem;padding:.45rem .85rem;border:1px solid #1a1a1a;background:transparent;color:rgba(255,255,255,.62);text-decoration:none;transition:color .2s,border-color .2s}.ds-gbtn:hover{border-color:#fff;color:#fff}.ds-gbtn:focus-visible{outline:2px solid #fff;outline-offset:3px}"
     },
     {
       "name": "CTA Line",
@@ -297,7 +362,7 @@
       "refersTo": "cta-line",
       "description": "Continue within the site: underlined label, a hairline that draws white on hover, and an arrow that nudges right.",
       "html": "<a class=\"ds-cta\" href=\"#\"><span class=\"ds-cta__label\">Tutte le attività</span><span class=\"ds-cta__line\"></span><span class=\"ds-cta__arrow\">→</span></a>",
-      "css": ".ds-cta{display:inline-flex;align-items:center;gap:1.5rem;width:100%;max-width:380px;color:#fff;text-decoration:none}.ds-cta__label{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,.62);padding-bottom:2px}.ds-cta__line{flex:1;height:1px;background:#1a1a1a;position:relative;overflow:hidden}.ds-cta__line::after{content:'';position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-cta__arrow{color:rgba(255,255,255,.62);transition:transform .3s cubic-bezier(.16,1,.3,1),color .3s}.ds-cta:hover .ds-cta__line::after,.ds-cta:focus-visible .ds-cta__line::after{transform:scaleX(1)}.ds-cta:hover .ds-cta__arrow,.ds-cta:focus-visible .ds-cta__arrow{transform:translateX(6px);color:#fff}.ds-cta:focus-visible{outline:1px solid #fff;outline-offset:3px}"
+      "css": ".ds-cta{display:inline-flex;align-items:center;gap:1.5rem;width:100%;max-width:380px;color:#fff;text-decoration:none}.ds-cta__label{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.85rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,.62);padding-bottom:2px}.ds-cta__line{flex:1;height:1px;background:#1a1a1a;position:relative;overflow:hidden}.ds-cta__line::after{content:'';position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-cta__arrow{color:rgba(255,255,255,.62);transition:transform .3s cubic-bezier(.16,1,.3,1),color .3s}.ds-cta:hover .ds-cta__line::after,.ds-cta:focus-visible .ds-cta__line::after{transform:scaleX(1)}.ds-cta:hover .ds-cta__arrow,.ds-cta:focus-visible .ds-cta__arrow{transform:translateX(6px);color:#fff}.ds-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}"
     },
     {
       "name": "Event Row",
@@ -329,7 +394,7 @@
       "refersTo": "status",
       "description": "Open/closed state of a sede, as colored text only (no dot, no glow). Unknown is Text 46, never closed.",
       "html": "<div class=\"ds-st-row\"><span class=\"ds-st ds-st--open\">Aperta</span><span class=\"ds-st ds-st--closed\">Chiusa</span><span class=\"ds-st\">Stato non disponibile</span></div>",
-      "css": ".ds-st-row{display:flex;gap:1.5rem;flex-wrap:wrap}.ds-st{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.72rem;color:rgba(255,255,255,.46)}.ds-st--open{color:#22c55e}.ds-st--closed{color:#e53e3e}"
+      "css": ".ds-st-row{display:flex;gap:1.5rem;flex-wrap:wrap}.ds-st{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.8rem;color:rgba(255,255,255,.46)}.ds-st--open{color:#22c55e}.ds-st--closed{color:#e53e3e}"
     },
     {
       "name": "Navigation",
@@ -413,7 +478,9 @@
       "Do use the CTA Line for primary navigation-style calls to action.",
       "Do use the expo-out ease `cubic-bezier(.16,1,.3,1)` for movement and 0.2s linear color transitions for hover color changes.",
       "Do set all type flush-left and snap every element to the column grid.",
-      "Do build icons and graphic marks from squares, circles and lines."
+      "Do build icons and graphic marks from squares, circles and lines.",
+      "Do give every image in content a real alt when it informs, and alt=\"\" only when it is decoration.",
+      "Do keep hover feedback in colour and tone so it survives prefers-reduced-motion, and give shapes drawn with background a system colour under forced-colors."
     ],
     "donts": [
       "Don't redraw, recolour, stretch or annotate the MX logo, or typeset \"metro olografix\" beside it. Use the official SVGs.",
