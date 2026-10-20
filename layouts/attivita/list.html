@@ -20,8 +20,9 @@
         </div>
         <div class="calbar__btns">
           <a href="{{ $calendarUrl }}" class="gbtn">{{ partial "icon.html" "download" }} {{ T "downloadCalendar" | default "Download" }}</a>
-          <a href="webcal:{{ strings.TrimPrefix "https://" (strings.TrimPrefix "http://" .Site.BaseURL) }}calendar.ics" class="gbtn">{{ partial "icon.html" "calendar-plus" }} {{ T "subscribeDirectly" | default "Subscribe" }}</a>
+          <a href="webcal://{{ strings.TrimPrefix "https://" (strings.TrimPrefix "http://" .Site.BaseURL) }}calendar.ics" class="gbtn">{{ partial "icon.html" "calendar-plus" }} {{ T "subscribeDirectly" | default "Subscribe" }}</a>
           <button type="button" class="gbtn" id="copyButton" data-url="{{ $calendarUrl }}" data-copied="{{ T "copiedText" | default "Copied!" }}">{{ partial "icon.html" "copy" }} <span>{{ T "copyUrl" | default "Copy URL" }}</span></button>
+          <span class="sr-only" id="copyStatus" role="status"></span>
         </div>
       </div>
       <p class="calbar__note"><a href="https://www.fossify.org/apps/" target="_blank" rel="noopener">{{ T "androidSuggestion" }}</a></p>
@@ -63,11 +64,12 @@
   (function () {
     var b = document.getElementById('copyButton');
     if (!b || !navigator.clipboard) { if (b) b.hidden = true; return; }
-    var label = b.querySelector('span'), original = label.textContent;
+    var label = b.querySelector('span'), original = label.textContent, status = document.getElementById('copyStatus');
     b.addEventListener('click', function () {
       navigator.clipboard.writeText(b.dataset.url).then(function () {
         label.textContent = b.dataset.copied;
-        setTimeout(function () { label.textContent = original; }, 2000);
+        status.textContent = b.dataset.copied;
+        setTimeout(function () { label.textContent = original; status.textContent = ''; }, 2000);
       });
     });
   })();

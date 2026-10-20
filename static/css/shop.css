@@ -13,12 +13,14 @@
     z-index: 1;
 }
 
+/* Two twinkles per bulb, then the lights rest lit: with the longest delay (1.1s) it is over in about four
+   seconds, under the five after which WCAG 2.2.2 asks for a way to pause moving content. */
 .christmas-light {
     position: absolute;
     width: 10px;
     height: 14px;
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: twinkle 1.5s ease-in-out infinite;
+    animation: twinkle 1.5s ease-in-out 2;
 }
 
 .christmas-light.red {

@@ -6,6 +6,10 @@ buildFuture = true
 
 defaultContentLanguage = 'it'
 defaultContentLanguageInSubdir = false
+
+# No tags or categories on this site: without this Hugo builds empty /tags/ and /categories/ pages
+disableKinds = ['taxonomy', 'term']
+
 [languages]
   [languages.it]
     languageCode = 'it-IT'
