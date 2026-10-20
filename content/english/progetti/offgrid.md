@@ -4,8 +4,8 @@ subtitle: "Off-grid communications for resilient communities"
 date: 2026-01-01
 ---
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/lora-1280.webp"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:w-48"}]} -->
-<img src="/images/opt/lora-1280.webp" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/lora-1280.webp"},{"name":"alt","value":"An antenna on a pole with a small radio device, on a rooftop with the sea and clouds in the background"},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:w-48"}]} -->
+<img src="/images/opt/lora-1280.webp" alt="An antenna on a pole with a small radio device, on a rooftop with the sea and clouds in the background" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 The communication networks we use every day -- mobile telephony, the Internet, Wi-Fi -- depend on centralized infrastructure, private companies, and a constant power supply. When any of these fails, whether due to a natural emergency, a technical fault, or simply because you are in an area with no coverage, you are cut off.

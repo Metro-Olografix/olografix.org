@@ -51,4 +51,4 @@ Partecipazione gratuita. Per iscriverti [registrati qui](https://cryptpad.fr/for
 
 *Progetto realizzato in collaborazione con il **Comitato Soci Coop Etruria L'Aquila**.*
 
-![](/images/opt/1000141906-1280.webp)
+![Una tenda illuminata di sera: un tavolo di legno con delle bottiglie, un telo con il logo di un camp hacker e una striscia LED verde in primo piano](/images/opt/1000141906-1280.webp)
