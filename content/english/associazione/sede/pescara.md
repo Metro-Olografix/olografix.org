@@ -3,8 +3,8 @@ title: "Pescara"
 layout: single
 ---
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/photo_2025-10-13_21-31-15-640.webp"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:max-w-sm"}]} -->
-<img src="/images/opt/photo_2025-10-13_21-31-15-640.webp" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 md:max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/photo_2025-10-13_21-31-15-640.webp"},{"name":"alt","value":"A corner of the Pescara space in the evening: a yellow lamp, the MX flag on the wall and an old iMac on a wooden table"},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:max-w-sm"}]} -->
+<img src="/images/opt/photo_2025-10-13_21-31-15-640.webp" alt="A corner of the Pescara space in the evening: a yellow lamp, the MX flag on the wall and an old iMac on a wooden table" class="w-full mb-4 md:float-right md:w-auto md:ml-4 md:max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 Since January 2025, Metro Olografix has opened a new space in Pescara!
@@ -27,8 +27,8 @@ We're located at **Viale Marconi 278/1**, near the Stadio Adriatico.
 
 ## What you'll find
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/lab-sede-1280.webp"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-left md:w-auto md:mr-4"},{"name":"sizeClass","value":"max-w-lg"}]} -->
-<img src="/images/opt/lab-sede-1280.webp" alt="" class="w-full mb-4 md:float-left md:w-auto md:mr-8 max-w-lg max-w-full rounded-lg shadow-md mb-6" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/lab-sede-1280.webp"},{"name":"alt","value":"The workbench of the Pescara lab with two 3D printers, an oscilloscope, a desk lamp and drawers of components"},{"name":"positionClass","value":"w-full mb-4 md:float-left md:w-auto md:mr-4"},{"name":"sizeClass","value":"max-w-lg"}]} -->
+<img src="/images/opt/lab-sede-1280.webp" alt="The workbench of the Pescara lab with two 3D printers, an oscilloscope, a desk lamp and drawers of components" class="w-full mb-4 md:float-left md:w-auto md:mr-8 max-w-lg max-w-full rounded-lg shadow-md mb-6" />
 <!-- FM:Snippet:End -->
 
 ### The lab
@@ -42,8 +42,8 @@ The space is equipped with a lab for electronics and making. All equipment is av
 
 <br />
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/workshop-sede-1280.webp"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"max-w-sm"}]} -->
-<img src="/images/opt/workshop-sede-1280.webp" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/workshop-sede-1280.webp"},{"name":"alt","value":"A workshop in the Pescara space: about ten people around wooden tables with open laptops, posters and MX t-shirts on the walls"},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"max-w-sm"}]} -->
+<img src="/images/opt/workshop-sede-1280.webp" alt="A workshop in the Pescara space: about ten people around wooden tables with open laptops, posters and MX t-shirts on the walls" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 ### Activities and workshops
@@ -69,5 +69,5 @@ We adhere to the [SpaceAPI](https://spaceapi.io/) standard. You can find the hea
 
 An Android app is available to quickly check the space status, distributed on [F-Droid](https://f-droid.org/packages/io.spaceapi.community.myhackerspace/) and [Play Store](https://play.google.com/store/apps/details?id=io.spaceapi.community.myhackerspace).
 
-![](https://spaceapistatusimage.hosted.quelltext.eu/status?url=https%3A%2F%2Fsede.olografix.org%2Fspaceapi.json)
+![Current status of the space, read from SpaceAPI](https://spaceapistatusimage.hosted.quelltext.eu/status?url=https%3A%2F%2Fsede.olografix.org%2Fspaceapi.json)
 

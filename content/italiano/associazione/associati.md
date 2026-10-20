@@ -8,7 +8,7 @@ Se vuoi entrare nel vivo dell'associazione Metro Olografix, o semplicemente sost
 
 - Riempi il modulo elettronico per l'iscrizione:
 
-<a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Compila qui</a>
+<a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="obtn obtn--solid" target="_blank" rel="noopener">Compila qui ↗</a>
 
 - Versa la quota sociale:
     - Ordinaria: 30 euro
