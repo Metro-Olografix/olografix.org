@@ -122,6 +122,12 @@ typography:
     fontWeight: 700
     lineHeight: 1.05
     letterSpacing: "-0.03em"
+  marquee:
+    fontFamily: "'IBM Plex Sans', system-ui, sans-serif"
+    fontSize: "clamp(2.5rem, 7vw, 5.5rem)"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "-0.03em"
   menu-link:
     fontFamily: "'IBM Plex Sans', system-ui, sans-serif"
     fontSize: "clamp(1.6rem, 6vw, 3rem)"
@@ -254,7 +260,7 @@ The palette is monochrome white on black, plus two signal colors that carry mean
 **Character:** Plex Sans carries the bulletin's voice: compact, slightly engineered, confident. Plex Mono is the machine voice. Both come from the same superfamily, so the switch from prose to metadata feels like changing register, not changing brand.
 
 ### Hierarchy
-- **Display / H1** (Bold 700, clamp(2.5rem→4rem), 1.05, −0.03em): page titles, the sede title, the mosaic headline (the same curve, from 2rem).
+- **Display / H1** (Bold 700, clamp(2.5rem→4rem), 1.05, −0.03em): page titles, the sede title, the mosaic headline (the same curve, from 2rem). The Associati marquee runs a step larger (clamp 2.5rem→5.5rem, line-height 1), because it is a band of type to read in passing, not a title.
 - **Headline / H2** (SemiBold 600, clamp(1.4rem→2.1rem), 1.2, −0.02em): the token for a name set above running text. In use: year dividers (clamp 1.3rem→1.75rem, Text 46), the markdown h2 (clamp 1.3rem→1.6rem), the names in generic lists, and the project names on the Progetti page, which run a step larger (clamp 1.9rem→3.2rem, 1.08, −0.03em) because each project has a sheet of its own. The year dividers and the markdown h2 have their own tokens (Year, Headline small).
 - **Side heading** (SemiBold 600, 1.05rem, −0.01em): the section headings in grid columns 1–3. They are set at Label scale on purpose: the content carries the weight, the heading only names it.
 - **Title / H3** (Medium 500, 0.95–1.1rem): event titles and the project names in the home rows, board names, album titles, info-block values, markdown h3/h4.
@@ -306,7 +312,7 @@ The nav is not a layer over the page: it is a solid black bar with a hairline, a
 Nothing glows. Live status is carried by the color of the status text itself (see The LED Rule). The one exception is seasonal: the Christmas lights on the Shop photo (see Shop).
 
 ### Named Rules
-**The No Lift Rule.** Nothing floats. Hover feedback is a tone fill, a color step to white, or a small horizontal nudge (4–16px). It is never a shadow or a vertical lift. With `prefers-reduced-motion` the nudges, zooms, the CTA line draw, the chevron turn and the skip link's slide stop; the tone and colour steps stay, because they are the feedback.
+**The No Lift Rule.** Nothing floats. Hover feedback is a tone fill, a color step to white, or a small horizontal nudge (4–16px). It is never a shadow or a vertical lift. With `prefers-reduced-motion` the nudges, zooms, the CTA line draw, the chevron turn, the skip link's slide and the Associati marquee stop; the tone and colour steps stay, because they are the feedback.
 
 ## Shapes
 
@@ -366,7 +372,11 @@ A full-bleed 12-column grid of real photos with 4px gaps. Photos show at `graysc
 The association was born as a BBS and the board still runs, so it gets a recognizable access: the last entry of the menu (and the mobile menu), "BBS", pointing at `telnet://bbs.olografix.org`, and the last home section — a short paragraph of what it is, ending on a colon that the command itself answers (`$ telnet bbs.olografix.org`, Plex Mono as the link: The Machine Text Rule). The footer link stays.
 
 ### Associati (home)
-Joining the community outweighs buying from the Shop, so it precedes it: a short invitation, the membership fees in one Plex Sans line, and the page's only Solid button (see Buttons), the strongest action the bulletin can make.
+Joining the community outweighs buying from the Shop, so it precedes it: a short invitation (`joinIntro`), the membership fees in one Plex Sans line, and the page's only Solid button (see Buttons), the strongest action the bulletin can make.
+
+**Marquee (built, switched off).** A build-time switch, `enableJoinMarquee` in `config.toml`, is off until the copy is settled. When it is on, the section opens with a marquee in place of the intro paragraph: the reasons to join (`joinMarquee` in i18n, `|`-separated: the community, the courses and projects, the vote in the assembly, hacker culture since 1994) run right to left in Plex Sans 700 at clamp(2.5rem, 7vw, 5.5rem), edge to edge between two Hairlines, separated by white squares (The Elementary Forms Rule, not a glyph). The band is full bleed the way the mosaic is (the section's width, never 100vw) and takes the place of the section's top rule. Below it come the usual side heading, the fees and the Solid button.
+
+The track holds the list twice and slides by half its width in 60s, so the loop has no seam; the second copy is `aria-hidden`, so a screen reader hears the reasons once, as a list. The text moves for longer than five seconds next to other content, so WCAG 2.2.2 applies: hover pauses it, and a stop button (a 44px-plus cell at the band's right edge, Text 62 pause/play shapes drawn in SVG, `aria-pressed`, label in the page language) stops it for keyboard and touch. The button needs `main.js`, so it is shown only under `.js`. Under reduced motion the band stands still, its text starts on the column's left edge, and the button goes.
 
 ### Shop (home)
 The Shop section uses the same side heading as every other home section ("Shop", columns 1–3). Its body (columns 4–12) is its own 9-column grid: the photo in the first four columns and, after one empty column, the fleece print ("INFORMATION WANTS TO BE FREE.", Plex Mono Bold, every line justified to 11ch, with "FREE." boxed in white), the intro, the bundle price and the Outline button (it leaves the site, hence the ↗). Photo and print are top-aligned with the heading. The print is capped at 14.5cqi so it never leaves its column.

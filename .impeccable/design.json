@@ -294,9 +294,14 @@
         "purpose": "White line drawing across the CTA hairline."
       },
       {
+        "name": "marquee",
+        "value": "60s linear infinite",
+        "purpose": "The Associati band: one group of reasons crosses per cycle. Hover pauses it, a button stops it (WCAG 2.2.2); under reduced motion it stands still on the column's left edge."
+      },
+      {
         "name": "reduced-motion",
         "value": "animations 0.01ms; movement off",
-        "purpose": "With prefers-reduced-motion, smooth scrolling is off and the movement stops (nudges, zooms, the CTA line draw, the chevron turn, the skip link slide); colour, border and tone steps stay as the hover feedback."
+        "purpose": "With prefers-reduced-motion, smooth scrolling is off and the movement stops (nudges, zooms, the CTA line draw, the chevron turn, the skip link slide, the Associati marquee); colour, border and tone steps stay as the hover feedback."
       },
       {
         "name": "lights-twinkle",
@@ -332,6 +337,13 @@
     ]
   },
   "components": [
+    {
+      "name": "Marquee",
+      "kind": "section",
+      "description": "The Associati band on the home: the reasons to join in display type (Plex Sans 700), running edge to edge between two hairlines, separated by white squares. Two identical groups slide by half the track; the second is aria-hidden. A stop button sits at the right edge.",
+      "html": "<div class=\"ds-marquee\"><div class=\"ds-marquee__track\"><ul><li>Entra nella comunità</li><li>Sostieni corsi e progetti</li><li>Vota in assemblea</li><li>Cultura hacker dal 1994</li></ul><ul aria-hidden=\"true\"><li>Entra nella comunità</li><li>Sostieni corsi e progetti</li><li>Vota in assemblea</li><li>Cultura hacker dal 1994</li></ul></div></div>",
+      "css": ".ds-marquee{overflow:hidden;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;background:#000;color:#fff}.ds-marquee__track{display:flex;width:max-content;animation:ds-marquee 60s linear infinite}.ds-marquee:hover .ds-marquee__track{animation-play-state:paused}.ds-marquee ul{display:flex;flex-shrink:0;list-style:none;margin:0;padding:0}.ds-marquee li{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;letter-spacing:-.03em;line-height:1;white-space:nowrap;padding:clamp(1rem,2vw,1.5rem) 0}.ds-marquee li::after{content:'';display:inline-block;width:.28em;height:.28em;background:#fff;margin:0 .55em;vertical-align:.12em}@keyframes ds-marquee{to{transform:translateX(-50%)}}@media(prefers-reduced-motion:reduce){.ds-marquee__track{animation:none}}"
+    },
     {
       "name": "Solid Button",
       "kind": "button",
