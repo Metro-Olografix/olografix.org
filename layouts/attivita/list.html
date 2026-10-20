@@ -29,21 +29,19 @@
   </div>
 </section>
 
-<!-- Upcoming -->
+<!-- Upcoming — only when there is something to show; the home carries the "nothing scheduled, come by" line -->
+{{ with $split.upcoming }}
 <section class="sec" aria-labelledby="h-up">
   <div class="wrap sec__in">
     <h2 class="sec__h sec__h--year sec__h--now" id="h-up">{{ T "upcomingEvents" | default "Upcoming Events" }}</h2>
     <div class="sec__body">
-      {{ with $split.upcoming }}
       <div class="evlist">
         {{ range . }}{{ partial "event-row.html" (dict "page" . "badge" (T "comingEvent") "summary" true) }}{{ end }}
       </div>
-      {{ else }}
-      <p class="empty">{{ T "noUpcomingActivities" }}</p>
-      {{ end }}
     </div>
   </div>
 </section>
+{{ end }}
 
 <!-- Past, grouped by year -->
 {{ with $split.past }}

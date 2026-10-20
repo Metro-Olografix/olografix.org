@@ -6,6 +6,7 @@ colors:
   surface: "#0e0e0e"
   surface-hover: "#161616"
   hairline: "#1a1a1a"
+  hairline-strong: "#333333"
   white: "#ffffff"
   white-80: "rgba(255,255,255,.8)"
   white-62: "rgba(255,255,255,.62)"
@@ -62,14 +63,24 @@ rounded:
   none: "0px"
 spacing:
   gutter: "clamp(1.25rem, 4vw, 2.5rem)"
-  row: "clamp(1.25rem, 2.5vw, 2rem)"
-  section: "clamp(4rem, 8vw, 7rem)"
+  row: "clamp(1rem, 2vw, 1.5rem)"
+  section: "clamp(3.5rem, 7vw, 6rem)"
+  nav: "3.5rem"
   container: "1180px"
   measure: "660px"
 components:
+  button-solid:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ink-black}"
+    typography: "{typography.label}"
+    rounded: "{rounded.none}"
+    padding: ".8rem 1.75rem"
+  button-solid-hover:
+    backgroundColor: "{colors.white-80}"
+    textColor: "{colors.ink-black}"
   button-outline:
     backgroundColor: "transparent"
-    textColor: "{colors.white-62}"
+    textColor: "{colors.white}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
     padding: ".8rem 1.75rem"
@@ -87,7 +98,7 @@ components:
   list-row:
     backgroundColor: "transparent"
     textColor: "{colors.white}"
-    padding: "clamp(1.25rem, 2.5vw, 2rem) 0"
+    padding: "clamp(1rem, 2vw, 1.5rem) 0"
   list-row-hover:
     backgroundColor: "{colors.surface}"
   info-block:
@@ -135,13 +146,14 @@ The secondary north star is the discipline the bulletin is set in. From Swiss In
 The palette is monochrome white on black, plus two signal colors that carry meaning, never mood.
 
 ### Primary
-- **Bulletin White** (white): all headlines and primary text, and the color every interactive element reaches on hover or active state. It is the system's only "accent".
+- **Bulletin White** (white): all headlines and primary text, and the color every interactive element reaches on hover or active state. It is the system's only "accent", and also the focus ring (1px, offset 3px) and the text-selection ground (black label on white).
 
 ### Neutral
 - **Ink Black** (ink-black): the page ground and the mobile menu ground. The site has no off-black base. The ground is true black.
 - **Night Surface** (surface): the hover fill on list rows, the dropdown menu background, the image placeholder.
 - **Night Surface Raised** (surface-hover): the hover fill inside the dropdown.
-- **Hairline** (hairline): every rule, border and divider: row separators, outline buttons, info-block grids, the footer top rule.
+- **Hairline** (hairline): every rule, border and divider: row separators, info-block grids, small ghost buttons, the footer top rule.
+- **Hairline Strong** (hairline-strong): the scrollbar thumb, and nothing else.
 - **Text 80** (white-80): lead paragraphs.
 - **Text 62** (white-62): body prose, secondary descriptions, nav links at rest, button labels at rest.
 - **Text 46** (white-46): tertiary metadata: dates, footer text, section labels, icons at rest, year dividers.
@@ -168,16 +180,17 @@ The palette is monochrome white on black, plus two signal colors that carry mean
 **Character:** Plex Sans carries the bulletin's voice: compact, slightly engineered, confident. Plex Mono is the machine voice. Both come from the same superfamily, so the switch from prose to metadata feels like changing register, not changing brand.
 
 ### Hierarchy
-- **Display / H1** (Bold 700, clamp(2.5rem→4rem), 1.05, −0.03em): page titles, the sede title, the mosaic headline.
-- **Headline / H2** (SemiBold 600, clamp(1.4rem→2.1rem), 1.2, −0.02em): project names, section side headings, year dividers (Text 46), markdown h2.
-- **Title / H3** (Medium 500, 0.95–1.1rem): event titles, board names, album titles, info-block values, markdown h3/h4.
+- **Display / H1** (Bold 700, clamp(2.5rem→4rem), 1.05, −0.03em): page titles, the sede title, the mosaic headline (the same curve, from 2rem).
+- **Headline / H2** (SemiBold 600, clamp(1.4rem→2.1rem), 1.2, −0.02em): the token for a name set above running text. In use: year dividers (clamp 1.3rem→1.75rem, Text 46), the markdown h2 (clamp 1.3rem→1.6rem), the names in generic lists, and the project names on the Progetti page, which run a step larger (clamp 1.9rem→3.2rem, 1.08, −0.03em) because each project has a sheet of its own.
+- **Side heading** (SemiBold 600, 1.05rem, −0.01em): the section headings in grid columns 1–3. They are set at Label scale on purpose: the content carries the weight, the heading only names it.
+- **Title / H3** (Medium 500, 0.95–1.1rem): event titles and the project names in the home rows, board names, album titles, info-block values, markdown h3/h4.
 - **Body** (400, clamp(0.95rem→1.05rem), 1.85): prose capped at 660px (about 65–70ch). Lead text runs up to 1.2rem at 80% white.
 - **Emphasis** (SemiBold 600): `strong`/`b` inside running text, used sparingly.
 - **Label** (Plex Sans 400–500, 0.72–0.85rem): nav links, buttons, badges, info-block labels (uppercase, 0.08em tracking), event metadata, status.
-- **Machine** (Plex Mono 400, 0.7–0.95rem): breadcrumb paths (`~ / …`), `~/pescara`-style card titles, dates in event columns, emails, nicknames, P.IVA/C.F., code.
+- **Machine** (Plex Mono 400, 0.7–1.2rem): breadcrumb paths (`~ / …`), `~/pescara`-style card titles, dates and years in index-row columns, emails, nicknames, P.IVA/C.F., code, and the BBS command (the largest machine text, clamp 1rem→1.2rem).
 
 ### Named Rules
-**The Machine Text Rule.** Plex Mono is only for text a machine would produce or read: paths, URLs, domains, emails, handles, IDs, code, and dates aligned in a column. Navigation, buttons, labels and sentences are Plex Sans. Mono is Regular only.
+**The Machine Text Rule.** Plex Mono is only for text a machine would produce or read: paths, URLs, domains, emails, handles, IDs, code, and dates aligned in a column. Navigation, buttons, labels and sentences are Plex Sans. Mono is Regular only; the one exception is the Shop's fleece print, which reproduces a printed garment in Bold.
 
 **The Manual Hierarchy Rule.** Heading weights follow the MX manual: H1 Bold 700, H2 SemiBold 600, H3 Medium 500, emphasis SemiBold 600. Nothing is heavier than 700.
 
@@ -192,15 +205,15 @@ The page uses a single centered column (max 1180px) with a fluid side gutter (cl
 
 Never add a decorative or stock photo just to fill a header. Photography is fact here: use a photo of the actual event, project or place, or use the text header.
 
-The content is index-shaped. Lists are rows divided by hairlines. On wider screens they become a grid: the project row is icon (3rem) / name / description, and the event row is date (90px) / content / badge. Sede facts sit in a 4-column grid of bordered blocks (2 columns on mobile), with the borders collapsed by negative margins so they draw one shared hairline lattice. Equipment uses a 1px-gap grid on the hairline color to get the same lattice.
+The content is index-shaped. Lists are rows divided by hairlines. On wider screens they become a grid: the event row is date (90px) / content / badge, and the home's project row is the same row with the start year in the date column and the subtitle as its second line. The geometric project marks belong to the Progetti page, where each project is its own section with mark and year in the side column; they are not repeated in the home rows. Sede facts sit in a 4-column grid of bordered blocks (2 columns on mobile), with the borders collapsed by negative margins so they draw one shared hairline lattice. Equipment uses a 1px-gap grid on the hairline color to get the same lattice.
 
-The home mosaic breaks out of the column to full viewport width on a 12-column photo grid with 4px gaps. It starts below the nav bar (4px under its hairline), never underneath it. It drops to 6 columns below 900px and 4 below 480px, hiding the tiles it can't place.
+The home mosaic breaks out of the column to full viewport width on a 12-column photo grid with 4px gaps. It starts below the nav bar (4px under its hairline), never underneath it. It drops to 6 columns below 900px, hiding the two tiles it can't place. Below 600px it becomes a 4 × 6 mosaic with all ten tiles that fills 75svh edge to edge under the nav bar, and the photo headers take the same height.
 
 Under the mosaic, the home keeps the menu's names and order — L'associazione (with the sedi and their live status inside), Attività (whose live end is "Prossimi eventi"; the archive of past events is on the Attività page), Progetti, Associati, Shop, with the BBS closing the page as it closes the menu. Photogallery stays in the menu without its own home section: the mosaic already speaks for it.
 
-All pages share one 12-column section grid (gutter clamp(1rem, 2vw, 1.5rem)). A side heading (Plex Sans 700, 1.05rem, white) sits in columns 1–3 and the content in columns 4–12. Below 768px (48em) the heading stacks above the content and the grid drops its column gaps, since every child then spans the full row. Sections after the first are separated by a 1px hairline that spans the content edges, with an even vertical rhythm (clamp(3.5rem, 7vw, 6rem)) on both sides. The desktop nav uses the same grid: logo in column 1, brand in 2–3, links starting on column 4 so they line up with section content, and the language switch (IT · EN · ES) flush right. Social links live in the footer and the mobile menu.
+All pages share one 12-column section grid (gutter clamp(1rem, 2vw, 1.5rem)). A side heading (Plex Sans 600, 1.05rem, white) sits in columns 1–3 and the content in columns 4–12. Below 768px (48em) the heading stacks above the content and the grid drops its column gaps, since every child then spans the full row. Sections after the first are separated by a 1px hairline that spans the content edges, with an even vertical rhythm (clamp(3.5rem, 7vw, 6rem)) on both sides. The desktop nav uses the same grid: logo in column 1, brand in 2–3, links starting on column 4 so they line up with section content, and the language switch (IT · EN · ES) flush right. Social links live in the footer and the mobile menu.
 
-Breakpoints are 480, 600, 640, 768, 900 and 1100px, written in `em` (30, 37.5, 40, 48, 56.25 and 68.75em) so they also respond to the reader's font-size setting: with the text at 200% a desktop window gets the mobile layout instead of colliding type. The 1100px (68.75em) breakpoint switches the nav from burger to the full grid nav (the language switch needs the room). Inner pages open with a page header (mono breadcrumb, display title; see the two kinds above) starting at column 1. The first section follows without a rule, and an untitled lead section (intro prose, the calendar bar) puts its content straight into columns 4–12. On Attività, the year groups use the side column as a large 600-weight year heading: upcoming events in white, past years in Text 46. Facts that need the full width (the sede info lattice) span columns 1–12.
+Breakpoints are 600, 640, 768, 900 and 1100px, plus 1024px for the photogallery's five-column grid, written in `em` (37.5, 40, 48, 56.25, 68.75 and 64em) so they also respond to the reader's font-size setting: with the text at 200% a desktop window gets the mobile layout instead of colliding type. The 1100px (68.75em) breakpoint switches the nav from burger to the full grid nav (the language switch needs the room). Inner pages open with a page header (mono breadcrumb, display title; see the two kinds above) starting at column 1. The first section follows without a rule, and an untitled lead section (intro prose, the calendar bar) puts its content straight into columns 4–12. On Attività, the year groups use the side column as a large 600-weight year heading: upcoming events in white, past years in Text 46. The upcoming group exists only when something is scheduled: with nothing coming up, the page goes straight from the calendar bar to the latest year. Facts that need the full width (the sede info lattice) span columns 1–12.
 
 ### Named Rules
 **The Objective Grid Rule.** Every element aligns to the column and to the 12-column grid the mosaic already uses. Elements that break out of the column (like the full-bleed mosaic) do so on the grid, never on an arbitrary offset.
@@ -215,7 +228,7 @@ The system is flat. There are no box-shadows on surfaces. Depth comes from two t
 
 The nav is not a layer over the page: it is a solid black bar with a hairline, and nothing (photo, map, title) ever runs underneath it.
 
-Nothing glows. Live status is carried by the color of the status text itself (see The LED Rule).
+Nothing glows. Live status is carried by the color of the status text itself (see The LED Rule). The one exception is seasonal: the Christmas lights on the Shop photo (see Shop).
 
 ### Named Rules
 **The No Lift Rule.** Nothing floats. Hover feedback is a tone fill, a color step to white, or a small horizontal nudge (4–16px). It is never a shadow or a vertical lift.
@@ -230,20 +243,24 @@ Every corner is square (0px): buttons, dropdowns, info blocks, images and the ba
 ## Components
 
 ### Buttons
-Ghost-outlined, Plex Sans and quiet until touched.
-- **Shape:** square (0px), 1px Hairline border, transparent fill.
-- **Outline (primary action):** Plex Sans 0.85rem/500, padding .8rem 1.75rem, Text 62.
-- **Small ghost (utility actions such as calendar download/subscribe/copy):** Plex Sans 0.78rem, padding .45rem .85rem.
-- **Hover:** border and label step to Bulletin White; the outline variant also fills with Night Surface. 0.2s transition.
+Every call to action is one of three kinds, ordered by what it asks of the visitor. The kind is decided by the action, never by the section it sits in, and the same kind looks the same on every page.
+
+1. **Solid** (`.obtn.obtn--solid`): commits the visitor. White ground, black label, Plex Sans 0.85rem/500, padding .8rem 1.75rem. At most one per page; on the home it is "Associati". Hover steps the ground to Text 80.
+2. **Outline** (`.obtn`): a distinct action beside the reading flow, most often one that leaves the site (the label then ends in ↗ and the link opens in a new tab): "Vai allo Shop", an event's own website, the Statuto. Same size as Solid, 1px border at Text 46 (the Hairline is too faint to read as a button on black) and a full-white label. Hover steps the border to Bulletin White and fills with Night Surface.
+3. **CTA Line** (`.cta`, below): continues within the site, to a section or to its full list.
+
+- **Shape:** square (0px), no shadow, `display: inline-block` so every box button has the same height.
+- **Small ghost (`.gbtn`, utility actions such as calendar download/subscribe/copy):** not a call to action, a control. Plex Sans 0.78rem, padding .45rem .85rem, Hairline border, Text 62 label. Hover steps border and label to Bulletin White.
+- **Transitions:** 0.2s on color, border and ground.
 
 ### CTA Line (signature)
-This is the system's main call to action: a Plex Sans label (0.85rem/500) with a thin underline, followed by a 1px hairline that stretches across the remaining width and ends in an arrow. On hover, a white line draws across the hairline from the left (`scaleX`, 0.6s, expo-out) and the arrow nudges 6px to the right. Use it for "Scopri di più", "Vedi tutti i progetti" and "Vai allo shop".
+The lowest of the three kinds, and the most used: a Plex Sans label (0.85rem/500) with a thin underline, followed by a 1px hairline that stretches across the remaining width and always ends in an arrow (→, even on the hero). On hover, a white line draws across the hairline from the left (`scaleX`, 0.6s, expo-out) and the arrow nudges 6px to the right. Use it for "Chi siamo?", "Scopri di più", "Tutte le attività" and "Tutti i progetti": places where the visitor keeps reading the site.
 
 ### Index Rows (signature)
 These rows are the bulletin's line items: projects, events and board members.
 - **Rest:** transparent, separated by a 1px Hairline bottom border (the first row also gets a top border).
-- **Hover:** fills with Night Surface and bleeds 0.75rem past the column on both sides. The title nudges right (4–6px) and the secondary text steps up one opacity tier.
-- **Event badge:** the "Prossimo" badge is Plex Sans 0.72rem in LED Green on a 12% green tint, square.
+- **Hover:** fills with Night Surface and bleeds 0.75rem past the column on both sides. The title nudges right 4px.
+- **Event badge:** the "Prossimamente" badge is Plex Sans 0.72rem in LED Green on a 12% green tint, square.
 
 ### Info Blocks
 Facts about a sede (Orario, Come arrivare, Zona, Contatti). Each block has an uppercase Plex Sans label (0.72rem, 0.08em tracking, Text 46), a value in Title weight, and a sub-line in Text 46. The blocks sit in a collapsed-border lattice.
@@ -263,7 +280,7 @@ The logo comes from the official MX Graphics Standards Manual and is never redra
 ### Navigation
 - **Desktop (≥1100px):** the official MX monogram (24px high), Plex Sans links starting on grid column 4 (0.85rem, Text 62 at rest, white on hover) and the language switch flush right. The active page is white with a 1px underline offset 4px. The dropdown is a square Night Surface panel with a Hairline border, and its chevron rotates 180° when open. It opens on hover or focus, and Esc dismisses it (focus returns to its button) until the pointer or focus leaves.
 - **Bar:** fixed, solid Ink Black, `--nav-h` (3.5rem) tall with a 1px Hairline at the bottom, on every page and at every width. The home mosaic starts below it, and image headers are covered by it rather than showing through. The mobile menu's top row has the same height and hairline, so the logo and the burger/close button stay put when it opens. `scroll-padding-top` keeps anchored sections clear of it.
-- **Mobile:** a burger of three 1.5px lines. It opens a full-screen black overlay with huge Plex Sans links (clamp(1.75rem→3rem)/600) that slide 16px right on hover. Opening it moves focus to the close button (the overlay turns visible at once and only the opacity fades), everything behind it is inert, and Esc closes it and returns focus to the burger.
+- **Mobile:** a burger of three 1.5px lines. It opens a full-screen black overlay with huge Plex Sans links (clamp(1.6rem→3rem)/600) that slide 16px right on hover. Opening it moves focus to the close button (the overlay turns visible at once and only the opacity fades), everything behind it is inert, and Esc closes it and returns focus to the burger.
 - **Language switch:** always IT · EN · ES on every page. A language links to the page's translation, or, when the page has none, to the same section in that language, then to that language's home.
 
 ### Photo Mosaic
@@ -273,10 +290,12 @@ A full-bleed 12-column grid of real photos with 4px gaps. Photos show at `graysc
 The association was born as a BBS and the board still runs, so it gets a recognizable access: the last entry of the menu (and the mobile menu), "BBS", pointing at `telnet://bbs.olografix.org`, and the last home section — a short paragraph of what it is, ending on a colon that the command itself answers (`$ telnet bbs.olografix.org`, Plex Mono as the link: The Machine Text Rule). The footer link stays.
 
 ### Associati (home)
-Joining the community outweighs buying from the Shop, so it precedes it: a short invitation, the membership fees in one Plex Sans line, and the page's only filled button — the inverted `.obtn` (white ground, black label), the strongest action the bulletin can make.
+Joining the community outweighs buying from the Shop, so it precedes it: a short invitation, the membership fees in one Plex Sans line, and the page's only Solid button (see Buttons), the strongest action the bulletin can make.
 
 ### Shop (home)
-The Shop section uses the same side heading as every other home section ("Shop", columns 1–3). Its body (columns 4–12) is its own 9-column grid: the photo in the first four columns and, after one empty column, the fleece print ("INFORMATION WANTS TO BE FREE.", Plex Mono Bold, every line justified to 11ch, with "FREE." boxed in white), the intro, the bundle price and the outline button. Photo and print are top-aligned with the heading. The print is capped at 14.5cqi so it never leaves its column.
+The Shop section uses the same side heading as every other home section ("Shop", columns 1–3). Its body (columns 4–12) is its own 9-column grid: the photo in the first four columns and, after one empty column, the fleece print ("INFORMATION WANTS TO BE FREE.", Plex Mono Bold, every line justified to 11ch, with "FREE." boxed in white), the intro, the bundle price and the Outline button (it leaves the site, hence the ↗). Photo and print are top-aligned with the heading. The print is capped at 14.5cqi so it never leaves its column.
+
+From 1 December to 6 January (a build-time switch, `enableShopEffect`, evaluated by `partials/is-lights-season.html`) strings of coloured, glowing, twinkling bulbs frame the Shop photo (`shop.css`, `partials/christmas-lights.html`). It is the system's one seasonal exception to The LED Rule and to the no-glow, no-shadow rules. It is hidden below 40em and stills under reduced motion. It is documented here so it is neither copied elsewhere nor mistaken for the system.
 
 ### Live Status
 The open/closed state of each sede, polled from `sede.olografix.org` every 60s while the tab is visible. It has four states, all set in Plex Sans: loading (Text 46), open (LED Green), closed (LED Red) and unknown (Text 46, "stato non disponibile"). Any failure (network error, non-2xx response, a body that isn't exactly `true` or `false`, an 8s timeout) shows unknown. It never falls back to "closed", because a false "closed" turns people away from an open door. The text is rewritten only when the state changes, so the live region doesn't re-announce itself.
@@ -298,7 +317,7 @@ The photogallery opens photos in lightbox2, reskinned in `lightbox.min.css` (the
 
 ### Don't:
 - **Don't** redraw, recolour, stretch or annotate the MX logo, or typeset "metro olografix" beside it. Use the official SVGs.
-- **Don't** use Plex Mono for navigation, buttons or sentences, or at any weight other than Regular.
+- **Don't** use Plex Mono for navigation, buttons or sentences, or at any weight other than Regular (the Shop's fleece print is the only Bold).
 - **Don't** use red or green for anything except live status (The LED Rule).
 - **Don't** round corners or add box-shadows to any surface.
 - **Don't** introduce a text opacity outside 100/80/62/46%.
@@ -314,7 +333,7 @@ The photogallery opens photos in lightbox2, reskinned in `lightbox.min.css` (the
 - Page shell: `layouts/_default/baseof.html` → `partials/nav.html`, `partials/mobile-menu.html`, `partials/footer.html`.
 - Page headers: `partials/page-header.html` (photo header when the caller or the page's front matter gives an `image`, text header otherwise). The `image`/`imagePosition` fields are in the Attività archetype and in Front Matter CMS (`frontmatter.json`) for Attività, Progetti, Associazione and default pages.
 - Section grid markup: `<section class="sec"><div class="wrap sec__in"><h2 class="sec__h">…</h2><div class="sec__body">…</div></div></section>`. Omit the `h2` for a lead section; add `sec__body--full` to span all 12 columns.
-- Index rows: `partials/event-row.html` (activities) and `partials/project-row.html` (projects, with `partials/project-mark.html`). Give a new project a mark by adding its file name to `project-mark.html`, or set `mark:` in its front matter to reuse one.
+- Index rows: `partials/event-row.html` (activities) and `partials/project-row.html` (the home's projects, rendered with the same `.ev` classes). The marks in `partials/project-mark.html` appear on the Progetti page; give a new project a mark by adding its file name there, or set `mark:` in its front matter to reuse one.
 - Live status light: `partials/sede-status.html`, driven by `static/js/main.js` from `sede.olografix.org`.
 - Markdown headings are renumbered by `layouts/_default/_markup/render-heading.html`: the shallowest heading in a page becomes h2, so content that opens with `###` doesn't skip levels. Authors can keep writing whatever level reads right in the source.
 - Markdown content gets `.prose` styling. The handful of Tailwind utility classes that existing content embeds on images (`md:float-right`, `md:float-left`, `max-w-sm`, `max-w-lg`) are mapped in `style.css`. Don't add new ones; prefer plain markdown.
