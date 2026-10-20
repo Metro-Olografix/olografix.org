@@ -87,4 +87,6 @@ galleryClose = "Cerrar la foto"
 # Home: BBS, Associati
 bbsIntro = "Metro Olografix nació como BBS: un tablón electrónico al que se llegaba por teléfono, cuando la red en casa era todavía un sueño. La nuestra sigue activa:"
 joinIntro = "Metro Olografix es quien la mantiene viva: al asociarte apoyas los cursos, los proyectos y la vida de la sede, y entras en una comunidad que comparte cultura hacker desde 1994. Como socia o socio participas en las asambleas y votas."
+joinMarquee = "Entra en la comunidad|Apoya cursos y proyectos|Vota en la asamblea|Cultura hacker desde 1994"
+marqueeStop = "Detener el texto en movimiento"
 joinFees = "Cuota ordinaria 30€ · reducida 15€ para menores de 21, estudiantes"
