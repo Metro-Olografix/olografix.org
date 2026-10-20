@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function updateDateDisplay(element, nextDate, todayText, tomorrowText, nextText, endedText) {
     // If nextDate is null, the recurring event has ended
     if (!nextDate) {
-      element.innerHTML = `<em class="text-gray-500">${endedText}</em>`;
+      element.innerHTML = `<em>${endedText}</em>`;
       return;
     }
     
