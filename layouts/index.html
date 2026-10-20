@@ -104,13 +104,35 @@
   </div>
 </section>
 
-<!-- ASSOCIATI — the invitation to join the community, with more weight than the Shop that follows -->
+<!-- ASSOCIATI — the invitation to join the community, with more weight than the Shop that follows. With
+     enableJoinMarquee the reasons to join run edge to edge in display type (joinMarquee, "|"-separated) in
+     place of the intro paragraph; the second group only closes the loop, so it is aria-hidden. Then the fees
+     and the page's only Solid button -->
+{{ $marquee := site.Params.enableJoinMarquee }}
 {{ with site.GetPage "/associazione/associati" }}
-<section class="sec" id="associati" aria-labelledby="h-join">
+<section class="sec{{ if $marquee }} join{{ end }}" id="associati" aria-labelledby="h-join">
+  {{ if $marquee }}
+  <div class="marquee">
+    <div class="marquee__track">
+      {{ $reasons := split (T "joinMarquee") "|" }}
+      {{ range slice false true }}
+      <ul class="marquee__group"{{ if . }} aria-hidden="true"{{ end }}>
+        {{ range $reasons }}<li>{{ trim . " " }}</li>{{ end }}
+      </ul>
+      {{ end }}
+    </div>
+    <button type="button" class="marquee__stop" aria-pressed="false" aria-label="{{ T "marqueeStop" }}">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <path class="marquee__pause" d="M4 2h2.5v12H4zM9.5 2H12v12H9.5z" />
+        <path class="marquee__play" d="M4 2l10 6-10 6z" />
+      </svg>
+    </button>
+  </div>
+  {{ end }}
   <div class="wrap sec__in">
     <h2 class="sec__h" id="h-join">{{ .Title }}</h2>
     <div class="sec__body">
-      <p class="intro__text">{{ T "joinIntro" }}</p>
+      {{ if not $marquee }}<p class="intro__text">{{ T "joinIntro" }}</p>{{ end }}
       <p class="join__fees">{{ T "joinFees" }}</p>
       <a href="{{ .RelPermalink }}" class="obtn obtn--solid">{{ .Title }}</a>
     </div>

@@ -114,6 +114,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }, true);
   }
 
+  // ── Associati marquee: hover pauses it in CSS; the button stops it for keyboard and touch (WCAG 2.2.2)
+  document.querySelectorAll(".marquee__stop").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const stopped = btn.getAttribute("aria-pressed") !== "true";
+      btn.setAttribute("aria-pressed", String(stopped));
+      btn.closest(".marquee").classList.toggle("is-stopped", stopped);
+    });
+  });
+
   // ── Footer easter egg: hover "Hugo" and press S ────────────────
   const hugo = document.querySelector(".hugo-text");
   if (hugo) {
