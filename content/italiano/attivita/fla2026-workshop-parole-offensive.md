@@ -2,8 +2,10 @@
 title: "Workshop - Parole offensive"
 subtitle: "Laboratorio pratico a cura di Metro Olografix al FLA Festival 2026: convinci un giudice IA e strappa un segreto a un'altra IA."
 date: "2026-11-06T20:00:00"
+endDate: "2026-11-06T21:00:00"
 recurring: false
-location: "Polo Bibliotecario Aternino, Pescara"
+location: "Polo Bibliotecario Aternino - Piazza Giuseppe Garibaldi, 51, Pescara"
+locationUrl: "https://maps.app.goo.gl/WZ9QMnfFatcpRx8Q6"
 ---
 
 Nell'ambito di **FLA - Festival di Libri e Altrecose 2026**, Metro Olografix porta un laboratorio pratico sulle parole come strumento d'attacco verso i sistemi di intelligenza artificiale.

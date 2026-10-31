@@ -2,8 +2,10 @@
 title: "Workshop - Parole offensive (Offensive Words)"
 subtitle: "Hands-on lab by Metro Olografix at FLA Festival 2026: persuade an AI judge and pry a secret out of another AI."
 date: "2026-11-06T20:00:00"
+endDate: "2026-11-06T21:00:00"
 recurring: false
-location: "Polo Bibliotecario Aternino, Pescara"
+location: "Polo Bibliotecario Aternino - Piazza Giuseppe Garibaldi, 51, Pescara"
+locationUrl: "https://maps.app.goo.gl/WZ9QMnfFatcpRx8Q6"
 ---
 
 As part of **FLA - Festival di Libri e Altrecose 2026**, Metro Olografix runs a hands-on lab on words as an attack tool against artificial intelligence systems.

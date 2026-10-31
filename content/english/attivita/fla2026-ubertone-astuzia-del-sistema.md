@@ -2,6 +2,7 @@
 title: "L'astuzia del sistema - Talk by Michele Ubertone"
 subtitle: "Law as an activity, through game theory and cognitive science, at FLA Festival 2026."
 date: "2026-11-07T12:00:00"
+endDate: "2026-11-07T13:00:00"
 recurring: false
 location: "Laboratorio Didattico - Museo delle Genti d'Abruzzo, Via delle Caserme 24, Pescara"
 ---

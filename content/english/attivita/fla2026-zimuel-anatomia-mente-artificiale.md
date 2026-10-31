@@ -2,8 +2,10 @@
 title: "Anatomy of an Artificial Mind - Talk by Enrico Zimuel"
 subtitle: "Foundations and promises of artificial intelligence, at FLA Festival 2026."
 date: "2026-11-06T19:00:00"
+endDate: "2026-11-06T20:00:00"
 recurring: false
-location: "Polo Bibliotecario Aternino, Pescara"
+location: "Polo Bibliotecario Aternino - Piazza Giuseppe Garibaldi, 51, Pescara"
+locationUrl: "https://maps.app.goo.gl/WZ9QMnfFatcpRx8Q6"
 ---
 
 As part of **FLA - Festival di Libri e Altrecose 2026**, in the section curated by Metro Olografix, Enrico Zimuel presents his book *Anatomia di una mente artificiale* ("Anatomy of an Artificial Mind").
