@@ -1,0 +1,16 @@
+{{- /* Language switch: always IT · EN · ES, on every page. A language links to this page's translation;
+       when there isn't one (some activities exist only in Italian) it falls back to the same section in
+       that language, then to its home, so the switch never disappears or changes shape. */ -}}
+{{- $page := . -}}
+<ul class="lang" aria-label="{{ T "language" }}">
+  {{- range $page.Sites }}
+  {{- $site := . }}
+  {{- $lang := .Language.Lang }}
+  {{- $target := false }}
+  {{- range $page.AllTranslations }}{{ if eq .Language.Lang $lang }}{{ $target = . }}{{ end }}{{ end }}
+  {{- if not $target }}{{ with $page.Section }}{{ $target = $site.GetPage (printf "/%s" .) }}{{ end }}{{ end }}
+  {{- if not $target }}{{ $target = $site.Home }}{{ end }}
+  {{- $current := eq $lang $page.Language.Lang }}
+  <li><a href="{{ $target.RelPermalink }}" hreflang="{{ $lang }}" lang="{{ $lang }}"{{ if $current }} class="on" aria-current="true"{{ end }}>{{ .Language.LanguageName }}</a></li>
+  {{- end }}
+</ul>

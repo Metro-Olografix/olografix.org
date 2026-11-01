@@ -1,0 +1,15 @@
+{{- /* Markdown headings start at h2 under the page's h1, whatever level the author typed.
+       Content often opens with ### or ####; shift every heading so the shallowest one in the
+       page becomes h2 and the relative structure is kept (no skipped levels, WCAG 1.3.1).
+       Fenced code is ignored so shell comments ("# ...") don't count as headings. */ -}}
+{{- $raw := replaceRE "(?s)(```|~~~).*?(```|~~~)" "" .Page.RawContent -}}
+{{- $min := 6 -}}
+{{- range findRE `(?m)^#{1,6}[ \t]` $raw -}}
+  {{- $n := len (strings.TrimRight " \t" .) -}}
+  {{- if lt $n $min }}{{ $min = $n }}{{ end -}}
+{{- end -}}
+{{- $level := add (sub .Level $min) 2 -}}
+{{- if lt $level 2 }}{{ $level = 2 }}{{ end -}}
+{{- if gt $level 6 }}{{ $level = 6 }}{{ end -}}
+<h{{ $level }} id="{{ .Anchor }}"{{ with .Attributes.class }} class="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</h{{ $level }}>
+{{- /**/ -}}

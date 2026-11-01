@@ -1,37 +1,23 @@
 {{ define "main" }}
 {{ $serverBase := .Site.Params.galleryServer }}
 {{ $albumName := .Params.album }}
-{{ $albumDataJson := resources.GetRemote (printf "%s/%s/index.json" $serverBase $albumName) }}
-{{ $albumData := dict }}
-{{ $albumData = $albumDataJson | transform.Unmarshal }}
+{{ partial "page-header.html" (dict "page" . "subtitle" .Params.description) }}
 
-<article class="max-w-7xl mx-auto">
-    <header class="mb-8">
-        <h1 class="text-4xl font-bold text-primary-dark tracking-tight">{{ .Title }}</h1>
-        {{ with .Params.description }}
-            <h2 class="text-xl text-primary-dark mt-4">{{ . }}</h2>
+<section class="sec">
+  <div class="wrap sec__in">
+    <div class="sec__body sec__body--full">
+      {{ with resources.GetRemote (printf "%s/%s/index.json" $serverBase $albumName) }}
+      {{ $albumData := . | transform.Unmarshal }}
+      {{ $total := len $albumData.images }}
+      <div class="gallery" data-lb-counter="{{ T "galleryCounter" }}" data-lb-prev="{{ T "galleryPrev" }}" data-lb-next="{{ T "galleryNext" }}" data-lb-close="{{ T "galleryClose" }}">
+        {{ range $i, $img := $albumData.images }}
+        <a href="{{ printf "%s/%s/%s" $serverBase $albumName $img.name }}" data-lightbox="gallery" aria-label="{{ T "galleryPhotoLabel" (dict "N" (add $i 1) "Total" $total) }}">
+          <img src="{{ printf "%s/%s/%s" $serverBase $albumName $img.thumbnail }}" alt="" loading="lazy" width="300" height="300" />
+        </a>
         {{ end }}
-    </header>
-
-    <section class="gallery-container">
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-6">
-            {{ range $albumData.images }}
-                {{ $imageUrl := printf "%s/%s/%s" $serverBase $albumName .name }}
-                {{ $thumbnailUrl := printf "%s/%s/%s" $serverBase $albumName .thumbnail }}
-                <div class="gallery-item group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <a href="{{ $imageUrl }}" 
-                        data-lightbox="gallery" 
-                        aria-label="{{ .Title }}"
-                        class="block aspect-square">
-                        <img src="{{ $thumbnailUrl }}" 
-                                loading="lazy"
-                                class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-105"
-                                width="300"
-                                height="300">
-                    </a>
-                </div>
-            {{ end }}
-        </div>
-    </section>
-</article>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
 {{ end }}

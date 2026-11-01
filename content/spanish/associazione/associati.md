@@ -1,13 +1,14 @@
 ---
 title: "Asociate"
 layout: single
+image: "/images/tessera.jpeg"
 ---
 
 Si quieres involucrarte con la asociación Metro Olografix, o simplemente apoyarla, puedes unirte en línea en pocos minutos:
 
 - Completa el formulario electrónico de membresía:
 
-<a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Completa aquí</a>
+<a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="obtn obtn--solid" target="_blank" rel="noopener">Completa aquí ↗</a>
 
 - Paga la cuota social:
     - Ordinaria: 30 euros

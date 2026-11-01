@@ -1,6 +1,8 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 subtitle: ""
+image: ""  # Optional header photo, a real one from the event (e.g. /images/foo.jpg); empty = compact text header
+imagePosition: ""  # Optional focus for the header photo, e.g. "center 30%"
 date: {{ .Date }}
 endDate: ""  # Optional end date for multi-day events
 externalUrl: ""  # URL for external event page (optional)

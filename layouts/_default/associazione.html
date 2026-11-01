@@ -1,64 +1,36 @@
 {{ define "main" }}
-<article>
-    <h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
-    {{ partial "card.html" (dict
-    "content" .Content
-    "withShadow" true ) }}
-</article>
+{{ partial "page-header.html" (dict "page" .) }}
 
-<div class="mt-8 flex max-w-full flex-row">
-    {{ with .CurrentSection.GetPage "statuto.md" }}
-    <div
-        class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
-        <a href="{{ .RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
-            {{ .Title }}
-        </a>
+<section class="sec">
+  <div class="wrap sec__in">
+    <div class="sec__body">
+      <div class="prose">{{ .Content }}</div>
+      <div class="actbtns">
+        {{ with .CurrentSection.GetPage "statuto.md" }}<a href="{{ .RelPermalink }}" class="obtn">{{ .Title }}</a>{{ end }}
+        {{ with .CurrentSection.GetPage "associati.md" }}<a href="{{ .RelPermalink }}" class="obtn">{{ .Title }}</a>{{ end }}
+      </div>
     </div>
-    {{ end }}
+  </div>
+</section>
 
-    {{ with .CurrentSection.GetPage "associati.md" }}
-    <div
-        class="flex-col w-1/2 bg-accent text-primary-light p-4 rounded-lg mb-8 hover:bg-primary-dark transition-colors duration-300 m-2">
-        <a href="{{ .RelPermalink | relLangURL }}" class="block text-center text-xl font-bold">
-            {{ .Title }}
-        </a>
+<section class="sec" aria-labelledby="h-board">
+  <div class="wrap sec__in">
+    <h2 class="sec__h" id="h-board">{{ T "boardText" }}</h2>
+    <div class="sec__body">
+      <div class="bgrid">
+        {{ range shuffle .Site.Params.direttivo }}
+        {{ $role := lower .role }}
+        {{ $email := .nickname }}
+        {{ if eq $role "presidente" }}{{ $email = "presidente" }}{{ else if eq $role "vice presidente" }}{{ $email = "segretario" }}{{ else if eq $role "tesoriere" }}{{ $email = "tesoriere" }}{{ end }}
+        <div class="bcard">
+          <div class="bcard__name">{{ .name }}</div>
+          {{ with .nickname }}<div class="bcard__nick">"{{ . }}"</div>{{ end }}
+          <div class="bcard__role">{{ T (printf "role_%s" (replace $role " " "_")) }}</div>
+          {{ with $email }}<a href="mailto:{{ . }}@olografix.org" class="bcard__mail">{{ . }}@olografix.org</a>{{ end }}
+        </div>
+        {{ end }}
+      </div>
     </div>
-    {{ end }}
-</div>
-
-<article>
-    <h2 class="text-4xl font-bold mb-8 text-primary-dark">{{ T "boardText" }}</h2>
-
-    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center lg:justify-center">
-        {{ $boardMembers := .Site.Params.direttivo }}
-        {{ $shuffled := shuffle $boardMembers }}
-        {{ range $shuffled }}
-        {{ $emailAddr := .nickname }}
-        {{ $lowercaseRole := lower .role }}
-
-        {{ if eq $lowercaseRole "presidente" }}
-        {{ $emailAddr = "presidente" }}
-        {{ else if eq $lowercaseRole "vice presidente" }}
-        {{ $emailAddr = "segretario" }}
-        {{ else if eq $lowercaseRole "tesoriere" }}
-        {{ $emailAddr = "tesoriere" }}
-        {{ end }}
-
-        {{ $roleKey := printf "role_%s" (replace $lowercaseRole " " "_") }}
-        {{ $translatedRole := T $roleKey }}
-
-        {{ if eq $emailAddr "" }}
-        {{ partial "card.html" (dict
-        "title" (printf "%s" .name)
-        "content" $translatedRole) }}
-        {{ else }}
-        {{ partial "card.html" (dict
-        "title" (printf "%s \"%s\"" .name .nickname)
-        "content" $translatedRole
-        "goToLink" (printf "mailto:%s@olografix.org" $emailAddr)
-        "goToText" "email") }}
-        {{ end }}
-        {{ end }}
-    </section>
-</article>
+  </div>
+</section>
 {{ end }}
