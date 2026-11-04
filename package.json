@@ -11,6 +11,8 @@
     "test:ics": "node tests/validate-ics.js"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
     "@resvg/resvg-js": "^2.4.1",
     "satori": "^0.10.9"
   },
