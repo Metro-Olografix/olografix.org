@@ -10,9 +10,12 @@
     "year": "2008"
   },
   {
-    "src": "/images/mosaic/moca2024-IMG20240.jpg",
-    "album": "moca2024",
-    "year": "2024"
+    "src": "/images/mosaic/moca-2012-7872579684.jpg",
+    "album": "moca-2012",
+    "year": "2012",
+    "credit": "nodef",
+    "creditUrl": "https://www.flickr.com/photos/85947068@N06/7872579684/",
+    "license": "allRightsReserved"
   },
   {
     "src": "/images/mosaic/serata-in-sede-1e34be29.jpg",
@@ -35,9 +38,12 @@
     "year": "2025"
   },
   {
-    "src": "/images/mosaic/why-2025-1000141905.jpg",
-    "album": "why-2025",
-    "year": "2025"
+    "src": "/images/mosaic/flickr-3887695709.jpg",
+    "album": "flickr-mauro.luzi",
+    "year": "",
+    "credit": "mauro.luzi",
+    "creditUrl": "https://www.flickr.com/photos/ik3xbo/3887695709/",
+    "license": "allRightsReserved"
   },
   {
     "src": "/images/sedeaq_inside.jpeg",

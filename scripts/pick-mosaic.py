@@ -12,6 +12,8 @@ Rerolled tiles come from albums the mosaic doesn't use yet. Photos that are too 
 in the mosaic's grayscale are skipped automatically; screenshots and the like need a human eye.
 Needs Python 3 and Pillow (pip install pillow). Files of replaced tiles are left in place:
 delete them from static/images/mosaic/ and static/images/opt/ if you don't want to keep them.
+Tiles added by hand with a `credit` (photos from outside the gallery) survive a --reroll of other
+tiles, but a full redraw replaces them.
 """
 import argparse
 import io

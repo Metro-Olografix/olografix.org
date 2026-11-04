@@ -60,6 +60,7 @@ comingEvent = "Próximamente"
 
 # Underground Bulletin theme
 heroTitle = "{{ .Count }} años de cultura hacker"
+allRightsReserved = "todos los derechos reservados"
 skipToContent = "Ir al contenido"
 mainNav = "Navegación principal"
 openMenu = "Abrir menú"

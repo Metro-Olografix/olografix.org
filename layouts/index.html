@@ -10,9 +10,16 @@
 <!-- MOSAIC — ten real photos, hand-picked from the photogallery and the sedi (data/mosaic.json, in tile
      order m1 … m10); the headline counts the years since 1994 -->
 <section class="mosaic" aria-labelledby="h-hero">
-  <div class="mosaic__grid" aria-hidden="true">
+  {{- /* The photos are decorative (alt=""), so the grid stays readable only for the credits of the tiles that
+         aren't ours (data/mosaic.json: credit, creditUrl, license = an i18n key) */}}
+  <div class="mosaic__grid">
     {{ range $i, $t := site.Data.mosaic }}
-    <div class="m{{ add $i 1 }}">{{ partial "img.html" (dict "src" $t.src "alt" "" "sizes" "(max-width: 599px) 50vw, 33vw" "loading" (cond (in (slice 3 7 8 9) $i) "lazy" "")) }}</div>
+    <div class="m{{ add $i 1 }}">{{ partial "img.html" (dict "src" $t.src "alt" "" "sizes" "(max-width: 599px) 50vw, 33vw" "loading" (cond (in (slice 3 7 8 9) $i) "lazy" "")) }}
+      {{- with $t.credit }}
+      {{- $text := printf "© %s" . }}{{ $lic := "" }}{{ with $t.license }}{{ $lic = printf ", %s" (T .) }}{{ end }}
+      {{- if $t.creditUrl }}<a class="mosaic__credit" href="{{ $t.creditUrl }}">{{ $text }}<span class="mosaic__lic">{{ $lic }}</span></a>
+      {{- else }}<span class="mosaic__credit">{{ $text }}<span class="mosaic__lic">{{ $lic }}</span></span>{{ end }}
+      {{- end }}</div>
     {{ end }}
   </div>
   <div class="mosaic__text">
