@@ -1,0 +1,19 @@
+{{- /* Sede page (associazione/sede/*): map hero with live status, then the markdown content. */ -}}
+{{ $id := .File.ContentBaseName }}
+{{ $maps := dict "pescara" "PE_SEDE_white.svg" "laquila" "AQ_SEDE_white.svg" }}
+<div class="sede__hero">
+  {{ with index $maps $id }}<img src="/images/map_backgrounds/{{ . }}?v=9" class="sede__map sede__map--{{ $id }}" alt="" />{{ end }}
+  <div class="sede__hero-over"></div>
+  <div class="wrap sede__hero-in">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="sede__title">{{ .Title }} <span class="sede__sep" aria-hidden="true">//</span> {{ partial "sede-status.html" (dict "id" $id "title" true) }}</h1>
+    {{ with .Params.subtitle }}<p class="sede__addr">{{ . }}</p>{{ end }}
+  </div>
+</div>
+<section class="sec">
+  <div class="wrap sec__in">
+    <div class="sec__body">
+      <div class="prose prose--wide">{{ .Content }}</div>
+    </div>
+  </div>
+</section>

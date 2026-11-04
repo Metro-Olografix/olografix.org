@@ -1,13 +1,14 @@
 ---
 title: "Join us"
 layout: single
+image: "/images/tessera.jpeg"
 ---
 
 If you want to get involved with the Metro Olografix association, or simply support it, you can join online in just a few minutes:
 
 - Fill out the electronic membership form:
 
-<a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="bg-accent !text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors" target="_blank" rel="noopener">Complete here</a>
+<a href="https://docuseal.co/d/4cbG9PyQAhRsVL" class="obtn obtn--solid" target="_blank" rel="noopener">Complete here ↗</a>
 
 - Pay the membership fee:
     - Standard fee: 30 euro

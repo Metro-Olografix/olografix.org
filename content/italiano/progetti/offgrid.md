@@ -4,8 +4,8 @@ subtitle: "Comunicazioni off-grid per comunità resilienti"
 date: 2026-01-01
 ---
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/lora.jpg"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:w-48"}]} -->
-<img src="/images/lora.jpg" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/lora-1280.webp"},{"name":"alt","value":"Un'antenna su un palo con un piccolo dispositivo radio, sul tetto di un edificio con il mare e le nuvole sullo sfondo"},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:w-48"}]} -->
+<img src="/images/opt/lora-1280.webp" alt="Un'antenna su un palo con un piccolo dispositivo radio, sul tetto di un edificio con il mare e le nuvole sullo sfondo" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 Le reti di comunicazione che usiamo ogni giorno -- telefonia mobile, Internet, Wi-Fi -- dipendono da infrastrutture centralizzate, aziende private e alimentazione elettrica costante. Quando una di queste viene a mancare, per un'emergenza naturale, un guasto o semplicemente perché ci si trova in una zona non coperta, si resta isolati.
@@ -16,7 +16,7 @@ Metro Olografix sta costruendo una rete LoRA sperimentale in Abruzzo, partendo d
 
 La rete utilizza il protocollo open source Meshtastic e conta attualmente diversi nodi attivi tra Pescara, Chieti e la costa adriatica, con test in corso verso le aree interne. In parallelo stiamo esplorando Reticulum, un protocollo di nuova generazione con crittografia nativa, come possibile evoluzione futura.
 
-### Come partecipare
+## Come partecipare
 
 Non serve essere esperti. Il progetto è aperto a chiunque e ci sono diversi modi per contribuire.
 
@@ -26,7 +26,7 @@ Non serve essere esperti. Il progetto è aperto a chiunque e ci sono diversi mod
 
 **Offrire un tetto.** Chi abita in un punto alto (ultimo piano, collina, posizione panoramica) e può ospitare un piccolo dispositivo esterno, anche alimentato a pannello solare, darebbe un contributo particolarmente prezioso per estendere la copertura.
 
-### Risorse
+## Risorse
 
 - [Knowledge base LoRA](https://kb.olografix.org/it/lora/home)
 - [Hardware consigliato](https://kb.olografix.org/it/lora/hardware)

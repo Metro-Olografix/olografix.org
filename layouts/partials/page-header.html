@@ -1,0 +1,24 @@
+{{- /* Page header: breadcrumb + display title (+ optional subtitle). Two kinds:
+       - with a photo: hero-height, the photo full-bleed behind the title (same treatment as the sede map headers);
+       - without: compact, so the content starts right after the title instead of under an empty black hero.
+       Args: page, title, subtitle, image, imagePosition (optional CSS object-position, e.g. "center 90%").
+       image/imagePosition fall back to the page's own front matter, so any page can opt into a photo header. */ -}}
+{{ $image := .image | default .page.Params.image }}
+{{ $position := .imagePosition | default .page.Params.imagePosition | default "" }}
+{{ if $image }}
+<header class="sede__hero">
+  {{ partial "img.html" (dict "src" $image "alt" "" "class" "sede__map sede__map--photo" "style" (cond (ne $position "") (printf "object-position:%s" $position) "")) }}
+  <div class="sede__hero-over"></div>
+  <div class="wrap sede__hero-in">
+    {{ partial "breadcrumbs.html" .page }}
+    <h1 class="sede__title">{{ .title | default .page.Title }}</h1>
+    {{ with .subtitle }}<p class="phdr__sub">{{ . }}</p>{{ end }}
+  </div>
+</header>
+{{ else }}
+<header class="wrap phdr">
+  {{ partial "breadcrumbs.html" .page }}
+  <h1 class="phdr__title">{{ .title | default .page.Title }}</h1>
+  {{ with .subtitle }}<p class="phdr__sub">{{ . }}</p>{{ end }}
+</header>
+{{ end }}

@@ -3,8 +3,8 @@ title: "Pescara"
 layout: single
 ---
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/photo_2025-10-13_21-31-15.jpg"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:max-w-sm"}]} -->
-<img src="/images/photo_2025-10-13_21-31-15.jpg" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 md:max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/photo_2025-10-13_21-31-15-640.webp"},{"name":"alt","value":"Un rincón de la sede de Pescara por la noche: una lámpara amarilla, la bandera MX en la pared y un iMac antiguo sobre una mesa de madera"},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"md:max-w-sm"}]} -->
+<img src="/images/opt/photo_2025-10-13_21-31-15-640.webp" alt="Un rincón de la sede de Pescara por la noche: una lámpara amarilla, la bandera MX en la pared y un iMac antiguo sobre una mesa de madera" class="w-full mb-4 md:float-right md:w-auto md:ml-4 md:max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 ¡Desde enero de 2025, Metro Olografix ha inaugurado un nuevo espacio en Pescara!
@@ -27,8 +27,8 @@ Nos encontramos en **Viale Marconi 278/1**, cerca del Estadio Adriático.
 
 ## Qué encontrar
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/lab-sede.png"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-left md:w-auto md:mr-4"},{"name":"sizeClass","value":"max-w-lg"}]} -->
-<img src="/images/lab-sede.png" alt="" class="w-full mb-4 md:float-left md:w-auto md:mr-8 max-w-lg max-w-full rounded-lg shadow-md mb-6" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/lab-sede-1280.webp"},{"name":"alt","value":"La mesa de trabajo del laboratorio de Pescara con dos impresoras 3D, un osciloscopio, una lámpara de escritorio y cajones de componentes"},{"name":"positionClass","value":"w-full mb-4 md:float-left md:w-auto md:mr-4"},{"name":"sizeClass","value":"max-w-lg"}]} -->
+<img src="/images/opt/lab-sede-1280.webp" alt="La mesa de trabajo del laboratorio de Pescara con dos impresoras 3D, un osciloscopio, una lámpara de escritorio y cajones de componentes" class="w-full mb-4 md:float-left md:w-auto md:mr-8 max-w-lg max-w-full rounded-lg shadow-md mb-6" />
 <!-- FM:Snippet:End -->
 
 ### El laboratorio
@@ -42,8 +42,8 @@ La sede está equipada con un laboratorio para electrónica y making. Todo el eq
 
 <br />
 
-<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/workshop-sede.png"},{"name":"alt","value":""},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"max-w-sm"}]} -->
-<img src="/images/workshop-sede.png" alt="" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
+<!-- FM:Snippet:Start data:{"id":"Positioned image","fields":[{"name":"mediaUrl","value":"/images/opt/workshop-sede-1280.webp"},{"name":"alt","value":"Un taller en la sede de Pescara: unas diez personas alrededor de mesas de madera con portátiles abiertos, carteles y camisetas MX en las paredes"},{"name":"positionClass","value":"w-full mb-4 md:float-right md:w-auto md:ml-4"},{"name":"sizeClass","value":"max-w-sm"}]} -->
+<img src="/images/opt/workshop-sede-1280.webp" alt="Un taller en la sede de Pescara: unas diez personas alrededor de mesas de madera con portátiles abiertos, carteles y camisetas MX en las paredes" class="w-full mb-4 md:float-right md:w-auto md:ml-4 max-w-sm max-w-full rounded-lg shadow-md" />
 <!-- FM:Snippet:End -->
 
 ### Actividades y talleres
@@ -69,5 +69,5 @@ Adherimos al estándar de [SpaceAPI](https://spaceapi.io/). Puedes encontrar el 
 
 Hay una app para Android disponible para consultar el estado del espacio rápidamente, distribuida en [F-Droid](https://f-droid.org/packages/io.spaceapi.community.myhackerspace/) y [Play Store](https://play.google.com/store/apps/details?id=io.spaceapi.community.myhackerspace).
 
-![](https://spaceapistatusimage.hosted.quelltext.eu/status?url=https%3A%2F%2Fsede.olografix.org%2Fspaceapi.json)
+![Estado actual del espacio, leído desde SpaceAPI](https://spaceapistatusimage.hosted.quelltext.eu/status?url=https%3A%2F%2Fsede.olografix.org%2Fspaceapi.json)
 

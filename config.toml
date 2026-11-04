@@ -6,6 +6,10 @@ buildFuture = true
 
 defaultContentLanguage = 'it'
 defaultContentLanguageInSubdir = false
+
+# No tags or categories on this site: without this Hugo builds empty /tags/ and /categories/ pages
+disableKinds = ['taxonomy', 'term']
+
 [languages]
   [languages.it]
     languageCode = 'it-IT'
@@ -55,6 +59,13 @@ target = ".*"
   archiveOldSite = "https://web.archive.org/web/20241002224544/https://www.olografix.org/"
 
   enableShopEffect = true
+
+  # The scrolling band of reasons to join on the home's Associati section (i18n joinMarquee).
+  # Off for now, until the copy is settled: the section shows the joinIntro paragraph instead.
+  enableJoinMarquee = false
+
+  # Umami analytics; delete this line to ship with no third-party scripts.
+  umamiWebsiteId = "8a990d14-c129-4220-9c0d-be2e2c59ee34"
 
   github = "https://github.com/Metro-Olografix"
   instagram = "https://www.instagram.com/metroolografix"

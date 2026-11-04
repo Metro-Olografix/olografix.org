@@ -1,195 +1,77 @@
 {{ define "main" }}
-<h1 class="text-4xl font-bold mb-8 text-primary-dark">{{ .Title }}</h1>
+{{ partial "page-header.html" (dict "page" . "image" "/images/workshop-sede.png") }}
+
+{{ $all := where .Site.RegularPages "Type" "attivita" }}
+{{ $all = $all | intersect .Site.AllPages }}
+{{ $split := partial "classify-activities.html" $all }}
+{{ $calendarUrl := printf "%scalendar.ics" .Site.BaseURL }}
 
 <!-- Calendar subscription -->
-<div class="bg-white p-4 border-4 border-primary-dark mb-8">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-        <div class="flex items-center mb-4 md:mb-0">
-            <i class="far fa-calendar-alt text-2xl text-accent mr-3"></i>
-            <div>
-                <h3 class="text-xl font-bold text-accent">{{ T "subscribeToCalendar" | default "Subscribe to Calendar" }}</h3>
-                <p class="text-sm text-gray-600">{{ T "calendarDescription" | default "Add our events to your calendar app" }}</p>
-            </div>
+<section class="sec">
+  <div class="wrap sec__in">
+    <div class="sec__body">
+      <div class="calbar">
+        <div class="calbar__info">
+          {{ partial "icon.html" "calendar-alt" }}
+          <div>
+            <div class="calbar__t">{{ T "subscribeToCalendar" | default "Subscribe to Calendar" }}</div>
+            <div class="calbar__d">{{ T "calendarDescription" | default "Add our events to your calendar app" }}</div>
+          </div>
         </div>
-        <div class="flex flex-col md:flex-row gap-3">
-            <a href="{{ .Site.BaseURL }}calendar.ics" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 text-center flex items-center justify-center gap-2">
-                <i class="fas fa-download"></i>
-                <span>{{ T "downloadCalendar" | default "Download" }}</span>
-            </a>
-            <a href="webcal:{{ strings.TrimPrefix "https://" (strings.TrimPrefix "http://" .Site.BaseURL) }}calendar.ics" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 text-center flex items-center justify-center gap-2">
-                <i class="fas fa-calendar-plus"></i>
-                <span>{{ T "subscribeDirectly" | default "Subscribe" }}</span>
-            </a>
-            <button id="copyButton" class="bg-accent text-primary-light px-2 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 flex items-center justify-center gap-2">
-                <i class="far fa-copy"></i>
-                <span>{{ T "copyUrl" | default "Copy URL" }}</span>
-                <input id="calendarUrl" type="text" value="{{ .Site.BaseURL }}calendar.ics" class="sr-only" aria-hidden="true" tabindex="-1" readonly />
-            </button>
+        <div class="calbar__btns">
+          <a href="{{ $calendarUrl }}" class="gbtn">{{ partial "icon.html" "download" }} {{ T "downloadCalendar" | default "Download" }}</a>
+          <a href="webcal://{{ strings.TrimPrefix "https://" (strings.TrimPrefix "http://" .Site.BaseURL) }}calendar.ics" class="gbtn">{{ partial "icon.html" "calendar-plus" }} {{ T "subscribeDirectly" | default "Subscribe" }}</a>
+          <button type="button" class="gbtn" id="copyButton" data-url="{{ $calendarUrl }}" data-copied="{{ T "copiedText" | default "Copied!" }}">{{ partial "icon.html" "copy" }} <span>{{ T "copyUrl" | default "Copy URL" }}</span></button>
+          <span class="sr-only" id="copyStatus" role="status"></span>
         </div>
+      </div>
+      <p class="calbar__note"><a href="https://www.fossify.org/apps/" target="_blank" rel="noopener">{{ T "androidSuggestion" }}</a></p>
     </div>
-    <div class="text-xs text-gray-600 mt-3 border-t border-gray-200 pt-2">
-        <a href="https://www.fossify.org/apps/" target="_blank" rel="noopener" class="text-accent hover:underline">
-            {{ T "androidSuggestion" | default "Android user? Try Fossify Calendar, an open-source app that supports calendar subscriptions." }}
-        </a>
+  </div>
+</section>
+
+<!-- Upcoming — only when there is something to show; the home carries the "nothing scheduled, come by" line -->
+{{ with $split.upcoming }}
+<section class="sec" aria-labelledby="h-up">
+  <div class="wrap sec__in">
+    <h2 class="sec__h sec__h--year sec__h--now" id="h-up">{{ T "upcomingEvents" | default "Upcoming Events" }}</h2>
+    <div class="sec__body">
+      <div class="evlist">
+        {{ range . }}{{ partial "event-row.html" (dict "page" . "badge" (T "comingEvent") "summary" true) }}{{ end }}
+      </div>
     </div>
-</div>
-
-{{ $now := now }}
-
-<!-- Get all activities including future events -->
-{{ $allActivities := where .Site.RegularPages "Type" "attivita" }}
-{{ $allActivities = $allActivities | intersect .Site.AllPages }}
-
-{{ $upcomingActivities := slice }}
-{{ $pastActivities := slice }}
-
-<!-- Classify each activity -->
-{{ range $allActivities }}
-    {{ $isUpcoming := false }}
-    
-    {{ if .Params.recurring }}
-        <!-- For recurring events, check if they have an end date -->
-        {{ if .Params.endDate }}
-            <!-- Recurring event with end date: upcoming if end date is in future -->
-            {{ $endDate := time.AsTime .Params.endDate }}
-            {{ if ge $endDate.Unix $now.Unix }}
-                {{ $isUpcoming = true }}
-            {{ end }}
-        {{ else }}
-            <!-- Recurring event without end date: always upcoming -->
-            {{ $isUpcoming = true }}
-        {{ end }}
-    {{ else }}
-        <!-- Non-recurring event: upcoming if start date is in future -->
-        {{ if ge .Date.Unix $now.Unix }}
-            {{ $isUpcoming = true }}
-        {{ end }}
-    {{ end }}
-    
-    <!-- Add to appropriate list -->
-    {{ if $isUpcoming }}
-        {{ $upcomingActivities = $upcomingActivities | append . }}
-    {{ else }}
-        {{ $pastActivities = $pastActivities | append . }}
-    {{ end }}
+  </div>
+</section>
 {{ end }}
 
-<!-- Sort upcoming events by date (ascending) -->
-{{ $upcomingActivities := sort $upcomingActivities ".Date" "asc" }}
-<!-- Sort past events by date (descending - most recent first) -->
-{{ $pastActivities := sort $pastActivities ".Date" "desc" }}
-
-<!-- First show upcoming events section if any exist -->
-{{ if $upcomingActivities }}
-<div class="mb-6">
-    <h2 class="text-2xl font-bold mb-6 bg-green-600 text-white p-2 rounded">{{ T "upcomingEvents" | default "Upcoming Events" }}</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Show all upcoming events -->
-        {{ range $upcomingActivities }}
-            <!-- Set up variables for links and external status -->
-            {{ $link := .RelPermalink | relLangURL }}
-            {{ $text := T "learnMoreText" }}
-            {{ $external := false }}
-            {{ $badge := "" }}
-            
-            {{ if .Params.externalUrl }}
-                {{ $link = .Params.externalUrl }}
-                {{ $text = T "goExternalText" }}
-                {{ $external = true }}
-            {{ end }}
-
-            <!-- Use the card partial -->
-            {{ partial "card.html" (dict
-                "title" .Title
-                "content" (.Params.subtitle | default .Summary)
-                "date" .Date
-                "endDate" .Params.endDate
-                "recurring" .Params.recurring
-                "recurrenceType" .Params.recurrenceType
-                "recurrenceDay" .Params.recurrenceDay
-                "recurrencePattern" .Params.recurrencePattern
-                "location" .Params.location
-                "locationUrl" .Params.locationUrl
-                "goToLink" $link
-                "goToText" $text
-                "badge" $badge
-                "isExternal" $external
-                "withShadow" true) }}
-        {{ end }}
+<!-- Past, grouped by year -->
+{{ with $split.past }}
+{{ range .GroupByDate "2006" }}
+<section class="sec" aria-labelledby="h-y{{ .Key }}">
+  <div class="wrap sec__in">
+    <h2 class="sec__h sec__h--year" id="h-y{{ .Key }}">{{ .Key }}</h2>
+    <div class="sec__body">
+      <div class="evlist">
+        {{ range .Pages }}{{ partial "event-row.html" (dict "page" . "dateFormat" "02 Jan") }}{{ end }}
+      </div>
     </div>
-</div>
+  </div>
+</section>
+{{ end }}
 {{ end }}
 
-<!-- Then show past events grouped by year -->
-{{ if $pastActivities }}
-<div>
-    <h2 class="text-2xl font-bold mb-6 bg-accent text-white p-2 rounded">{{ T "pastEvents" | default "Past Events" }}</h2>
-    
-    <!-- Group past activities by year -->
-    {{ $pastByYear := $pastActivities.GroupByDate "2006" }}
-    
-    <div class="space-y-12 mb-6">
-        {{ range $pastByYear }}
-        <div class="mb-8">
-            <h3 class="text-xl font-bold mb-4 bg-gray-200 p-2 rounded">{{ .Key }}</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {{ range .Pages }}
-                    <!-- Set up variables for links and external status -->
-                    {{ $link := .RelPermalink | relLangURL }}
-                    {{ $text := T "learnMoreText" }}
-                    {{ $external := false }}
-                    
-                    {{ if .Params.externalUrl }}
-                        {{ $link = .Params.externalUrl }}
-                        {{ $text = T "goExternalText" }}
-                        {{ $external = true }}
-                    {{ end }}
-                    
-                    <!-- Use the card partial -->
-                    {{ partial "card.html" (dict
-                        "title" .Title
-                        "content" (.Params.subtitle | default .Summary)
-                        "date" .Date
-                        "endDate" .Params.endDate
-                        "location" .Params.location
-                        "locationUrl" .Params.locationUrl
-                        "goToLink" $link
-                        "goToText" $text
-                        "isExternal" $external
-                        "withShadow" true) }}
-                {{ end }}
-            </div>
-        </div>
-        {{ end }}
-    </div>
-</div>
-{{ end }}
-
-<!-- JavaScript for the copy button -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const copyButton = document.getElementById('copyButton');
-        const calendarUrl = document.getElementById('calendarUrl');
-        
-        // Copy URL to clipboard
-        copyButton.addEventListener('click', function() {
-            calendarUrl.select();
-            document.execCommand('copy');
-            
-            // Show copy confirmation
-            const originalIcon = copyButton.querySelector('i').className;
-            const originalText = copyButton.querySelector('span').textContent;
-            
-            copyButton.querySelector('i').className = 'fas fa-check';
-            copyButton.querySelector('span').textContent = '{{ T "copiedText" | default "Copied!" }}';
-            
-            setTimeout(function() {
-                copyButton.querySelector('i').className = originalIcon;
-                copyButton.querySelector('span').textContent = originalText;
-            }, 2000);
-        });
+  (function () {
+    var b = document.getElementById('copyButton');
+    if (!b || !navigator.clipboard) { if (b) b.hidden = true; return; }
+    var label = b.querySelector('span'), original = label.textContent, status = document.getElementById('copyStatus');
+    b.addEventListener('click', function () {
+      navigator.clipboard.writeText(b.dataset.url).then(function () {
+        label.textContent = b.dataset.copied;
+        status.textContent = b.dataset.copied;
+        setTimeout(function () { label.textContent = original; status.textContent = ''; }, 2000);
+      });
     });
+  })();
 </script>
 {{ end }}

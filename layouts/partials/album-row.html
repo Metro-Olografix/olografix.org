@@ -1,0 +1,31 @@
+{{- /* One gallery album as a card: a 5-photo cover mosaic (random, picked at build time), title, description, photo count.
+       The whole card is the link; list-layout albums also list their sub-albums. Context: the page. */ -}}
+{{ $server := site.Params.galleryServer }}
+{{ $albums := cond (eq .Params.layout "list") .Pages (slice .) }}
+{{ $thumbs := slice }}
+{{ $count := 0 }}
+{{ range $albums }}
+  {{ $name := .Params.album }}
+  {{ if $name }}
+    {{ with resources.GetRemote (printf "%s/%s/index.json" $server $name) }}
+      {{ $d := . | transform.Unmarshal }}
+      {{ with $d.images }}
+        {{ $count = add $count (len .) }}
+        {{ range first 5 (shuffle .) }}{{ $thumbs = $thumbs | append (printf "%s/%s/%s" $server $name .thumbnail) }}{{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+<article class="acard">
+  <div class="acard__img{{ if lt (len $thumbs) 5 }} acard__img--single{{ end }}">
+    {{ range first 5 (shuffle $thumbs) }}<img src="{{ . }}" alt="" loading="lazy" />{{ end }}
+  </div>
+  <h3 class="acard__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ with .Description }}<p class="acard__desc">{{ . }}</p>{{ end }}
+  <p class="acard__meta">{{ if $count }}<span>{{ $count }} {{ T "photosLabel" }}</span>{{ end }}<span class="acard__go" aria-hidden="true">→</span></p>
+  {{ if eq .Params.layout "list" }}
+  <ul class="acard__sub">
+    {{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+  </ul>
+  {{ end }}
+</article>
