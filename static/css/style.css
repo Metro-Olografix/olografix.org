@@ -182,11 +182,12 @@ main>.sec:first-child{padding-top:0}
 
 .mosaic__text{position:absolute;left:0;right:0;bottom:0;padding:8rem 0 clamp(1.5rem,4vw,3rem);background:linear-gradient(to top,var(--scrim) 0%,var(--scrim-mid) 50%,transparent 100%);z-index:3;pointer-events:none}
 .mosaic__text a{pointer-events:auto}
-.mosaic__h{font-size:clamp(2rem,5.5vw,4rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:1rem}
+/* The home headline runs a step above every page title (the marquee token): the front page's first line */
+.mosaic__h{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;letter-spacing:-.03em;line-height:1;text-wrap:balance;margin-bottom:1.25rem}
 .mosaic__cta{max-width:280px}
 /* Credit of a tile that isn't ours: a black label in the tile's top-left corner (top, because the headline's scrim
    covers the bottom of the hero); on phones only "© author", the license stays for screen readers */
-.mosaic__credit{position:absolute;top:0;left:0;z-index:1;padding:.2rem .45rem;background:var(--bg);font-size:.7rem;line-height:1.4;color:var(--w3);text-decoration:none}
+.mosaic__credit{position:absolute;top:0;left:0;z-index:1;padding:.2rem .45rem;background:var(--bg);font-size:.7rem;line-height:1.4;color:var(--w4);text-decoration:none}
 a.mosaic__credit:hover{color:var(--w)}
 a.mosaic__credit:focus-visible{outline-offset:-2px}
 @media(max-width:37.4375em){.mosaic__lic{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}
@@ -265,6 +266,12 @@ a.mosaic__credit:focus-visible{outline-offset:-2px}
 .ev__meta span{display:inline-flex;align-items:center;gap:4px}
 .ev__badge{font-family:var(--sans);font-size:.72rem;padding:3px 8px;white-space:nowrap;align-self:start;justify-self:start}
 .ev__badge--up{background:var(--green-tint);color:var(--green)}
+/* Home lists: the same rows as Attività and Progetti with the names a step up (Headline small), so the front page
+   is not the small print of its own sections; the empty state speaks at Lead small */
+.evlist--home .ev__title{font-size:clamp(1.3rem,2.4vw,1.6rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:.4rem}
+@media(min-width:40em){.evlist--home .ev__date{padding-top:.5em}}
+.empty--lead{font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.65;color:var(--w2)}
+
 
 /* board */
 .bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));column-gap:var(--gap)}
@@ -439,10 +446,9 @@ main{flex:1;display:block}
 .shop__deal{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .75rem;color:var(--w3);font-size:clamp(.95rem,1.4vw,1.05rem);margin-bottom:clamp(1.75rem,3vw,2.25rem)}
 .shop__price{font-family:var(--mono);color:var(--w);font-size:1.15em}
 
-/* Photo/map page headers match the home mosaic's height (same formulas as .mosaic__grid rows) */
-:root{--hero-h:calc(var(--nav-h) + 5px + 4*clamp(70px,11vw,130px) + 12px)}
-@media(max-width:56.1875em){:root{--hero-h:calc(var(--nav-h) + 5px + 4*clamp(60px,14vw,100px) + 12px)}}
-.sede__hero{min-height:var(--hero-h)}
+/* Photo/map page headers sit a clear step below the home mosaic (about three quarters of its height): the mosaic
+   opens the front page, these open its sections */
+.sede__hero{min-height:calc(var(--nav-h) + clamp(14rem,26vw,22rem))}
 
 /* ═══════════ PROGETTI ═══════════  one sheet per project, Attività's rhythm */
 .proj__side{display:flex;flex-direction:column;align-items:flex-start;gap:.9rem}

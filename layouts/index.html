@@ -73,13 +73,13 @@
     <div class="sec__body">
       <h3 class="sec__sub" id="h-upcoming">{{ T "upcomingEvents" }}</h3>
       {{ if $upcoming }}
-      <div class="evlist">
+      <div class="evlist evlist--home">
         {{ range first 3 $upcoming }}
         {{ partial "event-row.html" (dict "page" . "badge" (T "comingEvent") "summary" true) }}
         {{ end }}
       </div>
       {{ else }}
-      <p class="empty">{{ T "noUpcomingActivities" }}</p>
+      <p class="empty empty--lead">{{ T "noUpcomingActivities" }}</p>
       {{ end }}
       <a href="{{ $activitiesSection.RelPermalink }}" class="cta sec__more">
         <span class="cta__label">{{ T "allActivities" }}</span>
@@ -97,7 +97,7 @@
   <div class="wrap sec__in">
     <h2 class="sec__h" id="h-prog">{{ T "projectsHeader" }}</h2>
     <div class="sec__body">
-      <div class="evlist">
+      <div class="evlist evlist--home">
         {{ range first 3 $projects }}
         {{ partial "project-row.html" . }}
         {{ end }}
