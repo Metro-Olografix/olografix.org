@@ -247,7 +247,6 @@ function cardData(filePath, fm, langDir) {
   const langRoot = join(CONTENT_DIR, langDir);
   const isHome = filePath === join(langRoot, '_index.md');
   const section = filePath.slice(langRoot.length + 1).split('/')[0];
-  const sedi = "Pescara · L'Aquila";
 
   if (isHome) {
     const hero = readI18n(code, 'heroTitle');
@@ -256,20 +255,18 @@ function cardData(filePath, fm, langDir) {
       title: hero ? hero.replace('{{ .Count }}', String(new Date().getFullYear() - 1994)) : 'Metro Olografix',
       lead: readSiteDescription(code),
       meta: null,
-      place: sedi,
+      place: null,
     };
   }
 
   const lead = fm.subtitle || fm.description || null;
   let meta = null;
-  let place = sedi;
+  let place = null;
   if (section === 'attivita' && !basename(filePath).startsWith('_index')) {
     meta = fm.recurring === 'true' ? null : formatDate(fm.date, fm.endDate, locale);
     place = fm.recurring === 'true' && fm.recurrencePattern ? fm.recurrencePattern : fm.location || null;
   } else if (fm.year) {
-    // A dated archive entry (album): the sedi line would misstate where it happened.
-    meta = fm.year;
-    place = null;
+    meta = fm.year; // dated archive entry (album)
   }
   return { crumb: breadcrumb(filePath, langRoot), title: fm.title, lead, meta, place };
 }
