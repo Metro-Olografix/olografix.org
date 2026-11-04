@@ -1,291 +1,329 @@
 #!/usr/bin/env node
 
+// OG / social cover generator (satori -> SVG -> resvg -> PNG, 1200x630).
+//
+// Cards follow "The Underground Bulletin" (DESIGN.md): pure black ground,
+// white type at the four AA tiers (100/80/62/46), IBM Plex Sans in the MX
+// hierarchy (title 700, side text 600, lead 400), Plex Mono Regular only for
+// machine text (breadcrumb path, dates, domain), the official MX logo SVG,
+// 1px hairlines, square corners, flush-left, no shadows/gradients/colour.
+//
+// Output: static/images/og/<lang>-<path-with-dashes>.png, e.g.
+//   content/italiano/attivita/git.md          -> it-attivita-git.png
+//   content/english/_index.md                 -> en-_index.png
+//   content/italiano/associazione/sede/x.md   -> it-associazione-sede-x.png
+// layouts/partials/og-image.html builds the same name from .File.Path.
+//
+// Usage: npm run og:generate            (only new or stale images)
+//        npm run og:generate -- --force (regenerate everything)
+
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'fs';
-import { join } from 'path';
+import { join, dirname, basename } from 'path';
+import { createRequire } from 'module';
+import { fileURLToPath } from 'url';
 
-// Simple frontmatter parser
+const require = createRequire(import.meta.url);
+const SCRIPT_PATH = fileURLToPath(import.meta.url);
+const FORCE = process.argv.includes('--force');
+
+const CONTENT_DIR = 'content';
+const OUTPUT_DIR = 'static/images/og';
+const LOGO_PATH = 'static/images/logo/MX_lettering_white.svg';
+
+// content/<dir> -> Hugo language code, locale for dates
+const LANGS = {
+  italiano: { code: 'it', locale: 'it-IT' },
+  english: { code: 'en', locale: 'en-GB' },
+  spanish: { code: 'es', locale: 'es-ES' },
+};
+
+// ---- Design tokens (DESIGN.md / static/css/style.css :root) ----------------
+const C = {
+  black: '#000000',
+  line: '#1a1a1a', // Hairline
+  w: '#ffffff', // Text 100
+  w2: 'rgba(255,255,255,.8)', // Text 80
+  w3: 'rgba(255,255,255,.62)', // Text 62
+  w4: 'rgba(255,255,255,.46)', // Text 46
+};
+// latin-ext is registered under its own name: satori falls back per glyph
+// along the font-family list, not between files sharing one family name.
+const SANS = "'IBM Plex Sans', 'IBM Plex Sans Ext'";
+const MONO = 'IBM Plex Mono';
+
+// ---- Grid: 1200x630, 12 columns, side column = cols 1-3 --------------------
+const W = 1200;
+const H = 630;
+const PAD_X = 64;
+const PAD_Y = 56;
+const GUTTER = 24;
+const COL = (W - 2 * PAD_X - 11 * GUTTER) / 12;
+const SIDE_W = Math.round(3 * COL + 2 * GUTTER); // cols 1-3
+const MAIN_W = W - 2 * PAD_X - SIDE_W - GUTTER; // cols 4-12
+const LOGO_W = 150; // official lettering SVG is 275.61 x 225.85
+const LOGO_H = Math.round((LOGO_W * 225.85323) / 275.61368);
+
+// ---- Fonts: only the files the card uses, from @fontsource (WOFF) ----------
+// latin covers it/en/es; latin-ext is a glyph fallback (e.g. "ə").
+const FONT_FILES = [
+  { name: 'IBM Plex Sans', weight: 400, pkg: '@fontsource/ibm-plex-sans', file: 'ibm-plex-sans-latin-400-normal.woff' },
+  { name: 'IBM Plex Sans', weight: 600, pkg: '@fontsource/ibm-plex-sans', file: 'ibm-plex-sans-latin-600-normal.woff' },
+  { name: 'IBM Plex Sans', weight: 700, pkg: '@fontsource/ibm-plex-sans', file: 'ibm-plex-sans-latin-700-normal.woff' },
+  { name: 'IBM Plex Sans Ext', weight: 400, pkg: '@fontsource/ibm-plex-sans', file: 'ibm-plex-sans-latin-ext-400-normal.woff' },
+  { name: 'IBM Plex Sans Ext', weight: 600, pkg: '@fontsource/ibm-plex-sans', file: 'ibm-plex-sans-latin-ext-600-normal.woff' },
+  { name: 'IBM Plex Sans Ext', weight: 700, pkg: '@fontsource/ibm-plex-sans', file: 'ibm-plex-sans-latin-ext-700-normal.woff' },
+  { name: MONO, weight: 400, pkg: '@fontsource/ibm-plex-mono', file: 'ibm-plex-mono-latin-400-normal.woff' },
+];
+
+function loadFonts() {
+  return FONT_FILES.map(({ name, weight, pkg, file }) => ({
+    name,
+    weight,
+    style: 'normal',
+    data: readFileSync(join(dirname(require.resolve(`${pkg}/package.json`)), 'files', file)),
+  }));
+}
+
+// ---- Content helpers -------------------------------------------------------
+
+// Minimal front matter parser: top-level `key: value` pairs only.
 function parseFrontmatter(content) {
-  const match = content.match(/^---\n(.*?)\n---/s);
+  const match = content.match(/^---\r?\n(.*?)\r?\n---/s);
   if (!match) return null;
-
-  const lines = match[1].split('\n');
   const data = {};
-
-  for (const line of lines) {
-    const colonIndex = line.indexOf(':');
-    if (colonIndex === -1) continue;
-
-    const key = line.substring(0, colonIndex).trim();
-    let value = line.substring(colonIndex + 1).trim();
-
-    // Remove quotes
-    if ((value.startsWith('"') && value.endsWith('"')) ||
-      (value.startsWith("'") && value.endsWith("'"))) {
-      value = value.slice(1, -1);
+  for (const line of match[1].split(/\r?\n/)) {
+    if (/^\s/.test(line)) continue; // nested keys / list items
+    const i = line.indexOf(':');
+    if (i === -1) continue;
+    const key = line.slice(0, i).trim();
+    let value = line.slice(i + 1).trim();
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1).replace(/\\"/g, '"');
     }
-
     data[key] = value;
   }
-
   return data;
 }
 
-// Get all markdown files
 function getAllMarkdownFiles(dir, files = []) {
-  const items = readdirSync(dir);
-
-  for (const item of items) {
+  for (const item of readdirSync(dir)) {
     const fullPath = join(dir, item);
-    const stat = statSync(fullPath);
-
-    if (stat.isDirectory()) {
-      getAllMarkdownFiles(fullPath, files);
-    } else if (item.endsWith('.md')) {
-      files.push(fullPath);
-    }
+    if (statSync(fullPath).isDirectory()) getAllMarkdownFiles(fullPath, files);
+    else if (item.endsWith('.md')) files.push(fullPath);
   }
-
   return files;
 }
 
-// Create OG image component (plain object)
-function createOGImage(title, subtitle, date, logoBase64) {
-  return {
-    type: 'div',
-    props: {
-      style: {
-        display: 'flex',
-        flexDirection: 'row',
-        width: '100%',
-        height: '100%',
-        background: '#e2e8f0', // indigo-50 equivalent
-        fontFamily: 'IBM Plex Mono, monospace',
-      },
-      children: [
-        // Left side - content
-        {
-          type: 'div',
-          props: {
-            style: {
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              padding: '64px',
-              width: '70%',
-              height: '100%',
-            },
-            children: [
-              {
-                type: 'h1',
-                props: {
-                  style: {
-                    fontSize: '56px',
-                    fontWeight: 'bold',
-                    marginBottom: '24px',
-                    lineHeight: '1.1',
-                    color: '#16213e', // primary-dark
-                    margin: '0 0 24px 0',
-                  },
-                  children: title,
-                },
-              },
-              subtitle && {
-                type: 'p',
-                props: {
-                  style: {
-                    fontSize: '28px',
-                    marginBottom: '20px',
-                    color: '#042a59', // accent
-                    lineHeight: '1.3',
-                    margin: '0 0 20px 0',
-                  },
-                  children: subtitle,
-                },
-              },
-              date && {
-                type: 'p',
-                props: {
-                  style: {
-                    fontSize: '20px',
-                    color: '#64748b',
-                    marginBottom: '32px',
-                    margin: '0 0 32px 0',
-                  },
-                  children: new Date(date).toLocaleDateString('it-IT', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  }),
-                },
-              },
-              {
-                type: 'div',
-                props: {
-                  style: {
-                    fontSize: '24px',
-                    fontWeight: '600',
-                    color: '#16213e',
-                  },
-                  children: 'Metro Olografix',
-                },
-              },
-            ].filter(Boolean),
-          },
-        },
-        // Right side - accent bar
-        {
-          type: 'div',
-          props: {
-            style: {
-              width: '30%',
-              height: '100%',
-              background: 'linear-gradient(135deg, #16213e 0%, #042a59 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            },
-            children: [
-              {
-                type: 'div',
-                props: {
-                  style: {
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  },
-                  children: [
-                    {
-                      type: 'img',
-                      props: {
-                        src: logoBase64,
-                        style: {
-                          height: '80px',
-                          filter: 'brightness(0) invert(1)', // Make it white
-                        },
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-          },
-        },
-      ],
-    },
-  };
+const titleCache = new Map();
+function sectionTitle(dir) {
+  if (!titleCache.has(dir)) {
+    const index = join(dir, '_index.md');
+    titleCache.set(dir, existsSync(index) ? parseFrontmatter(readFileSync(index, 'utf-8'))?.title || null : null);
+  }
+  return titleCache.get(dir);
+}
+
+// Ancestor section titles (dirs with an _index.md), like the site breadcrumb.
+function breadcrumb(filePath, langRoot) {
+  const name = basename(filePath);
+  // A bundle (index.md / _index.md) is its own directory; start above it.
+  let dir = name === 'index.md' || name === '_index.md' ? dirname(dirname(filePath)) : dirname(filePath);
+  const crumbs = [];
+  while (dir.length > langRoot.length && dir.startsWith(langRoot)) {
+    const t = sectionTitle(dir);
+    if (t) crumbs.unshift(t);
+    dir = dirname(dir);
+  }
+  return ['~', ...crumbs].join(' / ');
+}
+
+// "2026-11-06T19:00:00" -> "06 nov 2026 · 19:00" (no timezone shifts)
+function formatDate(value, endValue, locale) {
+  const m = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2}))?/);
+  if (!m) return null;
+  const [, y, mo, d, hh, mm] = m;
+  const day = new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' })
+    .format(new Date(Date.UTC(+y, +mo - 1, +d)))
+    .replace(/\./g, '');
+  let out = day;
+  if (hh && `${hh}:${mm}` !== '00:00') {
+    out += ` · ${hh}:${mm}`;
+    const e = String(endValue || '').match(/[T ](\d{2}):(\d{2})/);
+    if (e && `${e[1]}:${e[2]}` !== '00:00') out += `–${e[1]}:${e[2]}`;
+  }
+  return out;
+}
+
+function readI18n(lang, key) {
+  const m = readFileSync(`i18n/${lang}.toml`, 'utf-8').match(new RegExp(`^${key}\\s*=\\s*"(.*)"\\s*$`, 'm'));
+  return m ? m[1] : null;
+}
+
+function readSiteDescription(lang) {
+  const cfg = readFileSync('config.toml', 'utf-8');
+  const block = cfg.split(new RegExp(`\\[languages\\.${lang}\\.params\\]`))[1];
+  const m = block && block.match(/^\s*description\s*=\s*"(.*)"\s*$/m);
+  return m ? m[1] : null;
+}
+
+// ---- Card ------------------------------------------------------------------
+
+const el = (type, style, children) => ({ type, props: { style, children } });
+
+function titleSize(title) {
+  const n = title.length;
+  if (n <= 18) return 96;
+  if (n <= 34) return 80;
+  if (n <= 56) return 68;
+  return 60;
+}
+
+function createCard({ crumb, title, lead, meta, place, logo }) {
+  const size = titleSize(title);
+
+  const main = el('div', { display: 'flex', flexDirection: 'row', flexGrow: 1 }, [
+    // cols 1-3: official MX monogram + lettering
+    el('div', { display: 'flex', width: SIDE_W, flexShrink: 0, marginRight: GUTTER }, [
+      { type: 'img', props: { src: logo, width: LOGO_W, height: LOGO_H } },
+    ]),
+    // cols 4-12: breadcrumb on top, title block on the bottom rule
+    el('div', { display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: MAIN_W }, [
+      el('div', { display: 'block', width: MAIN_W, fontFamily: MONO, fontSize: 22, lineHeight: 1.4, color: C.w4, lineClamp: 1 }, crumb || ''),
+      el('div', { display: 'flex', flexDirection: 'column', width: MAIN_W }, [
+        el('div', {
+          display: 'block',
+          width: MAIN_W,
+          fontFamily: SANS,
+          fontWeight: 700,
+          fontSize: size,
+          lineHeight: 1.05,
+          letterSpacing: -0.03 * size,
+          color: C.w,
+          lineClamp: 3,
+        }, title),
+        lead && el('div', {
+          display: 'block',
+          width: MAIN_W,
+          marginTop: 24,
+          fontFamily: SANS,
+          fontWeight: 400,
+          fontSize: 28,
+          lineHeight: 1.4,
+          color: C.w2,
+          lineClamp: 2,
+        }, lead),
+      ].filter(Boolean)),
+    ]),
+  ]);
+
+  const bottom = el('div', { display: 'flex', flexDirection: 'row', alignItems: 'baseline', marginTop: 24 }, [
+    el('div', { display: 'flex', width: SIDE_W, flexShrink: 0, marginRight: GUTTER, fontFamily: MONO, fontSize: 22, color: C.w4 }, 'olografix.org'),
+    el('div', { display: 'flex', flexDirection: 'row', alignItems: 'baseline', width: MAIN_W }, [
+      meta && el('div', { display: 'flex', flexShrink: 0, marginRight: 32, fontFamily: MONO, fontSize: 22, color: C.w2 }, meta),
+      place && el('div', { display: 'block', flexGrow: 1, flexShrink: 1, minWidth: 0, fontFamily: SANS, fontWeight: 600, fontSize: 22, color: C.w3, lineClamp: 1 }, place),
+    ].filter(Boolean)),
+  ]);
+
+  return el('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+    padding: `${PAD_Y}px ${PAD_X}px`,
+    background: C.black,
+    fontFamily: SANS,
+  }, [
+    main,
+    el('div', { display: 'flex', height: 1, marginTop: 40, background: C.line }, []), // hairline
+    bottom,
+  ]);
+}
+
+// Everything the card shows for one content file.
+function cardData(filePath, fm, langDir) {
+  const { code, locale } = LANGS[langDir];
+  const langRoot = join(CONTENT_DIR, langDir);
+  const isHome = filePath === join(langRoot, '_index.md');
+  const section = filePath.slice(langRoot.length + 1).split('/')[0];
+  const sedi = "Pescara · L'Aquila";
+
+  if (isHome) {
+    const hero = readI18n(code, 'heroTitle');
+    return {
+      crumb: null,
+      title: hero ? hero.replace('{{ .Count }}', String(new Date().getFullYear() - 1994)) : 'Metro Olografix',
+      lead: readSiteDescription(code),
+      meta: null,
+      place: sedi,
+    };
+  }
+
+  const lead = fm.subtitle || fm.description || null;
+  let meta = null;
+  let place = sedi;
+  if (section === 'attivita' && !basename(filePath).startsWith('_index')) {
+    meta = fm.recurring === 'true' ? null : formatDate(fm.date, fm.endDate, locale);
+    place = fm.recurring === 'true' && fm.recurrencePattern ? fm.recurrencePattern : fm.location || null;
+  } else if (fm.year) {
+    // A dated archive entry (album): the sedi line would misstate where it happened.
+    meta = fm.year;
+    place = null;
+  }
+  return { crumb: breadcrumb(filePath, langRoot), title: fm.title, lead, meta, place };
 }
 
 async function generateOGImages() {
-  console.log('🚀 Generating OG images...');
+  console.log('Generating OG images...');
+  if (!existsSync(OUTPUT_DIR)) mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  // Create output directory
-  const outputDir = 'static/images/og';
-  if (!existsSync(outputDir)) {
-    mkdirSync(outputDir, { recursive: true });
-  }
-
-  // Load IBM Plex Mono fonts
-  const fonts = [];
-  let logoBase64 = '';
-
+  let fonts;
+  let logo;
   try {
-    const regularFont = readFileSync('static/fonts/IBMPlexMono-Regular.ttf');
-    const boldFont = readFileSync('static/fonts/IBMPlexMono-Bold.ttf');
-
-    fonts.push({
-      name: 'IBM Plex Mono',
-      data: regularFont,
-      weight: 400,
-      style: 'normal',
-    });
-
-    fonts.push({
-      name: 'IBM Plex Mono',
-      data: boldFont,
-      weight: 700,
-      style: 'normal',
-    });
-
-    // Load logo and convert to base64
-    const logoBuffer = readFileSync('static/images/metro-light.png');
-    logoBase64 = `data:image/png;base64,${logoBuffer.toString('base64')}`;
-
-    console.log('✅ Loaded IBM Plex Mono fonts and logo');
+    fonts = loadFonts();
+    logo = `data:image/svg+xml;base64,${readFileSync(LOGO_PATH).toString('base64')}`;
   } catch (error) {
-    console.error('❌ Failed to load fonts or logo:', error.message);
+    console.error('Failed to load fonts or logo:', error.message);
     process.exit(1);
   }
 
-  // Get all markdown files
-  const markdownFiles = getAllMarkdownFiles('content');
-  console.log(`📄 Found ${markdownFiles.length} markdown files`);
+  // A change to this script invalidates every image.
+  const scriptMtime = statSync(SCRIPT_PATH).mtime;
+  const markdownFiles = getAllMarkdownFiles(CONTENT_DIR);
+  console.log(`Found ${markdownFiles.length} markdown files`);
 
   let generated = 0;
-
-  // Language mapping and regex compilation (moved outside the loop)
-  const languageMap = {
-    'italiano': 'it',
-    'english': 'en',
-    'spanish': 'es'
-  };
-  const langRegex = new RegExp(Object.keys(languageMap).join('|'), 'g');
-
+  let failed = 0;
   for (const filePath of markdownFiles) {
     try {
-      const content = readFileSync(filePath, 'utf-8');
-      const frontmatter = parseFrontmatter(content);
+      const [, langDir, ...rest] = filePath.split('/');
+      if (!LANGS[langDir]) continue;
+      const fm = parseFrontmatter(readFileSync(filePath, 'utf-8'));
+      if (!fm?.title) continue;
 
-      if (!frontmatter?.title) continue;
+      const imageFileName = `${LANGS[langDir].code}-${rest.join('-').replace(/\.md$/, '')}.png`;
+      const imagePath = join(OUTPUT_DIR, imageFileName);
 
-      // Generate image filename
-      let relativePath = filePath.replace('content/', '').replace('.md', '');
-      // Replace language names using regex and mapping
-      relativePath = relativePath.replace(langRegex, matched => languageMap[matched]);
-      const imageFileName = relativePath.replace(/\//g, '-') + '.png';
-      const imagePath = join(outputDir, imageFileName);
-
-      // Skip if image exists and is up-to-date
-      if (existsSync(imagePath)) {
-        const imageStat = statSync(imagePath);
-        const markdownStat = statSync(filePath);
-        if (imageStat.mtime >= markdownStat.mtime) continue;
+      if (!FORCE && existsSync(imagePath)) {
+        const imageMtime = statSync(imagePath).mtime;
+        if (imageMtime >= statSync(filePath).mtime && imageMtime >= scriptMtime) continue;
       }
 
-      console.log(`🎨 Generating: ${imageFileName}`);
-
-      // Create component
-      const component = createOGImage(
-        frontmatter.title,
-        frontmatter.subtitle,
-        frontmatter.date,
-        logoBase64
-      );
-
-      // Generate SVG
-      const svg = await satori(component, {
-        width: 1200,
-        height: 630,
-        fonts,
-      });
-
-      // Convert to PNG
-      const resvg = new Resvg(svg);
-      const pngData = resvg.render();
-      const pngBuffer = pngData.asPng();
-
-      // Save
-      writeFileSync(imagePath, pngBuffer);
+      const svg = await satori(createCard({ ...cardData(filePath, fm, langDir), logo }), { width: W, height: H, fonts });
+      writeFileSync(imagePath, new Resvg(svg, { fitTo: { mode: 'width', value: W } }).render().asPng());
       generated++;
-
     } catch (error) {
-      console.error(`❌ Error processing ${filePath}:`, error.message);
+      failed++;
+      console.error(`Error processing ${filePath}:`, error.message);
     }
   }
 
-  console.log(`✅ Generated ${generated} new images`);
+  console.log(`Generated ${generated} images${failed ? `, ${failed} failed` : ''}`);
+  if (failed) process.exitCode = 1;
 }
 
-// Run
-generateOGImages().catch(console.error);
+generateOGImages().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

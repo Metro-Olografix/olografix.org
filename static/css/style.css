@@ -143,8 +143,6 @@ main>.sec:first-child{padding-top:0}
 
 /* intro */
 .intro__text{max-width:62ch;font-size:clamp(1rem,1.8vw,1.2rem);line-height:1.85;color:var(--w2);margin-bottom:2.25rem}
-.intro__cta{max-width:480px}
-.intro__cta--next{margin-top:1.25rem}
 
 /* ═══════════ LOCATIONS ═══════════ */
 .locs__grid{display:grid;grid-template-columns:1fr;gap:var(--gap)}
@@ -158,7 +156,7 @@ main>.sec:first-child{padding-top:0}
 .loc__card>*:not(.loc__map){position:relative;z-index:1}
 .loc__title{font-size:.95rem;font-family:var(--mono);font-weight:400;margin-bottom:.6rem}
 .loc__text{font-size:.85rem;color:var(--w3);line-height:1.65;margin-bottom:.85rem}
-.loc__status,.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:.8rem;color:var(--w4)}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:.8rem;color:var(--w4)}
 .status[data-state=open]{color:var(--green)}
 .status[data-state=closed]{color:var(--red)}
 
@@ -299,7 +297,6 @@ a.mosaic__credit:focus-visible{outline-offset:-2px}
 .sede__hero-in{position:relative;z-index:1;width:100%}
 .sede__title{font-size:clamp(2.5rem,6vw,4rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;text-wrap:balance;margin:.5rem 0 .25rem}
 .sede__addr{font-family:var(--sans);font-size:.85rem;color:var(--w3)}
-.sede__hero .loc__status{margin-top:.75rem}
 /* Sede pages: the live state completes the title ("Pescara è aperta") at the same size and weight */
 .sede__sep{color:var(--w4);font-weight:400}
 .status--title{display:inline;font:inherit;font-weight:400;letter-spacing:inherit;color:var(--w4)}
@@ -338,7 +335,6 @@ main{flex:1;display:block}
 
 /* event row extras */
 .ev__sum{margin-top:.4rem;font-size:.9rem;color:var(--w3);line-height:1.6;max-width:60ch}
-.ev__badge--past{color:var(--w4);border:1px solid var(--line)}
 .recurring-event{font-family:var(--sans);font-size:.78rem;color:var(--w3);margin-top:.35rem}
 .recurring-event strong{color:var(--w);font-weight:600}
 .recurring-event .loading{font-style:italic}

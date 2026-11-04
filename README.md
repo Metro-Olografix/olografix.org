@@ -179,7 +179,6 @@ olografix.org/
 │   ├── partials/            
 │   └── shortcodes/          
 ├── static/                   # File statici (CSS, JS, immagini)
-├── assets/                   # Asset gestiti da Hugo
 └── config.toml               # Configurazione del sito
 ```
 
