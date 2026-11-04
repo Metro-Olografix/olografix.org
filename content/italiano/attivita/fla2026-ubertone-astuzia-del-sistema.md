@@ -5,6 +5,7 @@ date: "2026-11-07T12:00:00"
 endDate: "2026-11-07T13:00:00"
 recurring: false
 location: "Laboratorio Didattico - Museo delle Genti d'Abruzzo, Via delle Caserme 24, Pescara"
+locationUrl: "https://maps.app.goo.gl/UBxJZA2GGGSP2H1aA"
 ---
 
 Nell'ambito di **FLA - Festival di Libri e Altrecose 2026**, nella sezione curata da Metro Olografix, Michele Ubertone presenta il suo libro *L'astuzia del sistema* (Giappichelli, 2026), in dialogo con Lorenzo Cococcia.
