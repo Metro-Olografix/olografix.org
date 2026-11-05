@@ -35,6 +35,6 @@ Check the [Activities](/attivita) page for the event calendar!
 
 ## Opening hours
 
-We meet every Tuesday from 18:00!
+We meet every Tuesday from 21:00!
 
 You can also find us on other days — if you want to be sure, reach us on social media or at `laquila [at] olografix [dot] org`.

@@ -34,6 +34,6 @@ Consulta la pagina [Attività](/attivita) per il calendario degli eventi!
 
 ## Orari di apertura
 
-Ci riuniamo ogni martedì a partire dalle 18:00!
+Ci riuniamo ogni martedì a partire dalle 21:00!
 
 Puoi trovarci anche altri giorni, se vuoi esserne sicurə scrivici sui canali social o a `laquila [chiocciola] olografix [punto] org`.
