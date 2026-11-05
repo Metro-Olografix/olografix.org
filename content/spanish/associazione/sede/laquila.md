@@ -34,6 +34,6 @@ Organizamos encuentros, cursos y talleres sobre temas relacionados con el hackin
 
 ## Horario de apertura
 
-¡Nos reunimos todos los martes a partir de las 18:00!
+¡Nos reunimos todos los martes a partir de las 21:00!
 
 También puedes encontrarnos otros días — si quieres estar segurx, escríbenos en redes sociales o a `laquila [arroba] olografix [punto] org`.
