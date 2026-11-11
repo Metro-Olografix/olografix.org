@@ -29,3 +29,9 @@ El encuentro se celebra simultáneamente en ambas sedes:
 – **L'Aquila**: [Via Ed Arco Cirillo 10](https://www.openstreetmap.org/node/13787603509)
 
 **Encuentro abierto a todos, entrada libre. No se necesitan conocimientos técnicos.**
+
+### Folleto
+
+[![Folleto del encuentro (en italiano), con un código QR y la ilustración en trama de un frigorífico](/images/opt/stato-ansia-volantino-1280.webp)](/images/stato-ansia-volantino.png)
+
+Descarga el [folleto en alta resolución](/images/stato-ansia-volantino.png) para imprimirlo y difundirlo.

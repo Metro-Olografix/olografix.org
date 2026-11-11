@@ -29,3 +29,9 @@ L'incontro si tiene in contemporanea in entrambe le sedi:
 – **L'Aquila**: [Via Ed Arco Cirillo 10](https://www.openstreetmap.org/node/13787603509)
 
 **Incontro aperto a tutti, ingresso libero. Non servono competenze tecniche.**
+
+### Volantino
+
+[![Volantino dell'incontro, con un QR code e l'illustrazione a retino di un frigorifero](/images/opt/stato-ansia-volantino-1280.webp)](/images/stato-ansia-volantino.png)
+
+Scarica il [volantino in alta risoluzione](/images/stato-ansia-volantino.png) per stamparlo e diffonderlo.

@@ -29,3 +29,9 @@ The meeting takes place simultaneously at both locations:
 – **L'Aquila**: [Via Ed Arco Cirillo 10](https://www.openstreetmap.org/node/13787603509)
 
 **Open to everyone, free admission. No technical skills required.**
+
+### Flyer
+
+[![Flyer for the meeting (in Italian), with a QR code and a halftone illustration of a refrigerator](/images/opt/stato-ansia-volantino-1280.webp)](/images/stato-ansia-volantino.png)
+
+Download the [high-resolution flyer](/images/stato-ansia-volantino.png) to print and share it.
