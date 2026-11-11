@@ -19,8 +19,7 @@ Un'email minatoria inviata in massa non viola nessun sistema. La manomissione di
 
 – **ricostruiremo la cronologia** degli eventi  
 – **distingueremo i fatti accertati** dalle ipotesi e dalla disinformazione  
-– **spiegheremo in termini accessibili** come funzionano questi attacchi e perché colpiscono le procedure prima ancora dei sistemi  
-– **indicheremo cosa possono fare** scuole, enti e cittadini
+– **spiegheremo in termini accessibili** come funzionano questi attacchi e perché colpiscono le procedure prima ancora dei sistemi
 
 > «Il panico è il vero obiettivo di chi manda queste email, e l'approssimazione di chi governa e di chi informa glielo consegna. Da trent'anni la cultura hacker serve a capire come funzionano le cose: è il momento di usarla.»
 >
