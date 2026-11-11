@@ -21,10 +21,6 @@ Un correo amenazante enviado de forma masiva no vulnera ningún sistema. La mani
 – **distinguiremos los hechos comprobados** de las hipótesis y la desinformación  
 – **explicaremos en términos accesibles** cómo funcionan estos ataques y por qué afectan a los procedimientos antes incluso que a los sistemas
 
-> «El pánico es el verdadero objetivo de quien envía estos correos, y la improvisación de quien gobierna y de quien informa se lo entrega en bandeja. Desde hace treinta años la cultura hacker sirve para entender cómo funcionan las cosas: es el momento de usarla.»
->
-> — Michelangelo _"Pinguin0"_ Morrillo, Presidente de Metro Olografix
-
 ### Dónde
 
 El encuentro se celebra simultáneamente en ambas sedes:

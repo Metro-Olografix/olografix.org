@@ -21,10 +21,6 @@ A threatening email sent in bulk doesn't breach any system. Tampering with an in
 – **separate established facts** from hypotheses and disinformation  
 – **explain in accessible terms** how these attacks work and why they target procedures even before systems
 
-> «Panic is the real goal of whoever sends these emails, and the carelessness of those who govern and those who inform hands it to them. For thirty years hacker culture has been about understanding how things work: now is the time to use it.»
->
-> — Michelangelo _"Pinguin0"_ Morrillo, President of Metro Olografix
-
 ### Where
 
 The meeting takes place simultaneously at both locations:
