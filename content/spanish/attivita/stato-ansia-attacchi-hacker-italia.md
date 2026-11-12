@@ -3,8 +3,11 @@ title: "Estado de ansiedad: ataques hacker a Italia"
 subtitle: "Amenazas de bomba, frigoríficos y vuelos escoltados: qué pasó realmente, explicado sin pánico."
 date: "2026-11-15T15:30:00"
 recurring: false
-location: "Sedes Metro Olografix - Viale Marconi 278/1, Pescara y Via Ed Arco Cirillo 10, L'Aquila"
-locationUrl: "https://www.openstreetmap.org/node/12539021893"
+locations:
+  - name: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
+    url: "https://www.openstreetmap.org/node/12539021893"
+  - name: "Sede Metro Olografix - Via Ed Arco Cirillo 10, L'Aquila"
+    url: "https://www.openstreetmap.org/node/13787603509"
 liveUrl: "https://www.youtube.com/watch?v=0qbBVe7j0_A"
 ---
 

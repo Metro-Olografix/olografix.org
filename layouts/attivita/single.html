@@ -27,10 +27,13 @@
           {{ partial "recurring-next.html" . }}
         </div>
         {{ end }}
-        {{ with .Params.location }}
+        {{ $locs := partial "event-locations.html" . }}
+        {{ with $locs }}
         <div class="sede__info-block">
-          <div class="sede__info-label">{{ T "locationLabel" | default "Location" }}</div>
-          <div class="sede__info-val">{{ if $.Params.locationUrl }}<a href="{{ $.Params.locationUrl }}" target="_blank" rel="noopener">{{ . }}</a>{{ else }}{{ . }}{{ end }}</div>
+          <div class="sede__info-label">{{ if gt (len .) 1 }}{{ T "locationsLabel" | default "Locations" }}{{ else }}{{ T "locationLabel" | default "Location" }}{{ end }}</div>
+          {{ range . }}
+          <div class="sede__info-val">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</div>
+          {{ end }}
         </div>
         {{ end }}
       </div>

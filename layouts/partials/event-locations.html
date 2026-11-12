@@ -1,0 +1,11 @@
+{{- /* Normalizes an activity's venues into a list of {name, url} dicts. Arg: page.
+       Preferred: `locations: [{name, url}, ...]` (multi-venue events).
+       Legacy single venue: `location` + `locationUrl` still works. */ -}}
+{{- $out := slice -}}
+{{- range .Params.locations -}}
+  {{- if .name -}}{{- $out = $out | append (dict "name" .name "url" (.url | default "")) -}}{{- end -}}
+{{- end -}}
+{{- if and (not $out) .Params.location -}}
+  {{- $out = slice (dict "name" .Params.location "url" (.Params.locationUrl | default "")) -}}
+{{- end -}}
+{{- return $out -}}

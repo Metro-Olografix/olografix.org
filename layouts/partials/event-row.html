@@ -15,7 +15,8 @@
       {{ if $p.Params.recurring }}
       <span>{{ partial "icon.html" "sync-alt" }} {{ $p.Params.recurrencePattern | default (humanize ($p.Params.recurrenceType | default "weekly")) }}</span>
       {{ end }}
-      {{ with $p.Params.location }}<span>{{ partial "icon.html" "map-marker-alt" }} {{ . }}</span>{{ end }}
+      {{ $locs := partial "event-locations.html" $p }}
+      {{ if $locs }}<span>{{ partial "icon.html" "map-marker-alt" }} {{ delimit (apply $locs "index" "." "name") " · " }}</span>{{ end }}
     </div>
     {{ if $p.Params.recurring }}{{ partial "recurring-next.html" $p }}{{ end }}
     {{ if .summary }}{{ with $p.Params.subtitle }}<p class="ev__sum">{{ . }}</p>{{ end }}{{ end }}
