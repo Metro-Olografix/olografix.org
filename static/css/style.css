@@ -520,6 +520,11 @@ main{flex:1;display:block}
 .join__fees{color:var(--w3);font-size:clamp(.95rem,1.4vw,1.05rem);margin-bottom:clamp(1.75rem,3vw,2.25rem)}
 .obtn--solid{border-color:var(--w);background:var(--w);color:var(--black)}
 .obtn--solid:hover{border-color:var(--w2);background:var(--w2);color:var(--black)}
+/* event live stream (liveUrl): right under the facts lattice; the platform mark in the label's colour,
+   never the brand red (The LED Rule) */
+.actbtns--live{margin-top:clamp(1.25rem,2.5vw,1.75rem)}
+.obtn--ico{display:inline-flex;align-items:center;gap:.6em}
+.obtn--ico .ico{font-size:1.15rem;vertical-align:0}
 
 /* The Associati marquee: the reasons to join in display type, running edge to edge between two hairlines
    (full bleed like the mosaic: the section's own width, never 100vw). The track holds two identical groups
