@@ -5,6 +5,7 @@ date: "2026-11-15T15:30:00"
 recurring: false
 location: "Sedes Metro Olografix - Viale Marconi 278/1, Pescara y Via Ed Arco Cirillo 10, L'Aquila"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
+liveUrl: "https://www.youtube.com/watch?v=0qbBVe7j0_A"
 ---
 
 En las últimas semanas Italia ha vivido una oleada de alarmas sin precedentes. Miles de escuelas recibieron correos electrónicos con amenazas de bomba, vuelos civiles en toda Europa fueron desviados o escoltados por cazas militares y, en varios supermercados, los sistemas de refrigeración fueron manipulados a distancia. No se encontró ningún artefacto, pero el efecto fue real: evacuaciones, servicios interrumpidos, mercancía destruida y un clima generalizado de miedo.

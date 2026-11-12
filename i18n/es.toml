@@ -21,6 +21,7 @@ recurrenceLabel = "Recurrencia"
 locationLabel = "Lugar"
 visitEventSite = "Visita el sitio del evento"
 moreInfo = "Mas informacion"
+watchLive = "Mira el directo en YouTube"
 upcomingEvents = "Proximos Eventos"
 
 today = "Hoy"

@@ -5,7 +5,7 @@
 
 {{ partial "page-header.html" (dict "page" . "subtitle" .Params.subtitle) }}
 
-<!-- Facts: when / how often / where -->
+<!-- Facts: when / how often / where, then the live stream (liveUrl) as the page's one Solid button -->
 <section class="sec">
   <div class="wrap sec__in">
     <div class="sec__body sec__body--full">
@@ -34,6 +34,11 @@
         </div>
         {{ end }}
       </div>
+      {{ with .Params.liveUrl }}
+      <div class="actbtns actbtns--live">
+        <a href="{{ . }}" class="obtn obtn--solid obtn--ico" target="_blank" rel="noopener">{{ partial "icon.html" "youtube" }}{{ T "watchLive" | default "Watch the live stream" }} ↗</a>
+      </div>
+      {{ end }}
     </div>
   </div>
 </section>

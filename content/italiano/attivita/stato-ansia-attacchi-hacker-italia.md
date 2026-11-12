@@ -5,6 +5,7 @@ date: "2026-11-15T15:30:00"
 recurring: false
 location: "Sedi Metro Olografix - Viale Marconi 278/1, Pescara e Via Ed Arco Cirillo 10, L'Aquila"
 locationUrl: "https://www.openstreetmap.org/node/12539021893"
+liveUrl: "https://www.youtube.com/watch?v=0qbBVe7j0_A"
 ---
 
 Nelle ultime settimane l'Italia ha vissuto un'ondata di allarmi senza precedenti. Migliaia di scuole hanno ricevuto email con minacce di bomba, voli civili in tutta Europa sono stati dirottati o scortati da caccia militari, in diversi supermercati gli impianti di refrigerazione sono stati manomessi da remoto. Nessun ordigno è stato trovato, ma l'effetto è stato reale: evacuazioni, servizi interrotti, merce distrutta e un clima diffuso di paura.
