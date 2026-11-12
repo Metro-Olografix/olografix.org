@@ -3,8 +3,11 @@ title: "State of Anxiety: Hacker Attacks on Italy"
 subtitle: "Bomb threats, refrigerators and escorted flights: what really happened, explained without panic."
 date: "2026-11-15T15:30:00"
 recurring: false
-location: "Metro Olografix Headquarters - Viale Marconi 278/1, Pescara and Via Ed Arco Cirillo 10, L'Aquila"
-locationUrl: "https://www.openstreetmap.org/node/12539021893"
+locations:
+  - name: "Metro Olografix Headquarters - Viale Marconi 278/1, Pescara"
+    url: "https://www.openstreetmap.org/node/12539021893"
+  - name: "Metro Olografix Headquarters - Via Ed Arco Cirillo 10, L'Aquila"
+    url: "https://www.openstreetmap.org/node/13787603509"
 liveUrl: "https://www.youtube.com/watch?v=0qbBVe7j0_A"
 ---
 

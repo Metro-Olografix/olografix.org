@@ -19,6 +19,7 @@ noUpcomingActivities = "No events scheduled at the moment, but we meet at the sp
 dateLabel = "Date"
 recurrenceLabel = "Recurrence"
 locationLabel = "Location"
+locationsLabel = "Locations"
 visitEventSite = "Visit event website"
 moreInfo = "More information"
 watchLive = "Watch the live stream on YouTube"

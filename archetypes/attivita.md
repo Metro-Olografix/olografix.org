@@ -18,6 +18,12 @@ recurrencePattern: ""  # Human-readable description (auto-generated if empty)
 
 location: ""  # Physical location of the event
 locationUrl: ""  # Map URL for the location
+# Event held at several venues at once? Use this INSTEAD of location/locationUrl:
+# locations:
+#   - name: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
+#     url: "https://www.openstreetmap.org/node/12539021893"
+#   - name: "Sede Metro Olografix - Via Ed Arco Cirillo 10, L'Aquila"
+#     url: "https://www.openstreetmap.org/node/13787603509"
 draft: false
 ---
 

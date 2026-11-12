@@ -118,8 +118,12 @@ END:VTIMEZONE
 {{- /* Escape text fields */ -}}
 {{- $summary := replace (replace (replace .Title "\\" "\\\\") ";" "\\;") "," "\\," -}}
 {{- $location := "" -}}
-{{- if .Params.location -}}
-  {{- $location = replace (replace (replace .Params.location "\\" "\\\\") ";" "\\;") "," "\\," -}}
+{{- $locNames := slice -}}
+{{- range partial "event-locations.html" . -}}
+  {{- $locNames = $locNames | append .name -}}
+{{- end -}}
+{{- if $locNames -}}
+  {{- $location = replace (replace (replace (delimit $locNames " / ") "\\" "\\\\") ";" "\\;") "," "\\," -}}
 {{- end -}}
 {{- $altDesc := "" -}}
 {{- if .Params.subtitle -}}

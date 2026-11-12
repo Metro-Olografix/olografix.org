@@ -133,6 +133,12 @@ recurrenceDay: "wednesday"  # giorno della settimana (se ricorrente)
 recurrenceCount: 10  # numero di ricorrenze (se ricorrente)
 location: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"  # Luogo dell'evento
 locationUrl: "https://www.openstreetmap.org/node/12539021893"  # Link alla mappa
+# Evento in più sedi in contemporanea: usa `locations` AL POSTO di location/locationUrl
+# locations:
+#   - name: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
+#     url: "https://www.openstreetmap.org/node/12539021893"
+#   - name: "Sede Metro Olografix - Via Ed Arco Cirillo 10, L'Aquila"
+#     url: "https://www.openstreetmap.org/node/13787603509"
 externalUrl: ""  # URL dell'evento esterno (opzionale)
 ---
 

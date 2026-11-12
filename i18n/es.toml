@@ -19,6 +19,7 @@ noUpcomingActivities = "Ningún evento programado por ahora, pero nos vemos en l
 dateLabel = "Dia"
 recurrenceLabel = "Recurrencia"
 locationLabel = "Lugar"
+locationsLabel = "Lugares"
 visitEventSite = "Visita el sitio del evento"
 moreInfo = "Mas informacion"
 watchLive = "Mira el directo en YouTube"
