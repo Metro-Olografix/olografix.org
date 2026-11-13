@@ -12,7 +12,7 @@ hqStatusOpen = "Aperta"
 hqStatusClose = "Chiusa"
 hqDescription = "<p>Vieni a trovarci nella nostra sede in <strong>Viale Marconi 278/1</strong>, Pescara.</p><p>Ci riuniamo ogni lunedì sera dalle 21:00.</p>"
 sediHeader = "Le nostre sedi"
-laquilaDescription = "<p>Vieni a trovarci nella nostra sede in <strong>Via Ed Arco Cirillo, 10</strong>, L'Aquila.</p><p>Ci riuniamo ogni martedì dalle 21:00.</p>"
+laquilaDescription = "<p>Vieni a trovarci nella nostra sede in <strong>Via ed Arco Cirillo, 10</strong>, L'Aquila.</p><p>Ci riuniamo ogni martedì dalle 21:00.</p>"
 whoWeAre = "Chi siamo?"
 noUpcomingActivities = "Nessun evento in programma al momento, ma ci vediamo in sede ogni settimana. Passa a trovarci."
 

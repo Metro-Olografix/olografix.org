@@ -22,7 +22,7 @@ locationUrl: ""  # Map URL for the location
 # locations:
 #   - name: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
 #     url: "https://www.openstreetmap.org/node/12539021893"
-#   - name: "Sede Metro Olografix - Via Ed Arco Cirillo 10, L'Aquila"
+#   - name: "Sede Metro Olografix - Via ed Arco Cirillo 10, L'Aquila"
 #     url: "https://www.openstreetmap.org/node/13787603509"
 draft: false
 ---

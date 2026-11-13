@@ -13,7 +13,7 @@ Es un lugar para cacharrear, romper cosas (y quizás arreglarlas), aprender de l
 
 ## Dirección
 
-Nos encontramos en **Via Ed Arco Cirillo, 10**, L'Aquila.
+Nos encontramos en **Via ed Arco Cirillo, 10**, L'Aquila.
 
 [OpenStreetMap](https://www.openstreetmap.org/node/13787603509)
 

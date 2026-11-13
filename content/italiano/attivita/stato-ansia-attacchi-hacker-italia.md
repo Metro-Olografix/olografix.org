@@ -6,7 +6,7 @@ recurring: false
 locations:
   - name: "Sede Metro Olografix - Viale Marconi 278/1, Pescara"
     url: "https://www.openstreetmap.org/node/12539021893"
-  - name: "Sede Metro Olografix - Via Ed Arco Cirillo 10, L'Aquila"
+  - name: "Sede Metro Olografix - Via ed Arco Cirillo 10, L'Aquila"
     url: "https://www.openstreetmap.org/node/13787603509"
 liveUrl: "https://www.youtube.com/watch?v=0qbBVe7j0_A"
 ---
@@ -30,7 +30,7 @@ Un'email minatoria inviata in massa non viola nessun sistema. La manomissione di
 L'incontro si tiene in contemporanea in entrambe le sedi e in diretta streaming:
 
 – **Pescara**: [Viale Marconi 278/1](https://www.openstreetmap.org/node/12539021893)  
-– **L'Aquila**: [Via Ed Arco Cirillo 10](https://www.openstreetmap.org/node/13787603509)  
+– **L'Aquila**: [Via ed Arco Cirillo 10](https://www.openstreetmap.org/node/13787603509)  
 – **Online**: [diretta su YouTube](https://www.youtube.com/watch?v=0qbBVe7j0_A)
 
 **Incontro aperto a tutti, ingresso libero. Non servono competenze tecniche.**
