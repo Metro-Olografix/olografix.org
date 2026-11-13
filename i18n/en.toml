@@ -12,7 +12,7 @@ hqStatusOpen = "Open"
 hqStatusClose = "Closed"
 hqDescription = "<p>Come and visit us in our space in <strong>Viale Marconi 278/1</strong>, Pescara.</p><p>We meet every Monday evening from 21:00.</p>"
 sediHeader = "Our spaces"
-laquilaDescription = "<p>Come and visit us at our space in <strong>Via Ed Arco Cirillo, 10</strong>, L'Aquila.</p><p>We meet every Tuesday from 21:00.</p>"
+laquilaDescription = "<p>Come and visit us at our space in <strong>Via ed Arco Cirillo, 10</strong>, L'Aquila.</p><p>We meet every Tuesday from 21:00.</p>"
 whoWeAre = "Who are we?"
 noUpcomingActivities = "No events scheduled at the moment, but we meet at the space every week. Come by."
 

@@ -6,7 +6,7 @@ recurring: false
 locations:
   - name: "Metro Olografix Headquarters - Viale Marconi 278/1, Pescara"
     url: "https://www.openstreetmap.org/node/12539021893"
-  - name: "Metro Olografix Headquarters - Via Ed Arco Cirillo 10, L'Aquila"
+  - name: "Metro Olografix Headquarters - Via ed Arco Cirillo 10, L'Aquila"
     url: "https://www.openstreetmap.org/node/13787603509"
 liveUrl: "https://www.youtube.com/watch?v=0qbBVe7j0_A"
 ---
@@ -30,7 +30,7 @@ A threatening email sent in bulk doesn't breach any system. Tampering with an in
 The meeting takes place simultaneously at both locations and is streamed live:
 
 – **Pescara**: [Viale Marconi 278/1](https://www.openstreetmap.org/node/12539021893)  
-– **L'Aquila**: [Via Ed Arco Cirillo 10](https://www.openstreetmap.org/node/13787603509)  
+– **L'Aquila**: [Via ed Arco Cirillo 10](https://www.openstreetmap.org/node/13787603509)  
 – **Online**: [live on YouTube](https://www.youtube.com/watch?v=0qbBVe7j0_A) (in Italian)
 
 **Open to everyone, free admission. No technical skills required.**

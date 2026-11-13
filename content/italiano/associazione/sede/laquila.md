@@ -13,7 +13,7 @@ Dal 2026, Metro Olografix è presente anche a L'Aquila!
 
 ## Indirizzo
 
-Ci troviamo in **Via Ed Arco Cirillo, 10**, L'Aquila.
+Ci troviamo in **Via ed Arco Cirillo, 10**, L'Aquila.
 
 [OpenStreetMap](https://www.openstreetmap.org/node/13787603509)
 
