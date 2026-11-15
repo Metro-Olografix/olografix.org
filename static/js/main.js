@@ -142,3 +142,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Il sito è statico: aggiorna lato client il badge degli eventi (Prossimamente → Oggi → Passato)
+// rispetto all'ora in cui la pagina viene aperta, senza aspettare il prossimo build.
+document.addEventListener("DOMContentLoaded", () => {
+  const now = new Date();
+  const dayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  const dayEnd = dayStart + 24 * 60 * 60 * 1000;
+  document.querySelectorAll(".ev__badge--up[data-event-start]").forEach((badge) => {
+    const start = Number(badge.dataset.eventStart) * 1000;
+    // Senza data di fine l'evento dura fino a fine giornata
+    const end = badge.dataset.eventEnd
+      ? Number(badge.dataset.eventEnd) * 1000
+      : new Date(start).setHours(23, 59, 59, 999);
+    if (end < now.getTime()) {
+      badge.textContent = badge.dataset.pastLabel;
+      badge.classList.remove("ev__badge--up");
+    } else if (start < dayEnd && end >= dayStart) {
+      badge.textContent = badge.dataset.todayLabel;
+      badge.classList.replace("ev__badge--up", "ev__badge--now");
+    }
+  });
+});

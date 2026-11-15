@@ -26,6 +26,7 @@ watchLive = "Watch the live stream on YouTube"
 upcomingEvents = "Upcoming Events"
 
 today = "Today"
+eventPast = "Ended"
 tomorrow = "Tomorrow"
 next = "Next:"
 calculating = "Calculating next date..."

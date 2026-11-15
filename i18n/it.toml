@@ -26,6 +26,7 @@ watchLive = "Guarda la diretta su YouTube"
 upcomingEvents = "Prossimi Eventi"
 
 today = "Oggi"
+eventPast = "Concluso"
 tomorrow = "Domani"
 next = "Prossimo:"
 calculating = "Calcolando la prossima data..."
