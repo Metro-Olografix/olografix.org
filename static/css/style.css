@@ -264,6 +264,7 @@ a.mosaic__credit:focus-visible{outline-offset:-2px}
 .ev__meta span{display:inline-flex;align-items:center;gap:4px}
 .ev__badge{font-family:var(--sans);font-size:.72rem;padding:3px 8px;white-space:nowrap;align-self:start;justify-self:start}
 .ev__badge--up{background:var(--green-tint);color:var(--green)}
+.ev__badge--now{background:var(--green);color:#000;font-weight:600}
 /* Home lists: the same rows as Attività and Progetti with the names a step up (Headline small), so the front page
    is not the small print of its own sections; the empty state speaks at Lead small */
 .evlist--home .ev__title{font-size:clamp(1.3rem,2.4vw,1.6rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:.4rem}
@@ -577,7 +578,7 @@ main{flex:1;display:block}
   .prose a.obtn--solid{color:ButtonFace}
   .shop__free{background:CanvasText;color:Canvas}
   .marquee__group li::after{background:CanvasText}
-  .ev__badge--up{border:1px solid currentColor}
+  .ev__badge--up,.ev__badge--now{border:1px solid currentColor}
 }
 /* The MX logo files are white: on a light forced palette they would vanish */
 @media(forced-colors:active) and (prefers-color-scheme:light){

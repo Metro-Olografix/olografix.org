@@ -21,5 +21,5 @@
     {{ if $p.Params.recurring }}{{ partial "recurring-next.html" $p }}{{ end }}
     {{ if .summary }}{{ with $p.Params.subtitle }}<p class="ev__sum">{{ . }}</p>{{ end }}{{ end }}
   </div>
-  {{ with .badge }}<span class="ev__badge {{ $.badgeClass | default "ev__badge--up" }}">{{ . }}</span>{{ else }}<span></span>{{ end }}
+  {{ with .badge }}<span class="ev__badge {{ $.badgeClass | default "ev__badge--up" }}"{{ if and (eq . (T "comingEvent")) (not $p.Params.recurring) }} data-event-start="{{ $p.Date.Unix }}"{{ with $p.Params.endDate }} data-event-end="{{ .Unix }}"{{ end }} data-today-label="{{ T "today" }}" data-past-label="{{ T "eventPast" }}"{{ end }}>{{ . }}</span>{{ else }}<span></span>{{ end }}
 </a>
